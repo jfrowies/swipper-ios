@@ -176,6 +176,24 @@
                                                              }];
 }
 
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    
+    //TODO: ver si creo una clase para la vista, checkear que se vea el user location, chequear en pantalla retina.
+    MKAnnotationView *categoryAnnotationView = nil;
+    if(annotation != mapView.userLocation)
+    {
+        static NSString *categoryPinID = @"categoryPin";
+        categoryAnnotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:categoryPinID];
+        if ( categoryAnnotationView == nil ) categoryAnnotationView = [[MKAnnotationView alloc]
+                                         initWithAnnotation:annotation reuseIdentifier:categoryPinID];
+        
+        categoryAnnotationView.canShowCallout = YES;
+        categoryAnnotationView.image = [UIImage imageNamed:@"lodging.png"];
+    }
+    return categoryAnnotationView;
+}
+
 #pragma mark -
 
 - (void)reloadAnnotations
