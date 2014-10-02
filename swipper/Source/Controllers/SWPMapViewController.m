@@ -12,6 +12,7 @@
 #import "SWPAnnotation.h"
 #import "SWRevealViewController.h"
 #import "SWPCategory.h"
+#import "SWPCategoryStore.h"
 #import "SWPThemeHelper.h"
 
 @interface SWPMapViewController ()
@@ -53,6 +54,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.locationManager = [[CLLocationManager alloc]init];
+    self.locationManager.delegate = self;
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
+    {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    self.mapView.showsUserLocation = YES;
+    self.mapView.userTrackingMode = MKUserTrackingModeFollow;
+    
     //UI appearance
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.barTintColor = [SWPThemeHelper colorForNavigationBar];
@@ -65,8 +75,6 @@
     [revealButtonItem setTintColor:[UIColor whiteColor]];
     
     self.navigationItem.leftBarButtonItem = revealButtonItem;
-    
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,11 +83,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (void) viewDidAppear:(BOOL)animated
 {
-    self.mapView.userTrackingMode = MKUserTrackingModeFollow;
-    
     UIViewController *rearNavigationController = [[self revealViewController] rearViewController];
     
     if([rearNavigationController isKindOfClass:[UINavigationController class]])
@@ -93,9 +98,8 @@
             menuViewController.delegate = self;
         }
     }
-    
-   
 }
+
 /*
 #pragma mark - Navigation
 
@@ -126,7 +130,7 @@
     }
 }
 
-#pragma mark - delegate implementation
+#pragma mark - MKMapView delegate implementation
 
 - (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated
 {
@@ -144,24 +148,51 @@
     NSLog(@"tracking mode changed to: %@", modeDescription);
 }
 
+//MKCoordinateRegion scaleRegion(MKCoordinateRegion region, float factor) {
+//    MKCoordinateRegion scaledRegion;
+//    scaledRegion.center = region.center;
+//    scaledRegion.span = MKCoordinateSpanMake(region.span.latitudeDelta*factor, region.span.longitudeDelta*factor);
+//    return scaledRegion;
+//}
+//
+//void getExtremes(MKCoordinateRegion region, CLLocationCoordinate2D *northwest, CLLocationCoordinate2D *southwest) {
+//    *northwest = CLLocationCoordinate2DMake(region.center.latitude + region.span.latitudeDelta,
+//                                            region.center.longitude - region.span.longitudeDelta);
+//    *southwest = CLLocationCoordinate2DMake(region.center.latitude - region.span.latitudeDelta,
+//                                            region.center.longitude + region.span.longitudeDelta);
+//    
+//}
+
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    //here we have to decide if we need to call the service again to obtain new places
     
     MKMapRect mRect = mapView.visibleMapRect;
     
-    //just to avoid fetching a lot of places when the user zooms out too much.
-    MKMapPoint eastMapPoint = MKMapPointMake(MKMapRectGetMinX(mRect), MKMapRectGetMidY(mRect));
-    MKMapPoint westMapPoint = MKMapPointMake(MKMapRectGetMaxX(mRect), MKMapRectGetMidY(mRect));
-    double currentDistance = MKMetersBetweenMapPoints(eastMapPoint, westMapPoint);
-    if(currentDistance > 50000) return;
+    //size in map points of the current region
+    double width = MKMapRectGetMaxX(mRect) - mRect.origin.x;
+    double height = MKMapRectGetMaxY(mRect) - mRect.origin.y;
     
-    //obtaining northWest and southWest points
-    MKMapPoint nwMapPoint = MKMapPointMake(mRect.origin.x, mRect.origin.y);
-    MKMapPoint seMapPoint = MKMapPointMake(MKMapRectGetMaxX(mRect), MKMapRectGetMaxY(mRect));
+    //getting map's nw and se corners
+    MKMapPoint nwMapCorner = MKMapPointMake(mRect.origin.x, mRect.origin.y);
+    MKMapPoint seMapCorner = MKMapPointMake(MKMapRectGetMaxX(mRect), MKMapRectGetMaxY(mRect));
+    
+    //avoid calling service for extremely large regions
+    double currentDistance = MKMetersBetweenMapPoints(nwMapCorner, seMapCorner);
+    if(currentDistance > 50000)
+        return;
+    
+    //avoid calling service for non significative scrolls
+    //verificar si  la parte visible del mapa esta dentro del rectangulo de la anterior llamada,
+    //para eso voy a tener que resguardar los los mappoints anteriores
+    
+    //getting nw and sw points, the result is bigger than the current map region to avoid recurrent service calls.
+    MKMapPoint nwMapPoint = MKMapPointMake(mRect.origin.x - width, mRect.origin.y - height);
+    MKMapPoint seMapPoint = MKMapPointMake(MKMapRectGetMaxX(mRect) + width, MKMapRectGetMaxY(mRect) + width);
+
     CLLocationCoordinate2D nwCoord = MKCoordinateForMapPoint(nwMapPoint);
     CLLocationCoordinate2D seCoord = MKCoordinateForMapPoint(seMapPoint);
     
+
     //calling the service
     __weak SWPMapViewController *weakSelf = self;
     
@@ -178,19 +209,22 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
+     if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
     
-    //TODO: ver si creo una clase para la vista, checkear que se vea el user location, chequear en pantalla retina.
     MKAnnotationView *categoryAnnotationView = nil;
-    if(annotation != mapView.userLocation)
-    {
-        static NSString *categoryPinID = @"categoryPin";
-        categoryAnnotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:categoryPinID];
-        if ( categoryAnnotationView == nil ) categoryAnnotationView = [[MKAnnotationView alloc]
+
+    static NSString *categoryPinID = @"categoryPin";
+    categoryAnnotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:categoryPinID];
+    if ( categoryAnnotationView == nil ) categoryAnnotationView = [[MKAnnotationView alloc]
                                          initWithAnnotation:annotation reuseIdentifier:categoryPinID];
         
-        categoryAnnotationView.canShowCallout = YES;
-        categoryAnnotationView.image = [UIImage imageNamed:@"lodging.png"];
-    }
+    categoryAnnotationView.canShowCallout = YES;
+        
+    SWPAnnotation *categoryAnnotation = (SWPAnnotation *)annotation;
+    NSString *categoryName = [[SWPCategoryStore sharedInstance] categoryNameForId:categoryAnnotation.place.placeCategoryId];
+    categoryAnnotationView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",categoryName]];
+
     return categoryAnnotationView;
 }
 
@@ -228,6 +262,15 @@
 {
     self.selectedCategories = selectedcategories;
     [[self revealViewController] setFrontViewPosition:FrontViewPositionLeft animated:YES];
+}
+
+#pragma mark - CLLocationManager delegate implementation
+
+-(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        self.mapView.showsUserLocation = YES;
+        self.mapView.userTrackingMode = MKUserTrackingModeFollow;
+    }
 }
 
 

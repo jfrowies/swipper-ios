@@ -65,7 +65,12 @@
 		05AD1E8519C0A4E900D823DC /* SWPMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AD1E8419C0A4E900D823DC /* SWPMenuViewController.m */; };
 		05AD1E8619C0A4E900D823DC /* SWPMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AD1E8419C0A4E900D823DC /* SWPMenuViewController.m */; };
 		B5662EF919D8E9AC0003FB99 /* SWPThemeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5662EF819D8E9AC0003FB99 /* SWPThemeHelper.m */; };
-		B5C390CA19DA611E00A82E79 /* lodging.png in Resources */ = {isa = PBXBuildFile; fileRef = B5C390C919DA611E00A82E79 /* lodging.png */; };
+		B585947C19DC5D9400586249 /* Car Rental@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B585947719DC5D9400586249 /* Car Rental@2x.png */; };
+		B585947D19DC5D9400586249 /* Restaurants@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B585947819DC5D9400586249 /* Restaurants@2x.png */; };
+		B585947E19DC5D9400586249 /* gas Stations@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B585947919DC5D9400586249 /* gas Stations@2x.png */; };
+		B585947F19DC5D9400586249 /* lodging.png in Resources */ = {isa = PBXBuildFile; fileRef = B585947A19DC5D9400586249 /* lodging.png */; };
+		B585948019DC5D9400586249 /* Taxy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B585947B19DC5D9400586249 /* Taxy@2x.png */; };
+		B585948219DC601700586249 /* defaultPin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B585948119DC601700586249 /* defaultPin@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,7 +151,12 @@
 		05E86CA819C22C000075BCEA /* SWPPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPPlace.h; sourceTree = "<group>"; };
 		B5662EF719D8E9AC0003FB99 /* SWPThemeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWPThemeHelper.h; path = ../Models/SWPThemeHelper.h; sourceTree = "<group>"; };
 		B5662EF819D8E9AC0003FB99 /* SWPThemeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWPThemeHelper.m; path = ../Models/SWPThemeHelper.m; sourceTree = "<group>"; };
-		B5C390C919DA611E00A82E79 /* lodging.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lodging.png; sourceTree = "<group>"; };
+		B585947719DC5D9400586249 /* Car Rental@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Car Rental@2x.png"; sourceTree = "<group>"; };
+		B585947819DC5D9400586249 /* Restaurants@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Restaurants@2x.png"; sourceTree = "<group>"; };
+		B585947919DC5D9400586249 /* gas Stations@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gas Stations@2x.png"; sourceTree = "<group>"; };
+		B585947A19DC5D9400586249 /* lodging.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lodging.png; sourceTree = "<group>"; };
+		B585947B19DC5D9400586249 /* Taxy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Taxy@2x.png"; sourceTree = "<group>"; };
+		B585948119DC601700586249 /* defaultPin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultPin@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,10 +392,15 @@
 		0585E63719CB5BCE00DDC2CD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B585947719DC5D9400586249 /* Car Rental@2x.png */,
+				B585947819DC5D9400586249 /* Restaurants@2x.png */,
+				B585947919DC5D9400586249 /* gas Stations@2x.png */,
+				B585948119DC601700586249 /* defaultPin@2x.png */,
+				B585947A19DC5D9400586249 /* lodging.png */,
+				B585947B19DC5D9400586249 /* Taxy@2x.png */,
 				0585E65619CCD20C00DDC2CD /* splash.png */,
 				0585E63819CB5BCE00DDC2CD /* reveal-icon.png */,
 				0585E63919CB5BCE00DDC2CD /* reveal-icon@2x.png */,
-				B5C390C919DA611E00A82E79 /* lodging.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -466,13 +481,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B585947D19DC5D9400586249 /* Restaurants@2x.png in Resources */,
+				B585948019DC5D9400586249 /* Taxy@2x.png in Resources */,
 				0585E65719CCD20C00DDC2CD /* splash.png in Resources */,
 				050F46BE19B0F4CA00E715A1 /* InfoPlist.strings in Resources */,
-				B5C390CA19DA611E00A82E79 /* lodging.png in Resources */,
 				0585E63C19CB5BCE00DDC2CD /* reveal-icon@2x.png in Resources */,
 				050F46C919B0F4CA00E715A1 /* Images.xcassets in Resources */,
+				B585948219DC601700586249 /* defaultPin@2x.png in Resources */,
 				050F471619B0F75100E715A1 /* Main.storyboard in Resources */,
+				B585947E19DC5D9400586249 /* gas Stations@2x.png in Resources */,
+				B585947F19DC5D9400586249 /* lodging.png in Resources */,
 				0585E63A19CB5BCE00DDC2CD /* reveal-icon.png in Resources */,
+				B585947C19DC5D9400586249 /* Car Rental@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

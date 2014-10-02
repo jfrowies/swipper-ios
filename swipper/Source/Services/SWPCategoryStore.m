@@ -7,9 +7,21 @@
 //
 
 #import "SWPCategoryStore.h"
+#import "SWPCategory.h"
+
 
 @implementation SWPCategoryStore
 
+#pragma mark - 
+
+- (NSString *)categoryNameForId:(NSString *)categoryId
+{
+    for (id<SWPCategory> category in self.placesCategories) {
+        if([[category categoryId] isEqualToString:categoryId]) return [category categoryName];
+    }
+    
+    return @"defaultPin";
+}
 
 #pragma mark - Singleton implementation
 

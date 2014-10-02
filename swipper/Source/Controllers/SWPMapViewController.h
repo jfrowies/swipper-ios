@@ -10,11 +10,12 @@
 #import <MapKit/MKMapView.h>
 #import "SWPMenuViewController.h"
 
-@interface SWPMapViewController : UIViewController <MKMapViewDelegate, SWPMenuViewControllerDelegate>
+@interface SWPMapViewController : UIViewController <MKMapViewDelegate, SWPMenuViewControllerDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet UIView *swipeView;
+@property (nonatomic, weak) IBOutlet UIView *swipeView;
 
+@property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSArray *places;
 @property (nonatomic, strong, readonly) NSArray *selectedCategories;
 

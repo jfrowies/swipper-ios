@@ -13,6 +13,8 @@
 @property (nonatomic, strong) NSArray *placesCategories;
 @property (nonatomic, strong) NSArray *selectedCategories;
 
+- (NSString *)categoryNameForId:(NSString *)categoryId;
+
 + (id)sharedInstance;
 
 @end
