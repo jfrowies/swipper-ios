@@ -19,6 +19,7 @@
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *userTrackingButton;
 @property (nonatomic, strong, readwrite) NSArray *selectedCategories;
+@property (nonatomic) MKMapRect mapRectWithData;
 
 @end
 
@@ -182,12 +183,16 @@
         return;
     
     //avoid calling service for non significative scrolls
-    //verificar si  la parte visible del mapa esta dentro del rectangulo de la anterior llamada,
-    //para eso voy a tener que resguardar los los mappoints anteriores
+    if(MKMapRectContainsRect(self.mapRectWithData, mRect))
+        return;
+    
     
     //getting nw and sw points, the result is bigger than the current map region to avoid recurrent service calls.
     MKMapPoint nwMapPoint = MKMapPointMake(mRect.origin.x - width, mRect.origin.y - height);
     MKMapPoint seMapPoint = MKMapPointMake(MKMapRectGetMaxX(mRect) + width, MKMapRectGetMaxY(mRect) + width);
+    
+    //the region in which we will have annotations
+    MKMapRect mapRectToFill = MKMapRectMake(nwMapPoint.x, nwMapPoint.y, seMapPoint.x - nwMapPoint.x, seMapPoint.y - nwMapPoint.x);
 
     CLLocationCoordinate2D nwCoord = MKCoordinateForMapPoint(nwMapPoint);
     CLLocationCoordinate2D seCoord = MKCoordinateForMapPoint(seMapPoint);
@@ -201,7 +206,7 @@
                                                              success:^(NSArray *places) {
                                                                  NSLog(@"%d places has been retrieved.", places.count);
                                                                  weakSelf.places = places;
-                                                                 
+                                                                 weakSelf.mapRectWithData = mapRectToFill;
                                                              } failure:^(NSError *error) {
                                                                  
                                                              }];
