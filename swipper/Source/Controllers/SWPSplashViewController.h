@@ -10,4 +10,6 @@
 
 @interface SWPSplashViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *splashImageView;
+@property (weak, nonatomic) IBOutlet UILabel *errrorLabel;
+@property (weak, nonatomic) IBOutlet UIButton *retrybutton;
 @end

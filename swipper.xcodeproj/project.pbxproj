@@ -53,8 +53,6 @@
 		0585E65119CC9EB900DDC2CD /* SWPApplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585E64F19CC9EB900DDC2CD /* SWPApplyTableViewCell.m */; };
 		0585E65419CCD1C300DDC2CD /* SWPSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585E65319CCD1C300DDC2CD /* SWPSplashViewController.m */; };
 		0585E65519CCD1C300DDC2CD /* SWPSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585E65319CCD1C300DDC2CD /* SWPSplashViewController.m */; };
-		0585E65719CCD20C00DDC2CD /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 0585E65619CCD20C00DDC2CD /* splash.png */; };
-		0585E65819CCD20C00DDC2CD /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 0585E65619CCD20C00DDC2CD /* splash.png */; };
 		0585E65B19CCD7F700DDC2CD /* SWPCategoryStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585E65A19CCD7F700DDC2CD /* SWPCategoryStore.m */; };
 		0585E65C19CCD7F700DDC2CD /* SWPCategoryStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585E65A19CCD7F700DDC2CD /* SWPCategoryStore.m */; };
 		058E1D3B19B4F633001CB42D /* LoopBack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 058E1D3A19B4F633001CB42D /* LoopBack.framework */; };
@@ -64,6 +62,7 @@
 		058E1D4219B5241E001CB42D /* LoopBack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 058E1D3A19B4F633001CB42D /* LoopBack.framework */; };
 		05AD1E8519C0A4E900D823DC /* SWPMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AD1E8419C0A4E900D823DC /* SWPMenuViewController.m */; };
 		05AD1E8619C0A4E900D823DC /* SWPMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AD1E8419C0A4E900D823DC /* SWPMenuViewController.m */; };
+		05B84C3F19DF2C5F0054008A /* splashswipper.png in Resources */ = {isa = PBXBuildFile; fileRef = 05B84C3E19DF2C5F0054008A /* splashswipper.png */; };
 		B5662EF919D8E9AC0003FB99 /* SWPThemeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5662EF819D8E9AC0003FB99 /* SWPThemeHelper.m */; };
 		B56DCABB19DD85E800D1C6C0 /* Gas Stations@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B56DCAB919DD85E800D1C6C0 /* Gas Stations@2x.png */; };
 		B56DCABC19DD85E800D1C6C0 /* Lodging@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B56DCABA19DD85E800D1C6C0 /* Lodging@2x.png */; };
@@ -139,7 +138,6 @@
 		0585E64F19CC9EB900DDC2CD /* SWPApplyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPApplyTableViewCell.m; sourceTree = "<group>"; };
 		0585E65219CCD1C300DDC2CD /* SWPSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPSplashViewController.h; sourceTree = "<group>"; };
 		0585E65319CCD1C300DDC2CD /* SWPSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPSplashViewController.m; sourceTree = "<group>"; };
-		0585E65619CCD20C00DDC2CD /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		0585E65919CCD7F700DDC2CD /* SWPCategoryStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPCategoryStore.h; sourceTree = "<group>"; };
 		0585E65A19CCD7F700DDC2CD /* SWPCategoryStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPCategoryStore.m; sourceTree = "<group>"; };
 		058E1D3A19B4F633001CB42D /* LoopBack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LoopBack.framework; sourceTree = "<group>"; };
@@ -148,6 +146,7 @@
 		058E1D4019B52334001CB42D /* SWPLoopBackServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPLoopBackServiceTests.m; sourceTree = "<group>"; };
 		05AD1E8319C0A4E900D823DC /* SWPMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPMenuViewController.h; sourceTree = "<group>"; };
 		05AD1E8419C0A4E900D823DC /* SWPMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPMenuViewController.m; sourceTree = "<group>"; };
+		05B84C3E19DF2C5F0054008A /* splashswipper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashswipper.png; sourceTree = "<group>"; };
 		05E86CA819C22C000075BCEA /* SWPPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPPlace.h; sourceTree = "<group>"; };
 		B5662EF719D8E9AC0003FB99 /* SWPThemeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWPThemeHelper.h; path = ../Models/SWPThemeHelper.h; sourceTree = "<group>"; };
 		B5662EF819D8E9AC0003FB99 /* SWPThemeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWPThemeHelper.m; path = ../Models/SWPThemeHelper.m; sourceTree = "<group>"; };
@@ -392,13 +391,13 @@
 		0585E63719CB5BCE00DDC2CD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				05B84C3E19DF2C5F0054008A /* splashswipper.png */,
 				B585947719DC5D9400586249 /* Car Rental@2x.png */,
 				B585947819DC5D9400586249 /* Restaurants@2x.png */,
 				B56DCAB919DD85E800D1C6C0 /* Gas Stations@2x.png */,
 				B56DCABA19DD85E800D1C6C0 /* Lodging@2x.png */,
 				B585948119DC601700586249 /* defaultPin@2x.png */,
 				B585947B19DC5D9400586249 /* Taxy@2x.png */,
-				0585E65619CCD20C00DDC2CD /* splash.png */,
 				0585E63819CB5BCE00DDC2CD /* reveal-icon.png */,
 				0585E63919CB5BCE00DDC2CD /* reveal-icon@2x.png */,
 			);
@@ -484,7 +483,7 @@
 				B56DCABB19DD85E800D1C6C0 /* Gas Stations@2x.png in Resources */,
 				B585947D19DC5D9400586249 /* Restaurants@2x.png in Resources */,
 				B585948019DC5D9400586249 /* Taxy@2x.png in Resources */,
-				0585E65719CCD20C00DDC2CD /* splash.png in Resources */,
+				05B84C3F19DF2C5F0054008A /* splashswipper.png in Resources */,
 				050F46BE19B0F4CA00E715A1 /* InfoPlist.strings in Resources */,
 				0585E63C19CB5BCE00DDC2CD /* reveal-icon@2x.png in Resources */,
 				050F46C919B0F4CA00E715A1 /* Images.xcassets in Resources */,
@@ -500,7 +499,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0585E65819CCD20C00DDC2CD /* splash.png in Resources */,
 				0585E63D19CB5BCE00DDC2CD /* reveal-icon@2x.png in Resources */,
 				050F471719B0F75100E715A1 /* Main.storyboard in Resources */,
 				050F46DB19B0F4CA00E715A1 /* InfoPlist.strings in Resources */,
