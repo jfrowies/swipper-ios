@@ -121,7 +121,7 @@
             self.mapView.userTrackingMode = MKUserTrackingModeFollow;
             break;
         case MKUserTrackingModeFollow:
-            self.mapView.userTrackingMode = MKUserTrackingModeFollowWithHeading;
+            self.mapView.userTrackingMode = MKUserTrackingModeNone;
             break;
         case MKUserTrackingModeFollowWithHeading:
             self.mapView.userTrackingMode = MKUserTrackingModeNone;
