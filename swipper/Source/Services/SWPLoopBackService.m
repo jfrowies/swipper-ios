@@ -8,8 +8,8 @@
 
 #import "SWPLoopBackService.h"
 #import <LoopBack/LoopBack.h>
-#import "LBCategory.h"
-#import "LBCategoryRepository.h"
+//#import "LBCategory.h"
+//#import "LBCategoryRepository.h"
 #import "LBPlace.h"
 #import "LBPlaceRepository.h"
 
@@ -46,17 +46,17 @@
 #pragma mark - Fetch operations
 
 
-- (void)fetchAllCategoriesSuccess:(void (^) (NSArray *categories))successBlock
-                          failure:(void (^) (NSError *error))failureBlock
-{
-    LBCategoryRepository *repository = (LBCategoryRepository *)[self.loopBackAdapter repositoryWithClass:[LBCategoryRepository class]];
-    [repository allWithSuccess:^(NSArray *models) {
-        successBlock(models);
-    } failure:^(NSError *error) {
-        failureBlock(error);
-    }];
-    
-}
+//- (void)fetchAllCategoriesSuccess:(void (^) (NSArray *categories))successBlock
+//                          failure:(void (^) (NSError *error))failureBlock
+//{
+//    LBCategoryRepository *repository = (LBCategoryRepository *)[self.loopBackAdapter repositoryWithClass:[LBCategoryRepository class]];
+//    [repository allWithSuccess:^(NSArray *models) {
+//        successBlock(models);
+//    } failure:^(NSError *error) {
+//        failureBlock(error);
+//    }];
+//    
+//}
 
 - (void)fetchPlacesBetweenNorthWest:(CLLocationCoordinate2D)northWestCoordinate
                           southEast:(CLLocationCoordinate2D)southEastCoordinate

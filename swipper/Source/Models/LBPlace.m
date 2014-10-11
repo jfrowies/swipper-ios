@@ -24,9 +24,9 @@
     return CLLocationCoordinate2DMake([latitude doubleValue], [longitude doubleValue]);
 }
 
-- (NSString *)placeCategoryId
+- (NSString *)placeCategory
 {
-    return self.categoryId;
+    return self.category;
 }
 
 @end

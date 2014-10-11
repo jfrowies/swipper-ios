@@ -35,10 +35,6 @@
 		055398EA19C0D73D00247FDD /* LBPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 055398E819C0D73D00247FDD /* LBPlace.m */; };
 		055398ED19C0D7AF00247FDD /* LBPlaceRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 055398EC19C0D7AF00247FDD /* LBPlaceRepository.m */; };
 		055398EE19C0D7AF00247FDD /* LBPlaceRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 055398EC19C0D7AF00247FDD /* LBPlaceRepository.m */; };
-		055398F119C0E5F100247FDD /* LBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 055398F019C0E5F100247FDD /* LBCategory.m */; };
-		055398F219C0E5F100247FDD /* LBCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 055398F019C0E5F100247FDD /* LBCategory.m */; };
-		055398F519C0E60D00247FDD /* LBCategoryRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 055398F419C0E60D00247FDD /* LBCategoryRepository.m */; };
-		055398F619C0E60D00247FDD /* LBCategoryRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 055398F419C0E60D00247FDD /* LBCategoryRepository.m */; };
 		0585E62F19C8F37800DDC2CD /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585E62E19C8F37800DDC2CD /* SWRevealViewController.m */; };
 		0585E63019C8F37800DDC2CD /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585E62E19C8F37800DDC2CD /* SWRevealViewController.m */; };
 		0585E63A19CB5BCE00DDC2CD /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0585E63819CB5BCE00DDC2CD /* reveal-icon.png */; };
@@ -70,6 +66,7 @@
 		B585947D19DC5D9400586249 /* Restaurants@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B585947819DC5D9400586249 /* Restaurants@2x.png */; };
 		B585948019DC5D9400586249 /* Taxy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B585947B19DC5D9400586249 /* Taxy@2x.png */; };
 		B585948219DC601700586249 /* defaultPin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B585948119DC601700586249 /* defaultPin@2x.png */; };
+		B5D6481E19E8CDE600018852 /* SWPSimpleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D6481D19E8CDE600018852 /* SWPSimpleCategory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,10 +118,6 @@
 		055398E819C0D73D00247FDD /* LBPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPlace.m; sourceTree = "<group>"; };
 		055398EB19C0D7AF00247FDD /* LBPlaceRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPlaceRepository.h; sourceTree = "<group>"; };
 		055398EC19C0D7AF00247FDD /* LBPlaceRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPlaceRepository.m; sourceTree = "<group>"; };
-		055398EF19C0E5F100247FDD /* LBCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCategory.h; sourceTree = "<group>"; };
-		055398F019C0E5F100247FDD /* LBCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBCategory.m; sourceTree = "<group>"; };
-		055398F319C0E60D00247FDD /* LBCategoryRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCategoryRepository.h; sourceTree = "<group>"; };
-		055398F419C0E60D00247FDD /* LBCategoryRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBCategoryRepository.m; sourceTree = "<group>"; };
 		0585E62D19C8F37800DDC2CD /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		0585E62E19C8F37800DDC2CD /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		0585E63819CB5BCE00DDC2CD /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
@@ -156,6 +149,8 @@
 		B585947819DC5D9400586249 /* Restaurants@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Restaurants@2x.png"; sourceTree = "<group>"; };
 		B585947B19DC5D9400586249 /* Taxy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Taxy@2x.png"; sourceTree = "<group>"; };
 		B585948119DC601700586249 /* defaultPin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultPin@2x.png"; sourceTree = "<group>"; };
+		B5D6481C19E8CDE600018852 /* SWPSimpleCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPSimpleCategory.h; sourceTree = "<group>"; };
+		B5D6481D19E8CDE600018852 /* SWPSimpleCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPSimpleCategory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,12 +338,10 @@
 				055398E819C0D73D00247FDD /* LBPlace.m */,
 				055398EB19C0D7AF00247FDD /* LBPlaceRepository.h */,
 				055398EC19C0D7AF00247FDD /* LBPlaceRepository.m */,
-				055398EF19C0E5F100247FDD /* LBCategory.h */,
-				055398F019C0E5F100247FDD /* LBCategory.m */,
-				055398F319C0E60D00247FDD /* LBCategoryRepository.h */,
-				055398F419C0E60D00247FDD /* LBCategoryRepository.m */,
 				05E86CA819C22C000075BCEA /* SWPPlace.h */,
 				0585E63E19CB68DA00DDC2CD /* SWPCategory.h */,
+				B5D6481C19E8CDE600018852 /* SWPSimpleCategory.h */,
+				B5D6481D19E8CDE600018852 /* SWPSimpleCategory.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -513,9 +506,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5D6481E19E8CDE600018852 /* SWPSimpleCategory.m in Sources */,
 				05AD1E8519C0A4E900D823DC /* SWPMenuViewController.m in Sources */,
-				055398F519C0E60D00247FDD /* LBCategoryRepository.m in Sources */,
-				055398F119C0E5F100247FDD /* LBCategory.m in Sources */,
 				050F470919B0F52E00E715A1 /* SWPMapViewController.m in Sources */,
 				0585E64419CB7A7900DDC2CD /* SWPCategoryTableViewCell.m in Sources */,
 				058E1D3E19B4FA56001CB42D /* SWPLoopBackService.m in Sources */,
@@ -550,8 +542,6 @@
 				0585E64D19CC9E9F00DDC2CD /* SWPAllCategoriesTableViewCell.m in Sources */,
 				055398EA19C0D73D00247FDD /* LBPlace.m in Sources */,
 				0585E63019C8F37800DDC2CD /* SWRevealViewController.m in Sources */,
-				055398F619C0E60D00247FDD /* LBCategoryRepository.m in Sources */,
-				055398F219C0E5F100247FDD /* LBCategory.m in Sources */,
 				0585E65519CCD1C300DDC2CD /* SWPSplashViewController.m in Sources */,
 				0585E65119CC9EB900DDC2CD /* SWPApplyTableViewCell.m in Sources */,
 			);

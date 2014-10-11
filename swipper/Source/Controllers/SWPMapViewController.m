@@ -227,7 +227,8 @@
     categoryAnnotationView.canShowCallout = YES;
         
     SWPAnnotation *categoryAnnotation = (SWPAnnotation *)annotation;
-    NSString *categoryName = [[SWPCategoryStore sharedInstance] categoryNameForId:categoryAnnotation.place.placeCategoryId];
+//    NSString *categoryName0 = [[SWPCategoryStore sharedInstance] categoryNameForId:categoryAnnotation.place.placeCategoryId];
+    NSString *categoryName = categoryAnnotation.place.placeCategory;
     categoryAnnotationView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",categoryName]];
 
     return categoryAnnotationView;
@@ -247,7 +248,7 @@
             if([obj conformsToProtocol:@protocol(SWPCategory)])
             {
                 id<SWPCategory> category = (id<SWPCategory>) obj;
-                if([place.placeCategoryId isEqualToString:category.categoryId]) return YES;
+                if([place.placeCategory isEqualToString:category.categoryName]) return YES;
             }
             return NO;
         }];

@@ -8,20 +8,20 @@
 
 #import "SWPCategoryStore.h"
 #import "SWPCategory.h"
-
+#import "SWPSimpleCategory.h"
 
 @implementation SWPCategoryStore
 
 #pragma mark - 
 
-- (NSString *)categoryNameForId:(NSString *)categoryId
-{
-    for (id<SWPCategory> category in self.placesCategories) {
-        if([[category categoryId] isEqualToString:categoryId]) return [category categoryName];
-    }
-    
-    return @"defaultPin";
-}
+//- (NSString *)categoryNameForId:(NSString *)categoryId
+//{
+//    for (id<SWPCategory> category in self.placesCategories) {
+//        if([[category categoryId] isEqualToString:categoryId]) return [category categoryName];
+//    }
+//    
+//    return @"defaultPin";
+//}
 
 #pragma mark - Singleton implementation
 
@@ -37,8 +37,16 @@
 - (id)init {
     if (self = [super init]) {
         //populate from settings or some type of cache
-        self.placesCategories = [NSArray array];
-        self.selectedCategories = [NSArray array];
+        
+        NSArray *categoriesArray = [NSArray arrayWithObjects:
+                                    [SWPSimpleCategory categoryWithName:@"Food"],
+                                    [SWPSimpleCategory categoryWithName:@"Gas"],
+                                    [SWPSimpleCategory categoryWithName:@"Lodging"],
+                                    [SWPSimpleCategory categoryWithName:@"Taxi"],
+                                    [SWPSimpleCategory categoryWithName:@"Car Rental"],nil];
+        
+        self.placesCategories = [categoriesArray copy];
+        self.selectedCategories = [categoriesArray copy];
     }
     return self;
 }

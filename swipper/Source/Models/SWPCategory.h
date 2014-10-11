@@ -10,5 +10,4 @@
 
 @protocol SWPCategory <NSObject>
 @property (nonatomic, copy, readonly) NSString *categoryName;
-@property (nonatomic, copy, readonly) NSString *categoryId;
 @end

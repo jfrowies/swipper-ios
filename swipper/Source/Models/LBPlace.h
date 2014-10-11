@@ -18,6 +18,6 @@
 @property (nonatomic, copy) NSString *phone;
 @property (nonatomic, strong) NSDictionary *location;
 @property (nonatomic, copy) NSString *cityId;
-@property (nonatomic, copy) NSString *categoryId;
+@property (nonatomic, copy) NSString *category;
 
 @end

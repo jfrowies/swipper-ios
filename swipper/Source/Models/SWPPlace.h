@@ -10,7 +10,7 @@
 #import <MapKit/MKMapView.h>
 
 @protocol SWPPlace <NSObject>
-@property (nonatomic, copy, readonly) NSString *placeName;
-@property (nonatomic, copy, readonly) NSString *placeCategoryId;
+@property (nonatomic, readonly, copy) NSString *placeName;
+@property (nonatomic, readonly, copy) NSString *placeCategory;
 @property (nonatomic, readonly) CLLocationCoordinate2D placeCoordinate;
 @end

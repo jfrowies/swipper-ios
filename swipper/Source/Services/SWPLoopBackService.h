@@ -15,9 +15,8 @@
 
 + (id)sharedInstance;
 
-
-- (void)fetchAllCategoriesSuccess:(void (^) (NSArray *categories))successBlock
-                           failure:(void (^) (NSError *error))failureBlock;
+//- (void)fetchAllCategoriesSuccess:(void (^) (NSArray *categories))successBlock
+//                           failure:(void (^) (NSError *error))failureBlock;
 
 - (void)fetchPlacesBetweenNorthWest:(CLLocationCoordinate2D)northWestCoordinate
                           southEast:(CLLocationCoordinate2D)southEastCoordinate
