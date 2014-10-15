@@ -225,7 +225,9 @@
     SWPAnnotation *categoryAnnotation = (SWPAnnotation *)annotation;
 //    NSString *categoryName0 = [[SWPCategoryStore sharedInstance] categoryNameForId:categoryAnnotation.place.placeCategoryId];
     NSString *categoryName = categoryAnnotation.place.placeCategory;
-    categoryAnnotationView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",categoryName]];
+    UIImage *annotationImage = [UIImage imageNamed:categoryName];
+    if (!annotationImage) annotationImage = [UIImage imageNamed:@"DefaultPin"];
+    categoryAnnotationView.image = annotationImage;
 
     return categoryAnnotationView;
 }
