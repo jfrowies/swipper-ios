@@ -71,17 +71,13 @@
     self.navigationController.navigationBar.barTintColor = [SWPThemeHelper colorForNavigationBar];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
-    self.userTrackingButton.layer.cornerRadius = 5; // this value vary as per your desire
+    self.userTrackingButton.layer.cornerRadius = 5;
     self.userTrackingButton.clipsToBounds = YES;
     
     //SWRevealViewController setup
     SWRevealViewController *revealController = [self revealViewController];
     [self.swipeView addGestureRecognizer:revealController.panGestureRecognizer];
-    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MenuIcon"]
-                                                                         style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
-    [revealButtonItem setTintColor:[UIColor whiteColor]];
     
-    self.navigationItem.leftBarButtonItem = revealButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -135,6 +131,12 @@
         default:
             break;
     }
+}
+
+- (IBAction)showMenu
+{
+    SWRevealViewController *revealController = [self revealViewController];
+    [revealController revealToggleAnimated:YES];
 }
 
 #pragma mark - MKMapView delegate implementation
@@ -200,7 +202,7 @@
     [[SWPLoopBackService sharedInstance] fetchPlacesBetweenNorthWest:nwCoord
                                                            southEast:seCoord
                                                              success:^(NSArray *places) {
-                                                                 NSLog(@"%d places has been retrieved.", places.count);
+//                                                                 NSLog(@"%d places has been retrieved.", places.count);
                                                                  weakSelf.places = places;
                                                                  weakSelf.mapRectWithData = mapRectToFill;
                                                              } failure:^(NSError *error) {
