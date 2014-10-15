@@ -244,7 +244,7 @@
     
     for (id<SWPPlace> place in self.places) {
         
-        int index =[self.selectedCategories indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        NSUInteger index =[self.selectedCategories indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
             if([obj conformsToProtocol:@protocol(SWPCategory)])
             {
                 id<SWPCategory> category = (id<SWPCategory>) obj;
