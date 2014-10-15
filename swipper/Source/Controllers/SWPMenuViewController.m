@@ -36,6 +36,7 @@
     //UI appearance
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.barTintColor = [SWPThemeHelper colorForNavigationBar];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
 }
 

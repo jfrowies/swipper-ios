@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8xj-LB-OeR">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -23,20 +22,38 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="Pde-qf-q9V"/>
                                 </connections>
                             </mapView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dse-5x-rEz">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dse-5x-rEz" userLabel="swipeView">
                                 <rect key="frame" x="0.0" y="0.0" width="30" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="SNn-To-hBs"/>
                                 </constraints>
                             </view>
+                            <button contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZ4-a9-yrO">
+                                <rect key="frame" x="270" y="518" width="30" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.76078431369999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ReP-fH-3Mo"/>
+                                    <constraint firstAttribute="width" constant="30" id="z8a-nP-Aqc"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="" image="LocateMe"/>
+                                <connections>
+                                    <action selector="userTrackingButtonTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Hhs-px-l1t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PZ4-a9-yrO" secondAttribute="trailing" constant="20" id="Cbs-hJ-FqF"/>
+                            <constraint firstItem="Dse-5x-rEz" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="Eel-3j-KsV"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Dse-5x-rEz" secondAttribute="bottom" id="K45-d6-PeJ"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="PZ4-a9-yrO" secondAttribute="bottom" constant="20" id="TJg-Z7-HEe"/>
                             <constraint firstItem="Hdq-j5-bgF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="UKK-Sp-FSo"/>
                             <constraint firstItem="Hdq-j5-bgF" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="ZCn-fg-WWJ"/>
                             <constraint firstAttribute="trailing" secondItem="Hdq-j5-bgF" secondAttribute="trailing" id="nhk-kg-TkC"/>
                             <constraint firstAttribute="bottom" secondItem="Hdq-j5-bgF" secondAttribute="bottom" id="pHz-4t-xqq"/>
+                            <constraint firstItem="Dse-5x-rEz" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="vbZ-Cf-QdB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="P8X-js-nPK"/>
@@ -44,6 +61,7 @@
                     <connections>
                         <outlet property="mapView" destination="Hdq-j5-bgF" id="TCa-ZU-4dz"/>
                         <outlet property="swipeView" destination="Dse-5x-rEz" id="Kbz-qM-E4B"/>
+                        <outlet property="userTrackingButton" destination="PZ4-a9-yrO" id="P5f-W6-qVA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -134,6 +152,7 @@
                                     <subviews>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ulk-Pc-TCH">
                                             <rect key="frame" x="193" y="6" width="51" height="31"/>
+                                            <color key="onTintColor" red="1" green="0.76078431369999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </switch>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All Categories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46U-eI-8kp">
                                             <rect key="frame" x="20" y="11" width="136" height="21"/>
@@ -157,6 +176,7 @@
                                     <subviews>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Om1-jc-O07">
                                             <rect key="frame" x="193" y="6" width="51" height="31"/>
+                                            <color key="onTintColor" red="1" green="0.76078431369999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </switch>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VoS-q0-OpD">
                                             <rect key="frame" x="0.0" y="0.0" width="4" height="43"/>
@@ -246,6 +266,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LocateMe" width="25" height="25"/>
         <image name="splashswipper.png" width="1080" height="1920"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

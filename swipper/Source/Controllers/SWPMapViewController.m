@@ -14,10 +14,12 @@
 #import "SWPCategory.h"
 #import "SWPCategoryStore.h"
 #import "SWPThemeHelper.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 @interface SWPMapViewController ()
 
-@property (nonatomic, weak) IBOutlet UIBarButtonItem *userTrackingButton;
+@property (nonatomic, weak) IBOutlet UIButton *userTrackingButton;
 @property (nonatomic, strong, readwrite) NSArray *selectedCategories;
 @property (nonatomic) MKMapRect mapRectWithData;
 
@@ -67,6 +69,10 @@
     //UI appearance
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.barTintColor = [SWPThemeHelper colorForNavigationBar];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    
+    self.userTrackingButton.layer.cornerRadius = 5; // this value vary as per your desire
+    self.userTrackingButton.clipsToBounds = YES;
     
     //SWRevealViewController setup
     SWRevealViewController *revealController = [self revealViewController];
@@ -118,13 +124,16 @@
 
     switch (self.mapView.userTrackingMode) {
         case MKUserTrackingModeNone:
-            self.mapView.userTrackingMode = MKUserTrackingModeFollow;
+            [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+//            self.mapView.userTrackingMode = MKUserTrackingModeFollow;
             break;
         case MKUserTrackingModeFollow:
-            self.mapView.userTrackingMode = MKUserTrackingModeNone;
+            [self.mapView setUserTrackingMode:MKUserTrackingModeNone animated:YES];
+//            self.mapView.userTrackingMode = MKUserTrackingModeNone;
             break;
         case MKUserTrackingModeFollowWithHeading:
-            self.mapView.userTrackingMode = MKUserTrackingModeNone;
+            [self.mapView setUserTrackingMode:MKUserTrackingModeNone animated:YES];
+//            self.mapView.userTrackingMode = MKUserTrackingModeNone;
             break;
         default:
             break;
@@ -135,10 +144,15 @@
 
 - (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated
 {
-    NSString *modeDescription = @"Not following";
+    NSString *modeDescription = @"";
     switch (mode) {
+        case MKUserTrackingModeNone:
+            modeDescription = @"Not following";
+            [self.userTrackingButton setImage:[UIImage imageNamed:@"LocateMe"]forState:UIControlStateNormal];
+            break;
         case MKUserTrackingModeFollow:
             modeDescription = @"Following";
+            [self.userTrackingButton setImage:[UIImage imageNamed:@"LocateMePressed"]forState:UIControlStateNormal];
             break;
         case MKUserTrackingModeFollowWithHeading:
             modeDescription = @"Following with heading";
