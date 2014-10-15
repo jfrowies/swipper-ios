@@ -125,15 +125,12 @@
     switch (self.mapView.userTrackingMode) {
         case MKUserTrackingModeNone:
             [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
-//            self.mapView.userTrackingMode = MKUserTrackingModeFollow;
             break;
         case MKUserTrackingModeFollow:
             [self.mapView setUserTrackingMode:MKUserTrackingModeNone animated:YES];
-//            self.mapView.userTrackingMode = MKUserTrackingModeNone;
             break;
         case MKUserTrackingModeFollowWithHeading:
             [self.mapView setUserTrackingMode:MKUserTrackingModeNone animated:YES];
-//            self.mapView.userTrackingMode = MKUserTrackingModeNone;
             break;
         default:
             break;
@@ -162,21 +159,6 @@
     
     NSLog(@"tracking mode changed to: %@", modeDescription);
 }
-
-//MKCoordinateRegion scaleRegion(MKCoordinateRegion region, float factor) {
-//    MKCoordinateRegion scaledRegion;
-//    scaledRegion.center = region.center;
-//    scaledRegion.span = MKCoordinateSpanMake(region.span.latitudeDelta*factor, region.span.longitudeDelta*factor);
-//    return scaledRegion;
-//}
-//
-//void getExtremes(MKCoordinateRegion region, CLLocationCoordinate2D *northwest, CLLocationCoordinate2D *southwest) {
-//    *northwest = CLLocationCoordinate2DMake(region.center.latitude + region.span.latitudeDelta,
-//                                            region.center.longitude - region.span.longitudeDelta);
-//    *southwest = CLLocationCoordinate2DMake(region.center.latitude - region.span.latitudeDelta,
-//                                            region.center.longitude + region.span.longitudeDelta);
-//    
-//}
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
