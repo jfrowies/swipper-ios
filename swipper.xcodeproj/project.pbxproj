@@ -37,10 +37,6 @@
 		055398EE19C0D7AF00247FDD /* LBPlaceRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 055398EC19C0D7AF00247FDD /* LBPlaceRepository.m */; };
 		0585E62F19C8F37800DDC2CD /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585E62E19C8F37800DDC2CD /* SWRevealViewController.m */; };
 		0585E63019C8F37800DDC2CD /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585E62E19C8F37800DDC2CD /* SWRevealViewController.m */; };
-		0585E63A19CB5BCE00DDC2CD /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0585E63819CB5BCE00DDC2CD /* reveal-icon.png */; };
-		0585E63B19CB5BCE00DDC2CD /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0585E63819CB5BCE00DDC2CD /* reveal-icon.png */; };
-		0585E63C19CB5BCE00DDC2CD /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0585E63919CB5BCE00DDC2CD /* reveal-icon@2x.png */; };
-		0585E63D19CB5BCE00DDC2CD /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0585E63919CB5BCE00DDC2CD /* reveal-icon@2x.png */; };
 		0585E64419CB7A7900DDC2CD /* SWPCategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585E64319CB7A7900DDC2CD /* SWPCategoryTableViewCell.m */; };
 		0585E64519CB7A7900DDC2CD /* SWPCategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585E64319CB7A7900DDC2CD /* SWPCategoryTableViewCell.m */; };
 		0585E64C19CC9E9F00DDC2CD /* SWPAllCategoriesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585E64B19CC9E9F00DDC2CD /* SWPAllCategoriesTableViewCell.m */; };
@@ -114,8 +110,6 @@
 		055398EC19C0D7AF00247FDD /* LBPlaceRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPlaceRepository.m; sourceTree = "<group>"; };
 		0585E62D19C8F37800DDC2CD /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		0585E62E19C8F37800DDC2CD /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		0585E63819CB5BCE00DDC2CD /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
-		0585E63919CB5BCE00DDC2CD /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
 		0585E63E19CB68DA00DDC2CD /* SWPCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPCategory.h; sourceTree = "<group>"; };
 		0585E64219CB7A7900DDC2CD /* SWPCategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPCategoryTableViewCell.h; sourceTree = "<group>"; };
 		0585E64319CB7A7900DDC2CD /* SWPCategoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPCategoryTableViewCell.m; sourceTree = "<group>"; };
@@ -373,8 +367,6 @@
 			isa = PBXGroup;
 			children = (
 				05B84C3E19DF2C5F0054008A /* splashswipper.png */,
-				0585E63819CB5BCE00DDC2CD /* reveal-icon.png */,
-				0585E63919CB5BCE00DDC2CD /* reveal-icon@2x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -457,10 +449,8 @@
 			files = (
 				05B84C3F19DF2C5F0054008A /* splashswipper.png in Resources */,
 				050F46BE19B0F4CA00E715A1 /* InfoPlist.strings in Resources */,
-				0585E63C19CB5BCE00DDC2CD /* reveal-icon@2x.png in Resources */,
 				050F46C919B0F4CA00E715A1 /* Images.xcassets in Resources */,
 				050F471619B0F75100E715A1 /* Main.storyboard in Resources */,
-				0585E63A19CB5BCE00DDC2CD /* reveal-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,10 +458,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0585E63D19CB5BCE00DDC2CD /* reveal-icon@2x.png in Resources */,
 				050F471719B0F75100E715A1 /* Main.storyboard in Resources */,
 				050F46DB19B0F4CA00E715A1 /* InfoPlist.strings in Resources */,
-				0585E63B19CB5BCE00DDC2CD /* reveal-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

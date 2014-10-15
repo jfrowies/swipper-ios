@@ -77,7 +77,7 @@
     //SWRevealViewController setup
     SWRevealViewController *revealController = [self revealViewController];
     [self.swipeView addGestureRecognizer:revealController.panGestureRecognizer];
-    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reveal-icon.png"]
+    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MenuIcon"]
                                                                          style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
     [revealButtonItem setTintColor:[UIColor whiteColor]];
     
