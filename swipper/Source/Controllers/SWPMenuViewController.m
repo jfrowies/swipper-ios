@@ -20,6 +20,8 @@
 
 @implementation SWPMenuViewController
 
+#pragma mark - View life cycle
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -48,6 +50,7 @@
     self.selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
     
     [self.tableView reloadData];
+    [self setApplyButtonEnabled:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -108,6 +111,39 @@
     return nil;
 }
 
+#pragma mark - Enable/Disable apply button
+
+- (void)setApplyButtonEnabled:(bool)enabled
+{
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.placesCategories.count+1 inSection:0]];
+    if(cell != nil && [cell isKindOfClass:[SWPApplyTableViewCell class]])
+    {
+        SWPApplyTableViewCell *applyCell = (SWPApplyTableViewCell *)cell;
+        applyCell.applyButton.enabled = enabled;
+        if(enabled)
+            [applyCell.applyButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        else
+            [applyCell.applyButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    }
+}
+
+
+#pragma mark - Turn on/off AllCategoriesSwitch
+
+- (void)setAllCategoriesSwitchOn:(bool)on
+{
+    
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    if(cell != nil && [cell isKindOfClass:[SWPAllCategoriesTableViewCell class]])
+    {
+        SWPAllCategoriesTableViewCell *allCategoriesCell = (SWPAllCategoriesTableViewCell *)cell;
+        if(on)
+            [allCategoriesCell.allCategoriesSwitch setOn:YES animated:YES];
+        else
+            [allCategoriesCell.allCategoriesSwitch setOn:NO animated:YES];
+    }
+}
+
 #pragma mark - Actions
 
 - (void)allCategoriesSwitchChanged:(id)sender
@@ -115,6 +151,8 @@
     if(sender != nil && [sender isKindOfClass:[UISwitch class]])
     {
         UISwitch *allCategoriesSwitch= (UISwitch *)sender;
+        
+        // disable/enable all switches
         for (int i=1; i<=self.placesCategories.count; i++) {
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
             if(cell != nil && [cell isKindOfClass:[SWPCategoryTableViewCell class]])
@@ -123,33 +161,31 @@
                 [categoryCell.categorySwitch setOn:allCategoriesSwitch.on animated:YES];
             }
         }
+        
+        //disable enable apply button
+        [self setApplyButtonEnabled:allCategoriesSwitch.on];
     }
 }
 
 - (void)categorySwitchChanged:(id)sender
 {
-    bool allOn = true;
+    bool allOn = YES;
+    bool allOff = YES;
     
-    //nasty, but...
     for (int i=1; i<=self.placesCategories.count; i++) {
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
         if(cell != nil && [cell isKindOfClass:[SWPCategoryTableViewCell class]])
         {
             SWPCategoryTableViewCell *categoryCell = (SWPCategoryTableViewCell *)cell;
-            if(![categoryCell.categorySwitch isOn])
-                allOn = false;
+            if([categoryCell.categorySwitch isOn])
+                allOff = NO;
+            else
+                allOn = NO;
         }
     }
     
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    if(cell != nil && [cell isKindOfClass:[SWPAllCategoriesTableViewCell class]])
-    {
-        SWPAllCategoriesTableViewCell *allCategoriesCell = (SWPAllCategoriesTableViewCell *)cell;
-        if(allOn)
-           [allCategoriesCell.allCategoriesSwitch setOn:YES animated:YES];
-        else
-            [allCategoriesCell.allCategoriesSwitch setOn:NO animated:YES];
-    }
+    [self setAllCategoriesSwitchOn:allOn];
+    [self setApplyButtonEnabled:!allOff];
 }
 
 - (void)applyButtonTouched:(id)sender
