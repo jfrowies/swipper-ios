@@ -54,7 +54,6 @@
 		058E1D4219B5241E001CB42D /* LoopBack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 058E1D3A19B4F633001CB42D /* LoopBack.framework */; };
 		05AD1E8519C0A4E900D823DC /* SWPMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AD1E8419C0A4E900D823DC /* SWPMenuViewController.m */; };
 		05AD1E8619C0A4E900D823DC /* SWPMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AD1E8419C0A4E900D823DC /* SWPMenuViewController.m */; };
-		05B84C3F19DF2C5F0054008A /* splashswipper.png in Resources */ = {isa = PBXBuildFile; fileRef = 05B84C3E19DF2C5F0054008A /* splashswipper.png */; };
 		B5662EF919D8E9AC0003FB99 /* SWPThemeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5662EF819D8E9AC0003FB99 /* SWPThemeHelper.m */; };
 		B5D6481E19E8CDE600018852 /* SWPSimpleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D6481D19E8CDE600018852 /* SWPSimpleCategory.m */; };
 /* End PBXBuildFile section */
@@ -127,7 +126,6 @@
 		058E1D4019B52334001CB42D /* SWPLoopBackServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPLoopBackServiceTests.m; sourceTree = "<group>"; };
 		05AD1E8319C0A4E900D823DC /* SWPMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPMenuViewController.h; sourceTree = "<group>"; };
 		05AD1E8419C0A4E900D823DC /* SWPMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPMenuViewController.m; sourceTree = "<group>"; };
-		05B84C3E19DF2C5F0054008A /* splashswipper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashswipper.png; sourceTree = "<group>"; };
 		05E86CA819C22C000075BCEA /* SWPPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPPlace.h; sourceTree = "<group>"; };
 		B5662EF719D8E9AC0003FB99 /* SWPThemeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWPThemeHelper.h; path = ../Models/SWPThemeHelper.h; sourceTree = "<group>"; };
 		B5662EF819D8E9AC0003FB99 /* SWPThemeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWPThemeHelper.m; path = ../Models/SWPThemeHelper.m; sourceTree = "<group>"; };
@@ -366,7 +364,6 @@
 		0585E63719CB5BCE00DDC2CD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				05B84C3E19DF2C5F0054008A /* splashswipper.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -447,7 +444,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05B84C3F19DF2C5F0054008A /* splashswipper.png in Resources */,
 				050F46BE19B0F4CA00E715A1 /* InfoPlist.strings in Resources */,
 				050F46C919B0F4CA00E715A1 /* Images.xcassets in Resources */,
 				050F471619B0F75100E715A1 /* Main.storyboard in Resources */,
