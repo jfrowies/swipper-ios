@@ -16,6 +16,7 @@
 #import "SWPThemeHelper.h"
 #import <QuartzCore/QuartzCore.h>
 
+#define kMaxAllowedDistanceBetweenMapCorners 50000
 
 @interface SWPMapViewController ()
 
@@ -55,8 +56,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
+
+    //setting up location manager
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.delegate = self;
     if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
@@ -71,13 +72,13 @@
     self.navigationController.navigationBar.barTintColor = [SWPThemeHelper colorForNavigationBar];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
-    self.userTrackingButton.layer.cornerRadius = 5;
-    self.userTrackingButton.clipsToBounds = YES;
-    
     //SWRevealViewController setup
     SWRevealViewController *revealController = [self revealViewController];
     [self.swipeView addGestureRecognizer:revealController.panGestureRecognizer];
     
+    //User tracking button UI adjustments
+    self.userTrackingButton.layer.cornerRadius = 5;
+    self.userTrackingButton.clipsToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,8 +89,10 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    UIViewController *rearNavigationController = [[self revealViewController] rearViewController];
+    [super viewDidAppear:animated];
     
+    //setting self as menuViewController delegate
+    UIViewController *rearNavigationController = [[self revealViewController] rearViewController];
     if([rearNavigationController isKindOfClass:[UINavigationController class]])
     {
         UINavigationController *menuNavigationController = (UINavigationController *)rearNavigationController;
@@ -143,23 +146,17 @@
 
 - (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated
 {
-    NSString *modeDescription = @"";
     switch (mode) {
         case MKUserTrackingModeNone:
-            modeDescription = @"Not following";
             [self.userTrackingButton setImage:[UIImage imageNamed:@"LocateMe"]forState:UIControlStateNormal];
             break;
         case MKUserTrackingModeFollow:
-            modeDescription = @"Following";
             [self.userTrackingButton setImage:[UIImage imageNamed:@"LocateMePressed"]forState:UIControlStateNormal];
             break;
         case MKUserTrackingModeFollowWithHeading:
-            modeDescription = @"Following with heading";
         default:
             break;
     }
-    
-    NSLog(@"tracking mode changed to: %@", modeDescription);
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
@@ -177,7 +174,7 @@
     
     //avoid calling service for extremely large regions
     double currentDistance = MKMetersBetweenMapPoints(nwMapCorner, seMapCorner);
-    if(currentDistance > 50000)
+    if(currentDistance > kMaxAllowedDistanceBetweenMapCorners)
         return;
     
     //avoid calling service for non significative scrolls
@@ -202,7 +199,6 @@
     [[SWPLoopBackService sharedInstance] fetchPlacesBetweenNorthWest:nwCoord
                                                            southEast:seCoord
                                                              success:^(NSArray *places) {
-//                                                                 NSLog(@"%d places has been retrieved.", places.count);
                                                                  weakSelf.places = places;
                                                                  weakSelf.mapRectWithData = mapRectToFill;
                                                              } failure:^(NSError *error) {
@@ -279,5 +275,16 @@
     }
 }
 
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //assigning places from map to the list for testing propouses
+    if([segue.destinationViewController isKindOfClass:[UINavigationController class]]){
+        UINavigationController *destinationNavigationController= segue.destinationViewController;
+        if([destinationNavigationController.viewControllers.firstObject respondsToSelector:@selector(setPlaces:)]){
+            [destinationNavigationController.viewControllers.firstObject performSelector:@selector(setPlaces:) withObject:self.places];
+        }
+    }
+}
 
 @end
