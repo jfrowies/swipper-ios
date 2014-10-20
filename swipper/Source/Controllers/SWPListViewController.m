@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "SWPThemeHelper.h"
 #import "SWPPlace.h"
+#import "SWPPlaceTableViewCell.h"
 
 @interface SWPListViewController ()
 
@@ -91,9 +92,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"placeCell" forIndexPath:indexPath];
+    SWPPlaceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"placeCell" forIndexPath:indexPath];
     id<SWPPlace> place = [self.places objectAtIndex:indexPath.row];
-    [cell.textLabel setText:place.placeName];
+    cell.titleLabel.text = place.placeName;
     return cell;
 }
 

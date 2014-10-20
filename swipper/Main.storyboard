@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TNl-k1-mSQ">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Map View Controller-->
@@ -85,33 +87,47 @@
         <scene sceneID="ALY-md-BZy">
             <objects>
                 <tableViewController id="LRn-U0-UqB" customClass="SWPListViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="IJN-7r-W2A">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="IJN-7r-W2A">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="placeCell" textLabel="Orm-7g-OSU" detailTextLabel="G1m-FM-i1q" imageView="bSN-oJ-VEi" style="IBUITableViewCellStyleSubtitle" id="tZQ-uk-XYs">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="placeCell" rowHeight="80" id="tZQ-uk-XYs" customClass="SWPPlaceTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tZQ-uk-XYs" id="gxL-Fx-jqD">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Orm-7g-OSU">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9yb-1X-1ax" userLabel="ListIcon" customClass="UIImageView">
+                                            <rect key="frame" x="0.0" y="2" width="50" height="74"/>
+                                            <color key="backgroundColor" red="1" green="0.76078431369999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="NvL-D5-d6o"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfL-24-uk1" userLabel="SubtitleLabel">
+                                            <rect key="frame" x="58" y="37" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G1m-FM-i1q">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fja-Uv-xMt" userLabel="TitleLabel">
+                                            <rect key="frame" x="58" y="9" width="153" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="DefaultPin" id="bSN-oJ-VEi">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="9yb-1X-1ax" firstAttribute="leading" secondItem="gxL-Fx-jqD" secondAttribute="leadingMargin" constant="-8" id="38H-Os-Yg9"/>
+                                        <constraint firstItem="9yb-1X-1ax" firstAttribute="bottom" secondItem="gxL-Fx-jqD" secondAttribute="bottomMargin" constant="5" id="OZg-wt-UlS"/>
+                                        <constraint firstItem="9yb-1X-1ax" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" constant="-6" id="f6E-je-ukJ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="listIconImageView" destination="9yb-1X-1ax" id="t14-UE-8nc"/>
+                                    <outlet property="subtitleLabel" destination="nfL-24-uk1" id="Fwf-xu-bhQ"/>
+                                    <outlet property="titleLabel" destination="Fja-Uv-xMt" id="RFD-Cw-PQ6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -126,7 +142,7 @@
                                 <action selector="showMenu" destination="LRn-U0-UqB" id="7Fo-hd-JnM"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="ListIcon" id="9oM-Qj-PPd">
+                        <barButtonItem key="rightBarButtonItem" image="MapIcon" id="9oM-Qj-PPd">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="dTi-Ph-aHe" kind="custom" identifier="mapSegue" customClass="SWRevealViewControllerSeguePushController" id="SyF-zi-GGJ"/>
@@ -136,7 +152,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dIs-eX-huw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="841" y="1078"/>
+            <point key="canvasLocation" x="841" y="1065"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="NSt-7B-bsa">
@@ -354,9 +370,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DefaultPin" width="40" height="35"/>
         <image name="ListIcon" width="27" height="20"/>
         <image name="LocateMe" width="20" height="20"/>
+        <image name="MapIcon" width="21" height="20"/>
         <image name="MenuIcon" width="27" height="20"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
