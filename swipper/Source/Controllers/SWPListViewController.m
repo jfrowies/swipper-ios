@@ -81,7 +81,6 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
     return 1;
 }
 
@@ -89,12 +88,15 @@
     return self.places.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     SWPPlaceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"placeCell" forIndexPath:indexPath];
     id<SWPPlace> place = [self.places objectAtIndex:indexPath.row];
-    cell.titleLabel.text = place.placeName;
+    cell.placeNameLabel.text = place.placeName;
+    cell.placeAddressLabel.text = place.placeAddress;
+    cell.placeCityLabel.text = [NSString stringWithFormat:@"%@, %@, %@",place.placeCity,place.placeState,place.placeCountry];
+    //add distance
+    //change color of background and add image to icon view
     return cell;
 }
 

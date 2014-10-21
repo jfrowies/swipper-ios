@@ -17,7 +17,9 @@
 @property (nonatomic, copy) NSString *address;
 @property (nonatomic, copy) NSString *phone;
 @property (nonatomic, strong) NSDictionary *location;
-@property (nonatomic, copy) NSString *cityId;
 @property (nonatomic, copy) NSString *category;
+@property (nonatomic, copy) NSString *city;
+@property (nonatomic, copy) NSString *state;
+@property (nonatomic, copy) NSString *country;
 
 @end
