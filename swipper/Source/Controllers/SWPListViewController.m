@@ -95,8 +95,9 @@
     cell.placeNameLabel.text = place.placeName;
     cell.placeAddressLabel.text = place.placeAddress;
     cell.placeCityLabel.text = [NSString stringWithFormat:@"%@, %@, %@",place.placeCity,place.placeState,place.placeCountry];
-    //add distance
-    //change color of background and add image to icon view
+    cell.listIconImageView.backgroundColor = [SWPThemeHelper colorForCategoryName:place.placeCategory];
+    cell.listIconImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@CellImage",place.placeCategory]];
+    //add distance info
     return cell;
 }
 

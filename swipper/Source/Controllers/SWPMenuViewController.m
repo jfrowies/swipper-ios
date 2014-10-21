@@ -93,7 +93,7 @@
         SWPCategoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"categoryCell" forIndexPath:indexPath];
         id<SWPCategory> category = [self.placesCategories objectAtIndex:indexPath.row-1];
         cell.categoryName.text = category.categoryName;
-        cell.categoryColorView.backgroundColor = [SWPThemeHelper colorForCategory:category];
+        cell.categoryColorView.backgroundColor = [SWPThemeHelper colorForCategoryName:category.categoryName];
         if([self.selectedCategories indexOfObjectIdenticalTo:category] == NSNotFound)
             cell.categorySwitch.on = NO;
         else

@@ -221,10 +221,10 @@
     categoryAnnotationView.canShowCallout = YES;
         
     SWPAnnotation *categoryAnnotation = (SWPAnnotation *)annotation;
-//    NSString *categoryName0 = [[SWPCategoryStore sharedInstance] categoryNameForId:categoryAnnotation.place.placeCategoryId];
+//    NSString *categoryName = [[SWPCategoryStore sharedInstance] categoryNameForId:categoryAnnotation.place.placeCategoryId];
     NSString *categoryName = categoryAnnotation.place.placeCategory;
-    UIImage *annotationImage = [UIImage imageNamed:categoryName];
-    if (!annotationImage) annotationImage = [UIImage imageNamed:@"DefaultPin"];
+    UIImage *annotationImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@PinImage",categoryName]];
+    if (!annotationImage) annotationImage = [UIImage imageNamed:@"DefaultPinImage"];
     categoryAnnotationView.image = annotationImage;
 
     return categoryAnnotationView;

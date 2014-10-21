@@ -39,6 +39,7 @@
                                     <constraint firstAttribute="width" constant="30" id="z8a-nP-Aqc"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="1" maxX="1" maxY="0.0"/>
                                 <state key="normal" title="" image="LocateMe"/>
                                 <connections>
                                     <action selector="userTrackingButtonTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Hhs-px-l1t"/>
@@ -97,7 +98,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tZQ-uk-XYs" id="gxL-Fx-jqD">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9yb-1X-1ax" userLabel="ListIcon" customClass="UIImageView">
+                                        <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="9yb-1X-1ax" userLabel="ListIcon" customClass="UIImageView">
                                             <rect key="frame" x="0.0" y="2" width="50" height="74"/>
                                             <color key="backgroundColor" red="1" green="0.76078431369999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -113,13 +114,6 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fgj-fY-6Cj">
-                                            <rect key="frame" x="247" y="8" width="40" height="63"/>
-                                            <color key="backgroundColor" red="1" green="0.76078431369999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="40" id="NLr-h9-emq"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999 km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07f-p3-IbO" userLabel="PlaceDistLabel">
                                             <rect key="frame" x="107" y="8" width="60" height="21"/>
                                             <constraints>
@@ -145,29 +139,37 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6T-vO-yaP" userLabel="HowToArriveButton">
+                                            <rect key="frame" x="247" y="8" width="43" height="63"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="43" id="Sav-iq-5fb"/>
+                                            </constraints>
+                                            <state key="normal" image="HowToArrive"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="fgj-fY-6Cj" firstAttribute="leading" secondItem="Sgj-NT-QbB" secondAttribute="trailing" constant="5" id="0IM-sP-Mjq"/>
+                                        <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" secondItem="Sgj-NT-QbB" secondAttribute="trailing" constant="5" id="061-Hy-tf3"/>
                                         <constraint firstItem="9yb-1X-1ax" firstAttribute="leading" secondItem="gxL-Fx-jqD" secondAttribute="leadingMargin" constant="-8" id="38H-Os-Yg9"/>
-                                        <constraint firstItem="fgj-fY-6Cj" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" id="4cV-7B-7cY"/>
                                         <constraint firstItem="nfL-24-uk1" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" constant="21" id="D5O-0Z-ohc"/>
                                         <constraint firstItem="07f-p3-IbO" firstAttribute="leading" secondItem="Fja-Uv-xMt" secondAttribute="trailing" priority="998" constant="10" id="Jqb-Bs-Ffk"/>
                                         <constraint firstItem="nfL-24-uk1" firstAttribute="leading" secondItem="9yb-1X-1ax" secondAttribute="trailing" constant="5" id="KeY-Hf-gS3"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="fgj-fY-6Cj" secondAttribute="bottom" id="Lrr-0x-W0w"/>
                                         <constraint firstItem="Sgj-NT-QbB" firstAttribute="top" secondItem="nfL-24-uk1" secondAttribute="bottom" id="M1i-YL-FNr"/>
+                                        <constraint firstItem="g6T-vO-yaP" firstAttribute="bottom" secondItem="gxL-Fx-jqD" secondAttribute="bottomMargin" id="Mgd-x6-A79"/>
                                         <constraint firstItem="9yb-1X-1ax" firstAttribute="bottom" secondItem="gxL-Fx-jqD" secondAttribute="bottomMargin" constant="5" id="OZg-wt-UlS"/>
                                         <constraint firstItem="Sgj-NT-QbB" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gxL-Fx-jqD" secondAttribute="bottomMargin" id="RNl-z9-Zug"/>
                                         <constraint firstItem="Fja-Uv-xMt" firstAttribute="leading" secondItem="9yb-1X-1ax" secondAttribute="trailing" constant="5" id="VuZ-wH-vUd"/>
                                         <constraint firstItem="07f-p3-IbO" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" id="a3S-Wb-iPe"/>
                                         <constraint firstItem="Sgj-NT-QbB" firstAttribute="leading" secondItem="9yb-1X-1ax" secondAttribute="trailing" constant="5" id="awh-Ss-dmD"/>
+                                        <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" secondItem="nfL-24-uk1" secondAttribute="trailing" constant="5" id="ch4-d0-o9W"/>
                                         <constraint firstItem="Fja-Uv-xMt" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" id="e14-hy-b9V"/>
                                         <constraint firstItem="9yb-1X-1ax" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" constant="-6" id="f6E-je-ukJ"/>
-                                        <constraint firstItem="fgj-fY-6Cj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="07f-p3-IbO" secondAttribute="trailing" constant="5" id="rci-gx-bKy"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="fgj-fY-6Cj" secondAttribute="trailing" constant="-8" id="s8S-Kx-f6e"/>
-                                        <constraint firstItem="fgj-fY-6Cj" firstAttribute="leading" secondItem="nfL-24-uk1" secondAttribute="trailing" constant="5" id="x6m-Kh-fed"/>
+                                        <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="07f-p3-IbO" secondAttribute="trailing" constant="5" id="fmz-G5-eKM"/>
+                                        <constraint firstItem="g6T-vO-yaP" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" id="khD-Oo-9jI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="g6T-vO-yaP" secondAttribute="trailing" constant="-11" id="lC1-bz-RAm"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="howToArriveButton" destination="g6T-vO-yaP" id="qHV-BF-c5b"/>
                                     <outlet property="listIconImageView" destination="9yb-1X-1ax" id="t14-UE-8nc"/>
                                     <outlet property="placeAddressLabel" destination="nfL-24-uk1" id="ioy-7x-8Ty"/>
                                     <outlet property="placeCityLabel" destination="Sgj-NT-QbB" id="XHc-Qj-ACR"/>
@@ -198,7 +200,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dIs-eX-huw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="841" y="1060"/>
+            <point key="canvasLocation" x="841" y="1055"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="NSt-7B-bsa">
@@ -416,6 +418,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="HowToArrive" width="18" height="18"/>
         <image name="ListIcon" width="27" height="20"/>
         <image name="LocateMe" width="20" height="20"/>
         <image name="MapIcon" width="21" height="20"/>
