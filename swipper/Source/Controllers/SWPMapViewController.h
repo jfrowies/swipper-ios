@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MKMapView.h>
-#import "SWPMenuViewController.h"
+#import "SWPSlidingMenuViewController.h"
 
-@interface SWPMapViewController : UIViewController <MKMapViewDelegate, SWPMenuViewControllerDelegate, CLLocationManagerDelegate>
+@interface SWPMapViewController : UIViewController <MKMapViewDelegate, SWPSlidingMenuViewControllerDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
 @property (nonatomic, weak) IBOutlet UIView *swipeView;

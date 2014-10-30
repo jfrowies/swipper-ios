@@ -209,4 +209,10 @@
     [self.delegate menuViewController:self userDidSelectCategories:selectedCategories];
 }
 
+- (void)didMoveToParentViewController:(UIViewController *)parent {
+    if([parent conformsToProtocol:@protocol(SWPMenuViewControllerDelegate)]) {
+        self.delegate = (id<SWPMenuViewControllerDelegate>) parent;
+    }
+}
+
 @end
