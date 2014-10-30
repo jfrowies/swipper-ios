@@ -15,6 +15,8 @@
 @interface SWPListViewController ()
 
 @property (nonatomic, strong, readwrite) NSArray *selectedCategories;
+@property (nonatomic, strong) SWPSlidingMenuViewController *slidingMenu;
+
 
 @end
 
@@ -44,25 +46,13 @@
     self.navigationController.navigationBar.barTintColor = [SWPThemeHelper colorForNavigationBar];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
+    self.slidingMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SlidingMenuViewController"];
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    //setting self as menuViewController delegate
-    UIViewController *rearNavigationController = [[self revealViewController] rearViewController];
-    if([rearNavigationController isKindOfClass:[UINavigationController class]])
-    {
-        UINavigationController *menuNavigationController = (UINavigationController *)rearNavigationController;
-        UIViewController *rearViewController = menuNavigationController.visibleViewController;
-        
-        if([rearViewController isKindOfClass:[SWPMenuViewController class]])
-        {
-            SWPMenuViewController *menuViewController = (SWPMenuViewController *)rearViewController;
-            menuViewController.delegate = self;
-        }
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,8 +64,13 @@
 
 - (IBAction)showMenu
 {
-    SWRevealViewController *revealController = [self revealViewController];
-    [revealController revealToggleAnimated:YES];
+    if(!self.slidingMenu.isBeingPresented) {
+        [self.slidingMenu presentSlidingMenuInViewController:self andView:self.view];
+        self.slidingMenu.delegate = self;
+    }else {
+        self.slidingMenu.delegate = nil;
+        [self.slidingMenu hide];
+    }
 }
 
 #pragma mark - Table view data source
@@ -101,14 +96,13 @@
     return cell;
 }
 
-#pragma mark - SWPMenuViewController implementation
+#pragma mark - SWPSlidingMenuViewControllerDelegate implementation
 
-- (void)menuViewController:(SWPMenuViewController *)sender userDidSelectCategories:(NSArray *)selectedcategories
+- (void)slidingMenuViewController:(SWPSlidingMenuViewController *)sender userDidSelectCategories:(NSArray *)selectedCategories
 {
-    self.selectedCategories = selectedcategories;
-    [[self revealViewController] setFrontViewPosition:FrontViewPositionLeft animated:YES];
+    self.selectedCategories = selectedCategories;
+    [self.slidingMenu hide];
 }
-
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -256,7 +256,6 @@
 {
     self.selectedCategories = selectedCategories;
     [self.slidingMenu hide];
-    //[[self revealViewController] setFrontViewPosition:FrontViewPositionLeft animated:YES];
 }
 
 #pragma mark - CLLocationManager delegate implementation
