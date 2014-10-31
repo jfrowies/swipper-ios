@@ -13,8 +13,6 @@
 @interface SWPMapViewController : UIViewController <MKMapViewDelegate, SWPSlidingMenuViewControllerDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
-@property (nonatomic, weak) IBOutlet UIView *swipeView;
-
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSArray *places;
 @property (nonatomic, strong, readonly) NSArray *selectedCategories;

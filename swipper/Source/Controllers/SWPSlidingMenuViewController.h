@@ -23,8 +23,8 @@
 @property (nonatomic, weak) id<SWPSlidingMenuViewControllerDelegate> delegate;
 @property (nonatomic) BOOL isBeingPresented;
 
-- (void)hide;
 - (void)presentSlidingMenuInViewController:(UIViewController *)viewController
                                    andView:(UIView *)view;
+- (void)hide;
 
 @end

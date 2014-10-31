@@ -49,7 +49,7 @@
     [view addSubview:self.view];
 }
 
-- (void)hide {
+- (IBAction)hide {
     [UIView animateWithDuration:0.5f animations:^{
         
         self.menuLeftConstraint.constant = -270.0f;

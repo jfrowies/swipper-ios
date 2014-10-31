@@ -20,16 +20,21 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Hdq-j5-bgF">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <gestureRecognizers/>
                                 <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="Pde-qf-q9V"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="xpc-ek-bgN"/>
                                 </connections>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dse-5x-rEz" userLabel="swipeView">
                                 <rect key="frame" x="0.0" y="0.0" width="30" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="SNn-To-hBs"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="csF-cU-5br" appends="YES" id="kun-Kb-lSy"/>
+                                </connections>
                             </view>
                             <button contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZ4-a9-yrO">
                                 <rect key="frame" x="270" y="518" width="30" height="30"/>
@@ -76,11 +81,15 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="mapView" destination="Hdq-j5-bgF" id="TCa-ZU-4dz"/>
-                        <outlet property="swipeView" destination="Dse-5x-rEz" id="Kbz-qM-E4B"/>
                         <outlet property="userTrackingButton" destination="PZ4-a9-yrO" id="P5f-W6-qVA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="csF-cU-5br">
+                    <connections>
+                        <action selector="showMenu" destination="vXZ-lx-hvc" id="r8l-mK-Erx"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="831" y="357"/>
         </scene>
@@ -225,17 +234,32 @@
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="JfW-g5-H3o" firstAttribute="bottom" secondItem="zHo-c8-8r9" secondAttribute="bottomMargin" id="4gw-Hr-yMd"/>
                             <constraint firstItem="JfW-g5-H3o" firstAttribute="leading" secondItem="zHo-c8-8r9" secondAttribute="leadingMargin" constant="-8" id="Q2n-6N-xob"/>
                             <constraint firstItem="JfW-g5-H3o" firstAttribute="top" secondItem="zHo-c8-8r9" secondAttribute="topMargin" constant="-8" id="pdQ-Ls-Ez9"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="zu6-ya-ua7" appends="YES" id="mFX-Xm-22U"/>
+                            <outletCollection property="gestureRecognizers" destination="UVS-qA-8Bd" appends="YES" id="fvk-8T-Y97"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="menuLeftConstraint" destination="Q2n-6N-xob" id="k5V-w4-YgZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQ4-Dg-W4q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="zu6-ya-ua7">
+                    <connections>
+                        <action selector="hide" destination="oEU-vv-8Zi" id="dYm-b6-sGn"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <tapGestureRecognizer id="UVS-qA-8Bd">
+                    <connections>
+                        <action selector="hide" destination="oEU-vv-8Zi" id="ez7-gb-j3m"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1068" y="-386"/>
         </scene>
