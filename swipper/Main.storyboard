@@ -286,17 +286,17 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obM-1y-9td">
-                                            <rect key="frame" x="230" y="11" width="22" height="22"/>
+                                            <rect key="frame" x="230" y="9" width="18" height="18"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="22" id="4jI-Lw-cIh"/>
-                                                <constraint firstAttribute="height" constant="22" id="N0S-HD-DgV"/>
+                                                <constraint firstAttribute="width" constant="18" id="4jI-Lw-cIh"/>
+                                                <constraint firstAttribute="height" constant="18" id="N0S-HD-DgV"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="obM-1y-9td" firstAttribute="trailing" secondItem="SJE-Od-ZLz" secondAttribute="trailingMargin" id="4UU-HA-Equ"/>
-                                        <constraint firstItem="obM-1y-9td" firstAttribute="top" secondItem="SJE-Od-ZLz" secondAttribute="topMargin" constant="3" id="rXz-he-RdF"/>
+                                        <constraint firstItem="obM-1y-9td" firstAttribute="trailing" secondItem="SJE-Od-ZLz" secondAttribute="trailingMargin" constant="-4" id="4UU-HA-Equ"/>
+                                        <constraint firstAttribute="centerY" secondItem="obM-1y-9td" secondAttribute="centerY" constant="4" id="sDv-o3-ik9"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.13725490196078433" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
@@ -312,8 +312,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VoS-q0-OpD">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VoS-q0-OpD">
+                                            <rect key="frame" x="0.0" y="0.0" width="5" height="43"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="5" id="DaC-Bu-juh"/>
+                                            </constraints>
                                         </view>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lo8-pO-Y9S">
                                             <rect key="frame" x="20" y="11" width="136" height="21"/>
@@ -322,18 +326,21 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXD-Qc-eSY">
-                                            <rect key="frame" x="230" y="11" width="22" height="22"/>
+                                            <rect key="frame" x="230" y="9" width="18" height="18"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="22" id="D8I-2K-0fb"/>
-                                                <constraint firstAttribute="height" constant="22" id="LaD-Bo-svW"/>
+                                                <constraint firstAttribute="width" constant="18" id="D8I-2K-0fb"/>
+                                                <constraint firstAttribute="height" constant="18" id="LaD-Bo-svW"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" red="0.13725490200000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstItem="aXD-Qc-eSY" firstAttribute="top" secondItem="tLk-ab-iev" secondAttribute="topMargin" constant="3" id="Kan-hM-H8z"/>
-                                        <constraint firstItem="aXD-Qc-eSY" firstAttribute="trailing" secondItem="tLk-ab-iev" secondAttribute="trailingMargin" id="flf-MW-waq"/>
+                                        <constraint firstItem="VoS-q0-OpD" firstAttribute="leading" secondItem="tLk-ab-iev" secondAttribute="leadingMargin" constant="-8" id="9BZ-xB-dDf"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="VoS-q0-OpD" secondAttribute="bottom" constant="-8" id="Y5i-b6-hYi"/>
+                                        <constraint firstItem="aXD-Qc-eSY" firstAttribute="trailing" secondItem="tLk-ab-iev" secondAttribute="trailingMargin" constant="-4" id="flf-MW-waq"/>
+                                        <constraint firstItem="VoS-q0-OpD" firstAttribute="top" secondItem="tLk-ab-iev" secondAttribute="topMargin" constant="-8" id="fqF-5f-Yan"/>
+                                        <constraint firstAttribute="centerY" secondItem="aXD-Qc-eSY" secondAttribute="centerY" constant="4" id="uDO-Ke-yOw"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>

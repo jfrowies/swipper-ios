@@ -12,7 +12,6 @@
 @interface SWPCategoryTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *categoryName;
-@property (weak, nonatomic) IBOutlet UISwitch *categorySwitch;
 @property (weak, nonatomic) IBOutlet UIView *categoryColorView;
 @property (weak, nonatomic) M13Checkbox *checkBox;
 @end
