@@ -10,7 +10,6 @@
 #import "SWPLoopBackService.h"
 #import "LBPlace.h"
 #import "SWPAnnotation.h"
-#import "SWRevealViewController.h"
 #import "SWPCategory.h"
 #import "SWPCategoryStore.h"
 #import "SWPThemeHelper.h"

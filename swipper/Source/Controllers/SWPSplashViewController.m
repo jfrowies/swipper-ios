@@ -10,7 +10,6 @@
 #import "SWPCategory.h"
 #import "SWPLoopBackService.h"
 #import "SWPCategoryStore.h"
-#import "SWRevealViewController.h"
 
 @interface SWPSplashViewController ()
 

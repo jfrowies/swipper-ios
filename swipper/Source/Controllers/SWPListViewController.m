@@ -7,7 +7,6 @@
 //
 
 #import "SWPListViewController.h"
-#import "SWRevealViewController.h"
 #import "SWPThemeHelper.h"
 #import "SWPPlace.h"
 #import "SWPPlaceTableViewCell.h"

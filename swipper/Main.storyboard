@@ -242,7 +242,6 @@
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="zu6-ya-ua7" appends="YES" id="mFX-Xm-22U"/>
-                            <outletCollection property="gestureRecognizers" destination="UVS-qA-8Bd" appends="YES" id="fvk-8T-Y97"/>
                         </connections>
                     </view>
                     <connections>
@@ -267,10 +266,11 @@
         <scene sceneID="tlo-Ct-U6W">
             <objects>
                 <tableViewController storyboardIdentifier="MenuViewController" id="ziU-Pc-gbw" customClass="SWPMenuViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xFo-81-Q5x">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xFo-81-Q5x">
                         <rect key="frame" x="0.0" y="0.0" width="260" height="576"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.13725490200000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="allCategoriesCell" id="mGe-oI-gdf" customClass="SWPAllCategoriesTableViewCell">
                                 <rect key="frame" x="0.0" y="66" width="320" height="44"/>
@@ -279,21 +279,30 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ulk-Pc-TCH">
-                                            <rect key="frame" x="193" y="6" width="51" height="31"/>
-                                            <color key="onTintColor" red="1" green="0.76078431369999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </switch>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All Categories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46U-eI-8kp">
                                             <rect key="frame" x="20" y="11" width="136" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obM-1y-9td">
+                                            <rect key="frame" x="230" y="11" width="22" height="22"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="22" id="4jI-Lw-cIh"/>
+                                                <constraint firstAttribute="height" constant="22" id="N0S-HD-DgV"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="obM-1y-9td" firstAttribute="trailing" secondItem="SJE-Od-ZLz" secondAttribute="trailingMargin" id="4UU-HA-Equ"/>
+                                        <constraint firstItem="obM-1y-9td" firstAttribute="top" secondItem="SJE-Od-ZLz" secondAttribute="topMargin" constant="3" id="rXz-he-RdF"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.13725490196078433" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="allCategoriesSwitch" destination="Ulk-Pc-TCH" id="bBk-qu-eaz"/>
+                                    <outlet property="checkMarkView" destination="obM-1y-9td" id="hmY-Q5-5Sr"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="categoryCell" id="hlP-4i-Ndq" customClass="SWPCategoryTableViewCell">
@@ -303,12 +312,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Om1-jc-O07">
-                                            <rect key="frame" x="193" y="6" width="51" height="31"/>
-                                            <color key="onTintColor" red="1" green="0.76078431369999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </switch>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VoS-q0-OpD">
-                                            <rect key="frame" x="0.0" y="0.0" width="4" height="43"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         </view>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lo8-pO-Y9S">
@@ -317,13 +321,27 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXD-Qc-eSY">
+                                            <rect key="frame" x="230" y="11" width="22" height="22"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="22" id="D8I-2K-0fb"/>
+                                                <constraint firstAttribute="height" constant="22" id="LaD-Bo-svW"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" red="0.13725490200000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="aXD-Qc-eSY" firstAttribute="top" secondItem="tLk-ab-iev" secondAttribute="topMargin" constant="3" id="Kan-hM-H8z"/>
+                                        <constraint firstItem="aXD-Qc-eSY" firstAttribute="trailing" secondItem="tLk-ab-iev" secondAttribute="trailingMargin" id="flf-MW-waq"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="categoryColorView" destination="VoS-q0-OpD" id="eXg-OA-JeK"/>
                                     <outlet property="categoryName" destination="Lo8-pO-Y9S" id="CnE-zw-c4C"/>
-                                    <outlet property="categorySwitch" destination="Om1-jc-O07" id="UIZ-eX-rOj"/>
+                                    <outlet property="checkMarkView" destination="aXD-Qc-eSY" id="3qW-mQ-eRp"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="applyCell" id="BRe-RF-bp2" customClass="SWPApplyTableViewCell">

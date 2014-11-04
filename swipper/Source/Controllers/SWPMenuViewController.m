@@ -13,6 +13,7 @@
 #import "SWPApplyTableViewCell.h"
 #import "SWPAllCategoriesTableViewCell.h"
 #import "SWPThemeHelper.h"
+#import "M13Checkbox+Menu.h"
 
 @interface SWPMenuViewController ()
 
@@ -83,7 +84,15 @@
         else
             cell.allCategoriesSwitch.on = NO;
         
-        [cell.allCategoriesSwitch addTarget:self action:@selector(allCategoriesSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+//        M13Checkbox *check = [[M13Checkbox alloc] init];
+//        check.checkColor = [UIColor whiteColor];
+//        check.strokeColor = [UIColor whiteColor];
+//        check.tintColor = [UIColor clearColor];
+//        [cell setCheckBox:check];
+        
+        [cell setCheckBox:[M13Checkbox checkboxForMenu]];
+        
+//        [cell.allCategoriesSwitch addTarget:self action:@selector(allCategoriesSwitchChanged:) forControlEvents:UIControlEventValueChanged];
         
         return cell;
     }
@@ -98,7 +107,17 @@
             cell.categorySwitch.on = NO;
         else
             cell.categorySwitch.on = YES;
-        [cell.categorySwitch addTarget:self action:@selector(categorySwitchChanged:) forControlEvents:UIControlEventValueChanged];
+        
+//        M13Checkbox *check = [[M13Checkbox alloc] init];
+//        check.checkColor = [UIColor whiteColor];
+//        check.strokeColor = [UIColor whiteColor];
+//        check.tintColor = [UIColor clearColor];
+//        [cell setCheckBox:check];
+        
+        [cell setCheckBox:[M13Checkbox checkboxForMenu]];
+        
+//        [cell.categorySwitch addTarget:self action:@selector(categorySwitchChanged:) forControlEvents:UIControlEventValueChanged];
+        
         return cell;
     }
     
@@ -127,6 +146,13 @@
     }
 }
 
+#pragma mark - Table view delegate implementation
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+
+}
 
 #pragma mark - Turn on/off AllCategoriesSwitch
 
