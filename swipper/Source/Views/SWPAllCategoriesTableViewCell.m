@@ -18,6 +18,7 @@
 
 - (void)setCheckBox:(M13Checkbox *)checkBox {
     _checkBox = checkBox;
+    [self.checkMarkView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.checkMarkView addSubview:_checkBox];
 }
 

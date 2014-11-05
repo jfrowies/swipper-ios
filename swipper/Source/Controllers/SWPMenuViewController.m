@@ -79,12 +79,12 @@
     {
         SWPAllCategoriesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"allCategoriesCell" forIndexPath:indexPath];
         
+        [cell setCheckBox:[M13Checkbox checkboxForMenu]];
+        
         if(self.placesCategories.count == self.selectedCategories.count)
             cell.checkBox.checkState = YES;
         else
-             cell.checkBox.checkState = NO;
-        
-        [cell setCheckBox:[M13Checkbox checkboxForMenu]];
+            cell.checkBox.checkState = NO;
         
         [cell.checkBox addTarget:self action:@selector(allCategoriesSwitchChanged:) forControlEvents:UIControlEventValueChanged];
         
@@ -97,12 +97,13 @@
         id<SWPCategory> category = [self.placesCategories objectAtIndex:indexPath.row-1];
         cell.categoryName.text = category.categoryName;
         cell.categoryColorView.backgroundColor = [SWPThemeHelper colorForCategoryName:category.categoryName];
+        
+        [cell setCheckBox:[M13Checkbox checkboxForMenu]];
+        
         if([self.selectedCategories indexOfObjectIdenticalTo:category] == NSNotFound)
              cell.checkBox.checkState = NO;
         else
              cell.checkBox.checkState = YES;
-        
-        [cell setCheckBox:[M13Checkbox checkboxForMenu]];
         
         [cell.checkBox addTarget:self action:@selector(categorySwitchChanged:) forControlEvents:UIControlEventValueChanged];
         
