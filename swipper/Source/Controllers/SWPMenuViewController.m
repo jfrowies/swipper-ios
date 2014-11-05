@@ -137,11 +137,22 @@
 
 #pragma mark - Table view delegate implementation
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//    
-//
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if([cell isKindOfClass:[SWPAllCategoriesTableViewCell class]]) {
+        SWPAllCategoriesTableViewCell *allCategoriesCell = (SWPAllCategoriesTableViewCell *)cell;
+        allCategoriesCell.checkBox.checkState = !allCategoriesCell.checkBox.checkState;
+        [self allCategoriesSwitchChanged:allCategoriesCell.checkBox];
+    }
+    
+    if([cell isKindOfClass:[SWPCategoryTableViewCell class]]) {
+        SWPCategoryTableViewCell *categoryCell = (SWPCategoryTableViewCell *)cell;
+        categoryCell.checkBox.checkState = !categoryCell.checkBox.checkState;
+        [self categorySwitchChanged:categoryCell.checkBox];
+    }
+
+}
 
 #pragma mark - Turn on/off AllCategoriesSwitch
 
