@@ -10,12 +10,13 @@
 #import "SWPThemeHelper.h"
 #import "SWPPlace.h"
 #import "SWPPlaceTableViewCell.h"
+#import "SWPCategoryStore.h"
 
 @interface SWPListViewController ()
 
 @property (nonatomic, strong, readwrite) NSArray *selectedCategories;
 @property (nonatomic, strong) SWPSlidingMenuViewController *slidingMenu;
-
+@property (nonatomic, strong) NSArray *placesToShow;
 
 @end
 
@@ -26,12 +27,18 @@
 - (void)setPlaces:(NSArray *)places
 {
     _places = places;
-    [self.tableView reloadData];
+    self.placesToShow = [self filterPlaces];
 }
 
 - (void)setSelectedCategories:(NSArray *)selectedCategories
 {
     _selectedCategories = selectedCategories;
+    self.placesToShow = [self filterPlaces];
+}
+
+- (void)setPlacesToShow:(NSArray *)placesToShow
+{
+    _placesToShow = placesToShow;
     [self.tableView reloadData];
 }
 
@@ -47,6 +54,7 @@
     
     self.slidingMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SlidingMenuViewController"];
     
+    self.selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -64,6 +72,7 @@
 - (IBAction)showMenu
 {
     if(!self.slidingMenu.isBeingPresented) {
+        [self.tableView scrollRectToVisible:CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height) animated:NO];
         [self.slidingMenu presentSlidingMenuInViewController:self andView:self.view];
         self.slidingMenu.delegate = self;
     }else {
@@ -79,13 +88,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.places.count;
+    return self.placesToShow.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     SWPPlaceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"placeCell" forIndexPath:indexPath];
-    id<SWPPlace> place = [self.places objectAtIndex:indexPath.row];
+    id<SWPPlace> place = [self.placesToShow objectAtIndex:indexPath.row];
     cell.placeNameLabel.text = place.placeName;
     cell.placeAddressLabel.text = place.placeAddress;
     cell.placeCityLabel.text = [NSString stringWithFormat:@"%@, %@, %@",place.placeCity,place.placeState,place.placeCountry];
@@ -102,6 +111,33 @@
     self.selectedCategories = selectedCategories;
     [self.slidingMenu hide];
 }
+
+#pragma mark - Places filtering
+
+- (NSArray *)filterPlaces {
+    
+    NSMutableArray *filteredPlaces = [NSMutableArray arrayWithCapacity:self.places.count];
+    
+    for (id<SWPPlace> place in self.places) {
+        
+        NSUInteger index =[self.selectedCategories indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+            if([obj conformsToProtocol:@protocol(SWPCategory)])
+            {
+                id<SWPCategory> category = (id<SWPCategory>) obj;
+                if([place.placeCategory isEqualToString:category.categoryName]) return YES;
+            }
+            return NO;
+        }];
+        
+        if(index != NSNotFound)
+        {
+            [filteredPlaces addObject:place];
+        }
+    }
+    
+    return filteredPlaces;
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

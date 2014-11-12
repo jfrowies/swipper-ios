@@ -102,7 +102,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="placeCell" rowHeight="80" id="tZQ-uk-XYs" customClass="SWPPlaceTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="placeCell" rowHeight="80" id="tZQ-uk-XYs" customClass="SWPPlaceTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tZQ-uk-XYs" id="gxL-Fx-jqD">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -149,7 +149,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6T-vO-yaP" userLabel="HowToArriveButton">
-                                            <rect key="frame" x="247" y="8" width="43" height="63"/>
+                                            <rect key="frame" x="277" y="8" width="43" height="63"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="43" id="Sav-iq-5fb"/>
                                             </constraints>
@@ -157,7 +157,7 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" secondItem="Sgj-NT-QbB" secondAttribute="trailing" constant="5" id="061-Hy-tf3"/>
+                                        <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" secondItem="Sgj-NT-QbB" secondAttribute="trailing" constant="35" id="061-Hy-tf3"/>
                                         <constraint firstItem="9yb-1X-1ax" firstAttribute="leading" secondItem="gxL-Fx-jqD" secondAttribute="leadingMargin" constant="-8" id="38H-Os-Yg9"/>
                                         <constraint firstItem="nfL-24-uk1" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" constant="21" id="D5O-0Z-ohc"/>
                                         <constraint firstItem="07f-p3-IbO" firstAttribute="leading" secondItem="Fja-Uv-xMt" secondAttribute="trailing" priority="998" constant="10" id="Jqb-Bs-Ffk"/>
@@ -169,12 +169,12 @@
                                         <constraint firstItem="Fja-Uv-xMt" firstAttribute="leading" secondItem="9yb-1X-1ax" secondAttribute="trailing" constant="5" id="VuZ-wH-vUd"/>
                                         <constraint firstItem="07f-p3-IbO" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" id="a3S-Wb-iPe"/>
                                         <constraint firstItem="Sgj-NT-QbB" firstAttribute="leading" secondItem="9yb-1X-1ax" secondAttribute="trailing" constant="5" id="awh-Ss-dmD"/>
-                                        <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" secondItem="nfL-24-uk1" secondAttribute="trailing" constant="5" id="ch4-d0-o9W"/>
+                                        <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" secondItem="nfL-24-uk1" secondAttribute="trailing" constant="35" id="ch4-d0-o9W"/>
                                         <constraint firstItem="Fja-Uv-xMt" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" id="e14-hy-b9V"/>
                                         <constraint firstItem="9yb-1X-1ax" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" constant="-6" id="f6E-je-ukJ"/>
                                         <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="07f-p3-IbO" secondAttribute="trailing" constant="5" id="fmz-G5-eKM"/>
                                         <constraint firstItem="g6T-vO-yaP" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" id="khD-Oo-9jI"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="g6T-vO-yaP" secondAttribute="trailing" constant="-11" id="lC1-bz-RAm"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="g6T-vO-yaP" secondAttribute="trailing" constant="-8" id="lC1-bz-RAm"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -266,7 +266,7 @@
         <scene sceneID="tlo-Ct-U6W">
             <objects>
                 <tableViewController storyboardIdentifier="MenuViewController" id="ziU-Pc-gbw" customClass="SWPMenuViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xFo-81-Q5x">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xFo-81-Q5x">
                         <rect key="frame" x="0.0" y="0.0" width="260" height="576"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.13725490200000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -286,17 +286,17 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obM-1y-9td">
-                                            <rect key="frame" x="230" y="9" width="18" height="18"/>
+                                            <rect key="frame" x="233" y="12" width="17" height="17"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="18" id="4jI-Lw-cIh"/>
-                                                <constraint firstAttribute="height" constant="18" id="N0S-HD-DgV"/>
+                                                <constraint firstAttribute="width" constant="17" id="4jI-Lw-cIh"/>
+                                                <constraint firstAttribute="height" constant="17" id="N0S-HD-DgV"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="obM-1y-9td" firstAttribute="trailing" secondItem="SJE-Od-ZLz" secondAttribute="trailingMargin" constant="-4" id="4UU-HA-Equ"/>
-                                        <constraint firstAttribute="centerY" secondItem="obM-1y-9td" secondAttribute="centerY" constant="4" id="sDv-o3-ik9"/>
+                                        <constraint firstItem="obM-1y-9td" firstAttribute="trailing" secondItem="SJE-Od-ZLz" secondAttribute="trailingMargin" constant="-2" id="4UU-HA-Equ"/>
+                                        <constraint firstAttribute="centerY" secondItem="obM-1y-9td" secondAttribute="centerY" constant="1" id="sDv-o3-ik9"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.13725490196078433" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
@@ -326,11 +326,11 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXD-Qc-eSY">
-                                            <rect key="frame" x="230" y="9" width="18" height="18"/>
+                                            <rect key="frame" x="233" y="12" width="17" height="17"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="18" id="D8I-2K-0fb"/>
-                                                <constraint firstAttribute="height" constant="18" id="LaD-Bo-svW"/>
+                                                <constraint firstAttribute="width" constant="17" id="D8I-2K-0fb"/>
+                                                <constraint firstAttribute="height" constant="17" id="LaD-Bo-svW"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -338,9 +338,9 @@
                                     <constraints>
                                         <constraint firstItem="VoS-q0-OpD" firstAttribute="leading" secondItem="tLk-ab-iev" secondAttribute="leadingMargin" constant="-8" id="9BZ-xB-dDf"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="VoS-q0-OpD" secondAttribute="bottom" constant="-8" id="Y5i-b6-hYi"/>
-                                        <constraint firstItem="aXD-Qc-eSY" firstAttribute="trailing" secondItem="tLk-ab-iev" secondAttribute="trailingMargin" constant="-4" id="flf-MW-waq"/>
+                                        <constraint firstItem="aXD-Qc-eSY" firstAttribute="trailing" secondItem="tLk-ab-iev" secondAttribute="trailingMargin" constant="-2" id="flf-MW-waq"/>
                                         <constraint firstItem="VoS-q0-OpD" firstAttribute="top" secondItem="tLk-ab-iev" secondAttribute="topMargin" constant="-8" id="fqF-5f-Yan"/>
-                                        <constraint firstAttribute="centerY" secondItem="aXD-Qc-eSY" secondAttribute="centerY" constant="4" id="uDO-Ke-yOw"/>
+                                        <constraint firstAttribute="centerY" secondItem="aXD-Qc-eSY" secondAttribute="centerY" constant="1" id="uDO-Ke-yOw"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>

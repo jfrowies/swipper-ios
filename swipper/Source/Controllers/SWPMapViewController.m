@@ -78,6 +78,8 @@
     self.userTrackingButton.clipsToBounds = YES;
     
     self.slidingMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SlidingMenuViewController"];
+    
+    self.selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
 }
 
 - (void)didReceiveMemoryWarning

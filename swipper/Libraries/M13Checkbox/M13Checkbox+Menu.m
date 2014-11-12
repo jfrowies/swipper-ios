@@ -11,7 +11,7 @@
 @implementation M13Checkbox(Menu)
 
 + (M13Checkbox *)checkboxForMenu {
-    M13Checkbox *check = [[M13Checkbox alloc] init];
+    M13Checkbox *check = [[M13Checkbox alloc] initWithFrame:CGRectMake(0, 0, 17.0f, 17.0f)];
     check.checkColor = [UIColor whiteColor];
     check.strokeColor = [UIColor whiteColor];
     check.tintColor = [UIColor clearColor];
