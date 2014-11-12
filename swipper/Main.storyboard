@@ -123,28 +123,18 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999 km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07f-p3-IbO" userLabel="PlaceDistLabel">
-                                            <rect key="frame" x="107" y="8" width="60" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07f-p3-IbO" userLabel="PlaceDistLabel">
+                                            <rect key="frame" x="107" y="11" width="50" height="16"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="8Ai-5l-rY6"/>
-                                                <constraint firstAttribute="width" constant="60" id="CBN-Jn-BtR"/>
+                                                <constraint firstAttribute="width" constant="50" id="CBN-Jn-BtR"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgj-NT-QbB" userLabel="PlaceCityLabel">
-                                            <rect key="frame" x="55" y="50" width="187" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfL-24-uk1" userLabel="PlaceAddressLabel">
-                                            <rect key="frame" x="55" y="29" width="187" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="Q2y-HX-HnU"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgj-NT-QbB" userLabel="PlaceCityLabel">
+                                            <rect key="frame" x="55" y="51" width="214" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -155,21 +145,30 @@
                                             </constraints>
                                             <state key="normal" image="HowToArrive"/>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfL-24-uk1" userLabel="PlaceAddressLabel">
+                                            <rect key="frame" x="55" y="31" width="214" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="Q2y-HX-HnU"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" secondItem="Sgj-NT-QbB" secondAttribute="trailing" constant="35" id="061-Hy-tf3"/>
+                                        <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" secondItem="Sgj-NT-QbB" secondAttribute="trailing" constant="8" id="061-Hy-tf3"/>
                                         <constraint firstItem="9yb-1X-1ax" firstAttribute="leading" secondItem="gxL-Fx-jqD" secondAttribute="leadingMargin" constant="-8" id="38H-Os-Yg9"/>
-                                        <constraint firstItem="nfL-24-uk1" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" constant="21" id="D5O-0Z-ohc"/>
+                                        <constraint firstItem="nfL-24-uk1" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" constant="23" id="D5O-0Z-ohc"/>
                                         <constraint firstItem="07f-p3-IbO" firstAttribute="leading" secondItem="Fja-Uv-xMt" secondAttribute="trailing" priority="998" constant="10" id="Jqb-Bs-Ffk"/>
                                         <constraint firstItem="nfL-24-uk1" firstAttribute="leading" secondItem="9yb-1X-1ax" secondAttribute="trailing" constant="5" id="KeY-Hf-gS3"/>
-                                        <constraint firstItem="Sgj-NT-QbB" firstAttribute="top" secondItem="nfL-24-uk1" secondAttribute="bottom" id="M1i-YL-FNr"/>
+                                        <constraint firstItem="Sgj-NT-QbB" firstAttribute="top" secondItem="nfL-24-uk1" secondAttribute="bottom" constant="-1" id="M1i-YL-FNr"/>
                                         <constraint firstItem="g6T-vO-yaP" firstAttribute="bottom" secondItem="gxL-Fx-jqD" secondAttribute="bottomMargin" id="Mgd-x6-A79"/>
                                         <constraint firstItem="9yb-1X-1ax" firstAttribute="bottom" secondItem="gxL-Fx-jqD" secondAttribute="bottomMargin" constant="5" id="OZg-wt-UlS"/>
                                         <constraint firstItem="Sgj-NT-QbB" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gxL-Fx-jqD" secondAttribute="bottomMargin" id="RNl-z9-Zug"/>
                                         <constraint firstItem="Fja-Uv-xMt" firstAttribute="leading" secondItem="9yb-1X-1ax" secondAttribute="trailing" constant="5" id="VuZ-wH-vUd"/>
-                                        <constraint firstItem="07f-p3-IbO" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" id="a3S-Wb-iPe"/>
+                                        <constraint firstItem="07f-p3-IbO" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" constant="3" id="a3S-Wb-iPe"/>
                                         <constraint firstItem="Sgj-NT-QbB" firstAttribute="leading" secondItem="9yb-1X-1ax" secondAttribute="trailing" constant="5" id="awh-Ss-dmD"/>
-                                        <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" secondItem="nfL-24-uk1" secondAttribute="trailing" constant="35" id="ch4-d0-o9W"/>
+                                        <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" secondItem="nfL-24-uk1" secondAttribute="trailing" constant="8" id="ch4-d0-o9W"/>
                                         <constraint firstItem="Fja-Uv-xMt" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" id="e14-hy-b9V"/>
                                         <constraint firstItem="9yb-1X-1ax" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" constant="-6" id="f6E-je-ukJ"/>
                                         <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="07f-p3-IbO" secondAttribute="trailing" constant="5" id="fmz-G5-eKM"/>
@@ -209,7 +208,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dIs-eX-huw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="841" y="1055"/>
+            <point key="canvasLocation" x="841" y="1053"/>
         </scene>
         <!--Sliding Menu View Controller-->
         <scene sceneID="chJ-f9-sgM">
