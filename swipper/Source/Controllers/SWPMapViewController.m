@@ -10,10 +10,10 @@
 #import "SWPLoopBackService.h"
 #import "LBPlace.h"
 #import "SWPAnnotation.h"
-#import "SWRevealViewController.h"
 #import "SWPCategory.h"
 #import "SWPCategoryStore.h"
 #import "SWPThemeHelper.h"
+#import "SWPSlidingMenuViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define kMaxAllowedDistanceBetweenMapCorners 50000
@@ -23,6 +23,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *userTrackingButton;
 @property (nonatomic, strong, readwrite) NSArray *selectedCategories;
 @property (nonatomic) MKMapRect mapRectWithData;
+@property (nonatomic, strong) SWPSlidingMenuViewController *slidingMenu;
 
 @end
 
@@ -72,13 +73,13 @@
     self.navigationController.navigationBar.barTintColor = [SWPThemeHelper colorForNavigationBar];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
-    //SWRevealViewController setup
-    SWRevealViewController *revealController = [self revealViewController];
-    [self.swipeView addGestureRecognizer:revealController.panGestureRecognizer];
-    
     //User tracking button UI adjustments
     self.userTrackingButton.layer.cornerRadius = 5;
     self.userTrackingButton.clipsToBounds = YES;
+    
+    self.slidingMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SlidingMenuViewController"];
+    
+    self.selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,19 +92,6 @@
 {
     [super viewDidAppear:animated];
     
-    //setting self as menuViewController delegate
-    UIViewController *rearNavigationController = [[self revealViewController] rearViewController];
-    if([rearNavigationController isKindOfClass:[UINavigationController class]])
-    {
-        UINavigationController *menuNavigationController = (UINavigationController *)rearNavigationController;
-        UIViewController *rearViewController = menuNavigationController.visibleViewController;
-        
-        if([rearViewController isKindOfClass:[SWPMenuViewController class]])
-        {
-            SWPMenuViewController *menuViewController = (SWPMenuViewController *)rearViewController;
-            menuViewController.delegate = self;
-        }
-    }
 }
 
 /*
@@ -138,8 +126,13 @@
 
 - (IBAction)showMenu
 {
-    SWRevealViewController *revealController = [self revealViewController];
-    [revealController revealToggleAnimated:YES];
+    if(!self.slidingMenu.isBeingPresented) {
+        [self.slidingMenu presentSlidingMenuInViewController:self andView:self.view];
+        self.slidingMenu.delegate = self;
+    }else {
+        self.slidingMenu.delegate = nil;
+        [self.slidingMenu hide];
+    }
 }
 
 #pragma mark - MKMapView delegate implementation
@@ -258,12 +251,12 @@
     [self.mapView addAnnotations:[newAnnotations copy]];
 }
 
-#pragma mark - SWPMenuViewController implementation
+#pragma mark - SWPSlidingMenuViewControllerDelegate implementation
 
-- (void)menuViewController:(SWPMenuViewController *)sender userDidSelectCategories:(NSArray *)selectedcategories
+- (void)slidingMenuViewController:(SWPSlidingMenuViewController *)sender userDidSelectCategories:(NSArray *)selectedCategories
 {
-    self.selectedCategories = selectedcategories;
-    [[self revealViewController] setFrontViewPosition:FrontViewPositionLeft animated:YES];
+    self.selectedCategories = selectedCategories;
+    [self.slidingMenu hide];
 }
 
 #pragma mark - CLLocationManager delegate implementation

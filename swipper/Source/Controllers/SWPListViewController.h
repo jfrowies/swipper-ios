@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SWPMenuViewController.h"
+#import "SWPSlidingMenuViewController.h"
 
-@interface SWPListViewController : UITableViewController <SWPMenuViewControllerDelegate>
+@interface SWPListViewController : UITableViewController <SWPSlidingMenuViewControllerDelegate>
 
 @property (nonatomic, strong) NSArray *places;
 @property (nonatomic, strong, readonly) NSArray *selectedCategories;

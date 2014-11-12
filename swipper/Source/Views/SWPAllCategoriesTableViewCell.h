@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "M13Checkbox.h"
 
 @interface SWPAllCategoriesTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UISwitch *allCategoriesSwitch;
-
+@property (weak, nonatomic) M13Checkbox *checkBox;
 @end

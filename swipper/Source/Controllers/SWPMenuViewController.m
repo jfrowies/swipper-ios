@@ -13,6 +13,7 @@
 #import "SWPApplyTableViewCell.h"
 #import "SWPAllCategoriesTableViewCell.h"
 #import "SWPThemeHelper.h"
+#import "M13Checkbox+Menu.h"
 
 @interface SWPMenuViewController ()
 
@@ -78,12 +79,14 @@
     {
         SWPAllCategoriesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"allCategoriesCell" forIndexPath:indexPath];
         
-        if(self.placesCategories.count == self.selectedCategories.count)
-            cell.allCategoriesSwitch.on = YES;
-        else
-            cell.allCategoriesSwitch.on = NO;
+        [cell setCheckBox:[M13Checkbox checkboxForMenu]];
         
-        [cell.allCategoriesSwitch addTarget:self action:@selector(allCategoriesSwitchChanged:) forControlEvents:UIControlEventValueChanged];
+        if(self.placesCategories.count == self.selectedCategories.count)
+            cell.checkBox.checkState = YES;
+        else
+            cell.checkBox.checkState = NO;
+        
+        [cell.checkBox addTarget:self action:@selector(allCategoriesSwitchChanged:) forControlEvents:UIControlEventValueChanged];
         
         return cell;
     }
@@ -94,11 +97,16 @@
         id<SWPCategory> category = [self.placesCategories objectAtIndex:indexPath.row-1];
         cell.categoryName.text = category.categoryName;
         cell.categoryColorView.backgroundColor = [SWPThemeHelper colorForCategoryName:category.categoryName];
+        
+        [cell setCheckBox:[M13Checkbox checkboxForMenu]];
+        
         if([self.selectedCategories indexOfObjectIdenticalTo:category] == NSNotFound)
-            cell.categorySwitch.on = NO;
+             cell.checkBox.checkState = NO;
         else
-            cell.categorySwitch.on = YES;
-        [cell.categorySwitch addTarget:self action:@selector(categorySwitchChanged:) forControlEvents:UIControlEventValueChanged];
+             cell.checkBox.checkState = YES;
+        
+        [cell.checkBox addTarget:self action:@selector(categorySwitchChanged:) forControlEvents:UIControlEventValueChanged];
+        
         return cell;
     }
     
@@ -127,6 +135,24 @@
     }
 }
 
+#pragma mark - Table view delegate implementation
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if([cell isKindOfClass:[SWPAllCategoriesTableViewCell class]]) {
+        SWPAllCategoriesTableViewCell *allCategoriesCell = (SWPAllCategoriesTableViewCell *)cell;
+        allCategoriesCell.checkBox.checkState = !allCategoriesCell.checkBox.checkState;
+        [self allCategoriesSwitchChanged:allCategoriesCell.checkBox];
+    }
+    
+    if([cell isKindOfClass:[SWPCategoryTableViewCell class]]) {
+        SWPCategoryTableViewCell *categoryCell = (SWPCategoryTableViewCell *)cell;
+        categoryCell.checkBox.checkState = !categoryCell.checkBox.checkState;
+        [self categorySwitchChanged:categoryCell.checkBox];
+    }
+
+}
 
 #pragma mark - Turn on/off AllCategoriesSwitch
 
@@ -138,9 +164,9 @@
     {
         SWPAllCategoriesTableViewCell *allCategoriesCell = (SWPAllCategoriesTableViewCell *)cell;
         if(on)
-            [allCategoriesCell.allCategoriesSwitch setOn:YES animated:YES];
+            [allCategoriesCell.checkBox setCheckState:YES];
         else
-            [allCategoriesCell.allCategoriesSwitch setOn:NO animated:YES];
+            [allCategoriesCell.checkBox setCheckState:NO];
     }
 }
 
@@ -148,9 +174,9 @@
 
 - (void)allCategoriesSwitchChanged:(id)sender
 {
-    if(sender != nil && [sender isKindOfClass:[UISwitch class]])
+    if(sender != nil && [sender isKindOfClass:[M13Checkbox class]])
     {
-        UISwitch *allCategoriesSwitch= (UISwitch *)sender;
+        M13Checkbox *allCategoriesSwitch= (M13Checkbox *)sender;
         
         // disable/enable all switches
         for (int i=1; i<=self.placesCategories.count; i++) {
@@ -158,12 +184,12 @@
             if(cell != nil && [cell isKindOfClass:[SWPCategoryTableViewCell class]])
             {
                 SWPCategoryTableViewCell *categoryCell = (SWPCategoryTableViewCell *)cell;
-                [categoryCell.categorySwitch setOn:allCategoriesSwitch.on animated:YES];
+                [categoryCell.checkBox setCheckState:allCategoriesSwitch.checkState];
             }
         }
         
         //disable enable apply button
-        [self setApplyButtonEnabled:allCategoriesSwitch.on];
+        [self setApplyButtonEnabled:allCategoriesSwitch.checkState];
     }
 }
 
@@ -177,7 +203,7 @@
         if(cell != nil && [cell isKindOfClass:[SWPCategoryTableViewCell class]])
         {
             SWPCategoryTableViewCell *categoryCell = (SWPCategoryTableViewCell *)cell;
-            if([categoryCell.categorySwitch isOn])
+            if(categoryCell.checkBox.checkState == YES)
                 allOff = NO;
             else
                 allOn = NO;
@@ -198,7 +224,7 @@
         if(cell != nil && [cell isKindOfClass:[SWPCategoryTableViewCell class]])
         {
             SWPCategoryTableViewCell *categoryCell = (SWPCategoryTableViewCell *)cell;
-            if([categoryCell.categorySwitch isOn])
+            if(categoryCell.checkBox.checkState == YES)
             {
                 [selectedCategories addObject:[self.placesCategories objectAtIndex:i-1]];
             }
@@ -207,6 +233,12 @@
     
     [[SWPCategoryStore sharedInstance] setSelectedCategories:selectedCategories];
     [self.delegate menuViewController:self userDidSelectCategories:selectedCategories];
+}
+
+- (void)didMoveToParentViewController:(UIViewController *)parent {
+    if([parent conformsToProtocol:@protocol(SWPMenuViewControllerDelegate)]) {
+        self.delegate = (id<SWPMenuViewControllerDelegate>) parent;
+    }
 }
 
 @end
