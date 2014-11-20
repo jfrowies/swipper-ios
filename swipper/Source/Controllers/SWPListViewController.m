@@ -64,7 +64,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - IBActions
@@ -76,7 +75,6 @@
         [self.slidingMenu presentSlidingMenuInViewController:self andView:self.view];
         self.slidingMenu.delegate = self;
     }else {
-        self.slidingMenu.delegate = nil;
         [self.slidingMenu hide];
     }
 }
@@ -110,6 +108,14 @@
 {
     self.selectedCategories = selectedCategories;
     [self.slidingMenu hide];
+}
+
+- (void)didShowSlidingMenuViewController:(SWPSlidingMenuViewController *)sender {
+    self.tableView.scrollEnabled = NO;
+}
+
+- (void)didHideSlidingMenuViewController:(SWPSlidingMenuViewController *)sender {
+    self.tableView.scrollEnabled = YES;
 }
 
 #pragma mark - Places filtering

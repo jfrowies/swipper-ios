@@ -8,55 +8,49 @@
 
 #import "SWPSlidingMenuViewController.h"
 
+#define slideAnimationDuration 0.3f
+#define hideMenuConstraintConstant -270.0f
+#define showMenuConstraintConstant -8.0f
+
 @interface SWPSlidingMenuViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuLeftConstraint;
-
 @end
 
 @implementation SWPSlidingMenuViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    self.menuLeftConstraint.constant = -270.0f;
+    self.menuLeftConstraint.constant = hideMenuConstraintConstant;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [UIView animateWithDuration:0.5f animations:^{
-        
-        self.menuLeftConstraint.constant = -8.0f;
-        
-        //        self.view.backgroundColor = [UIColor blackColor];
-        //        [self.view setAlpha:0.8f];
-        
+    [UIView animateWithDuration:slideAnimationDuration animations:^{
+        self.menuLeftConstraint.constant = showMenuConstraintConstant;
         [self.view layoutIfNeeded];
     }];
     
     self.isBeingPresented = YES;
+    
+    if([self.delegate respondsToSelector:@selector(didShowSlidingMenuViewController:)]) {
+        [self.delegate didShowSlidingMenuViewController:self];
+    }
 }
 
 - (void)presentSlidingMenuInViewController:(UIViewController *)viewController andView:(UIView *)view {
     [viewController addChildViewController:self];
-    //[self didMoveToParentViewController:viewController];
     [view addSubview:self.view];
 }
 
 - (IBAction)hide {
-    [UIView animateWithDuration:0.5f animations:^{
-        
-        self.menuLeftConstraint.constant = -270.0f;
-        
-        //        self.view.backgroundColor = [UIColor blackColor];
-        //        [self.view setAlpha:0.8f];
-        
+    [UIView animateWithDuration:slideAnimationDuration animations:^{
+        self.menuLeftConstraint.constant = hideMenuConstraintConstant;
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         [self.view removeFromSuperview];
@@ -64,10 +58,12 @@
     }];
 
     self.isBeingPresented = NO;
+    
+    if([self.delegate respondsToSelector:@selector(didHideSlidingMenuViewController:)]) {
+        [self.delegate didHideSlidingMenuViewController:self];
+    }
 }
 
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"MenuContainerSegue"]) {
         if([segue.destinationViewController isKindOfClass:[SWPMenuViewController class]]) {

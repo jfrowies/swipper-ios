@@ -12,9 +12,11 @@
 @class SWPSlidingMenuViewController;
 
 @protocol SWPSlidingMenuViewControllerDelegate <NSObject>
-
 - (void)slidingMenuViewController:(SWPSlidingMenuViewController *)sender
              userDidSelectCategories:(NSArray *)selectedCategories;
+@optional
+- (void)didShowSlidingMenuViewController:(SWPSlidingMenuViewController *)sender;
+- (void)didHideSlidingMenuViewController:(SWPSlidingMenuViewController *)sender;
 
 @end
 
