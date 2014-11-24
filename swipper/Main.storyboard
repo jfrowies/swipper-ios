@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dTi-Ph-aHe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dTi-Ph-aHe">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -97,10 +97,10 @@
         <scene sceneID="ALY-md-BZy">
             <objects>
                 <tableViewController id="LRn-U0-UqB" customClass="SWPListViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="IJN-7r-W2A">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="IJN-7r-W2A">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="placeCell" rowHeight="80" id="tZQ-uk-XYs" customClass="SWPPlaceTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -108,72 +108,81 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="9yb-1X-1ax" userLabel="ListIcon" customClass="UIImageView">
-                                            <rect key="frame" x="0.0" y="2" width="50" height="74"/>
+                                            <rect key="frame" x="0.0" y="2" width="50" height="75"/>
                                             <color key="backgroundColor" red="1" green="0.76078431369999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="NvL-D5-d6o"/>
                                             </constraints>
                                         </view>
+                                        <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="tp8-NG-FtL" userLabel="Background" customClass="UIImageView">
+                                            <rect key="frame" x="50" y="2" width="270" height="75"/>
+                                            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fja-Uv-xMt" userLabel="PlaceNameLabel">
-                                            <rect key="frame" x="55" y="8" width="42" height="21"/>
+                                            <rect key="frame" x="55" y="10" width="50" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="hhx-AK-OyI"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
+                                            <color key="textColor" red="0.15294117647058825" green="0.14509803921568629" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07f-p3-IbO" userLabel="PlaceDistLabel">
-                                            <rect key="frame" x="107" y="11" width="50" height="16"/>
+                                            <rect key="frame" x="115" y="11" width="60" height="20"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="CBN-Jn-BtR"/>
+                                                <constraint firstAttribute="width" constant="60" id="CBN-Jn-BtR"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgj-NT-QbB" userLabel="PlaceCityLabel">
-                                            <rect key="frame" x="55" y="51" width="214" height="20"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <rect key="frame" x="55" y="49" width="214" height="23"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="16"/>
+                                            <color key="textColor" red="0.50588235290000005" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6T-vO-yaP" userLabel="HowToArriveButton">
-                                            <rect key="frame" x="277" y="8" width="43" height="63"/>
+                                            <rect key="frame" x="277" y="8" width="43" height="64"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="43" id="Sav-iq-5fb"/>
                                             </constraints>
                                             <state key="normal" image="HowToArrive"/>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfL-24-uk1" userLabel="PlaceAddressLabel">
-                                            <rect key="frame" x="55" y="31" width="214" height="21"/>
+                                            <rect key="frame" x="55" y="33" width="214" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="Q2y-HX-HnU"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="16"/>
+                                            <color key="textColor" red="0.50588235294117645" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" secondItem="Sgj-NT-QbB" secondAttribute="trailing" constant="8" id="061-Hy-tf3"/>
                                         <constraint firstItem="9yb-1X-1ax" firstAttribute="leading" secondItem="gxL-Fx-jqD" secondAttribute="leadingMargin" constant="-8" id="38H-Os-Yg9"/>
-                                        <constraint firstItem="nfL-24-uk1" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" constant="23" id="D5O-0Z-ohc"/>
+                                        <constraint firstItem="nfL-24-uk1" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" constant="25" id="D5O-0Z-ohc"/>
+                                        <constraint firstAttribute="bottom" secondItem="tp8-NG-FtL" secondAttribute="bottom" constant="3" id="EyI-hn-CUk"/>
                                         <constraint firstItem="07f-p3-IbO" firstAttribute="leading" secondItem="Fja-Uv-xMt" secondAttribute="trailing" priority="998" constant="10" id="Jqb-Bs-Ffk"/>
                                         <constraint firstItem="nfL-24-uk1" firstAttribute="leading" secondItem="9yb-1X-1ax" secondAttribute="trailing" constant="5" id="KeY-Hf-gS3"/>
-                                        <constraint firstItem="Sgj-NT-QbB" firstAttribute="top" secondItem="nfL-24-uk1" secondAttribute="bottom" constant="-1" id="M1i-YL-FNr"/>
+                                        <constraint firstItem="Sgj-NT-QbB" firstAttribute="top" secondItem="nfL-24-uk1" secondAttribute="bottom" constant="-5" id="M1i-YL-FNr"/>
                                         <constraint firstItem="g6T-vO-yaP" firstAttribute="bottom" secondItem="gxL-Fx-jqD" secondAttribute="bottomMargin" id="Mgd-x6-A79"/>
                                         <constraint firstItem="9yb-1X-1ax" firstAttribute="bottom" secondItem="gxL-Fx-jqD" secondAttribute="bottomMargin" constant="5" id="OZg-wt-UlS"/>
                                         <constraint firstItem="Sgj-NT-QbB" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gxL-Fx-jqD" secondAttribute="bottomMargin" id="RNl-z9-Zug"/>
                                         <constraint firstItem="Fja-Uv-xMt" firstAttribute="leading" secondItem="9yb-1X-1ax" secondAttribute="trailing" constant="5" id="VuZ-wH-vUd"/>
                                         <constraint firstItem="07f-p3-IbO" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" constant="3" id="a3S-Wb-iPe"/>
+                                        <constraint firstAttribute="trailing" secondItem="tp8-NG-FtL" secondAttribute="trailing" id="a5c-QT-Swx"/>
                                         <constraint firstItem="Sgj-NT-QbB" firstAttribute="leading" secondItem="9yb-1X-1ax" secondAttribute="trailing" constant="5" id="awh-Ss-dmD"/>
                                         <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" secondItem="nfL-24-uk1" secondAttribute="trailing" constant="8" id="ch4-d0-o9W"/>
-                                        <constraint firstItem="Fja-Uv-xMt" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" id="e14-hy-b9V"/>
+                                        <constraint firstItem="Fja-Uv-xMt" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" constant="2" id="e14-hy-b9V"/>
                                         <constraint firstItem="9yb-1X-1ax" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" constant="-6" id="f6E-je-ukJ"/>
                                         <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="07f-p3-IbO" secondAttribute="trailing" constant="5" id="fmz-G5-eKM"/>
                                         <constraint firstItem="g6T-vO-yaP" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" id="khD-Oo-9jI"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="g6T-vO-yaP" secondAttribute="trailing" constant="-8" id="lC1-bz-RAm"/>
+                                        <constraint firstItem="tp8-NG-FtL" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="top" constant="2" id="tPt-QW-FOq"/>
+                                        <constraint firstItem="tp8-NG-FtL" firstAttribute="leading" secondItem="9yb-1X-1ax" secondAttribute="trailing" id="yHn-Pt-xst"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -280,7 +289,7 @@
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All Categories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46U-eI-8kp">
                                             <rect key="frame" x="20" y="11" width="136" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -330,7 +339,7 @@
                                         </view>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lo8-pO-Y9S">
                                             <rect key="frame" x="20" y="11" width="136" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -379,8 +388,8 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yel-xQ-ubI">
                                             <rect key="frame" x="90" y="7" width="100" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <state key="normal" title="Apply &gt;">
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <state key="normal" title="APPLY &gt;">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
