@@ -13,6 +13,6 @@
 
 + (UIColor *)colorForNavigationBar;
 + (UIColor *)colorForMenuBackground;
-+ (UIColor *)colorForCategory:(id<SWPCategory>)category;
++ (UIColor *)colorForCategoryName:(NSString *)categoryName;
 
 @end

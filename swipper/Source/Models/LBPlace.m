@@ -11,9 +11,24 @@
 
 @implementation LBPlace
 
+- (NSString *)placeId
+{
+    return self.Id;
+}
+
 - (NSString *)placeName
 {
     return self.name;
+}
+
+- (NSString *)placeAddress
+{
+    return self.address;
+}
+
+- (NSString *)placePhone
+{
+    return self.phone;
 }
 
 - (CLLocationCoordinate2D)placeCoordinate
@@ -27,6 +42,20 @@
 - (NSString *)placeCategory
 {
     return self.category;
+}
+
+- (NSString *)placeCity
+{
+    return self.city;
+}
+
+- (NSString *)placeState
+{
+    return self.state;
+}
+- (NSString *)placeCountry
+{
+    return self.country;
 }
 
 @end

@@ -8,7 +8,21 @@
 
 #import "SWPAllCategoriesTableViewCell.h"
 
+@interface SWPAllCategoriesTableViewCell ()
+@property (weak, nonatomic) IBOutlet UIView *checkMarkView;
+@end
+
 @implementation SWPAllCategoriesTableViewCell
+
+#pragma mark - getters/setters
+
+- (void)setCheckBox:(M13Checkbox *)checkBox {
+    _checkBox = checkBox;
+    [self.checkMarkView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.checkMarkView addSubview:_checkBox];
+}
+
+#pragma mark - 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
