@@ -24,6 +24,7 @@
 @property (nonatomic, strong, readwrite) NSArray *selectedCategories;
 @property (nonatomic) MKMapRect mapRectWithData;
 @property (nonatomic, strong) SWPSlidingMenuViewController *slidingMenu;
+@property (nonatomic) bool locationServicesAlreadyAuthorized;
 
 @end
 
@@ -43,6 +44,16 @@
     [self reloadAnnotations];
 }
 
+#define MapViewLocationServicesAlreadyAuthorizedKey @"mapViewLocationServicesAlreadyAuthorizedKey"
+
+- (void)setLocationServicesAlreadyAuthorized:(bool)firstTimeAuthorized {
+    [[NSUserDefaults standardUserDefaults] setInteger:firstTimeAuthorized forKey:MapViewLocationServicesAlreadyAuthorizedKey];
+}
+
+- (bool)locationServicesAlreadyAuthorized {
+    return [[NSUserDefaults standardUserDefaults] integerForKey:MapViewLocationServicesAlreadyAuthorizedKey]
+       ;
+}
 #pragma mark - view lifecycle
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -65,8 +76,11 @@
     {
         [self.locationManager requestWhenInUseAuthorization];
     }
+    
     self.mapView.showsUserLocation = YES;
-    self.mapView.userTrackingMode = MKUserTrackingModeFollow;
+    [self.mapView setRegion:[self loadStoredUserRegion] animated:NO];
+    self.mapView.userTrackingMode = [self loadStoredUserTrackingMode];
+    [self setLocateMeButtonImageForTrackingMode:self.mapView.userTrackingMode];
     
     //UI appearance
     self.navigationController.navigationBar.translucent = NO;
@@ -88,10 +102,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) viewDidAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+}
+
+- (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - target action
@@ -128,6 +151,11 @@
 
 - (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated
 {
+    [self storeUserTrackingMode:mode];
+    [self setLocateMeButtonImageForTrackingMode:mode];
+}
+
+- (void)setLocateMeButtonImageForTrackingMode:(MKUserTrackingMode)mode {
     switch (mode) {
         case MKUserTrackingModeNone:
             [self.userTrackingButton setImage:[UIImage imageNamed:@"LocateMe"]forState:UIControlStateNormal];
@@ -143,6 +171,8 @@
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
+    
+    [self storeUserRegion:self.mapView.region];
     
     MKMapRect mRect = mapView.visibleMapRect;
     
@@ -252,9 +282,52 @@
 
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        self.mapView.showsUserLocation = YES;
-        self.mapView.userTrackingMode = MKUserTrackingModeFollow;
+        if(!self.locationServicesAlreadyAuthorized){
+            self.mapView.showsUserLocation = YES;
+            self.mapView.userTrackingMode = MKUserTrackingModeFollow;
+            self.locationServicesAlreadyAuthorized = YES;
+        }
     }
+}
+
+#pragma mark - Map User Settings
+
+#define MapViewRegionCenterLatitudeKey @"mapViewRegionCenterLatitudeKey"
+#define MapViewRegionCenterLongitudeKey @"mapViewRegionCenterLongitudeKey"
+#define MapViewRegionSpanLatitudeDeltaKey @"mapViewRegionSpanLatitudeDeltaKey"
+#define MapViewRegionSpanLongitudeDeltaKey @"mapViewRegionSpanLongitudeDeltaKey"
+
+- (void)storeUserRegion:(MKCoordinateRegion)region {
+    
+    [[NSUserDefaults standardUserDefaults] setFloat:region.center.latitude forKey:MapViewRegionCenterLatitudeKey];
+    [[NSUserDefaults standardUserDefaults] setFloat:region.center.longitude forKey:MapViewRegionCenterLongitudeKey];
+    [[NSUserDefaults standardUserDefaults] setFloat:region.span.latitudeDelta forKey:MapViewRegionSpanLatitudeDeltaKey];
+    [[NSUserDefaults standardUserDefaults] setFloat:region.span.longitudeDelta forKey:MapViewRegionSpanLongitudeDeltaKey];
+}
+
+- (MKCoordinateRegion)loadStoredUserRegion {
+    
+    MKCoordinateRegion storedRegion;
+    
+    storedRegion.center.latitude = [[NSUserDefaults standardUserDefaults] floatForKey:MapViewRegionCenterLatitudeKey];
+    storedRegion.center.longitude = [[NSUserDefaults standardUserDefaults] floatForKey:MapViewRegionCenterLongitudeKey];
+    storedRegion.span.latitudeDelta = [[NSUserDefaults standardUserDefaults] floatForKey:MapViewRegionSpanLatitudeDeltaKey];
+    storedRegion.span.longitudeDelta = [[NSUserDefaults standardUserDefaults] floatForKey:MapViewRegionSpanLongitudeDeltaKey];
+    
+    return storedRegion;
+}
+
+#define MapViewUserTrackingModeKey @"mapViewUserTrackingModeKey"
+
+- (void)storeUserTrackingMode:(MKUserTrackingMode)trackingMode {
+    
+    [[NSUserDefaults standardUserDefaults] setInteger:trackingMode forKey:MapViewUserTrackingModeKey];
+}
+
+- (MKUserTrackingMode)loadStoredUserTrackingMode {
+    
+    MKUserTrackingMode storedMode = [[NSUserDefaults standardUserDefaults] integerForKey:MapViewUserTrackingModeKey];
+    return storedMode;
 }
 
 #pragma mark - Navigation
