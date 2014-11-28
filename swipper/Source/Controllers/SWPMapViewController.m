@@ -15,6 +15,7 @@
 #import "SWPThemeHelper.h"
 #import "SWPSlidingMenuViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SWPDetailViewController.h"
 
 #define kMaxAllowedDistanceBetweenMapCorners 50000
 
@@ -25,6 +26,8 @@
 @property (nonatomic) MKMapRect mapRectWithData;
 @property (nonatomic, strong) SWPSlidingMenuViewController *slidingMenu;
 @property (nonatomic) bool locationServicesAlreadyAuthorized;
+
+@property (nonatomic, strong) id<SWPPlace> selectedPlace;
 
 @end
 
@@ -148,6 +151,21 @@
 }
 
 #pragma mark - MKMapView delegate implementation
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    if ([view.annotation isKindOfClass:[SWPAnnotation class]]) {
+        SWPAnnotation *annotation = (SWPAnnotation *)view.annotation;
+        self.selectedPlace = annotation.place;
+        
+        [self performSegueWithIdentifier:@"showDetailSegue" sender:self];
+        
+//        SWPDetailViewController *dvc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"detailViewController"] ;
+//        
+//        dvc.place = annotation.place;
+//        
+//        [self.navigationController pushViewController:dvc animated:YES];
+    }
+}
 
 - (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated
 {
@@ -339,6 +357,11 @@
         if([destinationNavigationController.viewControllers.firstObject respondsToSelector:@selector(setPlaces:)]){
             [destinationNavigationController.viewControllers.firstObject performSelector:@selector(setPlaces:) withObject:self.places];
         }
+    }
+    
+    if([segue.identifier isEqualToString:@"showDetailSegue"]) {
+        SWPDetailViewController *detailsViewController = segue.destinationViewController;
+        detailsViewController.place = self.selectedPlace;
     }
 }
 
