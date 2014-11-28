@@ -339,6 +339,9 @@
         if([destinationNavigationController.viewControllers.firstObject respondsToSelector:@selector(setPlaces:)]){
             [destinationNavigationController.viewControllers.firstObject performSelector:@selector(setPlaces:) withObject:self.places];
         }
+        if([destinationNavigationController.viewControllers.firstObject respondsToSelector:@selector(setUserLocation:)]){
+            [destinationNavigationController.viewControllers.firstObject performSelector:@selector(setUserLocation:) withObject:self.mapView.userLocation];
+        }
     }
 }
 

@@ -7,14 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWPPlace.h"
 
 @interface SWPPlaceTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *placeNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *placeDistanceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *placeAddressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *placeCityLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *listIconImageView;
-@property (weak, nonatomic) IBOutlet UIButton *howToArriveButton;
+@property (strong, nonatomic) id<SWPPlace> place;
 
 @end

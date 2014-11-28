@@ -11,6 +11,7 @@
 #import "SWPPlace.h"
 #import "SWPPlaceTableViewCell.h"
 #import "SWPCategoryStore.h"
+#import <MapKit/MKMapItem.h>
 
 @interface SWPListViewController ()
 
@@ -79,6 +80,25 @@
     }
 }
 
+- (IBAction)howToArriveButtonTapped:(UIButton *)sender {
+
+    if([sender.superview.superview isKindOfClass:[SWPPlaceTableViewCell class]]) {
+        SWPPlaceTableViewCell *cell = (SWPPlaceTableViewCell *)sender.superview.superview;
+        id<SWPPlace> place = cell.place;
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:[place placeCoordinate].latitude longitude:[place placeCoordinate].longitude];
+        
+        //TODO: show spinner or some kind of feedback to the user
+        
+        [[[CLGeocoder alloc] init] reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+            MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:placemarks.firstObject];
+            NSArray *mapItems = [NSArray arrayWithObject:destinationMapItem];
+            NSDictionary *launchOptions = [NSDictionary dictionaryWithObject:MKLaunchOptionsDirectionsModeWalking forKey:MKLaunchOptionsDirectionsModeKey];
+            [MKMapItem openMapsWithItems:mapItems launchOptions:launchOptions];
+        }];
+       
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -93,12 +113,9 @@
     
     SWPPlaceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"placeCell" forIndexPath:indexPath];
     id<SWPPlace> place = [self.placesToShow objectAtIndex:indexPath.row];
-    cell.placeNameLabel.text = place.placeName;
-    cell.placeAddressLabel.text = place.placeAddress;
-    cell.placeCityLabel.text = [NSString stringWithFormat:@"%@, %@, %@",place.placeCity,place.placeState,place.placeCountry];
-    cell.listIconImageView.backgroundColor = [SWPThemeHelper colorForCategoryName:place.placeCategory];
-    cell.listIconImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@CellImage",place.placeCategory]];
-    //add distance info
+    
+    cell.place = place;
+    
     return cell;
 }
 

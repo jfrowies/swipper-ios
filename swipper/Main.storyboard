@@ -148,6 +148,9 @@
                                                 <constraint firstAttribute="width" constant="43" id="Sav-iq-5fb"/>
                                             </constraints>
                                             <state key="normal" image="HowToArrive"/>
+                                            <connections>
+                                                <action selector="howToArriveButtonTapped:" destination="LRn-U0-UqB" eventType="touchUpInside" id="JKT-8v-LR7"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfL-24-uk1" userLabel="PlaceAddressLabel">
                                             <rect key="frame" x="55" y="33" width="214" height="21"/>
@@ -186,7 +189,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="howToArriveButton" destination="g6T-vO-yaP" id="qHV-BF-c5b"/>
                                     <outlet property="listIconImageView" destination="9yb-1X-1ax" id="t14-UE-8nc"/>
                                     <outlet property="placeAddressLabel" destination="nfL-24-uk1" id="ioy-7x-8Ty"/>
                                     <outlet property="placeCityLabel" destination="Sgj-NT-QbB" id="XHc-Qj-ACR"/>
