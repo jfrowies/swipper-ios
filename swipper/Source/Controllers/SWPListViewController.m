@@ -12,6 +12,7 @@
 #import "SWPPlaceTableViewCell.h"
 #import "SWPCategoryStore.h"
 #import <MapKit/MKMapItem.h>
+#import "MapKit/MKUserLocation.h"
 #import "SWPLoadingViewController.h"
 
 @interface SWPListViewController ()
@@ -132,6 +133,13 @@
     id<SWPPlace> place = [self.placesToShow objectAtIndex:indexPath.row];
     
     cell.place = place;
+    
+    CLLocation *startLocation = self.userLocation.location;
+    CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:[place placeCoordinate].latitude longitude:[place placeCoordinate].longitude];
+
+    CLLocationDistance distance = [startLocation distanceFromLocation:endLocation];
+    
+    [cell.placeDistanceLabel setText:[NSString stringWithFormat:@"%.1f km",distance / 1000]];
     
     return cell;
 }

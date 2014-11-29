@@ -11,7 +11,6 @@
 
 @interface SWPPlaceTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *placeNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *placeDistanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *placeAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *placeCityLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *listIconImageView;

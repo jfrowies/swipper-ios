@@ -11,6 +11,7 @@
 
 @interface SWPPlaceTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *placeDistanceLabel;
 @property (strong, nonatomic) id<SWPPlace> place;
 
 @end
