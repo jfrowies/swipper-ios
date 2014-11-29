@@ -59,6 +59,7 @@
 		B5CCACB219F470CC00F93564 /* SWPPlaceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CCACB119F470CC00F93564 /* SWPPlaceTableViewCell.m */; };
 		B5D6481E19E8CDE600018852 /* SWPSimpleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D6481D19E8CDE600018852 /* SWPSimpleCategory.m */; };
 		B5D936371A08864F00FF62F8 /* M13Checkbox+Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D936361A08864F00FF62F8 /* M13Checkbox+Menu.m */; };
+		B5E5E3381A2A3D0500E10664 /* SWPLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E5E3361A2A3D0500E10664 /* SWPLoadingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,8 @@
 		B5D6481D19E8CDE600018852 /* SWPSimpleCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPSimpleCategory.m; sourceTree = "<group>"; };
 		B5D936351A08864F00FF62F8 /* M13Checkbox+Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "M13Checkbox+Menu.h"; sourceTree = "<group>"; };
 		B5D936361A08864F00FF62F8 /* M13Checkbox+Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "M13Checkbox+Menu.m"; sourceTree = "<group>"; };
+		B5E5E3351A2A3D0500E10664 /* SWPLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWPLoadingViewController.h; path = ../Views/SWPLoadingViewController.h; sourceTree = "<group>"; };
+		B5E5E3361A2A3D0500E10664 /* SWPLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWPLoadingViewController.m; path = ../Views/SWPLoadingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +316,8 @@
 				05AD1E8419C0A4E900D823DC /* SWPMenuViewController.m */,
 				B50F7A6F1A01CAE800704E45 /* SWPSlidingMenuViewController.h */,
 				B50F7A701A01CAE800704E45 /* SWPSlidingMenuViewController.m */,
+				B5E5E3351A2A3D0500E10664 /* SWPLoadingViewController.h */,
+				B5E5E3361A2A3D0500E10664 /* SWPLoadingViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -500,6 +505,7 @@
 				0585E65019CC9EB900DDC2CD /* SWPApplyTableViewCell.m in Sources */,
 				050F470F19B0F52E00E715A1 /* SWPAnnotation.m in Sources */,
 				0585E65419CCD1C300DDC2CD /* SWPSplashViewController.m in Sources */,
+				B5E5E3381A2A3D0500E10664 /* SWPLoadingViewController.m in Sources */,
 				050F46C719B0F4CA00E715A1 /* swipper.xcdatamodeld in Sources */,
 				0585E65B19CCD7F700DDC2CD /* SWPCategoryStore.m in Sources */,
 				B5AA37C519F4265100C33B5B /* SWPListViewController.m in Sources */,
@@ -595,7 +601,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -628,7 +634,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -648,7 +654,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "swipper/swipper-Prefix.pch";
 				INFOPLIST_FILE = "swipper/swipper-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/swipper/Libraries/OCMock/lib",
@@ -673,7 +679,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "swipper/swipper-Prefix.pch";
 				INFOPLIST_FILE = "swipper/swipper-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/swipper/Libraries/OCMock/lib",

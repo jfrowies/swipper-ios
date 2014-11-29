@@ -216,10 +216,82 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapBarButtonItem" destination="9oM-Qj-PPd" id="8xb-N8-Cwj"/>
+                        <outlet property="menuBarButtonItem" destination="3AF-eD-YyE" id="JQ0-aa-qUd"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dIs-eX-huw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="841" y="1053"/>
+            <point key="canvasLocation" x="831" y="1103"/>
+        </scene>
+        <!--Loading View Controller-->
+        <scene sceneID="4tK-xs-mL3">
+            <objects>
+                <viewController storyboardIdentifier="loadingViewController" id="ZQK-mx-mxM" customClass="SWPLoadingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T3Q-g5-NST"/>
+                        <viewControllerLayoutGuide type="bottom" id="DYB-aT-9kE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kcg-r9-lBx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qA-cc-UI6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6Cs-Dx-l7O">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1a3-ZR-HlP" userLabel="Spinner background">
+                                            <rect key="frame" x="70" y="141" width="180" height="120"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="i9M-p4-UZD">
+                                                    <rect key="frame" x="72" y="25" width="37" height="37"/>
+                                                </activityIndicatorView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Launching maps app" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3v-5F-siY">
+                                                    <rect key="frame" x="10" y="81" width="161" height="20"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="1" green="0.76078431369999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="i9M-p4-UZD" secondAttribute="centerX" id="7aA-81-sto"/>
+                                                <constraint firstAttribute="centerY" secondItem="G3v-5F-siY" secondAttribute="centerY" constant="-31" id="Fil-Jz-mln"/>
+                                                <constraint firstAttribute="centerX" secondItem="G3v-5F-siY" secondAttribute="centerX" id="Hfv-7b-zKf"/>
+                                                <constraint firstAttribute="centerY" secondItem="i9M-p4-UZD" secondAttribute="centerY" constant="16.5" id="fpV-kn-SeK"/>
+                                                <constraint firstAttribute="width" constant="180" id="r2S-Ip-6xy"/>
+                                                <constraint firstAttribute="height" constant="120" id="saA-oF-7gt"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="1a3-ZR-HlP" secondAttribute="centerY" constant="51" id="PNE-a2-K8I"/>
+                                    <constraint firstAttribute="centerX" secondItem="1a3-ZR-HlP" secondAttribute="centerX" id="Yib-8s-nO7"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DYB-aT-9kE" firstAttribute="top" secondItem="4qA-cc-UI6" secondAttribute="bottom" id="JZ7-Zj-Gda"/>
+                            <constraint firstAttribute="trailing" secondItem="4qA-cc-UI6" secondAttribute="trailing" id="hc8-4j-qdG"/>
+                            <constraint firstItem="4qA-cc-UI6" firstAttribute="leading" secondItem="Kcg-r9-lBx" secondAttribute="leading" id="idG-gd-I5A"/>
+                            <constraint firstItem="4qA-cc-UI6" firstAttribute="top" secondItem="Kcg-r9-lBx" secondAttribute="top" id="ueb-19-SvU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gje-kS-CRO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="spinnerBackgroundView" destination="1a3-ZR-HlP" id="JQJ-Uj-227"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qVI-fW-j8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="831" y="1822"/>
         </scene>
         <!--Sliding Menu View Controller-->
         <scene sceneID="chJ-f9-sgM">
@@ -270,7 +342,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1068" y="-386"/>
+            <point key="canvasLocation" x="386" y="-340"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="tlo-Ct-U6W">
@@ -412,7 +484,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NgJ-wp-3XM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1456" y="-386"/>
+            <point key="canvasLocation" x="774" y="-340"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2me-KA-gmP">

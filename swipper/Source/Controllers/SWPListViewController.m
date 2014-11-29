@@ -12,12 +12,15 @@
 #import "SWPPlaceTableViewCell.h"
 #import "SWPCategoryStore.h"
 #import <MapKit/MKMapItem.h>
+#import "SWPLoadingViewController.h"
 
 @interface SWPListViewController ()
 
 @property (nonatomic, strong, readwrite) NSArray *selectedCategories;
 @property (nonatomic, strong) SWPSlidingMenuViewController *slidingMenu;
 @property (nonatomic, strong) NSArray *placesToShow;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *mapBarButtonItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuBarButtonItem;
 
 @end
 
@@ -87,15 +90,29 @@
         id<SWPPlace> place = cell.place;
         CLLocation *location = [[CLLocation alloc] initWithLatitude:[place placeCoordinate].latitude longitude:[place placeCoordinate].longitude];
         
-        //TODO: show spinner or some kind of feedback to the user
+        SWPLoadingViewController *loadingViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loadingViewController"];
+        [self.tableView scrollRectToVisible:CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height) animated:NO];
+        self.tableView.scrollEnabled = NO;
+        self.menuBarButtonItem.enabled = NO;
+        self.mapBarButtonItem.enabled = NO;
+        [self addChildViewController:loadingViewController];
+        [self.view addSubview:loadingViewController.view];
         
         [[[CLGeocoder alloc] init] reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-            MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:placemarks.firstObject];
-            NSArray *mapItems = [NSArray arrayWithObject:destinationMapItem];
-            NSDictionary *launchOptions = [NSDictionary dictionaryWithObject:MKLaunchOptionsDirectionsModeWalking forKey:MKLaunchOptionsDirectionsModeKey];
-            [MKMapItem openMapsWithItems:mapItems launchOptions:launchOptions];
+            if(!error) {
+                MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:placemarks.firstObject];
+                NSArray *mapItems = [NSArray arrayWithObject:destinationMapItem];
+                NSDictionary *launchOptions = [NSDictionary dictionaryWithObject:MKLaunchOptionsDirectionsModeWalking forKey:MKLaunchOptionsDirectionsModeKey];
+                [MKMapItem openMapsWithItems:mapItems launchOptions:launchOptions];
+                self.tableView.scrollEnabled = YES;
+                self.menuBarButtonItem.enabled = YES;
+                self.mapBarButtonItem.enabled = YES;
+                [loadingViewController removeFromParentViewController];
+                [loadingViewController.view removeFromSuperview];
+            } else {
+                //TODO: inform error to the user
+            }
         }];
-       
     }
 }
 
