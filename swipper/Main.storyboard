@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dTi-Ph-aHe">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -74,7 +73,7 @@
                         <barButtonItem key="rightBarButtonItem" image="ListIcon" id="npK-Fp-EmJ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="fzN-UF-49i" kind="modal" modalTransitionStyle="flipHorizontal" id="exa-wO-UpO"/>
+                                <segue destination="fzN-UF-49i" kind="modal" identifier="showListNavigationController" modalTransitionStyle="flipHorizontal" id="exa-wO-UpO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -128,17 +127,17 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07f-p3-IbO" userLabel="PlaceDistLabel">
-                                            <rect key="frame" x="115" y="11" width="60" height="20"/>
+                                            <rect key="frame" x="115" y="12" width="60" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="CBN-Jn-BtR"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgj-NT-QbB" userLabel="PlaceCityLabel">
                                             <rect key="frame" x="55" y="49" width="214" height="23"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="15"/>
                                             <color key="textColor" red="0.50588235290000005" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -157,7 +156,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="Q2y-HX-HnU"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="15"/>
                                             <color key="textColor" red="0.50588235294117645" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -175,7 +174,7 @@
                                         <constraint firstItem="9yb-1X-1ax" firstAttribute="bottom" secondItem="gxL-Fx-jqD" secondAttribute="bottomMargin" constant="5" id="OZg-wt-UlS"/>
                                         <constraint firstItem="Sgj-NT-QbB" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gxL-Fx-jqD" secondAttribute="bottomMargin" id="RNl-z9-Zug"/>
                                         <constraint firstItem="Fja-Uv-xMt" firstAttribute="leading" secondItem="9yb-1X-1ax" secondAttribute="trailing" constant="5" id="VuZ-wH-vUd"/>
-                                        <constraint firstItem="07f-p3-IbO" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" constant="3" id="a3S-Wb-iPe"/>
+                                        <constraint firstItem="07f-p3-IbO" firstAttribute="top" secondItem="gxL-Fx-jqD" secondAttribute="topMargin" constant="4" id="a3S-Wb-iPe"/>
                                         <constraint firstAttribute="trailing" secondItem="tp8-NG-FtL" secondAttribute="trailing" id="a5c-QT-Swx"/>
                                         <constraint firstItem="Sgj-NT-QbB" firstAttribute="leading" secondItem="9yb-1X-1ax" secondAttribute="trailing" constant="5" id="awh-Ss-dmD"/>
                                         <constraint firstItem="g6T-vO-yaP" firstAttribute="leading" secondItem="nfL-24-uk1" secondAttribute="trailing" constant="8" id="ch4-d0-o9W"/>

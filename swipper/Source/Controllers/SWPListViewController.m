@@ -31,14 +31,35 @@
 
 - (void)setPlaces:(NSArray *)places
 {
-    _places = places;
-    self.placesToShow = [self filterPlaces];
+    //ordering places by distance to user location
+    
+    NSArray *orderedPlaces = [places sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+      
+        CLLocation *startLocation = self.userLocation.location;
+        CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:[obj1 placeCoordinate].latitude longitude:[obj1 placeCoordinate].longitude];
+        CLLocationDistance distance1 = [startLocation distanceFromLocation:endLocation];
+
+        endLocation = [[CLLocation alloc] initWithLatitude:[obj2 placeCoordinate].latitude longitude:[obj2 placeCoordinate].longitude];
+        CLLocationDistance distance2 = [startLocation distanceFromLocation:endLocation];
+        
+        if (distance1 < distance2) {
+            return NSOrderedAscending;
+        } else if (distance1 > distance2) {
+            return NSOrderedDescending;
+        }else {
+          return NSOrderedSame;
+        }
+        
+    }];
+    
+    _places = orderedPlaces;
+    self.placesToShow = [self filterPlaces:_places usingCategories:self.selectedCategories];
 }
 
 - (void)setSelectedCategories:(NSArray *)selectedCategories
 {
     _selectedCategories = selectedCategories;
-    self.placesToShow = [self filterPlaces];
+    self.placesToShow = [self filterPlaces:self.places usingCategories:selectedCategories];
 }
 
 - (void)setPlacesToShow:(NSArray *)placesToShow
@@ -136,7 +157,6 @@
     
     CLLocation *startLocation = self.userLocation.location;
     CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:[place placeCoordinate].latitude longitude:[place placeCoordinate].longitude];
-
     CLLocationDistance distance = [startLocation distanceFromLocation:endLocation];
     
     [cell.placeDistanceLabel setText:[NSString stringWithFormat:@"%.1f km",distance / 1000]];
@@ -162,13 +182,13 @@
 
 #pragma mark - Places filtering
 
-- (NSArray *)filterPlaces {
+- (NSArray *)filterPlaces:(NSArray *)places usingCategories:(NSArray *)selectedCategories {
     
-    NSMutableArray *filteredPlaces = [NSMutableArray arrayWithCapacity:self.places.count];
+    NSMutableArray *filteredPlaces = [NSMutableArray arrayWithCapacity:places.count];
     
-    for (id<SWPPlace> place in self.places) {
+    for (id<SWPPlace> place in places) {
         
-        NSUInteger index =[self.selectedCategories indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        NSUInteger index =[selectedCategories indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
             if([obj conformsToProtocol:@protocol(SWPCategory)])
             {
                 id<SWPCategory> category = (id<SWPCategory>) obj;

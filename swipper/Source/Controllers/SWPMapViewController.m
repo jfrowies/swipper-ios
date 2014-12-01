@@ -15,6 +15,7 @@
 #import "SWPThemeHelper.h"
 #import "SWPSlidingMenuViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SWPListViewController.h"
 
 #define kMaxAllowedDistanceBetweenMapCorners 50000
 
@@ -155,20 +156,6 @@
     [self setLocateMeButtonImageForTrackingMode:mode];
 }
 
-- (void)setLocateMeButtonImageForTrackingMode:(MKUserTrackingMode)mode {
-    switch (mode) {
-        case MKUserTrackingModeNone:
-            [self.userTrackingButton setImage:[UIImage imageNamed:@"LocateMe"]forState:UIControlStateNormal];
-            break;
-        case MKUserTrackingModeFollow:
-            [self.userTrackingButton setImage:[UIImage imageNamed:@"LocateMePressed"]forState:UIControlStateNormal];
-            break;
-        case MKUserTrackingModeFollowWithHeading:
-        default:
-            break;
-    }
-}
-
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
     
@@ -193,7 +180,6 @@
     if(MKMapRectContainsRect(self.mapRectWithData, mRect))
         return;
     
-    
     //getting nw and sw points, the result is bigger than the current map region to avoid recurrent service calls.
     MKMapPoint nwMapPoint = MKMapPointMake(mRect.origin.x - width, mRect.origin.y - height);
     MKMapPoint seMapPoint = MKMapPointMake(MKMapRectGetMaxX(mRect) + width, MKMapRectGetMaxY(mRect) + width);
@@ -203,7 +189,6 @@
 
     CLLocationCoordinate2D nwCoord = MKCoordinateForMapPoint(nwMapPoint);
     CLLocationCoordinate2D seCoord = MKCoordinateForMapPoint(seMapPoint);
-    
 
     //calling the service
     __weak SWPMapViewController *weakSelf = self;
@@ -233,7 +218,6 @@
     categoryAnnotationView.canShowCallout = YES;
         
     SWPAnnotation *categoryAnnotation = (SWPAnnotation *)annotation;
-//    NSString *categoryName = [[SWPCategoryStore sharedInstance] categoryNameForId:categoryAnnotation.place.placeCategoryId];
     NSString *categoryName = categoryAnnotation.place.placeCategory;
     UIImage *annotationImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@PinImage",categoryName]];
     if (!annotationImage) annotationImage = [UIImage imageNamed:@"DefaultPinImage"];
@@ -241,6 +225,7 @@
 
     return categoryAnnotationView;
 }
+
 
 #pragma mark -
 
@@ -270,6 +255,20 @@
     [self.mapView addAnnotations:[newAnnotations copy]];
 }
 
+- (void)setLocateMeButtonImageForTrackingMode:(MKUserTrackingMode)mode {
+    switch (mode) {
+        case MKUserTrackingModeNone:
+            [self.userTrackingButton setImage:[UIImage imageNamed:@"LocateMe"]forState:UIControlStateNormal];
+            break;
+        case MKUserTrackingModeFollow:
+            [self.userTrackingButton setImage:[UIImage imageNamed:@"LocateMePressed"]forState:UIControlStateNormal];
+            break;
+        case MKUserTrackingModeFollowWithHeading:
+        default:
+            break;
+    }
+}
+
 #pragma mark - SWPSlidingMenuViewControllerDelegate implementation
 
 - (void)slidingMenuViewController:(SWPSlidingMenuViewController *)sender userDidSelectCategories:(NSArray *)selectedCategories
@@ -280,7 +279,7 @@
 
 #pragma mark - CLLocationManager delegate implementation
 
--(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
         if(!self.locationServicesAlreadyAuthorized){
             self.mapView.showsUserLocation = YES;
@@ -308,12 +307,10 @@
 - (MKCoordinateRegion)loadStoredUserRegion {
     
     MKCoordinateRegion storedRegion;
-    
     storedRegion.center.latitude = [[NSUserDefaults standardUserDefaults] floatForKey:MapViewRegionCenterLatitudeKey];
     storedRegion.center.longitude = [[NSUserDefaults standardUserDefaults] floatForKey:MapViewRegionCenterLongitudeKey];
     storedRegion.span.latitudeDelta = [[NSUserDefaults standardUserDefaults] floatForKey:MapViewRegionSpanLatitudeDeltaKey];
     storedRegion.span.longitudeDelta = [[NSUserDefaults standardUserDefaults] floatForKey:MapViewRegionSpanLongitudeDeltaKey];
-    
     return storedRegion;
 }
 
@@ -333,14 +330,12 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    //assigning places from map to the list for testing propouses
-    if([segue.destinationViewController isKindOfClass:[UINavigationController class]]){
+    if([segue.identifier isEqualToString:@"showListNavigationController"]) {
         UINavigationController *destinationNavigationController= segue.destinationViewController;
-        if([destinationNavigationController.viewControllers.firstObject respondsToSelector:@selector(setPlaces:)]){
-            [destinationNavigationController.viewControllers.firstObject performSelector:@selector(setPlaces:) withObject:self.places];
-        }
-        if([destinationNavigationController.viewControllers.firstObject respondsToSelector:@selector(setUserLocation:)]){
-            [destinationNavigationController.viewControllers.firstObject performSelector:@selector(setUserLocation:) withObject:self.mapView.userLocation];
+        if([destinationNavigationController.viewControllers.firstObject isKindOfClass:[SWPListViewController class]]) {
+            SWPListViewController *listViewController = destinationNavigationController.viewControllers.firstObject;
+            listViewController.userLocation = self.mapView.userLocation;
+            listViewController.places = self.places;
         }
     }
 }
