@@ -14,6 +14,8 @@
 
 @interface SWPSlidingMenuViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuLeftConstraint;
+@property (nonatomic) bool animateShow;
+@property (nonatomic) bool animateHide;
 @end
 
 @implementation SWPSlidingMenuViewController
@@ -31,10 +33,15 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [UIView animateWithDuration:slideAnimationDuration animations:^{
+    if(self.animateShow) {
+        [UIView animateWithDuration:slideAnimationDuration animations:^{
+            self.menuLeftConstraint.constant = showMenuConstraintConstant;
+            [self.view layoutIfNeeded];
+        }];
+    } else {
         self.menuLeftConstraint.constant = showMenuConstraintConstant;
         [self.view layoutIfNeeded];
-    }];
+    }
     
     self.isBeingPresented = YES;
     
@@ -43,25 +50,43 @@
     }
 }
 
-- (void)presentSlidingMenuInViewController:(UIViewController *)viewController andView:(UIView *)view {
+- (void)presentSlidingMenuInViewController:(UIViewController *)viewController andView:(UIView *)view animated:(bool)animated {
+    self.animateShow = animated;
     [viewController addChildViewController:self];
     [view addSubview:self.view];
 }
 
-- (IBAction)hide {
-    [UIView animateWithDuration:slideAnimationDuration animations:^{
+- (IBAction)hideAnimated:(bool)animated {
+    self.animateHide = animated;
+    
+    if (self.animateHide) {
+        [UIView animateWithDuration:slideAnimationDuration animations:^{
+            self.menuLeftConstraint.constant = hideMenuConstraintConstant;
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            [self.view removeFromSuperview];
+            [self removeFromParentViewController];
+        }];
+    } else {
         self.menuLeftConstraint.constant = hideMenuConstraintConstant;
         [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
         [self.view removeFromSuperview];
         [self removeFromParentViewController];
-    }];
+    }
 
     self.isBeingPresented = NO;
     
     if([self.delegate respondsToSelector:@selector(didHideSlidingMenuViewController:)]) {
         [self.delegate didHideSlidingMenuViewController:self];
     }
+}
+
+- (IBAction)didSwipe:(id)sender {
+    [self hideAnimated:YES];
+}
+
+- (IBAction)didTap:(id)sender {
+    [self hideAnimated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

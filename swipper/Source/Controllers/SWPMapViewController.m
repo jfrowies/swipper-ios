@@ -26,6 +26,8 @@
 @property (nonatomic) MKMapRect mapRectWithData;
 @property (nonatomic, strong) SWPSlidingMenuViewController *slidingMenu;
 @property (nonatomic) bool locationServicesAlreadyAuthorized;
+@property (nonatomic) bool appAlreadyLaunchedBefore;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *listBarButtonItem;
 
 @end
 
@@ -42,6 +44,7 @@
 - (void)setSelectedCategories:(NSArray *)selectedCategories
 {
     _selectedCategories = selectedCategories;
+    [[SWPCategoryStore sharedInstance] setSelectedCategories:selectedCategories];
     [self reloadAnnotations];
 }
 
@@ -55,6 +58,7 @@
     return [[NSUserDefaults standardUserDefaults] integerForKey:MapViewLocationServicesAlreadyAuthorizedKey]
        ;
 }
+
 #pragma mark - view lifecycle
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -65,6 +69,9 @@
     }
     return self;
 }
+
+
+#define AppAlreadyLaunchedBeforeKey @"AppAlreadyLaunchedBeforeKey"
 
 - (void)viewDidLoad
 {
@@ -95,6 +102,8 @@
     self.slidingMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SlidingMenuViewController"];
     
     self.selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
+    
+    self.appAlreadyLaunchedBefore = [[NSUserDefaults standardUserDefaults] boolForKey:AppAlreadyLaunchedBeforeKey];
 }
 
 - (void)didReceiveMemoryWarning
@@ -106,6 +115,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
+    if(!self.appAlreadyLaunchedBefore) {
+        [self.slidingMenu presentSlidingMenuInViewController:self andView:self.view animated:NO];
+        self.slidingMenu.delegate = self;
+
+        //TODO: show onboarding screen
+    }
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -140,11 +155,10 @@
 - (IBAction)showMenu
 {
     if(!self.slidingMenu.isBeingPresented) {
-        [self.slidingMenu presentSlidingMenuInViewController:self andView:self.view];
+        [self.slidingMenu presentSlidingMenuInViewController:self andView:self.view animated:YES];
         self.slidingMenu.delegate = self;
     }else {
-        self.slidingMenu.delegate = nil;
-        [self.slidingMenu hide];
+        [self.slidingMenu hideAnimated:YES];
     }
 }
 
@@ -273,8 +287,27 @@
 
 - (void)slidingMenuViewController:(SWPSlidingMenuViewController *)sender userDidSelectCategories:(NSArray *)selectedCategories
 {
+    if(!self.appAlreadyLaunchedBefore) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:AppAlreadyLaunchedBeforeKey];
+    }
     self.selectedCategories = selectedCategories;
-    [self.slidingMenu hide];
+    [self.slidingMenu hideAnimated:YES];
+}
+
+- (void)didShowSlidingMenuViewController:(SWPSlidingMenuViewController *)sender {
+    self.listBarButtonItem.enabled = NO;
+    [UIView animateWithDuration:0.2f animations:^{
+        self.mapView.alpha = 0.5f;
+        self.userTrackingButton.alpha = 0.5f;
+    }];
+}
+
+- (void)didHideSlidingMenuViewController:(SWPSlidingMenuViewController *)sender {
+    self.listBarButtonItem.enabled = YES;
+    [UIView animateWithDuration:0.2f animations:^{
+        self.mapView.alpha = 1;
+        self.userTrackingButton.alpha = 1;
+    }];
 }
 
 #pragma mark - CLLocationManager delegate implementation

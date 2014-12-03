@@ -26,7 +26,7 @@
 @property (nonatomic) BOOL isBeingPresented;
 
 - (void)presentSlidingMenuInViewController:(UIViewController *)viewController
-                                   andView:(UIView *)view;
-- (void)hide;
+                                   andView:(UIView *)view animated:(bool)animated;
+- (void)hideAnimated:(bool)animated;
 
 @end

@@ -79,6 +79,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="listBarButtonItem" destination="npK-Fp-EmJ" id="3NJ-5h-hI2"/>
                         <outlet property="mapView" destination="Hdq-j5-bgF" id="TCa-ZU-4dz"/>
                         <outlet property="userTrackingButton" destination="PZ4-a9-yrO" id="P5f-W6-qVA"/>
                     </connections>
@@ -332,12 +333,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQ4-Dg-W4q" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="left" id="zu6-ya-ua7">
                     <connections>
-                        <action selector="hide" destination="oEU-vv-8Zi" id="dYm-b6-sGn"/>
+                        <action selector="didSwipe:" destination="oEU-vv-8Zi" id="7Ee-RG-uCX"/>
                     </connections>
                 </swipeGestureRecognizer>
                 <tapGestureRecognizer id="UVS-qA-8Bd">
                     <connections>
-                        <action selector="hide" destination="oEU-vv-8Zi" id="ez7-gb-j3m"/>
+                        <action selector="didTap:" destination="oEU-vv-8Zi" id="551-EF-KCe"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

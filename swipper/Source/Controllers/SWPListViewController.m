@@ -59,6 +59,7 @@
 - (void)setSelectedCategories:(NSArray *)selectedCategories
 {
     _selectedCategories = selectedCategories;
+    [[SWPCategoryStore sharedInstance] setSelectedCategories:selectedCategories];
     self.placesToShow = [self filterPlaces:self.places usingCategories:selectedCategories];
 }
 
@@ -98,10 +99,10 @@
 {
     if(!self.slidingMenu.isBeingPresented) {
         [self.tableView scrollRectToVisible:CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height) animated:NO];
-        [self.slidingMenu presentSlidingMenuInViewController:self andView:self.view];
+        [self.slidingMenu presentSlidingMenuInViewController:self andView:self.view animated:YES];
         self.slidingMenu.delegate = self;
     }else {
-        [self.slidingMenu hide];
+        [self.slidingMenu hideAnimated:YES];
     }
 }
 
@@ -169,15 +170,23 @@
 - (void)slidingMenuViewController:(SWPSlidingMenuViewController *)sender userDidSelectCategories:(NSArray *)selectedCategories
 {
     self.selectedCategories = selectedCategories;
-    [self.slidingMenu hide];
+    [self.slidingMenu hideAnimated:YES];
 }
 
 - (void)didShowSlidingMenuViewController:(SWPSlidingMenuViewController *)sender {
     self.tableView.scrollEnabled = NO;
+    self.mapBarButtonItem.enabled = NO;
+//    [UIView animateWithDuration:0.2f animations:^{
+//        self.tableView.alpha = 0.5f;
+//    }];
 }
 
 - (void)didHideSlidingMenuViewController:(SWPSlidingMenuViewController *)sender {
     self.tableView.scrollEnabled = YES;
+    self.mapBarButtonItem.enabled = YES;
+//    [UIView animateWithDuration:0.2f animations:^{
+//        self.tableView.alpha = 1;
+//    }];
 }
 
 #pragma mark - Places filtering
