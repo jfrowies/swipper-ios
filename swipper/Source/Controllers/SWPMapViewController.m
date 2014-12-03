@@ -33,6 +33,8 @@
 
 @implementation SWPMapViewController
 
+@synthesize selectedCategories = _selectedCategories;
+
 #pragma mark - getters/setters
 
 - (void)setPlaces:(NSArray *)places
@@ -46,6 +48,15 @@
     _selectedCategories = selectedCategories;
     [[SWPCategoryStore sharedInstance] setSelectedCategories:selectedCategories];
     [self reloadAnnotations];
+}
+
+- (NSArray *)selectedCategories {
+
+    if(!_selectedCategories) {
+        _selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
+    }
+    
+    return _selectedCategories;
 }
 
 #define MapViewLocationServicesAlreadyAuthorizedKey @"mapViewLocationServicesAlreadyAuthorizedKey"
@@ -100,8 +111,6 @@
     self.userTrackingButton.clipsToBounds = YES;
     
     self.slidingMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SlidingMenuViewController"];
-    
-    self.selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
     
     self.appAlreadyLaunchedBefore = [[NSUserDefaults standardUserDefaults] boolForKey:AppAlreadyLaunchedBeforeKey];
 }

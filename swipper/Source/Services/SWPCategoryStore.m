@@ -12,16 +12,24 @@
 
 @implementation SWPCategoryStore
 
-#pragma mark - 
+#pragma mark - Setters/Getters
 
-//- (NSString *)categoryNameForId:(NSString *)categoryId
-//{
-//    for (id<SWPCategory> category in self.placesCategories) {
-//        if([[category categoryId] isEqualToString:categoryId]) return [category categoryName];
-//    }
-//    
-//    return @"defaultPin";
-//}
+#define AppSelectedCategoriesKey @"appSelectedCategoriesKey"
+
+- (void)setSelectedCategories:(NSArray *)selectedCategories {
+    _selectedCategories = selectedCategories;
+    
+    //saving selected categories in NSUserDefaults
+    NSMutableArray *encodedCategories = [NSMutableArray arrayWithCapacity:selectedCategories.count];
+    
+    for (SWPSimpleCategory *category in selectedCategories) {
+        [encodedCategories addObject: [NSKeyedArchiver archivedDataWithRootObject:category]];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:encodedCategories forKey:AppSelectedCategoriesKey];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 #pragma mark - Singleton implementation
 
@@ -46,7 +54,23 @@
                                     [SWPSimpleCategory categoryWithName:@"Car Rental"],nil];
         
         self.placesCategories = [categoriesArray copy];
-        self.selectedCategories = [categoriesArray copy];
+        
+        NSArray *encodedCategories = [[NSUserDefaults standardUserDefaults] objectForKey:AppSelectedCategoriesKey];
+        
+        NSMutableArray *selectedCategories = [NSMutableArray array];
+        
+        if(encodedCategories) {
+            for (NSData *encodedCategory in encodedCategories) {
+                [selectedCategories addObject:[NSKeyedUnarchiver unarchiveObjectWithData:encodedCategory]];
+            }
+        }
+        
+        if(selectedCategories.count > 0) {
+            _selectedCategories = selectedCategories;
+        }else{
+            _selectedCategories = [categoriesArray copy];
+        }
+
     }
     return self;
 }

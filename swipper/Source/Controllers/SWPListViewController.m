@@ -31,6 +31,8 @@
 
 #pragma mark - Getters/Setters
 
+@synthesize selectedCategories = _selectedCategories;
+
 - (void)setPlaces:(NSArray *)places
 {
     //ordering places by distance to user location
@@ -65,6 +67,15 @@
     self.placesToShow = [self filterPlaces:self.places usingCategories:selectedCategories];
 }
 
+- (NSArray *)selectedCategories {
+    
+    if(!_selectedCategories) {
+        _selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
+    }
+    
+    return _selectedCategories;
+}
+
 - (void)setPlacesToShow:(NSArray *)placesToShow
 {
     _placesToShow = placesToShow;
@@ -82,8 +93,6 @@
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
     self.slidingMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SlidingMenuViewController"];
-    
-    self.selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -100,7 +109,6 @@
 - (IBAction)showMenu
 {
     if(!self.slidingMenu.isBeingPresented) {
-//        [self.tableView scrollRectToVisible:CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height) animated:NO];
         [self.slidingMenu presentSlidingMenuInViewController:self andView:self.view animated:YES];
         self.slidingMenu.delegate = self;
     }else {
@@ -116,8 +124,6 @@
         CLLocation *location = [[CLLocation alloc] initWithLatitude:[place placeCoordinate].latitude longitude:[place placeCoordinate].longitude];
         
         SWPLoadingViewController *loadingViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loadingViewController"];
-//        [self.tableView scrollRectToVisible:CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height) animated:NO];
-//        self.tableView.scrollEnabled = NO;
         self.menuBarButtonItem.enabled = NO;
         self.mapBarButtonItem.enabled = NO;
         [self addChildViewController:loadingViewController];
@@ -129,7 +135,6 @@
                 NSArray *mapItems = [NSArray arrayWithObject:destinationMapItem];
                 NSDictionary *launchOptions = [NSDictionary dictionaryWithObject:MKLaunchOptionsDirectionsModeWalking forKey:MKLaunchOptionsDirectionsModeKey];
                 [MKMapItem openMapsWithItems:mapItems launchOptions:launchOptions];
-//                self.tableView.scrollEnabled = YES;
                 self.menuBarButtonItem.enabled = YES;
                 self.mapBarButtonItem.enabled = YES;
                 [loadingViewController removeFromParentViewController];
@@ -176,7 +181,6 @@
 }
 
 - (void)didShowSlidingMenuViewController:(SWPSlidingMenuViewController *)sender {
-//    self.tableView.scrollEnabled = NO;
     self.mapBarButtonItem.enabled = NO;
     [UIView animateWithDuration:0.2f animations:^{
         self.tableView.alpha = 0.5f;
@@ -184,7 +188,6 @@
 }
 
 - (void)didHideSlidingMenuViewController:(SWPSlidingMenuViewController *)sender {
-//    self.tableView.scrollEnabled = YES;
     self.mapBarButtonItem.enabled = YES;
     [UIView animateWithDuration:0.2f animations:^{
         self.tableView.alpha = 1;

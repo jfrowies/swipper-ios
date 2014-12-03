@@ -21,6 +21,22 @@
 
 @implementation SWPMenuViewController
 
+//#pragma mark - Getters/Setters
+//
+//- (NSArray *)placesCategories {
+//    if(!_placesCategories) {
+//        _placesCategories = [[SWPCategoryStore sharedInstance] placesCategories];
+//    }
+//    return _placesCategories;
+//}
+//
+//- (NSArray *)selectedCategories {
+//    if(!_selectedCategories) {
+//        _selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
+//    }
+//    return _selectedCategories;
+//}
+
 #pragma mark - View life cycle
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -45,8 +61,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    //fetch categories from singleton
-    //disgusting, I know.
     self.placesCategories = [[SWPCategoryStore sharedInstance] placesCategories];
     self.selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
     
@@ -100,7 +114,8 @@
         
         [cell setCheckBox:[M13Checkbox checkboxForMenu]];
         
-        if([self.selectedCategories indexOfObjectIdenticalTo:category] == NSNotFound)
+        
+        if([self.selectedCategories indexOfObject:category] == NSNotFound)
              cell.checkBox.checkState = NO;
         else
              cell.checkBox.checkState = YES;
@@ -231,7 +246,6 @@
         }
     }
     
-    [[SWPCategoryStore sharedInstance] setSelectedCategories:selectedCategories];
     [self.delegate menuViewController:self userDidSelectCategories:selectedCategories];
 }
 
