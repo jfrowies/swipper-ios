@@ -10,7 +10,7 @@
 #import <MapKit/MKMapView.h>
 #import "SWPSlidingMenuViewController.h"
 
-@interface SWPListViewController : UITableViewController <SWPSlidingMenuViewControllerDelegate>
+@interface SWPListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,SWPSlidingMenuViewControllerDelegate>
 
 @property (nonatomic, strong) MKUserLocation *userLocation;
 @property (nonatomic, strong) NSArray *places;

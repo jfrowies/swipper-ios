@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *mapBarButtonItem;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuBarButtonItem;
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation SWPListViewController
@@ -98,7 +100,7 @@
 - (IBAction)showMenu
 {
     if(!self.slidingMenu.isBeingPresented) {
-        [self.tableView scrollRectToVisible:CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height) animated:NO];
+//        [self.tableView scrollRectToVisible:CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height) animated:NO];
         [self.slidingMenu presentSlidingMenuInViewController:self andView:self.view animated:YES];
         self.slidingMenu.delegate = self;
     }else {
@@ -114,8 +116,8 @@
         CLLocation *location = [[CLLocation alloc] initWithLatitude:[place placeCoordinate].latitude longitude:[place placeCoordinate].longitude];
         
         SWPLoadingViewController *loadingViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loadingViewController"];
-        [self.tableView scrollRectToVisible:CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height) animated:NO];
-        self.tableView.scrollEnabled = NO;
+//        [self.tableView scrollRectToVisible:CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.frame.size.height) animated:NO];
+//        self.tableView.scrollEnabled = NO;
         self.menuBarButtonItem.enabled = NO;
         self.mapBarButtonItem.enabled = NO;
         [self addChildViewController:loadingViewController];
@@ -127,7 +129,7 @@
                 NSArray *mapItems = [NSArray arrayWithObject:destinationMapItem];
                 NSDictionary *launchOptions = [NSDictionary dictionaryWithObject:MKLaunchOptionsDirectionsModeWalking forKey:MKLaunchOptionsDirectionsModeKey];
                 [MKMapItem openMapsWithItems:mapItems launchOptions:launchOptions];
-                self.tableView.scrollEnabled = YES;
+//                self.tableView.scrollEnabled = YES;
                 self.menuBarButtonItem.enabled = YES;
                 self.mapBarButtonItem.enabled = YES;
                 [loadingViewController removeFromParentViewController];
@@ -174,19 +176,19 @@
 }
 
 - (void)didShowSlidingMenuViewController:(SWPSlidingMenuViewController *)sender {
-    self.tableView.scrollEnabled = NO;
+//    self.tableView.scrollEnabled = NO;
     self.mapBarButtonItem.enabled = NO;
-//    [UIView animateWithDuration:0.2f animations:^{
-//        self.tableView.alpha = 0.5f;
-//    }];
+    [UIView animateWithDuration:0.2f animations:^{
+        self.tableView.alpha = 0.5f;
+    }];
 }
 
 - (void)didHideSlidingMenuViewController:(SWPSlidingMenuViewController *)sender {
-    self.tableView.scrollEnabled = YES;
+//    self.tableView.scrollEnabled = YES;
     self.mapBarButtonItem.enabled = YES;
-//    [UIView animateWithDuration:0.2f animations:^{
-//        self.tableView.alpha = 1;
-//    }];
+    [UIView animateWithDuration:0.2f animations:^{
+        self.tableView.alpha = 1;
+    }];
 }
 
 #pragma mark - Places filtering
