@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "M13Checkbox.h"
+#import "SWPCategory.h"
 
 @interface SWPCategoryTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *categoryName;
-@property (weak, nonatomic) IBOutlet UIView *categoryColorView;
+@property (strong, nonatomic) id<SWPCategory> category;
 @property (weak, nonatomic) M13Checkbox *checkBox;
 @end

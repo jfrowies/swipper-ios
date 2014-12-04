@@ -47,7 +47,7 @@
 
 - (void)downloadAppData
 {
-    //in the futuru we should download some data again
+    //in the future we should download some data again
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self performSegueWithIdentifier:@"startApplicationSegue" sender:self];
     });
@@ -68,7 +68,5 @@
     self.retrybutton.hidden = YES;
     [self downloadAppData];
 }
-
-
 
 @end

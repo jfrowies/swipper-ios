@@ -36,7 +36,6 @@
 - (void)setPlaces:(NSArray *)places
 {
     //ordering places by distance to user location
-    
     NSArray *orderedPlaces = [places sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
       
         CLLocation *startLocation = self.userLocation.location;

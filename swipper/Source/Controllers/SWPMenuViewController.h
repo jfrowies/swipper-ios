@@ -19,6 +19,5 @@
 @interface SWPMenuViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *placesCategories;
-@property (nonatomic, strong) NSArray *selectedCategories;
 @property (nonatomic, weak) id<SWPMenuViewControllerDelegate> delegate;
 @end

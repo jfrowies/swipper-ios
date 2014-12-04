@@ -22,7 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.menuLeftConstraint.constant = hideMenuConstraintConstant;
 }
 
@@ -104,7 +103,5 @@
 {
     [self.delegate slidingMenuViewController:self userDidSelectCategories:selectedcategories];
 }
-
-
 
 @end

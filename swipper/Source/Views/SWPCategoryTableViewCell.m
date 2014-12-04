@@ -7,9 +7,12 @@
 //
 
 #import "SWPCategoryTableViewCell.h"
+#import "SWPThemeHelper.h"
 
 @interface SWPCategoryTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIView *checkMarkView;
+@property (weak, nonatomic) IBOutlet UILabel *categoryName;
+@property (weak, nonatomic) IBOutlet UIView *categoryColorView;
 @end
 
 @implementation SWPCategoryTableViewCell
@@ -20,6 +23,12 @@
     _checkBox = checkBox;
     [self.checkMarkView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.checkMarkView addSubview:_checkBox];
+}
+
+- (void)setCategory:(id<SWPCategory>)category {
+    _category = category;
+    [self.categoryName setText:[category categoryName]];
+    self.categoryColorView.backgroundColor = [SWPThemeHelper colorForCategoryName:category.categoryName];
 }
 
 #pragma mark -

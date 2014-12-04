@@ -14,28 +14,14 @@
 #import "SWPAllCategoriesTableViewCell.h"
 #import "SWPThemeHelper.h"
 #import "M13Checkbox+Menu.h"
+#import "SWPSimpleCategory.h"
+#import "NSMutableArray+UniqueElements.h"
 
 @interface SWPMenuViewController ()
-
+@property (nonatomic, strong) NSMutableArray *selectedCategories;
 @end
 
 @implementation SWPMenuViewController
-
-//#pragma mark - Getters/Setters
-//
-//- (NSArray *)placesCategories {
-//    if(!_placesCategories) {
-//        _placesCategories = [[SWPCategoryStore sharedInstance] placesCategories];
-//    }
-//    return _placesCategories;
-//}
-//
-//- (NSArray *)selectedCategories {
-//    if(!_selectedCategories) {
-//        _selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
-//    }
-//    return _selectedCategories;
-//}
 
 #pragma mark - View life cycle
 
@@ -62,7 +48,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.placesCategories = [[SWPCategoryStore sharedInstance] placesCategories];
-    self.selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
+    self.selectedCategories = [[[SWPCategoryStore sharedInstance] selectedCategories] mutableCopy];
     
     [self.tableView reloadData];
     [self setApplyButtonEnabled:YES];
@@ -108,13 +94,12 @@
     if(indexPath.row > 0 && indexPath.row <= self.placesCategories.count)
     {
         SWPCategoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"categoryCell" forIndexPath:indexPath];
+        
         id<SWPCategory> category = [self.placesCategories objectAtIndex:indexPath.row-1];
-        cell.categoryName.text = category.categoryName;
-        cell.categoryColorView.backgroundColor = [SWPThemeHelper colorForCategoryName:category.categoryName];
         
+        cell.category = category;
+
         [cell setCheckBox:[M13Checkbox checkboxForMenu]];
-        
-        
         if([self.selectedCategories indexOfObject:category] == NSNotFound)
              cell.checkBox.checkState = NO;
         else
@@ -193,6 +178,12 @@
     {
         M13Checkbox *allCategoriesSwitch= (M13Checkbox *)sender;
         
+        if(allCategoriesSwitch.checkState) {
+            self.selectedCategories = [self.placesCategories mutableCopy];
+        }else {
+            self.selectedCategories = [NSMutableArray array];
+        }
+        
         // disable/enable all switches
         for (int i=1; i<=self.placesCategories.count; i++) {
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
@@ -218,10 +209,14 @@
         if(cell != nil && [cell isKindOfClass:[SWPCategoryTableViewCell class]])
         {
             SWPCategoryTableViewCell *categoryCell = (SWPCategoryTableViewCell *)cell;
-            if(categoryCell.checkBox.checkState == YES)
+            if(categoryCell.checkBox.checkState == YES) {
+                [self.selectedCategories addObjectIfNoExist:categoryCell.category];
                 allOff = NO;
-            else
+            }
+            else {
+                [self.selectedCategories removeObjectIdenticalTo:categoryCell.category];
                 allOn = NO;
+            }
         }
     }
     
@@ -231,28 +226,7 @@
 
 - (void)applyButtonTouched:(id)sender
 {
-    NSMutableArray *selectedCategories = [NSMutableArray array];
-    
-    //obtain the selected categories
-    for (int i=1; i<=self.placesCategories.count; i++) {
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-        if(cell != nil && [cell isKindOfClass:[SWPCategoryTableViewCell class]])
-        {
-            SWPCategoryTableViewCell *categoryCell = (SWPCategoryTableViewCell *)cell;
-            if(categoryCell.checkBox.checkState == YES)
-            {
-                [selectedCategories addObject:[self.placesCategories objectAtIndex:i-1]];
-            }
-        }
-    }
-    
-    [self.delegate menuViewController:self userDidSelectCategories:selectedCategories];
-}
-
-- (void)didMoveToParentViewController:(UIViewController *)parent {
-    if([parent conformsToProtocol:@protocol(SWPMenuViewControllerDelegate)]) {
-        self.delegate = (id<SWPMenuViewControllerDelegate>) parent;
-    }
+    [self.delegate menuViewController:self userDidSelectCategories:self.selectedCategories];
 }
 
 @end
