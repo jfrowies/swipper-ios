@@ -17,11 +17,12 @@
 
 @interface SWPListViewController ()
 
-@property (nonatomic, strong, readwrite) NSArray *selectedCategories;
-@property (nonatomic, strong) SWPSlidingMenuViewController *slidingMenu;
-@property (nonatomic, strong) NSArray *placesToShow;
+@property (strong, nonatomic, readwrite) NSArray *selectedCategories;
+@property (strong, nonatomic) SWPSlidingMenuViewController *slidingMenu;
+@property (strong, nonatomic) NSArray *placesToShow;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *mapBarButtonItem;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuBarButtonItem;
+@property (strong, nonatomic) SWPLoadingViewController *loadingViewController;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -81,6 +82,20 @@
     [self.tableView reloadData];
 }
 
+- (SWPLoadingViewController *)loadingViewController {
+    if(!_loadingViewController) {
+        _loadingViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loadingViewController"];
+    }
+    return _loadingViewController;
+}
+
+- (SWPSlidingMenuViewController *)slidingMenu {
+    if(!_slidingMenu) {
+        _slidingMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SlidingMenuViewController"];
+    }
+    return _slidingMenu;
+}
+
 #pragma mark - View life cycle
 
 - (void)viewDidLoad {
@@ -91,15 +106,26 @@
     self.navigationController.navigationBar.barTintColor = [SWPThemeHelper colorForNavigationBar];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
-    self.slidingMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SlidingMenuViewController"];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAppStateTransition) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAppStateTransition) name:UIApplicationDidBecomeActiveNotification object:nil];
+    
 }
 
-- (void) viewDidAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    if(self.loadingViewController.isBeingPresented) {
+        [self.loadingViewController hideLoadingViewControllerAnimated:YES];
+    }
+}
+
+- (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
@@ -122,26 +148,49 @@
         id<SWPPlace> place = cell.place;
         CLLocation *location = [[CLLocation alloc] initWithLatitude:[place placeCoordinate].latitude longitude:[place placeCoordinate].longitude];
         
-        SWPLoadingViewController *loadingViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loadingViewController"];
+        self.loadingViewController.message = @"Launching maps app";
+        self.loadingViewController.showSpinner = YES;
+        [self.loadingViewController presentLoadingViewControllerInViewController:self andView:self.view animated:YES];
+        
         self.menuBarButtonItem.enabled = NO;
         self.mapBarButtonItem.enabled = NO;
-        [self addChildViewController:loadingViewController];
-        [self.view addSubview:loadingViewController.view];
-        
+     
         [[[CLGeocoder alloc] init] reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
             if(!error) {
+                
+                //launching maps app
                 MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:placemarks.firstObject];
                 NSArray *mapItems = [NSArray arrayWithObject:destinationMapItem];
                 NSDictionary *launchOptions = [NSDictionary dictionaryWithObject:MKLaunchOptionsDirectionsModeWalking forKey:MKLaunchOptionsDirectionsModeKey];
                 [MKMapItem openMapsWithItems:mapItems launchOptions:launchOptions];
-                self.menuBarButtonItem.enabled = YES;
-                self.mapBarButtonItem.enabled = YES;
-                [loadingViewController removeFromParentViewController];
-                [loadingViewController.view removeFromSuperview];
+                
             } else {
-                //TODO: inform error to the user
+                
+                //show error and hide loading vc
+                
+                self.loadingViewController.message = @"Error loading address";
+                self.loadingViewController.showSpinner = NO;
+                
+                __weak SWPListViewController *weakSelf = self;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        weakSelf.menuBarButtonItem.enabled = YES;
+                        weakSelf.mapBarButtonItem.enabled = YES;
+                    [self.loadingViewController hideLoadingViewControllerAnimated:YES];
+                });
+                
+                
             }
         }];
+    }
+}
+
+#pragma mark - Event handling
+
+- (void)handleAppStateTransition {
+    if(self.loadingViewController.isBeingPresented) {
+        [self.loadingViewController hideLoadingViewControllerAnimated:NO];
+        self.menuBarButtonItem.enabled = YES;
+        self.mapBarButtonItem.enabled = YES;
     }
 }
 

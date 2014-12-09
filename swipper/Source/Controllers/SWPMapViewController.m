@@ -25,8 +25,8 @@
 @property (nonatomic, strong, readwrite) NSArray *selectedCategories;
 @property (nonatomic) MKMapRect mapRectWithData;
 @property (nonatomic, strong) SWPSlidingMenuViewController *slidingMenu;
-@property (nonatomic) bool locationServicesAlreadyAuthorized;
-@property (nonatomic) bool appAlreadyLaunchedBefore;
+@property (nonatomic) BOOL locationServicesAlreadyAuthorized;
+@property (nonatomic) BOOL appAlreadyLaunchedBefore;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *listBarButtonItem;
 
 @end
@@ -59,13 +59,20 @@
     return _selectedCategories;
 }
 
+- (SWPSlidingMenuViewController *)slidingMenu {
+    if(!_slidingMenu) {
+        _slidingMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SlidingMenuViewController"];
+    }
+    return _slidingMenu;
+}
+
 #define MapViewLocationServicesAlreadyAuthorizedKey @"mapViewLocationServicesAlreadyAuthorizedKey"
 
-- (void)setLocationServicesAlreadyAuthorized:(bool)firstTimeAuthorized {
+- (void)setLocationServicesAlreadyAuthorized:(BOOL)firstTimeAuthorized {
     [[NSUserDefaults standardUserDefaults] setInteger:firstTimeAuthorized forKey:MapViewLocationServicesAlreadyAuthorizedKey];
 }
 
-- (bool)locationServicesAlreadyAuthorized {
+- (BOOL)locationServicesAlreadyAuthorized {
     return [[NSUserDefaults standardUserDefaults] integerForKey:MapViewLocationServicesAlreadyAuthorizedKey]
        ;
 }
@@ -109,8 +116,6 @@
     //User tracking button UI adjustments
     self.userTrackingButton.layer.cornerRadius = 5;
     self.userTrackingButton.clipsToBounds = YES;
-    
-    self.slidingMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SlidingMenuViewController"];
     
     self.appAlreadyLaunchedBefore = [[NSUserDefaults standardUserDefaults] boolForKey:AppAlreadyLaunchedBeforeKey];
 }

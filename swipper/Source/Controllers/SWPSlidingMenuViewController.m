@@ -14,8 +14,8 @@
 
 @interface SWPSlidingMenuViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuLeftConstraint;
-@property (nonatomic) bool animateShow;
-@property (nonatomic) bool animateHide;
+@property (nonatomic) BOOL animateShow;
+@property (nonatomic) BOOL animateHide;
 @end
 
 @implementation SWPSlidingMenuViewController
@@ -49,13 +49,13 @@
     }
 }
 
-- (void)presentSlidingMenuInViewController:(UIViewController *)viewController andView:(UIView *)view animated:(bool)animated {
+- (void)presentSlidingMenuInViewController:(UIViewController *)viewController andView:(UIView *)view animated:(BOOL)animated {
     self.animateShow = animated;
     [viewController addChildViewController:self];
     [view addSubview:self.view];
 }
 
-- (IBAction)hideAnimated:(bool)animated {
+- (IBAction)hideAnimated:(BOOL)animated {
     self.animateHide = animated;
     
     if (self.animateHide) {

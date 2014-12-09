@@ -10,13 +10,50 @@
 
 @interface SWPLoadingViewController ()
 @property (weak, nonatomic) IBOutlet UIView *spinnerBackgroundView;
+@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *labelYConstraint;
+@property (nonatomic) BOOL animateShow;
+@property (nonatomic) BOOL animateHide;
 @end
 
 @implementation SWPLoadingViewController
 
+#define labelYConstantSpinnerVisible -30.0f
+#define labelYConstantSpinnerHide 0.0f
+
+#pragma mark - Getters/Setters
+
+- (void)setMessage:(NSString *)message {
+    _message = message;
+    [self.messageLabel setText:_message];
+}
+
+- (void)setShowSpinner:(BOOL)showSpinner {
+    _showSpinner = showSpinner;
+    if(_showSpinner) {
+        [self.spinner startAnimating];
+        self.labelYConstraint.constant = labelYConstantSpinnerVisible;
+    }else {
+        [self.spinner stopAnimating];
+        self.labelYConstraint.constant = labelYConstantSpinnerHide;
+    }
+    [self.view layoutIfNeeded];
+}
+
+#pragma mark - View Controller lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self.messageLabel setText:self.message];
+    if(self.showSpinner) {
+        [self.spinner startAnimating];
+        self.labelYConstraint.constant = labelYConstantSpinnerVisible;
+    }else {
+        [self.spinner stopAnimating];
+        self.labelYConstraint.constant = labelYConstantSpinnerHide;
+    }
+    [self.view layoutIfNeeded];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,21 +68,50 @@
     self.spinnerBackgroundView.layer.masksToBounds = YES;
 }
 
+#define showAnimationDuration 0.2f
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [UIView animateWithDuration:0.2f animations:^{
+    
+    if(self.animateShow) {
+        [UIView animateWithDuration:showAnimationDuration animations:^{
+            self.view.alpha = 1.0f;
+        }];
+    }else {
         self.view.alpha = 1.0f;
-    }];
+    }
+    self.isBeingPresented = YES;
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - Presenting/hiding
+
+- (void)presentLoadingViewControllerInViewController:(UIViewController *)viewController
+                                             andView:(UIView *)view
+                                            animated:(BOOL)animated {
+    self.animateShow = animated;
+    [viewController addChildViewController:self];
+    [view addSubview:self.view];
 }
-*/
+
+#define hideAnimationDuration 0.2f
+
+- (IBAction)hideLoadingViewControllerAnimated:(BOOL)animated {
+    self.animateHide = animated;
+    
+    if (self.animateHide) {
+        [UIView animateWithDuration:hideAnimationDuration animations:^{
+            self.view.alpha = 0.0f;
+        } completion:^(BOOL finished) {
+            [self.view removeFromSuperview];
+            [self removeFromParentViewController];
+        }];
+    } else {
+        [self.view removeFromSuperview];
+        [self removeFromParentViewController];
+    }
+    
+    self.isBeingPresented = NO;
+}
 
 @end
