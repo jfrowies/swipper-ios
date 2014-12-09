@@ -121,7 +121,7 @@
 
 #pragma mark - Enable/Disable apply button
 
-- (void)setApplyButtonEnabled:(bool)enabled
+- (void)setApplyButtonEnabled:(BOOL)enabled
 {
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.placesCategories.count+1 inSection:0]];
     if(cell != nil && [cell isKindOfClass:[SWPApplyTableViewCell class]])
@@ -156,7 +156,7 @@
 
 #pragma mark - Turn on/off AllCategoriesSwitch
 
-- (void)setAllCategoriesSwitchOn:(bool)on
+- (void)setAllCategoriesSwitchOn:(BOOL)on
 {
     
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
@@ -201,8 +201,8 @@
 
 - (void)categorySwitchChanged:(id)sender
 {
-    bool allOn = YES;
-    bool allOff = YES;
+    BOOL allOn = YES;
+    BOOL allOff = YES;
     
     for (int i=1; i<=self.placesCategories.count; i++) {
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
@@ -214,7 +214,7 @@
                 allOff = NO;
             }
             else {
-                [self.selectedCategories removeObjectIdenticalTo:categoryCell.category];
+                [self.selectedCategories removeObject:categoryCell.category];
                 allOn = NO;
             }
         }
