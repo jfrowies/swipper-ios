@@ -189,6 +189,8 @@
     
     [self storeUserRegion:self.mapView.region];
     
+    [self showMessage:@"fetching places" withBarType:MessageBarInfo animated:YES];
+    
     MKMapRect mRect = mapView.visibleMapRect;
     
     //size in map points of the current region
@@ -226,8 +228,13 @@
                                                              success:^(NSArray *places) {
                                                                  weakSelf.places = places;
                                                                  weakSelf.mapRectWithData = mapRectToFill;
-                                                             } failure:^(NSError *error) {
                                                                  
+                                                                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                                     [weakSelf hideMessageAnimated:YES];
+                                                                 });
+                                                                 
+                                                             } failure:^(NSError *error) {
+                                                                 [weakSelf showMessage:@"Error while fetching places" withBarType:MessageBarError animated:YES];
                                                              }];
 }
 

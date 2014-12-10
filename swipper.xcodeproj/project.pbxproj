@@ -58,6 +58,7 @@
 		B5801BAE1A30FC4500A6EEAF /* NSMutableArray+UniqueElements.m in Sources */ = {isa = PBXBuildFile; fileRef = B5801BAD1A30FC4500A6EEAF /* NSMutableArray+UniqueElements.m */; };
 		B5AA37C519F4265100C33B5B /* SWPListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AA37C419F4265100C33B5B /* SWPListViewController.m */; };
 		B5CCACB219F470CC00F93564 /* SWPPlaceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CCACB119F470CC00F93564 /* SWPPlaceTableViewCell.m */; };
+		B5D25C141A37DDEB00AD2257 /* SWPMessageBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D25C131A37DDEB00AD2257 /* SWPMessageBarViewController.m */; };
 		B5D6481E19E8CDE600018852 /* SWPSimpleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D6481D19E8CDE600018852 /* SWPSimpleCategory.m */; };
 		B5D936371A08864F00FF62F8 /* M13Checkbox+Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D936361A08864F00FF62F8 /* M13Checkbox+Menu.m */; };
 		B5E5E3381A2A3D0500E10664 /* SWPLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E5E3361A2A3D0500E10664 /* SWPLoadingViewController.m */; };
@@ -142,6 +143,8 @@
 		B5AA37C419F4265100C33B5B /* SWPListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPListViewController.m; sourceTree = "<group>"; };
 		B5CCACB019F470CC00F93564 /* SWPPlaceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPPlaceTableViewCell.h; sourceTree = "<group>"; };
 		B5CCACB119F470CC00F93564 /* SWPPlaceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPPlaceTableViewCell.m; sourceTree = "<group>"; };
+		B5D25C121A37DDEB00AD2257 /* SWPMessageBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPMessageBarViewController.h; sourceTree = "<group>"; };
+		B5D25C131A37DDEB00AD2257 /* SWPMessageBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPMessageBarViewController.m; sourceTree = "<group>"; };
 		B5D6481C19E8CDE600018852 /* SWPSimpleCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPSimpleCategory.h; sourceTree = "<group>"; };
 		B5D6481D19E8CDE600018852 /* SWPSimpleCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPSimpleCategory.m; sourceTree = "<group>"; };
 		B5D936351A08864F00FF62F8 /* M13Checkbox+Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "M13Checkbox+Menu.h"; sourceTree = "<group>"; };
@@ -322,6 +325,8 @@
 				B50F7A701A01CAE800704E45 /* SWPSlidingMenuViewController.m */,
 				B5E5E3351A2A3D0500E10664 /* SWPLoadingViewController.h */,
 				B5E5E3361A2A3D0500E10664 /* SWPLoadingViewController.m */,
+				B5D25C121A37DDEB00AD2257 /* SWPMessageBarViewController.h */,
+				B5D25C131A37DDEB00AD2257 /* SWPMessageBarViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -517,6 +522,7 @@
 				B5801BAE1A30FC4500A6EEAF /* NSMutableArray+UniqueElements.m in Sources */,
 				B5662EF919D8E9AC0003FB99 /* SWPThemeHelper.m in Sources */,
 				0585E65019CC9EB900DDC2CD /* SWPApplyTableViewCell.m in Sources */,
+				B5D25C141A37DDEB00AD2257 /* SWPMessageBarViewController.m in Sources */,
 				050F470F19B0F52E00E715A1 /* SWPAnnotation.m in Sources */,
 				0585E65419CCD1C300DDC2CD /* SWPSplashViewController.m in Sources */,
 				B5E5E3381A2A3D0500E10664 /* SWPLoadingViewController.m in Sources */,
