@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MKMapView.h>
 #import "SWPSlidingMenuViewController.h"
+#import "SWPMessageBarViewController.h"
 
-@interface SWPListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,SWPSlidingMenuViewControllerDelegate>
+@interface SWPListViewController : SWPMessageBarViewController <UITableViewDelegate, UITableViewDataSource,SWPSlidingMenuViewControllerDelegate>
 
 @property (nonatomic, strong) MKUserLocation *userLocation;
 @property (nonatomic, strong) NSArray *places;

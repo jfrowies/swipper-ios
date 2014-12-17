@@ -22,5 +22,6 @@ typedef NS_ENUM(NSInteger, MessageBarType){
 
 - (void)showMessage:(NSString *)message withBarType:(MessageBarType)barType animated:(BOOL)animated;
 - (void)hideMessageAnimated:(BOOL)animated;
+- (void)hideMessageAfterDelay:(NSTimeInterval)delay Animated:(BOOL)animated;
 
 @end

@@ -46,22 +46,24 @@
 //    }
 }
 
+- (BOOL)isShowingMessage {
+    if(self.barView && [self.barView.superview isEqual:self.view] && self.barView.frame.origin.y == messageBarTopSpaceConstantShow) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 #pragma mark - View Controller Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-//    self.messageBarTopSpace.constant = messageBarTopSpaceConstantHide;
-//    self.isShowingMessage = NO;
-    
-    // Instantiate a referenced view (assuming outlet has hooked up in XIB).
     [[NSBundle mainBundle] loadNibNamed:@"SWPMessageBarView" owner:self options:nil];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    
+    [self.barView setFrame:CGRectMake(0.0f, messageBarTopSpaceConstantHide, self.view.frame.size.width, messageBarHeight)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,9 +80,8 @@
     
     if(self.isShowingMessage) return;
     
-    [self.barView setFrame:CGRectMake(0.0f, messageBarTopSpaceConstantHide, self.view.frame.size.width, messageBarHeight)];
     [self.view addSubview:self.barView];
-    
+    [self.view layoutIfNeeded];
 
     if(animated) {
         [UIView animateWithDuration:0.2f animations:^{
@@ -91,13 +92,9 @@
         [self.barView setFrame:CGRectMake(0.0f, messageBarTopSpaceConstantShow, self.view.frame.size.width, messageBarHeight)];
         [self.view layoutIfNeeded];
     }
-    
-    self.isShowingMessage = YES;
 }
 
 - (void)hideMessageAnimated:(BOOL)animated {
-    
-//    self.messageBarTopSpace.constant = messageBarTopSpaceConstantHide;
     
     if(!self.isShowingMessage) return;
     
@@ -113,8 +110,12 @@
         [self.view layoutIfNeeded];
         [self.barView removeFromSuperview];
     }
-    
-    self.isShowingMessage = NO;
+}
+
+- (void)hideMessageAfterDelay:(NSTimeInterval)delay Animated:(BOOL)animated {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self hideMessageAnimated:animated];
+    });
 }
 
 @end

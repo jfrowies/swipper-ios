@@ -218,7 +218,7 @@
     CLLocationCoordinate2D nwCoord = MKCoordinateForMapPoint(nwMapPoint);
     CLLocationCoordinate2D seCoord = MKCoordinateForMapPoint(seMapPoint);
 
-    [self showMessage:@"fetching places" withBarType:MessageBarInfo animated:YES];
+    [self showMessage:@"loading places..." withBarType:MessageBarInfo animated:YES];
     
     //calling the service
     __weak SWPMapViewController *weakSelf = self;
@@ -226,15 +226,15 @@
     [[SWPLoopBackService sharedInstance] fetchPlacesBetweenNorthWest:nwCoord
                                                            southEast:seCoord
                                                              success:^(NSArray *places) {
-                                                                 weakSelf.places = places;
-                                                                 weakSelf.mapRectWithData = mapRectToFill;
-                                                                 
-                                                                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                                                     [weakSelf hideMessageAnimated:YES];
-                                                                 });
+                                                                weakSelf.places = places;
+                                                                weakSelf.mapRectWithData = mapRectToFill;
+                                                                
+                                                                 [weakSelf showMessage:@"all done" withBarType:MessageBarInfo animated:NO];
+                                                                 [weakSelf hideMessageAfterDelay:2.0f Animated:YES];
                                                                  
                                                              } failure:^(NSError *error) {
-                                                                 [weakSelf showMessage:@"Error while fetching places" withBarType:MessageBarError animated:YES];
+                                                                 [weakSelf showMessage:@"error fetching places" withBarType:MessageBarError animated:NO];
+                                                                  [weakSelf hideMessageAfterDelay:2.0f Animated:YES];
                                                              }];
 }
 

@@ -23,7 +23,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbj-ss-kqM" userLabel="message label">
                                 <rect key="frame" x="282" y="6" width="37" height="18"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <color key="textColor" red="0.21176470589999999" green="0.53725490200000003" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -36,7 +36,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="ZGP-ky-vAF"/>
                     </constraints>
-                    <blurEffect style="light"/>
+                    <blurEffect style="dark"/>
                 </visualEffectView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
