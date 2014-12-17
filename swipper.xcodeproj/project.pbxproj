@@ -62,6 +62,8 @@
 		B5D6481E19E8CDE600018852 /* SWPSimpleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D6481D19E8CDE600018852 /* SWPSimpleCategory.m */; };
 		B5D936371A08864F00FF62F8 /* M13Checkbox+Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D936361A08864F00FF62F8 /* M13Checkbox+Menu.m */; };
 		B5E5E3381A2A3D0500E10664 /* SWPLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E5E3361A2A3D0500E10664 /* SWPLoadingViewController.m */; };
+		EF37935A1A38D4A400AA3A92 /* SWPMessageBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF3793591A38D4A400AA3A92 /* SWPMessageBarView.xib */; };
+		EFE56FD01A40AC99002224D5 /* SWPMessageBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE56FCF1A40AC99002224D5 /* SWPMessageBarView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +153,9 @@
 		B5D936361A08864F00FF62F8 /* M13Checkbox+Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "M13Checkbox+Menu.m"; sourceTree = "<group>"; };
 		B5E5E3351A2A3D0500E10664 /* SWPLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWPLoadingViewController.h; path = ../Views/SWPLoadingViewController.h; sourceTree = "<group>"; };
 		B5E5E3361A2A3D0500E10664 /* SWPLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWPLoadingViewController.m; path = ../Views/SWPLoadingViewController.m; sourceTree = "<group>"; };
+		EF3793591A38D4A400AA3A92 /* SWPMessageBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWPMessageBarView.xib; sourceTree = "<group>"; };
+		EFE56FCE1A40AC99002224D5 /* SWPMessageBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPMessageBarView.h; sourceTree = "<group>"; };
+		EFE56FCF1A40AC99002224D5 /* SWPMessageBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPMessageBarView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,6 +384,9 @@
 				0585E64F19CC9EB900DDC2CD /* SWPApplyTableViewCell.m */,
 				B5CCACB019F470CC00F93564 /* SWPPlaceTableViewCell.h */,
 				B5CCACB119F470CC00F93564 /* SWPPlaceTableViewCell.m */,
+				EF3793591A38D4A400AA3A92 /* SWPMessageBarView.xib */,
+				EFE56FCE1A40AC99002224D5 /* SWPMessageBarView.h */,
+				EFE56FCF1A40AC99002224D5 /* SWPMessageBarView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -490,6 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				050F46BE19B0F4CA00E715A1 /* InfoPlist.strings in Resources */,
+				EF37935A1A38D4A400AA3A92 /* SWPMessageBarView.xib in Resources */,
 				050F46C919B0F4CA00E715A1 /* Images.xcassets in Resources */,
 				050F471619B0F75100E715A1 /* Main.storyboard in Resources */,
 			);
@@ -524,6 +533,7 @@
 				0585E65019CC9EB900DDC2CD /* SWPApplyTableViewCell.m in Sources */,
 				B5D25C141A37DDEB00AD2257 /* SWPMessageBarViewController.m in Sources */,
 				050F470F19B0F52E00E715A1 /* SWPAnnotation.m in Sources */,
+				EFE56FD01A40AC99002224D5 /* SWPMessageBarView.m in Sources */,
 				0585E65419CCD1C300DDC2CD /* SWPSplashViewController.m in Sources */,
 				B5E5E3381A2A3D0500E10664 /* SWPLoadingViewController.m in Sources */,
 				050F46C719B0F4CA00E715A1 /* swipper.xcdatamodeld in Sources */,
@@ -604,8 +614,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Globant, LLC";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Globant, LLC";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -643,8 +653,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Globant, LLC";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Globant, LLC";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -665,8 +675,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Globant, LLC";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Globant, LLC";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -680,7 +690,7 @@
 					"$(PROJECT_DIR)/swipper/Libraries/OCMock/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d75b1774-5796-4cfc-8d77-97a65dcb24a0";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -690,8 +700,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Globant, LLC";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Globant, LLC";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -705,7 +715,7 @@
 					"$(PROJECT_DIR)/swipper/Libraries/OCMock/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d75b1774-5796-4cfc-8d77-97a65dcb24a0";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

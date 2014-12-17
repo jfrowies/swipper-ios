@@ -8,7 +8,7 @@
         <!--Map View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="SWPMapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapViewController" id="vXZ-lx-hvc" customClass="SWPMapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -96,7 +96,7 @@
         <!--List View Controller-->
         <scene sceneID="h2a-AQ-e4d">
             <objects>
-                <viewController id="Acx-1T-5X5" customClass="SWPListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="listViewController" id="Acx-1T-5X5" customClass="SWPListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JlA-YG-7y4"/>
                         <viewControllerLayoutGuide type="bottom" id="SDU-td-ffO"/>
@@ -242,55 +242,6 @@
             </objects>
             <point key="canvasLocation" x="804" y="1088"/>
         </scene>
-        <!--Message Bar View Controller-->
-        <scene sceneID="Scu-em-zel">
-            <objects>
-                <viewController id="Q76-nz-ZNf" customClass="SWPMessageBarViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TqW-OK-eWl"/>
-                        <viewControllerLayoutGuide type="bottom" id="oRF-9q-xyJ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="nN5-p4-ESN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5lr-xa-DH0" userLabel="message view">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZt-4g-5ny" userLabel="message label">
-                                        <rect key="frame" x="137" y="6" width="37" height="18"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="0.76078431369999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="OWJ-Af-0ce"/>
-                                    <constraint firstAttribute="centerX" secondItem="mZt-4g-5ny" secondAttribute="centerX" constant="5" id="Y01-kO-HL2"/>
-                                    <constraint firstAttribute="centerY" secondItem="mZt-4g-5ny" secondAttribute="centerY" constant="0.5" id="fRU-45-cPs"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="5lr-xa-DH0" firstAttribute="top" secondItem="nN5-p4-ESN" secondAttribute="top" id="5RH-jp-iDc"/>
-                            <constraint firstAttribute="trailing" secondItem="5lr-xa-DH0" secondAttribute="trailing" id="b3X-68-RET"/>
-                            <constraint firstItem="5lr-xa-DH0" firstAttribute="leading" secondItem="nN5-p4-ESN" secondAttribute="leading" id="tuC-A3-OYK"/>
-                        </constraints>
-                    </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <connections>
-                        <outlet property="messageBarTopSpace" destination="5RH-jp-iDc" id="IjM-T7-AGy"/>
-                        <outlet property="messageBarView" destination="5lr-xa-DH0" id="tre-WW-Vuv"/>
-                        <outlet property="messageLabel" destination="mZt-4g-5ny" id="erk-KI-eOn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nud-GW-Myl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="419" y="1821"/>
-        </scene>
         <!--Loading View Controller-->
         <scene sceneID="4tK-xs-mL3">
             <objects>
@@ -360,7 +311,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qVI-fW-j8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="831" y="1822"/>
+            <point key="canvasLocation" x="804" y="1772"/>
         </scene>
         <!--Sliding Menu View Controller-->
         <scene sceneID="chJ-f9-sgM">
@@ -558,7 +509,7 @@
         <!--Navigation Controller-->
         <scene sceneID="2me-KA-gmP">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dTi-Ph-aHe" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mapNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="dTi-Ph-aHe" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="RJe-0c-LAy"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AEa-aM-hQv">
@@ -577,7 +528,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Xw9-Cb-eUL">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fzN-UF-49i" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="listNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="fzN-UF-49i" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WTZ-ID-3we">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

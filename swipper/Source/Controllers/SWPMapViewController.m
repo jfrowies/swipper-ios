@@ -189,8 +189,6 @@
     
     [self storeUserRegion:self.mapView.region];
     
-    [self showMessage:@"fetching places" withBarType:MessageBarInfo animated:YES];
-    
     MKMapRect mRect = mapView.visibleMapRect;
     
     //size in map points of the current region
@@ -220,6 +218,8 @@
     CLLocationCoordinate2D nwCoord = MKCoordinateForMapPoint(nwMapPoint);
     CLLocationCoordinate2D seCoord = MKCoordinateForMapPoint(seMapPoint);
 
+    [self showMessage:@"fetching places" withBarType:MessageBarInfo animated:YES];
+    
     //calling the service
     __weak SWPMapViewController *weakSelf = self;
     

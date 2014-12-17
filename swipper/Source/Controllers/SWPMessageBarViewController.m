@@ -7,12 +7,11 @@
 //
 
 #import "SWPMessageBarViewController.h"
+#import "SWPMessageBarView.h"
 
 @interface SWPMessageBarViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
-@property (weak, nonatomic) IBOutlet UIView *messageBarView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *messageBarTopSpace;
+@property (strong, nonatomic) IBOutlet SWPMessageBarView *barView;
 
 @end
 
@@ -20,6 +19,32 @@
 
 #define messageBarTopSpaceConstantShow 0.0f
 #define messageBarTopSpaceConstantHide -30.0f
+#define messageBarHeight 30.0f
+
+#pragma mark - Getters/Setters
+
+- (void)setMessage:(NSString *)message {
+    _message = message;
+    [self.barView.messageLabel setText:_message];
+}
+
+- (void)setMessageBarType:(MessageBarType)messageBarType {
+    _messageBarType = messageBarType;
+    
+//    switch (_messageBarType) {
+//        case MessageBarInfo:
+//            self.barView.backgroundColor = [UIColor yellowColor];
+//            break;
+//        case MessageBarWarning:
+//            self.barView.backgroundColor = [UIColor orangeColor];
+//            break;
+//        case MessageBarError:
+//            self.barView.backgroundColor = [UIColor redColor];
+//            break;
+//        default:
+//            break;
+//    }
+}
 
 #pragma mark - View Controller Lifecycle
 
@@ -28,6 +53,15 @@
     // Do any additional setup after loading the view.
 //    self.messageBarTopSpace.constant = messageBarTopSpaceConstantHide;
 //    self.isShowingMessage = NO;
+    
+    // Instantiate a referenced view (assuming outlet has hooked up in XIB).
+    [[NSBundle mainBundle] loadNibNamed:@"SWPMessageBarView" owner:self options:nil];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,40 +72,25 @@
 #pragma mark - Show/Hide Message
 
 - (void)showMessage:(NSString *)message withBarType:(MessageBarType)barType animated:(BOOL)animated {
+    
     self.message = message;
     self.messageBarType = barType;
     
-    [self.messageLabel setText:message];
+    if(self.isShowingMessage) return;
     
-    [self.view bringSubviewToFront:self.messageBarView];
+    [self.barView setFrame:CGRectMake(0.0f, messageBarTopSpaceConstantHide, self.view.frame.size.width, messageBarHeight)];
+    [self.view addSubview:self.barView];
     
-    [self.view setNeedsDisplay];
-    [self.view setNeedsLayout];
-    
-    
-//    switch (barType) {
-//        case MessageBarInfo:
-//            self.messageBarView.backgroundColor = [UIColor yellowColor];
-//            break;
-//        case MessageBarWarning:
-//            self.messageBarView.backgroundColor = [UIColor orangeColor];
-//            break;
-//        case MessageBarError:
-//            self.messageBarView.backgroundColor = [UIColor redColor];
-//            break;
-//        default:
-//            break;
-//    }
-    
-//    self.messageBarTopSpace.constant = messageBarTopSpaceConstantShow;
-//    
-//    if(animated) {
-//        [UIView animateWithDuration:0.2f animations:^{
-//            [self.view layoutIfNeeded];
-//        }];
-//    }else {
-//        [self.view layoutIfNeeded];
-//    }
+
+    if(animated) {
+        [UIView animateWithDuration:0.2f animations:^{
+            [self.barView setFrame:CGRectMake(0.0f, messageBarTopSpaceConstantShow, self.view.frame.size.width, messageBarHeight)];
+            [self.view layoutIfNeeded];
+        }];
+    }else {
+        [self.barView setFrame:CGRectMake(0.0f, messageBarTopSpaceConstantShow, self.view.frame.size.width, messageBarHeight)];
+        [self.view layoutIfNeeded];
+    }
     
     self.isShowingMessage = YES;
 }
@@ -79,14 +98,21 @@
 - (void)hideMessageAnimated:(BOOL)animated {
     
 //    self.messageBarTopSpace.constant = messageBarTopSpaceConstantHide;
-//    
-//    if(animated) {
-//        [UIView animateWithDuration:0.2f animations:^{
-//            [self.view layoutIfNeeded];
-//        }];
-//    }else {
-//        [self.view layoutIfNeeded];
-//    }
+    
+    if(!self.isShowingMessage) return;
+    
+    if(animated) {
+        [UIView animateWithDuration:0.2f animations:^{
+            [self.barView setFrame:CGRectMake(0.0f, messageBarTopSpaceConstantHide, self.view.frame.size.width, messageBarHeight)];
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            [self.barView removeFromSuperview];
+        }];
+    }else {
+        [self.barView setFrame:CGRectMake(0.0f, messageBarTopSpaceConstantHide, self.view.frame.size.width, messageBarHeight)];
+        [self.view layoutIfNeeded];
+        [self.barView removeFromSuperview];
+    }
     
     self.isShowingMessage = NO;
 }
