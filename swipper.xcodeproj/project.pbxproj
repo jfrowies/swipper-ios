@@ -63,6 +63,7 @@
 		B5D936371A08864F00FF62F8 /* M13Checkbox+Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D936361A08864F00FF62F8 /* M13Checkbox+Menu.m */; };
 		B5E5E3381A2A3D0500E10664 /* SWPLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E5E3361A2A3D0500E10664 /* SWPLoadingViewController.m */; };
 		EF37935A1A38D4A400AA3A92 /* SWPMessageBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF3793591A38D4A400AA3A92 /* SWPMessageBarView.xib */; };
+		EFD2B3671A42169000F5E6B2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD2B3661A42169000F5E6B2 /* Reachability.m */; };
 		EFE56FD01A40AC99002224D5 /* SWPMessageBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE56FCF1A40AC99002224D5 /* SWPMessageBarView.m */; };
 /* End PBXBuildFile section */
 
@@ -154,6 +155,8 @@
 		B5E5E3351A2A3D0500E10664 /* SWPLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWPLoadingViewController.h; path = ../Views/SWPLoadingViewController.h; sourceTree = "<group>"; };
 		B5E5E3361A2A3D0500E10664 /* SWPLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWPLoadingViewController.m; path = ../Views/SWPLoadingViewController.m; sourceTree = "<group>"; };
 		EF3793591A38D4A400AA3A92 /* SWPMessageBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWPMessageBarView.xib; sourceTree = "<group>"; };
+		EFD2B3651A42169000F5E6B2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		EFD2B3661A42169000F5E6B2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		EFE56FCE1A40AC99002224D5 /* SWPMessageBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPMessageBarView.h; sourceTree = "<group>"; };
 		EFE56FCF1A40AC99002224D5 /* SWPMessageBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPMessageBarView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -271,6 +274,7 @@
 		050F46EA19B0F52E00E715A1 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				EFD2B3641A42169000F5E6B2 /* Reachability */,
 				B50F7A721A06CF4200704E45 /* M13Checkbox */,
 				050F46EB19B0F52E00E715A1 /* OCMock */,
 			);
@@ -418,6 +422,15 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		EFD2B3641A42169000F5E6B2 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				EFD2B3651A42169000F5E6B2 /* Reachability.h */,
+				EFD2B3661A42169000F5E6B2 /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -520,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFD2B3671A42169000F5E6B2 /* Reachability.m in Sources */,
 				B50F7A751A06CF4200704E45 /* M13Checkbox.m in Sources */,
 				B5D6481E19E8CDE600018852 /* SWPSimpleCategory.m in Sources */,
 				05AD1E8519C0A4E900D823DC /* SWPMenuViewController.m in Sources */,

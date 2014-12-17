@@ -8,10 +8,13 @@
 
 #import "SWPMessageBarViewController.h"
 #import "SWPMessageBarView.h"
+#import "Reachability.h"
 
 @interface SWPMessageBarViewController ()
 
 @property (strong, nonatomic) IBOutlet SWPMessageBarView *barView;
+@property (strong, nonatomic) Reachability *internetReachability;
+@property (nonatomic) NetworkStatus lastKnownNetworkStatus;
 
 @end
 
@@ -59,17 +62,61 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSBundle mainBundle] loadNibNamed:@"SWPMessageBarView" owner:self options:nil];
+    
+    
+    self.internetReachability = [Reachability reachabilityForInternetConnection];
+    self.lastKnownNetworkStatus = self.internetReachability.currentReachabilityStatus;
+    [self.internetReachability startNotifier];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.barView setFrame:CGRectMake(0.0f, messageBarTopSpaceConstantHide, self.view.frame.size.width, messageBarHeight)];
+    if(self.internetReachability.currentReachabilityStatus == NotReachable) {
+        [self updateInterfaceWithReachability:self.internetReachability];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
+}
+
+#pragma mark - Reachability
+
+- (void)reachabilityChanged:(NSNotification *)notification
+{
+    Reachability* currentReachability = [notification object];
+    NSParameterAssert([currentReachability isKindOfClass:[Reachability class]]);
+    
+    NetworkStatus currentNetworkStatus = [currentReachability currentReachabilityStatus];
+    
+    if(self.lastKnownNetworkStatus != currentNetworkStatus) {
+        [self.class cancelPreviousPerformRequestsWithTarget:self];
+        self.lastKnownNetworkStatus = currentNetworkStatus;
+        [self performSelector:@selector(updateInterfaceWithReachability:) withObject:currentReachability afterDelay:3.0f];
+    }
+}
+
+- (void)updateInterfaceWithReachability:(Reachability *)reachability
+{
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    
+    if(networkStatus == NotReachable) {
+        [self showMessage:@"no internet conection" withBarType:MessageBarWarning animated:YES];
+    } else {
+        [self showMessage:@"internet connection is ok" withBarType:MessageBarInfo animated:NO];
+        [self hideMessageAfterDelay:2.0f Animated:YES];
+    }
+}
+
 
 #pragma mark - Show/Hide Message
 
@@ -117,5 +164,6 @@
         [self hideMessageAnimated:animated];
     });
 }
+
 
 @end

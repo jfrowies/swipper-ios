@@ -8,12 +8,9 @@
 
 #import "SWPLoopBackService.h"
 #import <LoopBack/LoopBack.h>
-//#import "LBCategory.h"
-//#import "LBCategoryRepository.h"
 #import "LBPlace.h"
 #import "LBPlaceRepository.h"
-
-#define LoopBackServiceBaseURL @"http://swipper-luciopoveda.rhcloud.com:80/api/"
+#import "SWPAppDelegate.h"
 
 @interface SWPLoopBackService ()
 

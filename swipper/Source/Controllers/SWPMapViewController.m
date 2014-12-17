@@ -221,7 +221,7 @@
     CLLocationCoordinate2D nwCoord = MKCoordinateForMapPoint(nwMapPoint);
     CLLocationCoordinate2D seCoord = MKCoordinateForMapPoint(seMapPoint);
 
-    [self showMessage:@"loading places..." withBarType:MessageBarInfo animated:YES];
+    [self showMessage:@"loading places" withBarType:MessageBarInfo animated:YES];
     
     //calling the service
     __weak SWPMapViewController *weakSelf = self;
