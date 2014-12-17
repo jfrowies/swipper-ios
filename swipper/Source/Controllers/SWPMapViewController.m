@@ -50,8 +50,8 @@
     [self reloadAnnotations];
 }
 
-- (NSArray *)selectedCategories {
-
+- (NSArray *)selectedCategories
+{
     if(!_selectedCategories) {
         _selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
     }
@@ -59,7 +59,8 @@
     return _selectedCategories;
 }
 
-- (SWPSlidingMenuViewController *)slidingMenu {
+- (SWPSlidingMenuViewController *)slidingMenu
+{
     if(!_slidingMenu) {
         _slidingMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SlidingMenuViewController"];
     }
@@ -68,11 +69,13 @@
 
 #define MapViewLocationServicesAlreadyAuthorizedKey @"mapViewLocationServicesAlreadyAuthorizedKey"
 
-- (void)setLocationServicesAlreadyAuthorized:(BOOL)firstTimeAuthorized {
+- (void)setLocationServicesAlreadyAuthorized:(BOOL)firstTimeAuthorized
+{
     [[NSUserDefaults standardUserDefaults] setInteger:firstTimeAuthorized forKey:MapViewLocationServicesAlreadyAuthorizedKey];
 }
 
-- (BOOL)locationServicesAlreadyAuthorized {
+- (BOOL)locationServicesAlreadyAuthorized
+{
     return [[NSUserDefaults standardUserDefaults] integerForKey:MapViewLocationServicesAlreadyAuthorizedKey]
        ;
 }
@@ -229,11 +232,11 @@
                                                                 weakSelf.places = places;
                                                                 weakSelf.mapRectWithData = mapRectToFill;
                                                                 
-                                                                 [weakSelf showMessage:@"all done" withBarType:MessageBarInfo animated:NO];
+                                                                 [weakSelf showMessage:@"done" withBarType:MessageBarInfo animated:NO];
                                                                  [weakSelf hideMessageAfterDelay:2.0f Animated:YES];
                                                                  
                                                              } failure:^(NSError *error) {
-                                                                 [weakSelf showMessage:@"error fetching places" withBarType:MessageBarError animated:NO];
+                                                                 [weakSelf showMessage:@"error loading places" withBarType:MessageBarError animated:NO];
                                                                   [weakSelf hideMessageAfterDelay:2.0f Animated:YES];
                                                              }];
 }
