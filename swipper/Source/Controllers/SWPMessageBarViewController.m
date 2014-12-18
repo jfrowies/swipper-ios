@@ -61,8 +61,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSBundle mainBundle] loadNibNamed:@"SWPMessageBarView" owner:self options:nil];
     
+    [[NSBundle mainBundle] loadNibNamed:@"SWPMessageBarView" owner:self options:nil];
     
     self.internetReachability = [Reachability reachabilityForInternetConnection];
     self.lastKnownNetworkStatus = self.internetReachability.currentReachabilityStatus;

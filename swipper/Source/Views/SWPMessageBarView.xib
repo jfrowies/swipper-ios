@@ -49,7 +49,7 @@
                 <outlet property="messageLabel" destination="nbj-ss-kqM" id="CUM-kJ-rvP"/>
                 <outlet property="visualEffectView" destination="a8u-Ov-cIB" id="aga-t7-tdh"/>
             </connections>
-            <point key="canvasLocation" x="462" y="457"/>
+            <point key="canvasLocation" x="450" y="469"/>
         </view>
     </objects>
 </document>

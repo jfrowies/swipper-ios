@@ -16,6 +16,7 @@
 #import "SWPSlidingMenuViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SWPListViewController.h"
+#import "SWPPlaceAnnotationCalloutView.h"
 
 #define kMaxAllowedDistanceBetweenMapCorners 50000
 
@@ -28,6 +29,7 @@
 @property (nonatomic) BOOL locationServicesAlreadyAuthorized;
 @property (nonatomic) BOOL appAlreadyLaunchedBefore;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *listBarButtonItem;
+@property (strong, nonatomic) IBOutlet SWPPlaceAnnotationCalloutView *calloutView;
 
 @end
 
@@ -121,6 +123,9 @@
     self.userTrackingButton.clipsToBounds = YES;
     
     self.appAlreadyLaunchedBefore = [[NSUserDefaults standardUserDefaults] boolForKey:AppAlreadyLaunchedBeforeKey];
+    
+    //loading NIB for callout views
+    [[NSBundle mainBundle] loadNibNamed:@"SWPPlaceAnnotationCalloutView" owner:self options:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -261,6 +266,8 @@
     if (!annotationImage) annotationImage = [UIImage imageNamed:@"DefaultPinImage"];
     categoryAnnotationView.image = annotationImage;
 
+    categoryAnnotationView.leftCalloutAccessoryView = self.calloutView;
+    
     return categoryAnnotationView;
 }
 

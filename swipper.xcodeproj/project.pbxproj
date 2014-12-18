@@ -63,6 +63,8 @@
 		B5D936371A08864F00FF62F8 /* M13Checkbox+Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D936361A08864F00FF62F8 /* M13Checkbox+Menu.m */; };
 		B5E5E3381A2A3D0500E10664 /* SWPLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E5E3361A2A3D0500E10664 /* SWPLoadingViewController.m */; };
 		EF37935A1A38D4A400AA3A92 /* SWPMessageBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF3793591A38D4A400AA3A92 /* SWPMessageBarView.xib */; };
+		EFCD3DBD1A43612A00D8CB34 /* SWPPlaceAnnotationCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCD3DBC1A43612A00D8CB34 /* SWPPlaceAnnotationCalloutView.xib */; };
+		EFCD3DC01A43615A00D8CB34 /* SWPPlaceAnnotationCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCD3DBF1A43615A00D8CB34 /* SWPPlaceAnnotationCalloutView.m */; };
 		EFD2B3671A42169000F5E6B2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD2B3661A42169000F5E6B2 /* Reachability.m */; };
 		EFE56FD01A40AC99002224D5 /* SWPMessageBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFE56FCF1A40AC99002224D5 /* SWPMessageBarView.m */; };
 /* End PBXBuildFile section */
@@ -155,6 +157,9 @@
 		B5E5E3351A2A3D0500E10664 /* SWPLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWPLoadingViewController.h; path = ../Views/SWPLoadingViewController.h; sourceTree = "<group>"; };
 		B5E5E3361A2A3D0500E10664 /* SWPLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWPLoadingViewController.m; path = ../Views/SWPLoadingViewController.m; sourceTree = "<group>"; };
 		EF3793591A38D4A400AA3A92 /* SWPMessageBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWPMessageBarView.xib; sourceTree = "<group>"; };
+		EFCD3DBC1A43612A00D8CB34 /* SWPPlaceAnnotationCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWPPlaceAnnotationCalloutView.xib; sourceTree = "<group>"; };
+		EFCD3DBE1A43615A00D8CB34 /* SWPPlaceAnnotationCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPPlaceAnnotationCalloutView.h; sourceTree = "<group>"; };
+		EFCD3DBF1A43615A00D8CB34 /* SWPPlaceAnnotationCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPPlaceAnnotationCalloutView.m; sourceTree = "<group>"; };
 		EFD2B3651A42169000F5E6B2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		EFD2B3661A42169000F5E6B2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		EFE56FCE1A40AC99002224D5 /* SWPMessageBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPMessageBarView.h; sourceTree = "<group>"; };
@@ -391,6 +396,9 @@
 				EF3793591A38D4A400AA3A92 /* SWPMessageBarView.xib */,
 				EFE56FCE1A40AC99002224D5 /* SWPMessageBarView.h */,
 				EFE56FCF1A40AC99002224D5 /* SWPMessageBarView.m */,
+				EFCD3DBC1A43612A00D8CB34 /* SWPPlaceAnnotationCalloutView.xib */,
+				EFCD3DBE1A43615A00D8CB34 /* SWPPlaceAnnotationCalloutView.h */,
+				EFCD3DBF1A43615A00D8CB34 /* SWPPlaceAnnotationCalloutView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -511,6 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				050F46BE19B0F4CA00E715A1 /* InfoPlist.strings in Resources */,
+				EFCD3DBD1A43612A00D8CB34 /* SWPPlaceAnnotationCalloutView.xib in Resources */,
 				EF37935A1A38D4A400AA3A92 /* SWPMessageBarView.xib in Resources */,
 				050F46C919B0F4CA00E715A1 /* Images.xcassets in Resources */,
 				050F471619B0F75100E715A1 /* Main.storyboard in Resources */,
@@ -549,6 +558,7 @@
 				050F470F19B0F52E00E715A1 /* SWPAnnotation.m in Sources */,
 				EFE56FD01A40AC99002224D5 /* SWPMessageBarView.m in Sources */,
 				0585E65419CCD1C300DDC2CD /* SWPSplashViewController.m in Sources */,
+				EFCD3DC01A43615A00D8CB34 /* SWPPlaceAnnotationCalloutView.m in Sources */,
 				B5E5E3381A2A3D0500E10664 /* SWPLoadingViewController.m in Sources */,
 				050F46C719B0F4CA00E715A1 /* swipper.xcdatamodeld in Sources */,
 				0585E65B19CCD7F700DDC2CD /* SWPCategoryStore.m in Sources */,
