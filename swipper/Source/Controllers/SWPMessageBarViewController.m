@@ -101,7 +101,7 @@
     if(self.lastKnownNetworkStatus != currentNetworkStatus) {
         [self.class cancelPreviousPerformRequestsWithTarget:self];
         self.lastKnownNetworkStatus = currentNetworkStatus;
-        [self performSelector:@selector(updateInterfaceWithReachability:) withObject:currentReachability afterDelay:3.0f];
+        [self performSelector:@selector(updateInterfaceWithReachability:) withObject:currentReachability afterDelay:5.0f];
     }
 }
 
@@ -110,9 +110,9 @@
     NetworkStatus networkStatus = [reachability currentReachabilityStatus];
     
     if(networkStatus == NotReachable) {
-        [self showMessage:@"no internet conection" withBarType:MessageBarWarning animated:YES];
+        [self showMessage:@"no internet conection" withBarType:MessageBarNoInternet animated:YES];
     } else {
-        [self showMessage:@"internet connection is ok" withBarType:MessageBarInfo animated:NO];
+        [self showMessage:@"internet connection is ok" withBarType:MessageBarInternetRestored animated:NO];
         [self hideMessageAfterDelay:2.0f Animated:YES];
     }
 }
@@ -122,10 +122,14 @@
 
 - (void)showMessage:(NSString *)message withBarType:(MessageBarType)barType animated:(BOOL)animated {
     
+    if(self.messageBarType == MessageBarNoInternet && barType!= MessageBarInternetRestored)
+        return;
+    
     self.message = message;
     self.messageBarType = barType;
     
-    if(self.isShowingMessage) return;
+    if(self.isShowingMessage)
+        return;
     
     [self.view addSubview:self.barView];
     [self.view layoutIfNeeded];
@@ -143,7 +147,7 @@
 
 - (void)hideMessageAnimated:(BOOL)animated {
     
-    if(!self.isShowingMessage) return;
+    if(!self.isShowingMessage || self.messageBarType == MessageBarNoInternet) return;
     
     if(animated) {
         [UIView animateWithDuration:0.2f animations:^{

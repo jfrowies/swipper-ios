@@ -11,7 +11,9 @@
 typedef NS_ENUM(NSInteger, MessageBarType){
     MessageBarInfo,
     MessageBarWarning,
-    MessageBarError
+    MessageBarError,
+    MessageBarNoInternet,
+    MessageBarInternetRestored
 };
 
 @interface SWPMessageBarViewController : UIViewController
