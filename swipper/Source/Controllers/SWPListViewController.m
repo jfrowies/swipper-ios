@@ -14,6 +14,7 @@
 #import <MapKit/MKMapItem.h>
 #import "MapKit/MKUserLocation.h"
 #import "SWPLoadingViewController.h"
+#import "SWPDetailsViewController.h"
 
 @interface SWPListViewController ()
 
@@ -277,7 +278,14 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    if([segue.identifier isEqualToString:@"showDetailsFromList"]) {
+        UIViewController *dvc= segue.destinationViewController;
+        if([dvc isKindOfClass:[SWPDetailsViewController class]]) {
+            SWPDetailsViewController *detailsViewController = (SWPDetailsViewController *)dvc;
+            detailsViewController.userLocation = self.userLocation;
+            detailsViewController.place = self.places.firstObject;
+        }
+    }
 }
 
 @end
