@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *mapBarButtonItem;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuBarButtonItem;
 @property (strong, nonatomic) SWPLoadingViewController *loadingViewController;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -218,6 +217,13 @@
     [cell.placeDistanceLabel setText:[NSString stringWithFormat:@"%.1f km",distance / 1000]];
     
     return cell;
+}
+
+#pragma mark - Table view delegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSegueWithIdentifier:@"showDetailsFromList" sender:self];
 }
 
 #pragma mark - SWPSlidingMenuViewControllerDelegate implementation

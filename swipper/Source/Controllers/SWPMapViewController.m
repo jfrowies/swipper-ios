@@ -18,6 +18,7 @@
 #import "SWPListViewController.h"
 #import "SWPPlaceAnnotationCalloutView.h"
 #import "SWPAnnotationView.h"
+#import "SWPDetailsViewController.h"
 
 #define kMaxAllowedDistanceBetweenMapCorners 50000
 
@@ -268,11 +269,15 @@
     categoryAnnotationView.image = annotationImage;
     
 //    categoryAnnotationView.calloutView = self.calloutView;
-    UIImageView *rightView =[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ArrowBlack"]];
+    UIButton *rightView =[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [rightView setImage:[UIImage imageNamed:@"ArrowYellow"] forState:UIControlStateNormal];
     categoryAnnotationView.rightCalloutAccessoryView = rightView;
     return categoryAnnotationView;
 }
 
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    [self performSegueWithIdentifier:@"showDetailsFromMap" sender:self];
+}
 
 #pragma mark -
 
@@ -399,12 +404,22 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
     if([segue.identifier isEqualToString:@"showListNavigationController"]) {
         UINavigationController *destinationNavigationController= segue.destinationViewController;
         if([destinationNavigationController.viewControllers.firstObject isKindOfClass:[SWPListViewController class]]) {
             SWPListViewController *listViewController = destinationNavigationController.viewControllers.firstObject;
             listViewController.userLocation = self.mapView.userLocation;
             listViewController.places = self.places;
+        }
+    }
+    
+    if([segue.identifier isEqualToString:@"showDetailsFromMap"]) {
+        UIViewController *dvc= segue.destinationViewController;
+        if([dvc isKindOfClass:[SWPDetailsViewController class]]) {
+            SWPDetailsViewController *detailsViewController = (SWPDetailsViewController *)dvc;
+            detailsViewController.userLocation = self.mapView.userLocation;
+            detailsViewController.place = self.places.firstObject;
         }
     }
 }
