@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SWPMapViewController">
             <connections>
-                <outlet property="calloutView" destination="iN0-l3-epB" id="7Va-xu-CZ6"/>
+                <outlet property="calloutView" destination="iN0-l3-epB" id="xX0-Ra-Ljp"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -15,43 +15,54 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ztS-bD-Oo7">
-                    <rect key="frame" x="0.0" y="0.0" width="200" height="32"/>
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="HNB-Dv-di5">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="32"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6i-bn-MkM" userLabel="place name label">
-                                <rect key="frame" x="4" y="4" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="4" y="4" width="40" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pui-QL-IeS" userLabel="distance label">
-                                <rect key="frame" x="29" y="25" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="24" y="26" width="35" height="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultPinImage" translatesAutoresizingMaskIntoConstraints="NO" id="2ez-mr-sRH" userLabel="place icon">
-                                <rect key="frame" x="4" y="25" width="20" height="20"/>
+                                <rect key="frame" x="4" y="27" width="15" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="7mS-aG-o3F"/>
-                                    <constraint firstAttribute="height" constant="20" id="kdS-SU-goD"/>
+                                    <constraint firstAttribute="width" constant="15" id="7mS-aG-o3F"/>
+                                    <constraint firstAttribute="height" constant="15" id="kdS-SU-goD"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultPinImage" translatesAutoresizingMaskIntoConstraints="NO" id="EW9-kF-ojM" userLabel="place icon">
+                                <rect key="frame" x="172" y="15" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="26c-xp-8xT"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="XMM-8o-byn"/>
+                                    <constraint firstAttribute="height" constant="20" id="lqs-S4-86M"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="pCW-cb-DiH"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="EW9-kF-ojM" firstAttribute="top" secondItem="HNB-Dv-di5" secondAttribute="top" constant="15" id="F8X-kX-7dw"/>
                             <constraint firstItem="P6i-bn-MkM" firstAttribute="leading" secondItem="HNB-Dv-di5" secondAttribute="leading" constant="4" id="Hzu-2i-Msy"/>
-                            <constraint firstItem="Pui-QL-IeS" firstAttribute="top" secondItem="HNB-Dv-di5" secondAttribute="top" constant="25" id="L4m-59-cQC"/>
+                            <constraint firstItem="Pui-QL-IeS" firstAttribute="top" secondItem="HNB-Dv-di5" secondAttribute="top" constant="26" id="L4m-59-cQC"/>
                             <constraint firstItem="P6i-bn-MkM" firstAttribute="top" secondItem="HNB-Dv-di5" secondAttribute="top" constant="4" id="N9V-wX-s3G"/>
-                            <constraint firstItem="2ez-mr-sRH" firstAttribute="top" secondItem="HNB-Dv-di5" secondAttribute="top" constant="25" id="RBs-9f-Z9R"/>
-                            <constraint firstItem="Pui-QL-IeS" firstAttribute="leading" secondItem="HNB-Dv-di5" secondAttribute="leading" constant="29" id="j9S-Q0-88C"/>
+                            <constraint firstAttribute="trailing" secondItem="EW9-kF-ojM" secondAttribute="trailing" constant="8" id="QgE-LC-oxI"/>
+                            <constraint firstItem="2ez-mr-sRH" firstAttribute="top" secondItem="HNB-Dv-di5" secondAttribute="top" constant="27" id="RBs-9f-Z9R"/>
+                            <constraint firstItem="Pui-QL-IeS" firstAttribute="leading" secondItem="HNB-Dv-di5" secondAttribute="leading" constant="24" id="j9S-Q0-88C"/>
                             <constraint firstItem="2ez-mr-sRH" firstAttribute="leading" secondItem="HNB-Dv-di5" secondAttribute="leading" constant="4" id="pjU-5b-K16"/>
                         </constraints>
                     </view>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="YQ2-m8-diU"/>
-                        <constraint firstAttribute="height" constant="32" id="rLL-a5-r6M"/>
+                        <constraint firstAttribute="height" constant="50" id="rLL-a5-r6M"/>
                     </constraints>
                     <blurEffect style="dark"/>
                 </visualEffectView>

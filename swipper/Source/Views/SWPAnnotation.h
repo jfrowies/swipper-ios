@@ -13,6 +13,7 @@
 @interface SWPAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, strong) id<SWPPlace> place;
+@property (nonatomic, strong) MKUserLocation *userLocation;
 
 - (id)initWithPlace:(id<SWPPlace>)place;
 

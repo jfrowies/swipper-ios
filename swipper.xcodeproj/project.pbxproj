@@ -63,6 +63,7 @@
 		B5D936371A08864F00FF62F8 /* M13Checkbox+Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D936361A08864F00FF62F8 /* M13Checkbox+Menu.m */; };
 		B5E5E3381A2A3D0500E10664 /* SWPLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E5E3361A2A3D0500E10664 /* SWPLoadingViewController.m */; };
 		EF37935A1A38D4A400AA3A92 /* SWPMessageBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF3793591A38D4A400AA3A92 /* SWPMessageBarView.xib */; };
+		EF60703D1A445ED400A02C0F /* SWPAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF60703C1A445ED400A02C0F /* SWPAnnotationView.m */; };
 		EFCD3DBD1A43612A00D8CB34 /* SWPPlaceAnnotationCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCD3DBC1A43612A00D8CB34 /* SWPPlaceAnnotationCalloutView.xib */; };
 		EFCD3DC01A43615A00D8CB34 /* SWPPlaceAnnotationCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCD3DBF1A43615A00D8CB34 /* SWPPlaceAnnotationCalloutView.m */; };
 		EFD2B3671A42169000F5E6B2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EFD2B3661A42169000F5E6B2 /* Reachability.m */; };
@@ -157,6 +158,8 @@
 		B5E5E3351A2A3D0500E10664 /* SWPLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWPLoadingViewController.h; path = ../Views/SWPLoadingViewController.h; sourceTree = "<group>"; };
 		B5E5E3361A2A3D0500E10664 /* SWPLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWPLoadingViewController.m; path = ../Views/SWPLoadingViewController.m; sourceTree = "<group>"; };
 		EF3793591A38D4A400AA3A92 /* SWPMessageBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWPMessageBarView.xib; sourceTree = "<group>"; };
+		EF60703B1A445ED400A02C0F /* SWPAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPAnnotationView.h; sourceTree = "<group>"; };
+		EF60703C1A445ED400A02C0F /* SWPAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPAnnotationView.m; sourceTree = "<group>"; };
 		EFCD3DBC1A43612A00D8CB34 /* SWPPlaceAnnotationCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWPPlaceAnnotationCalloutView.xib; sourceTree = "<group>"; };
 		EFCD3DBE1A43615A00D8CB34 /* SWPPlaceAnnotationCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPPlaceAnnotationCalloutView.h; sourceTree = "<group>"; };
 		EFCD3DBF1A43615A00D8CB34 /* SWPPlaceAnnotationCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPPlaceAnnotationCalloutView.m; sourceTree = "<group>"; };
@@ -399,6 +402,8 @@
 				EFCD3DBC1A43612A00D8CB34 /* SWPPlaceAnnotationCalloutView.xib */,
 				EFCD3DBE1A43615A00D8CB34 /* SWPPlaceAnnotationCalloutView.h */,
 				EFCD3DBF1A43615A00D8CB34 /* SWPPlaceAnnotationCalloutView.m */,
+				EF60703B1A445ED400A02C0F /* SWPAnnotationView.h */,
+				EF60703C1A445ED400A02C0F /* SWPAnnotationView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -568,6 +573,7 @@
 				0585E64C19CC9E9F00DDC2CD /* SWPAllCategoriesTableViewCell.m in Sources */,
 				055398E919C0D73D00247FDD /* LBPlace.m in Sources */,
 				050F46C419B0F4CA00E715A1 /* SWPAppDelegate.m in Sources */,
+				EF60703D1A445ED400A02C0F /* SWPAnnotationView.m in Sources */,
 				B5CCACB219F470CC00F93564 /* SWPPlaceTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

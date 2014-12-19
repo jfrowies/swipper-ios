@@ -17,6 +17,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "SWPListViewController.h"
 #import "SWPPlaceAnnotationCalloutView.h"
+#import "SWPAnnotationView.h"
 
 #define kMaxAllowedDistanceBetweenMapCorners 50000
 
@@ -251,11 +252,11 @@
      if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
     
-    MKAnnotationView *categoryAnnotationView = nil;
+    SWPAnnotationView *categoryAnnotationView = nil;
 
     static NSString *categoryPinID = @"categoryPin";
-    categoryAnnotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:categoryPinID];
-    if ( categoryAnnotationView == nil ) categoryAnnotationView = [[MKAnnotationView alloc]
+    categoryAnnotationView = (SWPAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:categoryPinID];
+    if ( categoryAnnotationView == nil ) categoryAnnotationView = [[SWPAnnotationView alloc]
                                          initWithAnnotation:annotation reuseIdentifier:categoryPinID];
         
     categoryAnnotationView.canShowCallout = YES;
@@ -265,9 +266,10 @@
     UIImage *annotationImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@PinImage",categoryName]];
     if (!annotationImage) annotationImage = [UIImage imageNamed:@"DefaultPinImage"];
     categoryAnnotationView.image = annotationImage;
-
-    categoryAnnotationView.leftCalloutAccessoryView = self.calloutView;
     
+//    categoryAnnotationView.calloutView = self.calloutView;
+    UIImageView *rightView =[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ArrowBlack"]];
+    categoryAnnotationView.rightCalloutAccessoryView = rightView;
     return categoryAnnotationView;
 }
 
@@ -293,7 +295,10 @@
         
         if(index != NSNotFound)
         {
-            [newAnnotations addObject: [[SWPAnnotation alloc] initWithPlace:place]];
+            SWPAnnotation *annot = [[SWPAnnotation alloc] initWithPlace:place];
+            annot.userLocation = self.mapView.userLocation;
+            
+            [newAnnotations addObject: annot];
         }
     }
     
