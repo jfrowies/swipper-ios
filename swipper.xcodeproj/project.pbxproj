@@ -55,6 +55,7 @@
 		B50F7A711A01CAE800704E45 /* SWPSlidingMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B50F7A701A01CAE800704E45 /* SWPSlidingMenuViewController.m */; };
 		B50F7A751A06CF4200704E45 /* M13Checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = B50F7A741A06CF4200704E45 /* M13Checkbox.m */; };
 		B52211D91A467E9000F04083 /* SWPGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B52211D81A467E9000F04083 /* SWPGalleryViewController.m */; };
+		B52211DC1A4694E200F04083 /* SWPPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B52211DB1A4694E200F04083 /* SWPPhotoCollectionViewCell.m */; };
 		B5662EF919D8E9AC0003FB99 /* SWPThemeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5662EF819D8E9AC0003FB99 /* SWPThemeHelper.m */; };
 		B5801BAE1A30FC4500A6EEAF /* NSMutableArray+UniqueElements.m in Sources */ = {isa = PBXBuildFile; fileRef = B5801BAD1A30FC4500A6EEAF /* NSMutableArray+UniqueElements.m */; };
 		B5AA37C519F4265100C33B5B /* SWPListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AA37C419F4265100C33B5B /* SWPListViewController.m */; };
@@ -145,6 +146,8 @@
 		B50F7A741A06CF4200704E45 /* M13Checkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13Checkbox.m; sourceTree = "<group>"; };
 		B52211D71A467E9000F04083 /* SWPGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPGalleryViewController.h; sourceTree = "<group>"; };
 		B52211D81A467E9000F04083 /* SWPGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPGalleryViewController.m; sourceTree = "<group>"; };
+		B52211DA1A4694E200F04083 /* SWPPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		B52211DB1A4694E200F04083 /* SWPPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		B5662EF719D8E9AC0003FB99 /* SWPThemeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWPThemeHelper.h; path = ../Models/SWPThemeHelper.h; sourceTree = "<group>"; };
 		B5662EF819D8E9AC0003FB99 /* SWPThemeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWPThemeHelper.m; path = ../Models/SWPThemeHelper.m; sourceTree = "<group>"; };
 		B5801BAC1A30FC4500A6EEAF /* NSMutableArray+UniqueElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+UniqueElements.h"; path = "Categories/NSMutableArray+UniqueElements.h"; sourceTree = "<group>"; };
@@ -414,6 +417,8 @@
 				EFCD3DBF1A43615A00D8CB34 /* SWPPlaceAnnotationCalloutView.m */,
 				EF60703B1A445ED400A02C0F /* SWPAnnotationView.h */,
 				EF60703C1A445ED400A02C0F /* SWPAnnotationView.m */,
+				B52211DA1A4694E200F04083 /* SWPPhotoCollectionViewCell.h */,
+				B52211DB1A4694E200F04083 /* SWPPhotoCollectionViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -566,6 +571,7 @@
 				0585E64419CB7A7900DDC2CD /* SWPCategoryTableViewCell.m in Sources */,
 				058E1D3E19B4FA56001CB42D /* SWPLoopBackService.m in Sources */,
 				EFD1759D1A44B93400077ED8 /* SWPDetailsViewController.m in Sources */,
+				B52211DC1A4694E200F04083 /* SWPPhotoCollectionViewCell.m in Sources */,
 				B52211D91A467E9000F04083 /* SWPGalleryViewController.m in Sources */,
 				B50F7A711A01CAE800704E45 /* SWPSlidingMenuViewController.m in Sources */,
 				B5801BAE1A30FC4500A6EEAF /* NSMutableArray+UniqueElements.m in Sources */,

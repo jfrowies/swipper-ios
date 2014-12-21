@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SWPGalleryViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
-
+@property (strong, nonatomic) NSArray *photosURLs;
 @end

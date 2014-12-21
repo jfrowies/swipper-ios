@@ -7,9 +7,11 @@
 //
 
 #import "SWPGalleryViewController.h"
+#import "SWPPhotoCollectionViewCell.h"
 
 @interface SWPGalleryViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) NSMutableArray *images;
 @end
 
 @implementation SWPGalleryViewController
@@ -19,13 +21,28 @@ static NSString * const reuseIdentifier = @"PlacePhotoCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.images = [NSMutableArray arrayWithCapacity:self.photosURLs.count];
     
-    // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    NSMutableArray *testURLs = [NSMutableArray arrayWithCapacity:5];
+    [testURLs addObject:[NSURL URLWithString:@"http://www.amerian.com/image/hotel/2014/02/0335261-amerianhotelcasinogalaresistenciachaco.jpg"]];
+    [testURLs addObject:[NSURL URLWithString:@"http://www.hotelcasinogala.com.ar/slide/s5.jpg"]];
+    [testURLs addObject:[NSURL URLWithString:@""]];
+
+    [testURLs addObject:[NSURL URLWithString:@""]];
+
+    [testURLs addObject:[NSURL URLWithString:@""]];
     
-    // Do any additional setup after loading the view.
+    self.photosURLs = [testURLs copy];
+
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    //start downloading photos
+    [self downloadPhotos:self.photosURLs];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,20 +63,20 @@ static NSString * const reuseIdentifier = @"PlacePhotoCell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete method implementation -- Return the number of sections
-    return 0;
+    return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete method implementation -- Return the number of items in the section
-    return 0;
+    return self.photosURLs.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    SWPPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    // Configure the cell
+    if(indexPath.row < self.images.count) {
+        cell.placePhoto.image = [self.images objectAtIndex:indexPath.row];
+    }
     
     return cell;
 }
@@ -94,5 +111,19 @@ static NSString * const reuseIdentifier = @"PlacePhotoCell";
 	
 }
 */
+
+#pragma mark -
+
+- (void)downloadPhotos:(NSArray *)photosURLs {
+    __weak SWPGalleryViewController *weakSelf = self;
+    for (NSURL *url in photosURLs) {
+        [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url] queue:[NSOperationQueue mainQueue]  completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            if(!connectionError) {
+                [weakSelf.images addObject:[UIImage imageWithData:data]];
+                [weakSelf.collectionView reloadData];
+            }
+        }];
+    }
+}
 
 @end
