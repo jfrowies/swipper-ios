@@ -31,7 +31,8 @@
 @property (nonatomic) BOOL locationServicesAlreadyAuthorized;
 @property (nonatomic) BOOL appAlreadyLaunchedBefore;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *listBarButtonItem;
-@property (strong, nonatomic) IBOutlet SWPPlaceAnnotationCalloutView *calloutView;
+//@property (strong, nonatomic) IBOutlet SWPPlaceAnnotationCalloutView *calloutView;
+@property (strong, nonatomic) id<SWPPlace> selectedPlace;
 
 @end
 
@@ -127,7 +128,7 @@
     self.appAlreadyLaunchedBefore = [[NSUserDefaults standardUserDefaults] boolForKey:AppAlreadyLaunchedBeforeKey];
     
     //loading NIB for callout views
-    [[NSBundle mainBundle] loadNibNamed:@"SWPPlaceAnnotationCalloutView" owner:self options:nil];
+//    [[NSBundle mainBundle] loadNibNamed:@"SWPPlaceAnnotationCalloutView" owner:self options:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -276,7 +277,11 @@
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    [self performSegueWithIdentifier:@"showDetailsFromMap" sender:self];
+    
+    if([view.annotation isKindOfClass:[SWPAnnotation class]]) {
+        self.selectedPlace = ((SWPAnnotation *)view.annotation).place;
+        [self performSegueWithIdentifier:@"showDetailsFromMap" sender:self];
+    }
 }
 
 #pragma mark -
@@ -419,7 +424,7 @@
         if([dvc isKindOfClass:[SWPDetailsViewController class]]) {
             SWPDetailsViewController *detailsViewController = (SWPDetailsViewController *)dvc;
             detailsViewController.userLocation = self.mapView.userLocation;
-            detailsViewController.place = self.places.firstObject;
+            detailsViewController.place = self.selectedPlace;
         }
     }
 }

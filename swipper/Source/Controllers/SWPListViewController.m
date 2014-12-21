@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuBarButtonItem;
 @property (strong, nonatomic) SWPLoadingViewController *loadingViewController;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) id<SWPPlace> selectedPlace;
 
 @end
 
@@ -224,6 +225,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    SWPPlaceTableViewCell *touchedCell = (SWPPlaceTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    self.selectedPlace = touchedCell.place;
+    
     [self performSegueWithIdentifier:@"showDetailsFromList" sender:self];
 }
 
@@ -283,7 +288,7 @@
         if([dvc isKindOfClass:[SWPDetailsViewController class]]) {
             SWPDetailsViewController *detailsViewController = (SWPDetailsViewController *)dvc;
             detailsViewController.userLocation = self.userLocation;
-            detailsViewController.place = self.places.firstObject;
+            detailsViewController.place = self.selectedPlace;
         }
     }
 }

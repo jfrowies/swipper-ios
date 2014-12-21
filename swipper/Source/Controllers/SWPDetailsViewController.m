@@ -28,16 +28,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.navigationItem.title = self.place.placeName;
+    
+    self.navigationController.navigationBar.tintColor= [UIColor whiteColor];
+    
     self.placeAddressLabel.text = self.place.placeAddress;
     self.placeCityLabel.text = [NSString stringWithFormat:@"%@, %@, %@",self.place.placeCity,self.place.placeState,self.place.placeCountry];
-    self.placePhoneNumberLabel.text = @"3624700331";
+    self.placePhoneNumberLabel.text = self.place.placePhone;
     
     CLLocation *startLocation = self.userLocation.location;
     CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:[self.place placeCoordinate].latitude longitude:[self.place placeCoordinate].longitude];
     CLLocationDistance distance = [startLocation distanceFromLocation:endLocation];
-    
     [self.placeDistanceLabel setText:[NSString stringWithFormat:@"%.1f km",distance / 1000]];
-    
 }
 
 - (void)didReceiveMemoryWarning {
