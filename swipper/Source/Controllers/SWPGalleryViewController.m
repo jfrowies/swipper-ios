@@ -26,11 +26,11 @@ static NSString * const reuseIdentifier = @"PlacePhotoCell";
     NSMutableArray *testURLs = [NSMutableArray arrayWithCapacity:5];
     [testURLs addObject:[NSURL URLWithString:@"http://www.amerian.com/image/hotel/2014/02/0335261-amerianhotelcasinogalaresistenciachaco.jpg"]];
     [testURLs addObject:[NSURL URLWithString:@"http://www.hotelcasinogala.com.ar/slide/s5.jpg"]];
-    [testURLs addObject:[NSURL URLWithString:@""]];
+    [testURLs addObject:[NSURL URLWithString:@"http://www.dehospedaje.com/hotel/dh/original/1305141957.jpg"]];
 
-    [testURLs addObject:[NSURL URLWithString:@""]];
+    [testURLs addObject:[NSURL URLWithString:@"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1QFh8i-PFZzaIsCg5Jj7b92H2mbZbaTisRHIAHTWl51me1NhTig"]];
 
-    [testURLs addObject:[NSURL URLWithString:@""]];
+    [testURLs addObject:[NSURL URLWithString:@"http://www.amerian.com/image/hotel/2012/10/0538209-amerianhotelcasinocarlosv.jpg"]];
     
     self.photosURLs = [testURLs copy];
 
@@ -76,6 +76,8 @@ static NSString * const reuseIdentifier = @"PlacePhotoCell";
     
     if(indexPath.row < self.images.count) {
         cell.placePhoto.image = [self.images objectAtIndex:indexPath.row];
+    }else {
+        cell.placePhoto.image = nil;
     }
     
     return cell;
