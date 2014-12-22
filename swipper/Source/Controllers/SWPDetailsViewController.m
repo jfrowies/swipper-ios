@@ -57,4 +57,18 @@
 }
 */
 
+#pragma mark - Actions
+
+- (IBAction)didTouchedHowToArriveBarButton:(UIBarButtonItem *)sender {
+}
+
+- (IBAction)didTouchedPhoneCallBarButton:(UIBarButtonItem *)sender {
+}
+
+- (IBAction)didTouchedShareBarButton:(UIBarButtonItem *)sender {
+}
+
+- (IBAction)didTouchedSendReportBarButton:(UIBarButtonItem *)sender {
+}
+
 @end
