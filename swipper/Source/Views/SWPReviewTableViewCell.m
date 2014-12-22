@@ -10,7 +10,11 @@
 
 @interface SWPReviewTableViewCell()
 @property (weak, nonatomic) IBOutlet UILabel *reviewLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *starsImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *star1ImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *star2ImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *star3ImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *star4ImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *star5ImageView;
 @end
 
 @implementation SWPReviewTableViewCell
@@ -24,25 +28,16 @@
     _stars = stars;
     
     switch (_stars) {
-        case 1:
-//            self.starsImageView.image = [UIImage imageNamed:@"TaxiPinImage"];
-            self.starsImageView.backgroundColor = [UIColor redColor];
-            break;
-        case 2:
-//            self.starsImageView.image = [UIImage imageNamed:@"LodgingPinImage"];
-            self.starsImageView.backgroundColor = [UIColor orangeColor];
-            break;
-        case 3:
-//            self.starsImageView.image = [UIImage imageNamed:@"FoodPinImage"];
-            self.starsImageView.backgroundColor = [UIColor yellowColor];
-            break;
-        case 4:
-//            self.starsImageView.image = [UIImage imageNamed:@"GasPinImage"];
-            self.starsImageView.backgroundColor = [UIColor greenColor];
-            break;
         case 5:
-//            self.starsImageView.image = [UIImage imageNamed:@"Car RentalPinImage"];
-            self.starsImageView.backgroundColor = [UIColor blueColor];
+            self.star5ImageView.image = [UIImage imageNamed:@"StarFilled"];
+        case 4:
+            self.star4ImageView.image = [UIImage imageNamed:@"StarFilled"];
+        case 3:
+            self.star3ImageView.image = [UIImage imageNamed:@"StarFilled"];
+        case 2:
+            self.star2ImageView.image = [UIImage imageNamed:@"StarFilled"];
+        case 1:
+         self.star1ImageView.image = [UIImage imageNamed:@"StarFilled"];
             break;
         default:
             break;

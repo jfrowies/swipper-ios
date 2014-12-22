@@ -24,12 +24,12 @@
     // Do any additional setup after loading the view.
     
     NSMutableArray *fakeReviews = [NSMutableArray arrayWithCapacity:6];
-    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Este es un review falso sobre el casino amerian, esta buenp." andStars:1]];
-    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Este casino es la peor porqueria que vi en mi vida." andStars:2]];
-    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Zafa." andStars:3]];
-    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Es muuuy caro." andStars:4]];
+    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"El casino del amerian esta bueno." andStars:3]];
+    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Este casino es la peor porqueria que vi en mi vida." andStars:1]];
+    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Zafa." andStars:2]];
+    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Es muuuy caro." andStars:1]];
     [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Baratito baratito." andStars:5]];
-    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"putas harry, putas." andStars:1]];
+    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Un hotel muy lindo, me sorprendio." andStars:5]];
     self.reviews = [fakeReviews copy];
 }
 
