@@ -27,9 +27,16 @@
     [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"El casino del amerian esta bueno." andStars:3]];
     [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Este casino es la peor porqueria que vi en mi vida." andStars:1]];
     [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Zafa." andStars:2]];
-    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Es muuuy caro." andStars:1]];
+    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Es muuuy caro." andStars:0]];
     [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Baratito baratito." andStars:5]];
     [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Un hotel muy lindo, me sorprendio." andStars:5]];
+    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"El casino del amerian esta bueno." andStars:3]];
+    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Este casino es la peor porqueria que vi en mi vida." andStars:1]];
+    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Zafa." andStars:2]];
+    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Es muuuy caro." andStars:0]];
+    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Baratito baratito." andStars:5]];
+    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Un hotel muy lindo, me sorprendio." andStars:5]];
+    
     self.reviews = [fakeReviews copy];
 }
 
@@ -66,15 +73,7 @@
     double insetsHeight = 10;
     
     id<SWPReview> review = [self.reviews objectAtIndex:indexPath.row];
-    
-    
-//    labelHeight = [review.placeReview boundingRectWithSize:CGSizeMake(15, MAXFLOAT)
-//                                          options:NSStringDrawingUsesLineFragmentOrigin
-//                                       attributes:@{
-//                                                    NSFontAttributeName : @"helvetica neue"
-//                                                    }
-//                                          context:nil].size.height;
-    
+     
     CGSize constrainedSize = CGSizeMake(250, 9999);
     
     NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -89,5 +88,13 @@
     
     return labelHeight+imageHeight+insetsHeight;
 }
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    
+//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(8, 8, 100, 15)];
+//    [label setFont:[UIFont fontWithName:@"HelveticaNeue" size:15.0]];
+//    [label setText:@"REVIEWS"];
+//    return label;
+//}
 
 @end

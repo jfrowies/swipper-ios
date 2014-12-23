@@ -27,6 +27,12 @@
 - (void)setStars:(int)stars {
     _stars = stars;
     
+    self.star1ImageView.image = [UIImage imageNamed:@"StarEmpty"];
+    self.star2ImageView.image = [UIImage imageNamed:@"StarEmpty"];
+    self.star3ImageView.image = [UIImage imageNamed:@"StarEmpty"];
+    self.star4ImageView.image = [UIImage imageNamed:@"StarEmpty"];
+    self.star5ImageView.image = [UIImage imageNamed:@"StarEmpty"];
+
     switch (_stars) {
         case 5:
             self.star5ImageView.image = [UIImage imageNamed:@"StarFilled"];
