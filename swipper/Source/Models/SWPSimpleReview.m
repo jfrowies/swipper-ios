@@ -12,7 +12,7 @@
 
 + (SWPSimpleReview *)reviewWithText:(NSString *)reviewText andStars:(int)reviewStars{
     SWPSimpleReview *review = [[SWPSimpleReview alloc] init];
-    review.reviewText = reviewText;
+    review.reviewText = [NSString stringWithFormat:@"\"%@\"", reviewText];;
      review.reviewStars = reviewStars;
     return review;
 }

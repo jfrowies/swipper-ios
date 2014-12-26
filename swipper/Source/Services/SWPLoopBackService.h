@@ -23,4 +23,8 @@
                             success:(void (^) (NSArray *places))successBlock
                             failure:(void (^) (NSError *error))failureBlock;
 
+- (void)fetchPlaceReviewsWithPlaceId:(NSString *)placeId
+                        success:(void (^) (NSArray *reviews))successBlock
+                        failure:(void (^) (NSError *error))failureBlock;
+
 @end

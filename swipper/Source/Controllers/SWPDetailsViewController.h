@@ -13,5 +13,4 @@
 
 @property (nonatomic, strong) MKUserLocation *userLocation;
 @property (strong, nonatomic) id<SWPPlace> place;
-
 @end

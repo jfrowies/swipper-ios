@@ -11,6 +11,7 @@
 #import "LBPlace.h"
 #import "LBPlaceRepository.h"
 #import "SWPAppDelegate.h"
+#import "SWPSimpleReview.h"
 
 @interface SWPLoopBackService ()
 
@@ -95,6 +96,46 @@
                                      NSLog(@"Failed to load locations with error: %@", error.description);
                                      failureBlock(error);
                                  }];
+}
+
+#define PlaceDetailsURL @"http://swipper-luciopoveda.rhcloud.com:80/api/places/details"
+
+- (void)fetchPlaceReviewsWithPlaceId:(NSString *)placeId
+                        success:(void (^) (NSArray *reviews))successBlock
+                        failure:(void (^) (NSError *error))failureBlock {
+
+    NSString *post = [NSString stringWithFormat:@"idPlace=%@",placeId];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",[postData length]];
+
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:PlaceDetailsURL]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if(!connectionError) {
+            
+            NSError *deserializationError = nil;
+            NSArray *result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&deserializationError];
+            NSArray *reviews = [result valueForKey:@"reviews"];
+            
+            NSMutableArray *reviewObjectsArray = [NSMutableArray array];
+            
+            for (NSDictionary *review in reviews) {
+                NSString *reviewText = [review valueForKey:@"text"];
+                int reviewStars = (int)[[review valueForKey:@"rating"] integerValue];
+                [reviewObjectsArray addObject:[SWPSimpleReview reviewWithText:reviewText andStars:reviewStars]];
+            }
+            
+            successBlock(reviewObjectsArray);
+        }else{
+            failureBlock(connectionError);
+        }
+    }];
+    
 }
 
 @end

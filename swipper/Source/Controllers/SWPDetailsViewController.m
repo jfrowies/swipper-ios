@@ -9,18 +9,33 @@
 #import "SWPDetailsViewController.h"
 #import <MapKit/MKMapItem.h>
 #import "MapKit/MKUserLocation.h"
+#import "SWPReviewsViewController.h"
+#import "SWPGalleryViewController.h"
+#import "SWPLoadingViewController.h"
 
 @interface SWPDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *placeAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *placeCityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *placePhoneNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *placeDistanceLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *howToArriveBarButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *phoneBarButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *shareBarButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *reportBarButton;
+@property (strong, nonatomic) SWPLoadingViewController *loadingViewController;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @end
 
 @implementation SWPDetailsViewController
 
 #pragma mark - Getters/Setters
 
+- (SWPLoadingViewController *)loadingViewController {
+    if(!_loadingViewController) {
+        _loadingViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loadingViewController"];
+    }
+    return _loadingViewController;
+}
 
 #pragma mark - View life cycle
 
@@ -28,6 +43,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+//    self.backButton.title = [NSString stringWithFormat:@"< %@",self.place.placeName];
     self.navigationItem.title = self.place.placeName;
     
     self.navigationController.navigationBar.tintColor= [UIColor whiteColor];
@@ -40,6 +56,24 @@
     CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:[self.place placeCoordinate].latitude longitude:[self.place placeCoordinate].longitude];
     CLLocationDistance distance = [startLocation distanceFromLocation:endLocation];
     [self.placeDistanceLabel setText:[NSString stringWithFormat:@"%.1f km",distance / 1000]];
+    
+    if(!self.place.placePhone || [self.place.placePhone isEqualToString:@""]) {
+        self.phoneBarButton.enabled = NO;
+    }else{
+        self.phoneBarButton.enabled = YES;
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAppStateTransition) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAppStateTransition) name:UIApplicationDidBecomeActiveNotification object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    if(self.loadingViewController.isBeingPresented) {
+        [self.loadingViewController hideLoadingViewControllerAnimated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,28 +81,82 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+    if([segue.identifier isEqualToString:@"ReviewsSegue"]) {
+        if([segue.destinationViewController isKindOfClass:[SWPReviewsViewController class]]) {
+            SWPReviewsViewController *dvc = (SWPReviewsViewController *)segue.destinationViewController;
+            dvc.place = self.place;
+        }
+    }
+
 }
-*/
+
+#pragma mark - Event handling
+
+- (void)handleAppStateTransition {
+    if(self.loadingViewController.isBeingPresented) {
+        [self.loadingViewController hideLoadingViewControllerAnimated:NO];
+        self.backButton.enabled = YES;
+    }
+}
+
 
 #pragma mark - Actions
+- (IBAction)didTouchedBackButton:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (IBAction)didTouchedHowToArriveBarButton:(UIBarButtonItem *)sender {
+    
+        id<SWPPlace> place = self.place;
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:[place placeCoordinate].latitude longitude:[place placeCoordinate].longitude];
+        
+        self.loadingViewController.message = @"Launching maps app";
+        self.loadingViewController.showSpinner = YES;
+        [self.loadingViewController presentLoadingViewControllerInViewController:self andView:self.view animated:YES];
+        
+        self.backButton.enabled = NO;
+    
+        [[[CLGeocoder alloc] init] reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+            if(!error) {
+                
+                //launching maps app
+                MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:placemarks.firstObject];
+                NSArray *mapItems = [NSArray arrayWithObject:destinationMapItem];
+                NSDictionary *launchOptions = [NSDictionary dictionaryWithObject:MKLaunchOptionsDirectionsModeWalking forKey:MKLaunchOptionsDirectionsModeKey];
+                [MKMapItem openMapsWithItems:mapItems launchOptions:launchOptions];
+                
+            } else {
+                
+                //show error and hide loading vc
+                self.loadingViewController.message = @"Error loading address";
+                self.loadingViewController.showSpinner = NO;
+                
+                __weak SWPDetailsViewController *weakSelf = self;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    weakSelf.backButton.enabled = YES;
+                    [self.loadingViewController hideLoadingViewControllerAnimated:YES];
+                });
+                
+            }
+        }];
+
 }
 
 - (IBAction)didTouchedPhoneCallBarButton:(UIBarButtonItem *)sender {
+    NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"tel://%@", self.place.placePhone]];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 - (IBAction)didTouchedShareBarButton:(UIBarButtonItem *)sender {
+    
 }
 
 - (IBAction)didTouchedSendReportBarButton:(UIBarButtonItem *)sender {
+    
 }
 
 @end

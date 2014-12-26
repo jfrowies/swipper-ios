@@ -109,7 +109,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iex-cd-gC5" userLabel="reviews container">
                                 <rect key="frame" x="0.0" y="139" width="320" height="284"/>
                                 <connections>
-                                    <segue destination="DcP-XD-PMD" kind="embed" id="p89-PC-RSX"/>
+                                    <segue destination="DcP-XD-PMD" kind="embed" identifier="ReviewsSegue" id="p89-PC-RSX"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHd-6c-O7F" userLabel="separator">
@@ -125,7 +125,7 @@
                                     <constraint firstAttribute="height" constant="100" id="xni-iJ-CKR"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="rVC-aW-H1d" kind="embed" id="Oj3-HO-b6P"/>
+                                    <segue destination="rVC-aW-H1d" kind="embed" identifier="GallerySegue" id="Oj3-HO-b6P"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8R-cK-zY2" userLabel="details view">
@@ -211,28 +211,28 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Vwh-N3-tjF"/>
-                                    <barButtonItem image="BottomBarHowToArrive" id="eSS-Td-pm1">
+                                    <barButtonItem image="BottomBarHowToArrive" id="eSS-Td-pm1" userLabel="how to arrive bar button">
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="didTouchedHowToArriveBarButton:" destination="hAX-wI-YaA" id="iBB-Kd-iSI"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ihS-5D-G0b"/>
-                                    <barButtonItem image="BottomBarCall" id="nX8-dk-2R3">
+                                    <barButtonItem image="BottomBarCall" id="nX8-dk-2R3" userLabel="phone bar button">
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="didTouchedPhoneCallBarButton:" destination="hAX-wI-YaA" id="NG7-v4-cxQ"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="DiO-nT-UO5"/>
-                                    <barButtonItem image="BottomBarShare" id="V8a-J4-ipL">
+                                    <barButtonItem image="BottomBarShare" id="V8a-J4-ipL" userLabel="share bar button">
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="didTouchedShareBarButton:" destination="hAX-wI-YaA" id="K2K-BJ-4JV"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="eAf-4j-URN"/>
-                                    <barButtonItem image="BottomBarReport" id="GUX-ow-Jm7">
+                                    <barButtonItem image="BottomBarReport" id="GUX-ow-Jm7" userLabel="report bar button">
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="didTouchedSendReportBarButton:" destination="hAX-wI-YaA" id="oSc-y1-SWM"/>
@@ -265,12 +265,24 @@
                             <constraint firstItem="3Ic-Eg-ZWB" firstAttribute="leading" secondItem="1KK-9e-Ehu" secondAttribute="leading" id="zzb-hg-99m"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Acx-Hj-WFd"/>
+                    <navigationItem key="navigationItem" id="Acx-Hj-WFd">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; back" id="g1R-7M-BI2">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="didTouchedBackButton:" destination="hAX-wI-YaA" id="Bsh-Fj-jsX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="g1R-7M-BI2" id="AED-m3-YhX"/>
+                        <outlet property="howToArriveBarButton" destination="eSS-Td-pm1" id="wWq-Ni-Qp8"/>
+                        <outlet property="phoneBarButton" destination="nX8-dk-2R3" id="7jB-jY-Dg1"/>
                         <outlet property="placeAddressLabel" destination="nEy-kx-35u" id="lFO-Ia-s7G"/>
                         <outlet property="placeCityLabel" destination="tyw-Wg-rUU" id="iEJ-Gf-0Ru"/>
                         <outlet property="placeDistanceLabel" destination="XBg-4V-hbO" id="kPo-rd-dRY"/>
                         <outlet property="placePhoneNumberLabel" destination="hNu-1I-iXn" id="x32-0y-IO5"/>
+                        <outlet property="reportBarButton" destination="GUX-ow-Jm7" id="fPT-2y-Z97"/>
+                        <outlet property="shareBarButton" destination="V8a-J4-ipL" id="tFV-f7-qFK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQV-sq-oLZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -299,7 +311,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jQO-d8-jYW" id="Qo4-cg-5uB">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR2-zm-kgT">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR2-zm-kgT">
                                                     <rect key="frame" x="8" y="8" width="304" height="18"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-ThinItalic" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWPPlace.h"
 
 @interface SWPReviewsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-@property (strong, nonatomic) NSArray *reviews;
+@property (strong, nonatomic) id<SWPPlace> place;
 @end
