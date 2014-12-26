@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "carList20.png"
+      "filename" : "carList30.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "carList40.png"
+      "filename" : "carList60.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "carList80.png"
+      "filename" : "carCell90.png"
     }
   ],
   "info" : {

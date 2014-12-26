@@ -516,9 +516,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owG-jr-g2P" userLabel="PlaceDistLabel">
-                                                    <rect key="frame" x="115" y="12" width="60" height="18"/>
+                                                    <rect key="frame" x="110" y="12" width="55" height="18"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="YJM-DB-D9w"/>
+                                                        <constraint firstAttribute="width" constant="55" id="YJM-DB-D9w"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -531,7 +531,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="leR-bA-bfG" userLabel="HowToArriveButton">
-                                                    <rect key="frame" x="277" y="8" width="43" height="64"/>
+                                                    <rect key="frame" x="275" y="8" width="43" height="64"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="43" id="F89-Ij-JUH"/>
                                                     </constraints>
@@ -556,14 +556,14 @@
                                                 <constraint firstItem="GRU-T1-c74" firstAttribute="top" secondItem="Ztd-WZ-qgR" secondAttribute="bottom" constant="-5" id="26Z-yB-UCP"/>
                                                 <constraint firstItem="cAn-sk-cov" firstAttribute="top" secondItem="qTK-wM-9UH" secondAttribute="top" constant="2" id="BQl-AJ-DCs"/>
                                                 <constraint firstItem="owG-jr-g2P" firstAttribute="top" secondItem="qTK-wM-9UH" secondAttribute="topMargin" constant="4" id="Crz-2Q-B0w"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="leR-bA-bfG" secondAttribute="trailing" constant="-8" id="Jaj-8T-pCu"/>
-                                                <constraint firstItem="leR-bA-bfG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="owG-jr-g2P" secondAttribute="trailing" constant="5" id="Jz4-yK-1hv"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="leR-bA-bfG" secondAttribute="trailing" constant="-6" id="Jaj-8T-pCu"/>
+                                                <constraint firstItem="leR-bA-bfG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="owG-jr-g2P" secondAttribute="trailing" id="Jz4-yK-1hv"/>
                                                 <constraint firstAttribute="trailing" secondItem="cAn-sk-cov" secondAttribute="trailing" id="RfW-A9-tAS"/>
-                                                <constraint firstItem="leR-bA-bfG" firstAttribute="leading" secondItem="GRU-T1-c74" secondAttribute="trailing" constant="8" id="TU1-Gg-VuE"/>
+                                                <constraint firstItem="leR-bA-bfG" firstAttribute="leading" secondItem="GRU-T1-c74" secondAttribute="trailing" constant="6" id="TU1-Gg-VuE"/>
                                                 <constraint firstItem="cAn-sk-cov" firstAttribute="leading" secondItem="tgt-G0-gU3" secondAttribute="trailing" id="U8S-Ux-tZU"/>
                                                 <constraint firstItem="NBk-SY-oqd" firstAttribute="leading" secondItem="tgt-G0-gU3" secondAttribute="trailing" constant="5" id="XjC-3c-iaa"/>
                                                 <constraint firstItem="Ztd-WZ-qgR" firstAttribute="top" secondItem="qTK-wM-9UH" secondAttribute="topMargin" constant="25" id="aym-bx-Gtd"/>
-                                                <constraint firstItem="owG-jr-g2P" firstAttribute="leading" secondItem="NBk-SY-oqd" secondAttribute="trailing" priority="998" constant="10" id="dqa-nr-y8Y"/>
+                                                <constraint firstItem="owG-jr-g2P" firstAttribute="leading" secondItem="NBk-SY-oqd" secondAttribute="trailing" priority="998" constant="5" id="dqa-nr-y8Y"/>
                                                 <constraint firstItem="tgt-G0-gU3" firstAttribute="top" secondItem="qTK-wM-9UH" secondAttribute="topMargin" constant="-6" id="edx-FC-cJs"/>
                                                 <constraint firstItem="GRU-T1-c74" firstAttribute="leading" secondItem="tgt-G0-gU3" secondAttribute="trailing" constant="5" id="eqs-b1-bxp"/>
                                                 <constraint firstItem="leR-bA-bfG" firstAttribute="bottom" secondItem="qTK-wM-9UH" secondAttribute="bottomMargin" id="fOy-bl-tOx"/>
@@ -572,7 +572,7 @@
                                                 <constraint firstItem="tgt-G0-gU3" firstAttribute="bottom" secondItem="qTK-wM-9UH" secondAttribute="bottomMargin" constant="5" id="onV-Z8-Y9y"/>
                                                 <constraint firstItem="Ztd-WZ-qgR" firstAttribute="leading" secondItem="tgt-G0-gU3" secondAttribute="trailing" constant="5" id="r5w-1w-g49"/>
                                                 <constraint firstItem="NBk-SY-oqd" firstAttribute="top" secondItem="qTK-wM-9UH" secondAttribute="topMargin" constant="2" id="yez-VD-sc1"/>
-                                                <constraint firstItem="leR-bA-bfG" firstAttribute="leading" secondItem="Ztd-WZ-qgR" secondAttribute="trailing" constant="8" id="zOm-FH-fBa"/>
+                                                <constraint firstItem="leR-bA-bfG" firstAttribute="leading" secondItem="Ztd-WZ-qgR" secondAttribute="trailing" constant="6" id="zOm-FH-fBa"/>
                                                 <constraint firstAttribute="bottom" secondItem="cAn-sk-cov" secondAttribute="bottom" constant="3" id="znx-20-0SC"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -931,11 +931,11 @@
         <image name="BottomBarHowToArrive" width="28" height="28"/>
         <image name="BottomBarReport" width="28" height="28"/>
         <image name="BottomBarShare" width="28" height="28"/>
-        <image name="HowToArrive" width="18" height="18"/>
+        <image name="HowToArrive" width="25" height="25"/>
         <image name="ListIcon" width="27" height="20"/>
         <image name="LocateMe" width="20" height="20"/>
         <image name="LocationPin" width="21" height="29"/>
-        <image name="MapIcon" width="21" height="20"/>
+        <image name="MapIcon" width="25" height="24"/>
         <image name="MenuIcon" width="27" height="20"/>
         <image name="Phone" width="24" height="24"/>
         <image name="StarEmpty" width="18" height="18"/>

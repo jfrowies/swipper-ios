@@ -158,7 +158,6 @@
      
         [[[CLGeocoder alloc] init] reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
             if(!error) {
-                
                 //launching maps app
                 MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:placemarks.firstObject];
                 NSArray *mapItems = [NSArray arrayWithObject:destinationMapItem];
@@ -166,9 +165,7 @@
                 [MKMapItem openMapsWithItems:mapItems launchOptions:launchOptions];
                 
             } else {
-                
                 //show error and hide loading vc
-                
                 self.loadingViewController.message = @"Error loading address";
                 self.loadingViewController.showSpinner = NO;
                 
@@ -178,8 +175,6 @@
                         weakSelf.mapBarButtonItem.enabled = YES;
                     [self.loadingViewController hideLoadingViewControllerAnimated:YES];
                 });
-                
-                
             }
         }];
     }
