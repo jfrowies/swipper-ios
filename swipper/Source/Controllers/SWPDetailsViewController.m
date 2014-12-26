@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *reportBarButton;
 @property (strong, nonatomic) SWPLoadingViewController *loadingViewController;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *categoryIcon;
 @end
 
 @implementation SWPDetailsViewController
@@ -51,6 +52,7 @@
     self.placeAddressLabel.text = self.place.placeAddress;
     self.placeCityLabel.text = [NSString stringWithFormat:@"%@, %@, %@",self.place.placeCity,self.place.placeState,self.place.placeCountry];
     self.placePhoneNumberLabel.text = self.place.placePhone;
+    self.categoryIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@CellImage",self.place.placeCategory]];
     
     CLLocation *startLocation = self.userLocation.location;
     CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:[self.place placeCoordinate].latitude longitude:[self.place placeCoordinate].longitude];

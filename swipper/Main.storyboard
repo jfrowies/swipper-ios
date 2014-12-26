@@ -272,9 +272,13 @@
                                 <action selector="didTouchedBackButton:" destination="hAX-wI-YaA" id="Bsh-Fj-jsX"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="LodgingCellImage" style="plain" id="MSD-KD-QPk">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backButton" destination="g1R-7M-BI2" id="AED-m3-YhX"/>
+                        <outlet property="categoryIcon" destination="MSD-KD-QPk" id="MaY-8a-pz1"/>
                         <outlet property="howToArriveBarButton" destination="eSS-Td-pm1" id="wWq-Ni-Qp8"/>
                         <outlet property="phoneBarButton" destination="nX8-dk-2R3" id="7jB-jY-Dg1"/>
                         <outlet property="placeAddressLabel" destination="nEy-kx-35u" id="lFO-Ia-s7G"/>
@@ -935,6 +939,7 @@
         <image name="ListIcon" width="27" height="20"/>
         <image name="LocateMe" width="20" height="20"/>
         <image name="LocationPin" width="21" height="29"/>
+        <image name="LodgingCellImage" width="30" height="30"/>
         <image name="MapIcon" width="25" height="24"/>
         <image name="MenuIcon" width="27" height="20"/>
         <image name="Phone" width="24" height="24"/>
