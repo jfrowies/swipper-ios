@@ -114,7 +114,7 @@
     [[SWPLoopBackService sharedInstance] fetchPlaceReviewsWithPlaceId:self.place.placeId success:^(NSArray *reviews) {
         self.reviews = reviews;
     } failure:^(NSError *error) {
-        
+        //TODO: show error
     }];
 }
 

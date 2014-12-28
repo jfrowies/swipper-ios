@@ -42,7 +42,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
 //    self.backButton.title = [NSString stringWithFormat:@"< %@",self.place.placeName];
     self.navigationItem.title = self.place.placeName;
@@ -80,7 +79,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Navigation
@@ -93,7 +91,13 @@
             dvc.place = self.place;
         }
     }
-
+    
+    if([segue.identifier isEqualToString:@"GallerySegue"]) {
+        if([segue.destinationViewController isKindOfClass:[SWPGalleryViewController class]]) {
+            SWPGalleryViewController *dvc = (SWPGalleryViewController *)segue.destinationViewController;
+            dvc.place = self.place;
+        }
+    }
 }
 
 #pragma mark - Event handling
@@ -104,7 +108,6 @@
         self.backButton.enabled = YES;
     }
 }
-
 
 #pragma mark - Actions
 - (IBAction)didTouchedBackButton:(UIBarButtonItem *)sender {
@@ -124,15 +127,12 @@
     
         [[[CLGeocoder alloc] init] reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
             if(!error) {
-                
                 //launching maps app
                 MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:placemarks.firstObject];
                 NSArray *mapItems = [NSArray arrayWithObject:destinationMapItem];
                 NSDictionary *launchOptions = [NSDictionary dictionaryWithObject:MKLaunchOptionsDirectionsModeWalking forKey:MKLaunchOptionsDirectionsModeKey];
                 [MKMapItem openMapsWithItems:mapItems launchOptions:launchOptions];
-                
             } else {
-                
                 //show error and hide loading vc
                 self.loadingViewController.message = @"Error loading address";
                 self.loadingViewController.showSpinner = NO;
@@ -142,10 +142,8 @@
                     weakSelf.backButton.enabled = YES;
                     [self.loadingViewController hideLoadingViewControllerAnimated:YES];
                 });
-                
             }
         }];
-
 }
 
 - (IBAction)didTouchedPhoneCallBarButton:(UIBarButtonItem *)sender {

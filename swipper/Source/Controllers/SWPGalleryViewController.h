@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWPPlace.h"
 
 @interface SWPGalleryViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
-@property (strong, nonatomic) NSArray *photosURLs;
+@property (strong, nonatomic) id<SWPPlace> place;
 @end
