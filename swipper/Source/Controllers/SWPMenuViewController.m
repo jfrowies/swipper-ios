@@ -47,6 +47,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     self.placesCategories = [[SWPCategoryStore sharedInstance] placesCategories];
     self.selectedCategories = [[[SWPCategoryStore sharedInstance] selectedCategories] mutableCopy];
     

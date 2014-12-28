@@ -159,19 +159,39 @@
             NSArray *result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&deserializationError];
             NSArray *photos = [result valueForKey:@"photos"];
             
-            NSMutableArray *photosURLsArray = [NSMutableArray array];
+            NSMutableArray *photosRequestsURLsArray = [NSMutableArray array];
             
             for (NSDictionary *photo in photos) {
                 NSString *photoRef = [photo valueForKey:@"photo_reference"];
                 
-                [photosURLsArray addObject:[self urlForPhotoReference:photoRef]];
+                [photosRequestsURLsArray addObject:[self urlForPhotoReference:photoRef]];
             }
             
-            successBlock(photosURLsArray);
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSArray *photosURLs = [self fetchPlacePhotosURLsWithGoogleRequests:photosRequestsURLsArray];
+                successBlock(photosURLs);
+            });
+    
         }else{
             failureBlock(connectionError);
         }
     }];
+}
+
+- (NSArray *)fetchPlacePhotosURLsWithGoogleRequests:(NSArray *)googleRequests {
+    
+    NSMutableArray *urls = [NSMutableArray arrayWithCapacity:googleRequests.count];
+    
+    for (NSURL *googleRequest in googleRequests) {
+        NSHTTPURLResponse *response;
+        NSError *error;
+        [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:googleRequest] returningResponse:&response error:&error];
+        if(!error) {
+            [urls addObject:response.URL];
+        }
+        
+    }
+    return urls;
 }
 
 #define PhotosAPIKey @"AIzaSyDT_7HU59iNKx1zEQDj2wbCGP65BkoEXqs"

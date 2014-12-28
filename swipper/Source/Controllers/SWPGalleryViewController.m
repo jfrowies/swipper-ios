@@ -129,6 +129,7 @@ static NSString * const reuseIdentifier = @"PlacePhotoCell";
 }
 
 - (void)downloadPhotos:(NSArray *)photosURLs {
+    self.images = [NSMutableArray arrayWithCapacity:photosURLs.count];
     __weak SWPGalleryViewController *weakSelf = self;
     for (NSURL *url in photosURLs) {
         [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url] queue:[NSOperationQueue mainQueue]  completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
