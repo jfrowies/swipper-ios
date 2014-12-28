@@ -12,8 +12,9 @@
 #import "SWPReviewsViewController.h"
 #import "SWPGalleryViewController.h"
 #import "SWPLoadingViewController.h"
+#import <MessageUI/MessageUI.h>
 
-@interface SWPDetailsViewController ()
+@interface SWPDetailsViewController () <MFMailComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *placeAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *placeCityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *placePhoneNumberLabel;
@@ -110,6 +111,7 @@
 }
 
 #pragma mark - Actions
+
 - (IBAction)didTouchedBackButton:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -157,6 +159,48 @@
 
 - (IBAction)didTouchedSendReportBarButton:(UIBarButtonItem *)sender {
     
+    if ([MFMailComposeViewController canSendMail])
+    {
+        
+        NSString *mailBody = self.place.placeName;
+        
+        MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+        mail.mailComposeDelegate = self;
+        [mail setSubject:@"Swipper Report"];
+        [mail setMessageBody:mailBody isHTML:NO];
+        [mail setToRecipients:@[@"swipper-contact@globant.com"]];
+        [self presentViewController:mail animated:YES completion:NULL];
+    }
+    else
+    {
+        NSLog(@"This device cannot send email");
+    }
+    
+}
+
+#pragma mark - <MFMailComposeViewControllerDelegate>
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result) {
+        case MFMailComposeResultSent:
+            NSLog(@"You sent the email.");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"You saved a draft of this email");
+            break;
+        case MFMailComposeResultCancelled:
+            NSLog(@"You cancelled sending this email.");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail failed:  An error occurred when trying to compose this email");
+            break;
+        default:
+            NSLog(@"An error occurred when trying to compose this email");
+            break;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

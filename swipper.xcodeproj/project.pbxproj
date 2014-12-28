@@ -56,6 +56,7 @@
 		B50F7A751A06CF4200704E45 /* M13Checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = B50F7A741A06CF4200704E45 /* M13Checkbox.m */; };
 		B52211D91A467E9000F04083 /* SWPGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B52211D81A467E9000F04083 /* SWPGalleryViewController.m */; };
 		B52211DC1A4694E200F04083 /* SWPPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B52211DB1A4694E200F04083 /* SWPPhotoCollectionViewCell.m */; };
+		B53FF7971A508486001602F1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B53FF7961A508486001602F1 /* MessageUI.framework */; };
 		B5580B551A47B7440071C39D /* SWPReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5580B541A47B7440071C39D /* SWPReviewsViewController.m */; };
 		B5580B581A47BA800071C39D /* SWPReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5580B571A47BA800071C39D /* SWPReviewTableViewCell.m */; };
 		B5580B5C1A47CDF40071C39D /* SWPSimpleReview.m in Sources */ = {isa = PBXBuildFile; fileRef = B5580B5B1A47CDF40071C39D /* SWPSimpleReview.m */; };
@@ -151,6 +152,7 @@
 		B52211D81A467E9000F04083 /* SWPGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPGalleryViewController.m; sourceTree = "<group>"; };
 		B52211DA1A4694E200F04083 /* SWPPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPPhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		B52211DB1A4694E200F04083 /* SWPPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		B53FF7961A508486001602F1 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B5580B531A47B7440071C39D /* SWPReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPReviewsViewController.h; sourceTree = "<group>"; };
 		B5580B541A47B7440071C39D /* SWPReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPReviewsViewController.m; sourceTree = "<group>"; };
 		B5580B561A47BA800071C39D /* SWPReviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPReviewTableViewCell.h; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B53FF7971A508486001602F1 /* MessageUI.framework in Frameworks */,
 				050F46E719B0F4E000E715A1 /* MapKit.framework in Frameworks */,
 				050F46B419B0F4CA00E715A1 /* CoreGraphics.framework in Frameworks */,
 				058E1D3B19B4F633001CB42D /* LoopBack.framework in Frameworks */,
@@ -241,6 +244,7 @@
 		050F46B019B0F4CA00E715A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B53FF7961A508486001602F1 /* MessageUI.framework */,
 				058E1D3A19B4F633001CB42D /* LoopBack.framework */,
 				050F46E619B0F4E000E715A1 /* MapKit.framework */,
 				050F46B119B0F4CA00E715A1 /* Foundation.framework */,
