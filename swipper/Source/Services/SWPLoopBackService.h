@@ -27,4 +27,8 @@
                         success:(void (^) (NSArray *reviews))successBlock
                         failure:(void (^) (NSError *error))failureBlock;
 
+- (void)fetchPlacePhotosURLsWithPlaceId:(NSString *)placeId
+                                success:(void (^) (NSArray *photosURLs))successBlock
+                                failure:(void (^) (NSError *error))failureBlock;
+
 @end

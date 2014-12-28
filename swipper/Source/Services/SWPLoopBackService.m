@@ -106,7 +106,7 @@
 
     NSString *post = [NSString stringWithFormat:@"idPlace=%@",placeId];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%du",[postData length]];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",[postData length]];
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:PlaceDetailsURL]];
@@ -135,7 +135,53 @@
             failureBlock(connectionError);
         }
     }];
+}
+
+- (void)fetchPlacePhotosURLsWithPlaceId:(NSString *)placeId
+                             success:(void (^) (NSArray *photosURLs))successBlock
+                             failure:(void (^) (NSError *error))failureBlock {
     
+    NSString *post = [NSString stringWithFormat:@"idPlace=%@",placeId];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",[postData length]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:PlaceDetailsURL]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if(!connectionError) {
+            
+            NSError *deserializationError = nil;
+            NSArray *result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&deserializationError];
+            NSArray *photos = [result valueForKey:@"photos"];
+            
+            NSMutableArray *photosURLsArray = [NSMutableArray array];
+            
+            for (NSDictionary *photo in photos) {
+                NSString *photoRef = [photo valueForKey:@"photo_reference"];
+                
+                [photosURLsArray addObject:[self urlForPhotoReference:photoRef]];
+            }
+            
+            successBlock(photosURLsArray);
+        }else{
+            failureBlock(connectionError);
+        }
+    }];
+}
+
+#define PhotosAPIKey @"AIzaSyDT_7HU59iNKx1zEQDj2wbCGP65BkoEXqs"
+#define PhotoMaxWidth 300
+
+- (NSURL *)urlForPhotoReference:(NSString *)photoReference {
+    
+    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=%d&photoreference=%@&key=%@", PhotoMaxWidth, photoReference, PhotosAPIKey];
+    
+    return [NSURL URLWithString:urlString];
 }
 
 @end
