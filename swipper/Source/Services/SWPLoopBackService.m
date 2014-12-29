@@ -12,6 +12,7 @@
 #import "LBPlaceRepository.h"
 #import "SWPAppDelegate.h"
 #import "SWPSimpleReview.h"
+#import "JSNetworkActivityIndicatorManager.h"
 
 @interface SWPLoopBackService ()
 
@@ -79,6 +80,8 @@
     NSString *southEastString = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:southEastDict options:0 error:nil]
                                                       encoding:NSUTF8StringEncoding];
     
+    [[JSNetworkActivityIndicatorManager sharedManager] startActivity];
+    
     [repository invokeStaticMethod:@"nearBy"
                               parameters:@{
                                            @"northWest":northWestString,
@@ -90,10 +93,17 @@
                                      [value enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                                          [models addObject:[repository modelWithDictionary:obj]];
                                      }];
+                                     
+                                     [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+                                     
                                      successBlock(models);
                                  }
                                  failure:^(NSError *error) { 
                                      NSLog(@"Failed to load locations with error: %@", error.description);
+                                     
+                                     [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+
+                                     
                                      failureBlock(error);
                                  }];
 }
@@ -114,6 +124,8 @@
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
+    
+    [[JSNetworkActivityIndicatorManager sharedManager] startActivity];
 
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if(!connectionError) {
@@ -130,8 +142,13 @@
                 [reviewObjectsArray addObject:[SWPSimpleReview reviewWithText:reviewText andStars:reviewStars]];
             }
             
+            [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+            
             successBlock(reviewObjectsArray);
         }else{
+            
+            [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+
             failureBlock(connectionError);
         }
     }];
@@ -152,6 +169,8 @@
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     
+    [[JSNetworkActivityIndicatorManager sharedManager] startActivity];
+    
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if(!connectionError) {
             
@@ -169,10 +188,16 @@
             
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSArray *photosURLs = [self fetchPlacePhotosURLsWithGoogleRequests:photosRequestsURLsArray];
+                
+                [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+                
                 successBlock(photosURLs);
             });
     
         }else{
+            
+            [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+            
             failureBlock(connectionError);
         }
     }];

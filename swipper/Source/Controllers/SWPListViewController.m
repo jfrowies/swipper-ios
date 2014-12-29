@@ -15,6 +15,7 @@
 #import "MapKit/MKUserLocation.h"
 #import "SWPLoadingViewController.h"
 #import "SWPDetailsViewController.h"
+#import "JSNetworkActivityIndicatorManager.h"
 
 @interface SWPListViewController ()
 
@@ -156,7 +157,12 @@
         self.menuBarButtonItem.enabled = NO;
         self.mapBarButtonItem.enabled = NO;
      
+        [[JSNetworkActivityIndicatorManager sharedManager] startActivity];
+        
         [[[CLGeocoder alloc] init] reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+            
+            [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+            
             if(!error) {
                 //launching maps app
                 MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:placemarks.firstObject];

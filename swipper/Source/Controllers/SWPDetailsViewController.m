@@ -13,6 +13,7 @@
 #import "SWPGalleryViewController.h"
 #import "SWPLoadingViewController.h"
 #import <MessageUI/MessageUI.h>
+#import "JSNetworkActivityIndicatorManager.h"
 
 @interface SWPDetailsViewController () <MFMailComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *placeAddressLabel;
@@ -127,7 +128,12 @@
         
         self.backButton.enabled = NO;
     
+        [[JSNetworkActivityIndicatorManager sharedManager] startActivity];
+    
         [[[CLGeocoder alloc] init] reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+            
+            [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+            
             if(!error) {
                 //launching maps app
                 MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:placemarks.firstObject];

@@ -57,6 +57,7 @@
 		B52211D91A467E9000F04083 /* SWPGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B52211D81A467E9000F04083 /* SWPGalleryViewController.m */; };
 		B52211DC1A4694E200F04083 /* SWPPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B52211DB1A4694E200F04083 /* SWPPhotoCollectionViewCell.m */; };
 		B53FF7971A508486001602F1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B53FF7961A508486001602F1 /* MessageUI.framework */; };
+		B53FF79A1A5186DA001602F1 /* JSNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B53FF7991A5186DA001602F1 /* JSNetworkActivityIndicatorManager.m */; };
 		B5580B551A47B7440071C39D /* SWPReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5580B541A47B7440071C39D /* SWPReviewsViewController.m */; };
 		B5580B581A47BA800071C39D /* SWPReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5580B571A47BA800071C39D /* SWPReviewTableViewCell.m */; };
 		B5580B5C1A47CDF40071C39D /* SWPSimpleReview.m in Sources */ = {isa = PBXBuildFile; fileRef = B5580B5B1A47CDF40071C39D /* SWPSimpleReview.m */; };
@@ -153,6 +154,8 @@
 		B52211DA1A4694E200F04083 /* SWPPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPPhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		B52211DB1A4694E200F04083 /* SWPPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		B53FF7961A508486001602F1 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		B53FF7981A5186DA001602F1 /* JSNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		B53FF7991A5186DA001602F1 /* JSNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
 		B5580B531A47B7440071C39D /* SWPReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPReviewsViewController.h; sourceTree = "<group>"; };
 		B5580B541A47B7440071C39D /* SWPReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPReviewsViewController.m; sourceTree = "<group>"; };
 		B5580B561A47BA800071C39D /* SWPReviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPReviewTableViewCell.h; sourceTree = "<group>"; };
@@ -382,6 +385,8 @@
 			children = (
 				B5662EF719D8E9AC0003FB99 /* SWPThemeHelper.h */,
 				B5662EF819D8E9AC0003FB99 /* SWPThemeHelper.m */,
+				B53FF7981A5186DA001602F1 /* JSNetworkActivityIndicatorManager.h */,
+				B53FF7991A5186DA001602F1 /* JSNetworkActivityIndicatorManager.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -587,6 +592,7 @@
 				EFD2B3671A42169000F5E6B2 /* Reachability.m in Sources */,
 				B50F7A751A06CF4200704E45 /* M13Checkbox.m in Sources */,
 				B5D6481E19E8CDE600018852 /* SWPSimpleCategory.m in Sources */,
+				B53FF79A1A5186DA001602F1 /* JSNetworkActivityIndicatorManager.m in Sources */,
 				05AD1E8519C0A4E900D823DC /* SWPMenuViewController.m in Sources */,
 				B5D936371A08864F00FF62F8 /* M13Checkbox+Menu.m in Sources */,
 				050F470919B0F52E00E715A1 /* SWPMapViewController.m in Sources */,
