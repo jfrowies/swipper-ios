@@ -14,6 +14,8 @@
 #import <MapKit/MKMapItem.h>
 #import "MapKit/MKUserLocation.h"
 #import "SWPLoadingViewController.h"
+#import "SWPDetailsViewController.h"
+#import "JSNetworkActivityIndicatorManager.h"
 
 @interface SWPListViewController ()
 
@@ -23,8 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *mapBarButtonItem;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuBarButtonItem;
 @property (strong, nonatomic) SWPLoadingViewController *loadingViewController;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) id<SWPPlace> selectedPlace;
 
 @end
 
@@ -155,9 +157,13 @@
         self.menuBarButtonItem.enabled = NO;
         self.mapBarButtonItem.enabled = NO;
      
+        [[JSNetworkActivityIndicatorManager sharedManager] startActivity];
+        
         [[[CLGeocoder alloc] init] reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+            
+            [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+            
             if(!error) {
-                
                 //launching maps app
                 MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:placemarks.firstObject];
                 NSArray *mapItems = [NSArray arrayWithObject:destinationMapItem];
@@ -165,9 +171,7 @@
                 [MKMapItem openMapsWithItems:mapItems launchOptions:launchOptions];
                 
             } else {
-                
                 //show error and hide loading vc
-                
                 self.loadingViewController.message = @"Error loading address";
                 self.loadingViewController.showSpinner = NO;
                 
@@ -177,8 +181,6 @@
                         weakSelf.mapBarButtonItem.enabled = YES;
                     [self.loadingViewController hideLoadingViewControllerAnimated:YES];
                 });
-                
-                
             }
         }];
     }
@@ -195,10 +197,6 @@
 }
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.placesToShow.count;
@@ -218,6 +216,17 @@
     [cell.placeDistanceLabel setText:[NSString stringWithFormat:@"%.1f km",distance / 1000]];
     
     return cell;
+}
+
+#pragma mark - Table view delegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    SWPPlaceTableViewCell *touchedCell = (SWPPlaceTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    self.selectedPlace = touchedCell.place;
+    
+    [self performSegueWithIdentifier:@"showDetailsFromList" sender:self];
 }
 
 #pragma mark - SWPSlidingMenuViewControllerDelegate implementation
@@ -271,7 +280,14 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    if([segue.identifier isEqualToString:@"showDetailsFromList"]) {
+        UIViewController *dvc= segue.destinationViewController;
+        if([dvc isKindOfClass:[SWPDetailsViewController class]]) {
+            SWPDetailsViewController *detailsViewController = (SWPDetailsViewController *)dvc;
+            detailsViewController.userLocation = self.userLocation;
+            detailsViewController.place = self.selectedPlace;
+        }
+    }
 }
 
 @end

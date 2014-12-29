@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "lodgingList20.png"
+      "filename" : "lodgingList30.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "lodgingList40.png"
+      "filename" : "lodgingList60.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "lodgingList80.png"
+      "filename" : "lodgingList90.png"
     }
   ],
   "info" : {

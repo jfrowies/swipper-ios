@@ -16,6 +16,9 @@
 #import "SWPSlidingMenuViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SWPListViewController.h"
+#import "SWPPlaceAnnotationCalloutView.h"
+#import "SWPAnnotationView.h"
+#import "SWPDetailsViewController.h"
 
 #define kMaxAllowedDistanceBetweenMapCorners 50000
 
@@ -28,6 +31,8 @@
 @property (nonatomic) BOOL locationServicesAlreadyAuthorized;
 @property (nonatomic) BOOL appAlreadyLaunchedBefore;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *listBarButtonItem;
+//@property (strong, nonatomic) IBOutlet SWPPlaceAnnotationCalloutView *calloutView;
+@property (strong, nonatomic) id<SWPPlace> selectedPlace;
 
 @end
 
@@ -50,8 +55,8 @@
     [self reloadAnnotations];
 }
 
-- (NSArray *)selectedCategories {
-
+- (NSArray *)selectedCategories
+{
     if(!_selectedCategories) {
         _selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
     }
@@ -59,7 +64,8 @@
     return _selectedCategories;
 }
 
-- (SWPSlidingMenuViewController *)slidingMenu {
+- (SWPSlidingMenuViewController *)slidingMenu
+{
     if(!_slidingMenu) {
         _slidingMenu = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SlidingMenuViewController"];
     }
@@ -68,11 +74,13 @@
 
 #define MapViewLocationServicesAlreadyAuthorizedKey @"mapViewLocationServicesAlreadyAuthorizedKey"
 
-- (void)setLocationServicesAlreadyAuthorized:(BOOL)firstTimeAuthorized {
+- (void)setLocationServicesAlreadyAuthorized:(BOOL)firstTimeAuthorized
+{
     [[NSUserDefaults standardUserDefaults] setInteger:firstTimeAuthorized forKey:MapViewLocationServicesAlreadyAuthorizedKey];
 }
 
-- (BOOL)locationServicesAlreadyAuthorized {
+- (BOOL)locationServicesAlreadyAuthorized
+{
     return [[NSUserDefaults standardUserDefaults] integerForKey:MapViewLocationServicesAlreadyAuthorizedKey]
        ;
 }
@@ -118,6 +126,9 @@
     self.userTrackingButton.clipsToBounds = YES;
     
     self.appAlreadyLaunchedBefore = [[NSUserDefaults standardUserDefaults] boolForKey:AppAlreadyLaunchedBeforeKey];
+    
+    //loading NIB for callout views
+//    [[NSBundle mainBundle] loadNibNamed:@"SWPPlaceAnnotationCalloutView" owner:self options:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -218,16 +229,23 @@
     CLLocationCoordinate2D nwCoord = MKCoordinateForMapPoint(nwMapPoint);
     CLLocationCoordinate2D seCoord = MKCoordinateForMapPoint(seMapPoint);
 
+    [self showMessage:@"loading places" withBarType:MessageBarInfo animated:YES];
+    
     //calling the service
     __weak SWPMapViewController *weakSelf = self;
     
     [[SWPLoopBackService sharedInstance] fetchPlacesBetweenNorthWest:nwCoord
                                                            southEast:seCoord
                                                              success:^(NSArray *places) {
-                                                                 weakSelf.places = places;
-                                                                 weakSelf.mapRectWithData = mapRectToFill;
-                                                             } failure:^(NSError *error) {
+                                                                weakSelf.places = places;
+                                                                weakSelf.mapRectWithData = mapRectToFill;
+                                                                
+                                                                 [weakSelf showMessage:@"done" withBarType:MessageBarInfo animated:NO];
+                                                                 [weakSelf hideMessageAfterDelay:2.0f Animated:YES];
                                                                  
+                                                             } failure:^(NSError *error) {
+                                                                 [weakSelf showMessage:@"error loading places" withBarType:MessageBarError animated:NO];
+                                                                  [weakSelf hideMessageAfterDelay:2.0f Animated:YES];
                                                              }];
 }
 
@@ -236,11 +254,11 @@
      if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
     
-    MKAnnotationView *categoryAnnotationView = nil;
+    SWPAnnotationView *categoryAnnotationView = nil;
 
     static NSString *categoryPinID = @"categoryPin";
-    categoryAnnotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:categoryPinID];
-    if ( categoryAnnotationView == nil ) categoryAnnotationView = [[MKAnnotationView alloc]
+    categoryAnnotationView = (SWPAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:categoryPinID];
+    if ( categoryAnnotationView == nil ) categoryAnnotationView = [[SWPAnnotationView alloc]
                                          initWithAnnotation:annotation reuseIdentifier:categoryPinID];
         
     categoryAnnotationView.canShowCallout = YES;
@@ -250,10 +268,21 @@
     UIImage *annotationImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@PinImage",categoryName]];
     if (!annotationImage) annotationImage = [UIImage imageNamed:@"DefaultPinImage"];
     categoryAnnotationView.image = annotationImage;
-
+    
+//    categoryAnnotationView.calloutView = self.calloutView;
+    UIButton *rightView =[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [rightView setImage:[UIImage imageNamed:@"ArrowYellow"] forState:UIControlStateNormal];
+    categoryAnnotationView.rightCalloutAccessoryView = rightView;
     return categoryAnnotationView;
 }
 
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    
+    if([view.annotation isKindOfClass:[SWPAnnotation class]]) {
+        self.selectedPlace = ((SWPAnnotation *)view.annotation).place;
+        [self performSegueWithIdentifier:@"showDetailsFromMap" sender:self];
+    }
+}
 
 #pragma mark -
 
@@ -276,7 +305,10 @@
         
         if(index != NSNotFound)
         {
-            [newAnnotations addObject: [[SWPAnnotation alloc] initWithPlace:place]];
+            SWPAnnotation *annot = [[SWPAnnotation alloc] initWithPlace:place];
+            annot.userLocation = self.mapView.userLocation;
+            
+            [newAnnotations addObject: annot];
         }
     }
     
@@ -377,12 +409,22 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
     if([segue.identifier isEqualToString:@"showListNavigationController"]) {
         UINavigationController *destinationNavigationController= segue.destinationViewController;
         if([destinationNavigationController.viewControllers.firstObject isKindOfClass:[SWPListViewController class]]) {
             SWPListViewController *listViewController = destinationNavigationController.viewControllers.firstObject;
             listViewController.userLocation = self.mapView.userLocation;
             listViewController.places = self.places;
+        }
+    }
+    
+    if([segue.identifier isEqualToString:@"showDetailsFromMap"]) {
+        UIViewController *dvc= segue.destinationViewController;
+        if([dvc isKindOfClass:[SWPDetailsViewController class]]) {
+            SWPDetailsViewController *detailsViewController = (SWPDetailsViewController *)dvc;
+            detailsViewController.userLocation = self.mapView.userLocation;
+            detailsViewController.place = self.selectedPlace;
         }
     }
 }

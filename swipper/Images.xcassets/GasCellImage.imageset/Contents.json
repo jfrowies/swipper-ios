@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "gasList20.png"
+      "filename" : "gasList30.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "gasList40.png"
+      "filename" : "gasList60.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "gasList80.png"
+      "filename" : "gasCell90.png"
     }
   ],
   "info" : {

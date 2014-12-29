@@ -23,13 +23,11 @@
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
-    //Encode properties, other class variables, etc
     [encoder encodeObject:self.name forKey:@"categoryName"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
     if((self = [super init])) {
-        //decode properties, other class vars
         self.name = [decoder decodeObjectForKey:@"categoryName"];
     }
     return self;

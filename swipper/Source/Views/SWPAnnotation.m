@@ -29,4 +29,13 @@
     return self.place.placeName;
 }
 
+- (NSString *)subtitle {
+    
+    CLLocation *startLocation = self.userLocation.location;
+    CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:[self.place placeCoordinate].latitude longitude:[self.place placeCoordinate].longitude];
+    CLLocationDistance distance = [startLocation distanceFromLocation:endLocation];
+    
+    return [NSString stringWithFormat:@"%.1f km",distance / 1000];
+}
+
 @end
