@@ -168,7 +168,7 @@
     if ([MFMailComposeViewController canSendMail])
     {
         id<SWPPlace> place = self.place;
-        NSString *mailBody = [NSString stringWithFormat:@"<b>%@<b><br>%@<br>%@<br>%@<br><br>What's the problem?",place.placeName,place.placeAddress,[NSString stringWithFormat:@"%@, %@, %@",place.placeCity,place.placeState,place.placeCountry],place.placePhone];
+        NSString *mailBody = [NSString stringWithFormat:@"<b>%@</b><br>%@<br>%@<br>%@<br><br>What's the problem?",place.placeName,place.placeAddress,[NSString stringWithFormat:@"%@, %@, %@",place.placeCity,place.placeState,place.placeCountry],place.placePhone];
         
         MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
         mail.mailComposeDelegate = self;
