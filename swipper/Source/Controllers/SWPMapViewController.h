@@ -10,8 +10,9 @@
 #import <MapKit/MKMapView.h>
 #import "SWPSlidingMenuViewController.h"
 #import "SWPMessageBarViewController.h"
+#import "SWPListViewController.h"
 
-@interface SWPMapViewController : SWPMessageBarViewController <MKMapViewDelegate, SWPSlidingMenuViewControllerDelegate, CLLocationManagerDelegate>
+@interface SWPMapViewController : SWPMessageBarViewController <MKMapViewDelegate, SWPSlidingMenuViewControllerDelegate, CLLocationManagerDelegate, SWPListViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) CLLocationManager *locationManager;

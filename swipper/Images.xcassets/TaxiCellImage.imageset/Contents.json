@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "taxiList30.png"
+      "filename" : "taxiList25.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "taxiList60.png"
+      "filename" : "taxiList50.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "taxiCell90.png"
+      "filename" : "taxiCell75.png"
     }
   ],
   "info" : {

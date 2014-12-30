@@ -133,6 +133,10 @@
 
 #pragma mark - IBActions
 
+- (IBAction)showMapTouched:(UIBarButtonItem *)sender {
+    [self.delegate didDismissListViewController:self];
+}
+
 - (IBAction)showMenu
 {
     if(!self.slidingMenu.isBeingPresented) {

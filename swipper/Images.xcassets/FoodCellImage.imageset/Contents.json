@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "foodList30.png"
+      "filename" : "foodList25.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "foodList60.png"
+      "filename" : "foodList50.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "foodCell90.png"
+      "filename" : "foodCell75.png"
     }
   ],
   "info" : {

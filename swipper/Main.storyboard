@@ -163,17 +163,17 @@
                                             <constraint firstAttribute="height" constant="13" id="rLT-6g-4aT"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBg-4V-hbO" userLabel="distance label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBg-4V-hbO" userLabel="distance label">
                                         <rect key="frame" x="273" y="26" width="37" height="18"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6m7-g9-o95" userLabel="separator">
-                                        <rect key="frame" x="267" y="23" width="1" height="25"/>
+                                        <rect key="frame" x="267" y="26" width="1" height="18"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="T9I-nh-7xu"/>
+                                            <constraint firstAttribute="height" constant="18" id="T9I-nh-7xu"/>
                                             <constraint firstAttribute="width" constant="1" id="fMY-fl-zHe"/>
                                         </constraints>
                                     </view>
@@ -185,10 +185,12 @@
                                     <constraint firstItem="6m7-g9-o95" firstAttribute="centerY" secondItem="XBg-4V-hbO" secondAttribute="centerY" id="5hI-TY-JkO"/>
                                     <constraint firstItem="adx-gB-pIU" firstAttribute="leading" secondItem="X8R-cK-zY2" secondAttribute="leading" constant="10" id="8LQ-c0-Pd9"/>
                                     <constraint firstItem="l00-KF-xBe" firstAttribute="top" secondItem="X8R-cK-zY2" secondAttribute="top" constant="15" id="Bhc-wX-s6S"/>
+                                    <constraint firstItem="6m7-g9-o95" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tyw-Wg-rUU" secondAttribute="trailing" constant="5" id="Ept-gP-Auc"/>
                                     <constraint firstItem="adx-gB-pIU" firstAttribute="centerY" secondItem="hNu-1I-iXn" secondAttribute="centerY" id="Nf4-PI-RJH"/>
                                     <constraint firstItem="tyw-Wg-rUU" firstAttribute="leading" secondItem="X8R-cK-zY2" secondAttribute="leading" constant="34" id="Qan-sC-8lU"/>
                                     <constraint firstAttribute="height" constant="75" id="RZu-rH-Xhq"/>
                                     <constraint firstItem="l00-KF-xBe" firstAttribute="leading" secondItem="X8R-cK-zY2" secondAttribute="leading" constant="10" id="UGZ-1A-Mla"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nEy-kx-35u" secondAttribute="trailing" constant="5" id="dVI-Il-bMC"/>
                                     <constraint firstItem="hNu-1I-iXn" firstAttribute="leading" secondItem="X8R-cK-zY2" secondAttribute="leading" constant="34" id="nsy-qT-fmb"/>
                                     <constraint firstItem="tyw-Wg-rUU" firstAttribute="top" secondItem="nEy-kx-35u" secondAttribute="bottom" id="o9d-8k-2jS"/>
                                     <constraint firstItem="tyw-Wg-rUU" firstAttribute="centerY" secondItem="XBg-4V-hbO" secondAttribute="centerY" id="oym-Ye-vyQ"/>
@@ -315,7 +317,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jQO-d8-jYW" id="Qo4-cg-5uB">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR2-zm-kgT">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR2-zm-kgT">
                                                     <rect key="frame" x="8" y="8" width="304" height="18"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-ThinItalic" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -613,7 +615,7 @@
                         <barButtonItem key="rightBarButtonItem" image="MapIcon" id="qQW-rl-IT9" userLabel="map bar button item">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="dTi-Ph-aHe" kind="modal" modalTransitionStyle="flipHorizontal" id="IjJ-rP-EVD"/>
+                                <action selector="showMapTouched:" destination="Acx-1T-5X5" id="cnr-Ok-myh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -368,6 +368,12 @@
     }
 }
 
+#pragma mark - SWPListViewController delegate implementation
+
+- (void)didDismissListViewController:(SWPListViewController *)listViewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - Map User Settings
 
 #define MapViewRegionCenterLatitudeKey @"mapViewRegionCenterLatitudeKey"
@@ -416,6 +422,7 @@
             SWPListViewController *listViewController = destinationNavigationController.viewControllers.firstObject;
             listViewController.userLocation = self.mapView.userLocation;
             listViewController.places = self.places;
+            listViewController.delegate = self;
         }
     }
     

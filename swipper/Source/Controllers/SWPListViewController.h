@@ -11,10 +11,19 @@
 #import "SWPSlidingMenuViewController.h"
 #import "SWPMessageBarViewController.h"
 
+@class SWPListViewController;
+
+@protocol SWPListViewControllerDelegate <NSObject>
+
+- (void)didDismissListViewController:(SWPListViewController *)listViewController;
+
+@end
+
 @interface SWPListViewController : SWPMessageBarViewController <UITableViewDelegate, UITableViewDataSource,SWPSlidingMenuViewControllerDelegate>
 
 @property (nonatomic, strong) MKUserLocation *userLocation;
 @property (nonatomic, strong) NSArray *places;
 @property (nonatomic, strong, readonly) NSArray *selectedCategories;
+@property (nonatomic, weak) id<SWPListViewControllerDelegate> delegate;
 
 @end

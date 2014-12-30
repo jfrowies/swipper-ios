@@ -167,13 +167,13 @@
     
     if ([MFMailComposeViewController canSendMail])
     {
-        
-        NSString *mailBody = self.place.placeName;
+        id<SWPPlace> place = self.place;
+        NSString *mailBody = [NSString stringWithFormat:@"<b>%@<b><br>%@<br>%@<br>%@<br><br>What's the problem?",place.placeName,place.placeAddress,[NSString stringWithFormat:@"%@, %@, %@",place.placeCity,place.placeState,place.placeCountry],place.placePhone];
         
         MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
         mail.mailComposeDelegate = self;
         [mail setSubject:@"Swipper Report"];
-        [mail setMessageBody:mailBody isHTML:NO];
+        [mail setMessageBody:mailBody isHTML:YES];
         [mail setToRecipients:@[@"swipper-contact@globant.com"]];
         [self presentViewController:mail animated:YES completion:NULL];
     }
