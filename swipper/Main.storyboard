@@ -106,28 +106,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iex-cd-gC5" userLabel="reviews container">
-                                <rect key="frame" x="0.0" y="139" width="320" height="284"/>
-                                <connections>
-                                    <segue destination="DcP-XD-PMD" kind="embed" identifier="ReviewsSegue" id="p89-PC-RSX"/>
-                                </connections>
-                            </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHd-6c-O7F" userLabel="separator">
-                                <rect key="frame" x="0.0" y="423" width="320" height="1"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="f79-lG-YVa"/>
-                                </constraints>
-                            </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ic-Eg-ZWB" userLabel="photos container">
-                                <rect key="frame" x="0.0" y="424" width="320" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="xni-iJ-CKR"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="rVC-aW-H1d" kind="embed" identifier="GallerySegue" id="Oj3-HO-b6P"/>
-                                </connections>
-                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8R-cK-zY2" userLabel="details view">
                                 <rect key="frame" x="0.0" y="64" width="320" height="75"/>
                                 <subviews>
@@ -199,8 +177,48 @@
                                     <constraint firstItem="adx-gB-pIU" firstAttribute="top" secondItem="X8R-cK-zY2" secondAttribute="top" constant="50" id="wuc-jb-RV1"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCQ-XO-Ml5">
+                                <rect key="frame" x="0.0" y="139" width="320" height="385"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ic-Eg-ZWB" userLabel="photos container">
+                                        <rect key="frame" x="0.0" y="284" width="320" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="xni-iJ-CKR"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="rVC-aW-H1d" kind="embed" identifier="GallerySegue" id="Oj3-HO-b6P"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iex-cd-gC5" userLabel="reviews container">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="283"/>
+                                        <connections>
+                                            <segue destination="DcP-XD-PMD" kind="embed" identifier="ReviewsSegue" id="p89-PC-RSX"/>
+                                        </connections>
+                                    </containerView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHd-6c-O7F" userLabel="separator">
+                                        <rect key="frame" x="0.0" y="283" width="320" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="f79-lG-YVa"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="fHd-6c-O7F" secondAttribute="trailing" id="8fh-GM-7Lg"/>
+                                    <constraint firstAttribute="bottom" secondItem="3Ic-Eg-ZWB" secondAttribute="bottom" constant="1" id="AIe-Ud-vAf"/>
+                                    <constraint firstAttribute="trailing" secondItem="iex-cd-gC5" secondAttribute="trailing" id="GGF-ET-Rj3"/>
+                                    <constraint firstItem="fHd-6c-O7F" firstAttribute="leading" secondItem="FCQ-XO-Ml5" secondAttribute="leading" id="LAF-PP-dk0"/>
+                                    <constraint firstItem="3Ic-Eg-ZWB" firstAttribute="top" secondItem="fHd-6c-O7F" secondAttribute="bottom" id="LPI-Qf-8zy"/>
+                                    <constraint firstItem="iex-cd-gC5" firstAttribute="top" secondItem="FCQ-XO-Ml5" secondAttribute="top" id="VP6-G2-OSp"/>
+                                    <constraint firstAttribute="trailing" secondItem="3Ic-Eg-ZWB" secondAttribute="trailing" id="X1j-aX-Euw"/>
+                                    <constraint firstItem="iex-cd-gC5" firstAttribute="leading" secondItem="FCQ-XO-Ml5" secondAttribute="leading" id="oSW-8l-JOV"/>
+                                    <constraint firstItem="3Ic-Eg-ZWB" firstAttribute="leading" secondItem="FCQ-XO-Ml5" secondAttribute="leading" id="qde-83-xIN"/>
+                                    <constraint firstItem="fHd-6c-O7F" firstAttribute="top" secondItem="iex-cd-gC5" secondAttribute="bottom" id="t2k-O8-mUU"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jY4-dr-hxd" userLabel="separator 2">
-                                <rect key="frame" x="0.0" y="524" width="320" height="1"/>
+                                <rect key="frame" x="0.0" y="523" width="320" height="1"/>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="kI5-LL-ZJw"/>
@@ -246,25 +264,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="iex-cd-gC5" firstAttribute="leading" secondItem="1KK-9e-Ehu" secondAttribute="leading" id="1Mq-4r-V4L"/>
-                            <constraint firstAttribute="trailing" secondItem="3Ic-Eg-ZWB" secondAttribute="trailing" id="2a5-ul-INy"/>
-                            <constraint firstAttribute="trailing" secondItem="iex-cd-gC5" secondAttribute="trailing" id="Azh-bp-svb"/>
                             <constraint firstItem="iRz-nb-odP" firstAttribute="top" secondItem="2LQ-ak-54S" secondAttribute="bottom" id="BH7-TL-llB"/>
-                            <constraint firstItem="2LQ-ak-54S" firstAttribute="top" secondItem="3Ic-Eg-ZWB" secondAttribute="bottom" id="FVp-63-MQf"/>
-                            <constraint firstItem="iex-cd-gC5" firstAttribute="top" secondItem="X8R-cK-zY2" secondAttribute="bottom" id="Nd6-8V-hzF"/>
+                            <constraint firstItem="2LQ-ak-54S" firstAttribute="top" secondItem="FCQ-XO-Ml5" secondAttribute="bottom" id="D8j-Ye-gTx"/>
+                            <constraint firstItem="FCQ-XO-Ml5" firstAttribute="top" secondItem="X8R-cK-zY2" secondAttribute="bottom" id="KHE-RM-LaA"/>
                             <constraint firstAttribute="trailing" secondItem="2LQ-ak-54S" secondAttribute="trailing" id="O6O-cW-K2U"/>
                             <constraint firstItem="jY4-dr-hxd" firstAttribute="leading" secondItem="1KK-9e-Ehu" secondAttribute="leading" id="TTf-E2-4Xq"/>
-                            <constraint firstItem="fHd-6c-O7F" firstAttribute="top" secondItem="iex-cd-gC5" secondAttribute="bottom" id="YRU-ct-zeI"/>
-                            <constraint firstAttribute="trailing" secondItem="fHd-6c-O7F" secondAttribute="trailing" id="YyB-Jd-q68"/>
-                            <constraint firstItem="jY4-dr-hxd" firstAttribute="top" secondItem="3Ic-Eg-ZWB" secondAttribute="bottom" id="iwr-ch-yaQ"/>
-                            <constraint firstItem="fHd-6c-O7F" firstAttribute="leading" secondItem="1KK-9e-Ehu" secondAttribute="leading" id="jm0-h7-oc1"/>
+                            <constraint firstItem="FCQ-XO-Ml5" firstAttribute="leading" secondItem="1KK-9e-Ehu" secondAttribute="leading" id="c3n-ZV-AuL"/>
                             <constraint firstAttribute="trailing" secondItem="X8R-cK-zY2" secondAttribute="trailing" id="ppK-r8-iCX"/>
+                            <constraint firstItem="2LQ-ak-54S" firstAttribute="top" secondItem="jY4-dr-hxd" secondAttribute="bottom" id="qiT-JZ-Z9S"/>
                             <constraint firstItem="X8R-cK-zY2" firstAttribute="leading" secondItem="1KK-9e-Ehu" secondAttribute="leading" id="rdp-6k-mvh"/>
                             <constraint firstItem="2LQ-ak-54S" firstAttribute="leading" secondItem="1KK-9e-Ehu" secondAttribute="leading" id="rkW-2R-qqg"/>
-                            <constraint firstItem="3Ic-Eg-ZWB" firstAttribute="top" secondItem="fHd-6c-O7F" secondAttribute="bottom" id="rm7-DU-cVu"/>
+                            <constraint firstAttribute="trailing" secondItem="FCQ-XO-Ml5" secondAttribute="trailing" id="uTa-cA-Fb3"/>
                             <constraint firstItem="X8R-cK-zY2" firstAttribute="top" secondItem="VJI-5K-CC4" secondAttribute="bottom" id="ybM-Ev-uXm"/>
                             <constraint firstAttribute="trailing" secondItem="jY4-dr-hxd" secondAttribute="trailing" id="z9I-v4-g7W"/>
-                            <constraint firstItem="3Ic-Eg-ZWB" firstAttribute="leading" secondItem="1KK-9e-Ehu" secondAttribute="leading" id="zzb-hg-99m"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Acx-Hj-WFd">
@@ -304,11 +316,11 @@
                         <viewControllerLayoutGuide type="bottom" id="oy5-bO-f8F"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YfM-bP-VKy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="283"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xh7-cp-ida">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="283"/>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>

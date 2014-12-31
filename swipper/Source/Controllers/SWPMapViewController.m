@@ -40,7 +40,7 @@
 
 @synthesize selectedCategories = _selectedCategories;
 
-#pragma mark - getters/setters
+#pragma mark - Getters/Setters
 
 - (void)setPlaces:(NSArray *)places
 {
