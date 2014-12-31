@@ -9,7 +9,7 @@
 #import "SWPSlidingMenuViewController.h"
 
 #define slideAnimationDuration 0.3f
-#define hideMenuConstraintConstant -270.0f
+#define hideMenuConstraintConstant -240.0f
 #define showMenuConstraintConstant -8.0f
 
 @interface SWPSlidingMenuViewController ()

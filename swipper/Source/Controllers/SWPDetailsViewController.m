@@ -130,26 +130,29 @@
     
         [[JSNetworkActivityIndicatorManager sharedManager] startActivity];
     
+        __weak SWPDetailsViewController *weakSelf = self;
+    
         [[[CLGeocoder alloc] init] reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
             
             [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
             
-            if(!error) {
-                //launching maps app
-                MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:placemarks.firstObject];
-                NSArray *mapItems = [NSArray arrayWithObject:destinationMapItem];
-                NSDictionary *launchOptions = [NSDictionary dictionaryWithObject:MKLaunchOptionsDirectionsModeWalking forKey:MKLaunchOptionsDirectionsModeKey];
-                [MKMapItem openMapsWithItems:mapItems launchOptions:launchOptions];
-            } else {
-                //show error and hide loading vc
-                self.loadingViewController.message = @"Error loading address";
-                self.loadingViewController.showSpinner = NO;
-                
-                __weak SWPDetailsViewController *weakSelf = self;
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    weakSelf.backButton.enabled = YES;
-                    [self.loadingViewController hideLoadingViewControllerAnimated:YES];
-                });
+            if (weakSelf.isViewLoaded && weakSelf.view.window) {
+                if(!error) {
+                    //launching maps app
+                    MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:placemarks.firstObject];
+                    NSArray *mapItems = [NSArray arrayWithObject:destinationMapItem];
+                    NSDictionary *launchOptions = [NSDictionary dictionaryWithObject:MKLaunchOptionsDirectionsModeWalking forKey:MKLaunchOptionsDirectionsModeKey];
+                    [MKMapItem openMapsWithItems:mapItems launchOptions:launchOptions];
+                } else {
+                    //show error and hide loading vc
+                    self.loadingViewController.message = @"Error loading address";
+                    self.loadingViewController.showSpinner = NO;
+                    
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        weakSelf.backButton.enabled = YES;
+                        [self.loadingViewController hideLoadingViewControllerAnimated:YES];
+                    });
+                }
             }
         }];
 }
