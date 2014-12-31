@@ -492,8 +492,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ob5-25-scq">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ohQ-6h-sgg">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="placeCell" rowHeight="80" id="bXJ-XJ-kUK" customClass="SWPPlaceTableViewCell">
@@ -599,10 +603,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="SDU-td-ffO" firstAttribute="top" secondItem="ohQ-6h-sgg" secondAttribute="bottom" id="6Tn-Lg-gWk"/>
                             <constraint firstAttribute="trailing" secondItem="ohQ-6h-sgg" secondAttribute="trailing" id="CNM-1i-179"/>
-                            <constraint firstItem="ohQ-6h-sgg" firstAttribute="top" secondItem="SSR-H9-8yA" secondAttribute="top" id="Cc4-HV-VrM"/>
                             <constraint firstItem="ohQ-6h-sgg" firstAttribute="leading" secondItem="SSR-H9-8yA" secondAttribute="leading" id="Rgg-20-BpE"/>
-                            <constraint firstItem="SDU-td-ffO" firstAttribute="top" secondItem="ohQ-6h-sgg" secondAttribute="bottom" id="Wvy-pz-ggC"/>
+                            <constraint firstAttribute="trailing" secondItem="ob5-25-scq" secondAttribute="trailing" id="V8i-1u-NUP"/>
+                            <constraint firstItem="ob5-25-scq" firstAttribute="top" secondItem="JlA-YG-7y4" secondAttribute="bottom" id="YLJ-Sd-qQi"/>
+                            <constraint firstItem="ob5-25-scq" firstAttribute="leading" secondItem="SSR-H9-8yA" secondAttribute="leading" id="hmp-h2-r89"/>
+                            <constraint firstItem="ohQ-6h-sgg" firstAttribute="top" secondItem="JlA-YG-7y4" secondAttribute="bottom" id="p0c-nm-xlH"/>
+                            <constraint firstItem="SDU-td-ffO" firstAttribute="top" secondItem="ob5-25-scq" secondAttribute="bottom" id="xRb-tB-6kX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jxl-2m-yUg">
