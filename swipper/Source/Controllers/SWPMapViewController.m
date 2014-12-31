@@ -60,7 +60,6 @@
     if(!_selectedCategories) {
         _selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
     }
-    
     return _selectedCategories;
 }
 
@@ -372,6 +371,7 @@
 
 - (void)didDismissListViewController:(SWPListViewController *)listViewController {
     [self dismissViewControllerAnimated:YES completion:nil];
+    self.selectedCategories = [[SWPCategoryStore sharedInstance] selectedCategories];
 }
 
 #pragma mark - Map User Settings

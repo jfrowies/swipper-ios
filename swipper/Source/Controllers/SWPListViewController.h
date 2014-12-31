@@ -14,9 +14,7 @@
 @class SWPListViewController;
 
 @protocol SWPListViewControllerDelegate <NSObject>
-
 - (void)didDismissListViewController:(SWPListViewController *)listViewController;
-
 @end
 
 @interface SWPListViewController : SWPMessageBarViewController <UITableViewDelegate, UITableViewDataSource,SWPSlidingMenuViewControllerDelegate>

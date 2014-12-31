@@ -27,6 +27,7 @@
 @property (strong, nonatomic) SWPLoadingViewController *loadingViewController;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) id<SWPPlace> selectedPlace;
+@property (weak, nonatomic) IBOutlet UIView *infoView;
 
 @end
 
@@ -81,6 +82,13 @@
 - (void)setPlacesToShow:(NSArray *)placesToShow
 {
     _placesToShow = placesToShow;
+    if(placesToShow.count == 0) {
+        self.tableView.hidden = YES;
+        self.infoView.hidden = NO;
+    }else{
+        self.tableView.hidden = NO;
+        self.infoView.hidden = YES;
+    }
     [self.tableView reloadData];
 }
 
@@ -112,6 +120,17 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAppStateTransition) name:UIApplicationDidBecomeActiveNotification object:nil];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if(self.placesToShow.count == 0) {
+        self.tableView.hidden = YES;
+        self.infoView.hidden = NO;
+    }else{
+        self.tableView.hidden = NO;
+        self.infoView.hidden = YES;
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated

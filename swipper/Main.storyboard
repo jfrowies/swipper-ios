@@ -492,9 +492,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ob5-25-scq">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ob5-25-scq" userLabel="info view">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No places found." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCL-Ra-BV9" userLabel="info title">
+                                        <rect key="frame" x="97" y="242" width="126" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.72549019607843135" green="0.72549019607843135" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try changing filters or location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfK-pU-wtW" userLabel="info subtitle">
+                                        <rect key="frame" x="52" y="262" width="217" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.72549019609999998" green="0.72549019609999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InfoImage" translatesAutoresizingMaskIntoConstraints="NO" id="XGs-WJ-A5H">
+                                        <rect key="frame" x="132" y="176" width="56" height="56"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="cfK-pU-wtW" firstAttribute="top" secondItem="tCL-Ra-BV9" secondAttribute="bottom" id="JSW-Vr-JVj"/>
+                                    <constraint firstAttribute="centerX" secondItem="tCL-Ra-BV9" secondAttribute="centerX" id="WyI-YB-KKe"/>
+                                    <constraint firstItem="tCL-Ra-BV9" firstAttribute="centerX" secondItem="XGs-WJ-A5H" secondAttribute="centerX" id="fXR-D3-P7q"/>
+                                    <constraint firstAttribute="centerY" secondItem="tCL-Ra-BV9" secondAttribute="centerY" id="tSg-GI-M1C"/>
+                                    <constraint firstItem="tCL-Ra-BV9" firstAttribute="top" secondItem="XGs-WJ-A5H" secondAttribute="bottom" constant="10" id="wEG-7t-h6m"/>
+                                    <constraint firstItem="tCL-Ra-BV9" firstAttribute="centerX" secondItem="cfK-pU-wtW" secondAttribute="centerX" id="xUQ-VQ-daE"/>
+                                </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ohQ-6h-sgg">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
@@ -628,6 +653,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="infoView" destination="ob5-25-scq" id="Pa9-G3-3wf"/>
                         <outlet property="mapBarButtonItem" destination="qQW-rl-IT9" id="Wgx-Ts-cWs"/>
                         <outlet property="menuBarButtonItem" destination="J6t-0O-mso" id="D7O-ZA-T6W"/>
                         <outlet property="tableView" destination="ohQ-6h-sgg" id="X1z-cH-pSA"/>
@@ -965,6 +991,7 @@
         <image name="BottomBarReport" width="28" height="28"/>
         <image name="BottomBarShare" width="28" height="28"/>
         <image name="HowToArrive" width="25" height="25"/>
+        <image name="InfoImage" width="56" height="56"/>
         <image name="ListIcon" width="27" height="20"/>
         <image name="LocateMe" width="20" height="20"/>
         <image name="LocationPin" width="21" height="29"/>
