@@ -122,7 +122,7 @@
 
 - (void)showMessage:(NSString *)message withBarType:(MessageBarType)barType animated:(BOOL)animated {
     
-    if(self.messageBarType == MessageBarNoInternet && barType!= MessageBarInternetRestored)
+    if(self.messageBarType == MessageBarNoInternet && barType!= MessageBarInternetRestored && barType!=MessageBarNoInternet)
         return;
     
     self.message = message;
