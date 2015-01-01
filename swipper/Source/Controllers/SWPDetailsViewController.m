@@ -32,6 +32,9 @@
 @property (weak, nonatomic) IBOutlet UIView *infoView;
 @property (weak, nonatomic) IBOutlet UIView *loadingView;
 @property (strong, nonatomic) SWPPlaceDetail *placeDetails;
+@property (weak, nonatomic) SWPReviewsViewController *reviewsViewController;
+@property (weak, nonatomic) SWPGalleryViewController *galleryViewController;
+
 @end
 
 @implementation SWPDetailsViewController
@@ -47,7 +50,8 @@
     _placeDetails = placeDetails;
     if(_placeDetails) {
         self.infoView.hidden = YES;
-        //pass place details to containers
+        self.reviewsViewController.reviews = _placeDetails.reviews;
+        self.galleryViewController.photosRequestsURLs = _placeDetails.photosRequestsURLs;
     }
 }
 
@@ -111,14 +115,14 @@
     if([segue.identifier isEqualToString:@"ReviewsSegue"]) {
         if([segue.destinationViewController isKindOfClass:[SWPReviewsViewController class]]) {
             SWPReviewsViewController *dvc = (SWPReviewsViewController *)segue.destinationViewController;
-            dvc.place = self.place;
+            self.reviewsViewController = dvc;
         }
     }
     
     if([segue.identifier isEqualToString:@"GallerySegue"]) {
         if([segue.destinationViewController isKindOfClass:[SWPGalleryViewController class]]) {
             SWPGalleryViewController *dvc = (SWPGalleryViewController *)segue.destinationViewController;
-            dvc.place = self.place;
+            self.galleryViewController = dvc;
         }
     }
 }
@@ -201,34 +205,34 @@
         [mail setToRecipients:@[@"swipper-contact@globant.com"]];
         [self presentViewController:mail animated:YES completion:NULL];
     }
-    else
-    {
-        NSLog(@"This device cannot send email");
-    }
-    
+//    else
+//    {
+//        NSLog(@"This device cannot send email");
+//    }
+//    
 }
 
 #pragma mark - <MFMailComposeViewControllerDelegate>
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
-    switch (result) {
-        case MFMailComposeResultSent:
-            NSLog(@"You sent the email.");
-            break;
-        case MFMailComposeResultSaved:
-            NSLog(@"You saved a draft of this email");
-            break;
-        case MFMailComposeResultCancelled:
-            NSLog(@"You cancelled sending this email.");
-            break;
-        case MFMailComposeResultFailed:
-            NSLog(@"Mail failed:  An error occurred when trying to compose this email");
-            break;
-        default:
-            NSLog(@"An error occurred when trying to compose this email");
-            break;
-    }
+//    switch (result) {
+//        case MFMailComposeResultSent:
+//            NSLog(@"You sent the email.");
+//            break;
+//        case MFMailComposeResultSaved:
+//            NSLog(@"You saved a draft of this email");
+//            break;
+//        case MFMailComposeResultCancelled:
+//            NSLog(@"You cancelled sending this email.");
+//            break;
+//        case MFMailComposeResultFailed:
+//            NSLog(@"Mail failed:  An error occurred when trying to compose this email");
+//            break;
+//        default:
+//            NSLog(@"An error occurred when trying to compose this email");
+//            break;
+//    }
     
     [self dismissViewControllerAnimated:YES completion:NULL];
 }

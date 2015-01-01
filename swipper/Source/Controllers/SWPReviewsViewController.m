@@ -12,18 +12,12 @@
 #import "SWPLoopBackService.h"
 
 @interface SWPReviewsViewController ()
-@property (strong, nonatomic) NSArray *reviews;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation SWPReviewsViewController
 
 #pragma mark - Getters/Setters
-
-- (void)setPlace:(id<SWPPlace>)place {
-    _place = place;
-    [self loadPlaceReviews];
-}
 
 - (void)setReviews:(NSArray *)reviews {
     _reviews = reviews;
@@ -109,13 +103,5 @@
 //    [label setText:@"REVIEWS"];
 //    return label;
 //}
-
-- (void)loadPlaceReviews {
-//    [[SWPLoopBackService sharedInstance] fetchPlaceReviewsWithPlaceId:self.place.placeId success:^(NSArray *reviews) {
-//        self.reviews = reviews;
-//    } failure:^(NSError *error) {
-//        //TODO: show error
-//    }];
-}
 
 @end

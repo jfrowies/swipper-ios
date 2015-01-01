@@ -126,7 +126,9 @@
             for (NSDictionary *review in reviews) {
                 NSString *reviewText = [review valueForKey:@"text"];
                 int reviewStars = (int)[[review valueForKey:@"rating"] integerValue];
-                [reviewObjectsArray addObject:[SWPReview reviewWithText:reviewText andStars:reviewStars]];
+                if(reviewText && ![reviewText isEqualToString:@""]) {
+                    [reviewObjectsArray addObject:[SWPReview reviewWithText:reviewText andStars:reviewStars]];
+                }
             }
             
             NSArray *photos = [result valueForKey:@"photos"];
