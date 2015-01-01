@@ -12,6 +12,7 @@
 @class SWPSlidingMenuViewController;
 
 @protocol SWPSlidingMenuViewControllerDelegate <NSObject>
+
 - (void)slidingMenuViewController:(SWPSlidingMenuViewController *)sender
              userDidSelectCategories:(NSArray *)selectedCategories;
 @optional
@@ -27,6 +28,7 @@
 
 - (void)presentSlidingMenuInViewController:(UIViewController *)viewController
                                    andView:(UIView *)view animated:(BOOL)animated;
+
 - (void)hideAnimated:(BOOL)animated;
 
 @end
