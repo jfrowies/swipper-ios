@@ -15,7 +15,7 @@
 #import <MessageUI/MessageUI.h>
 #import "JSNetworkActivityIndicatorManager.h"
 #import "SWPPlaceDetail.h"
-#import "SWPLoopBackService.h"
+#import "SWPRestService.h"
 
 @interface SWPDetailsViewController () <MFMailComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *placeAddressLabel;
@@ -241,7 +241,7 @@
 
 - (void)loadPlaceDetail{
     self.loadingView.hidden = NO;
-    [[SWPLoopBackService sharedInstance] fetchPlaceDetailWithPlaceId:self.place.placeId success:^(SWPPlaceDetail *placeDetail) {
+    [[SWPRestService sharedInstance] fetchPlaceDetailWithPlaceId:self.place.placeId success:^(SWPPlaceDetail *placeDetail) {
         self.loadingView.hidden = YES;
         if (placeDetail) {
             self.placeDetails = placeDetail;

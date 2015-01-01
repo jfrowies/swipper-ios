@@ -9,7 +9,7 @@
 #import "SWPReviewsViewController.h"
 #import "SWPReviewTableViewCell.h"
 #import "SWPReview.h"
-#import "SWPLoopBackService.h"
+#import "SWPRestService.h"
 
 @interface SWPReviewsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

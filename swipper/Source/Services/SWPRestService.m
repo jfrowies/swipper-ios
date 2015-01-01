@@ -6,24 +6,24 @@
 //  Copyright (c) 2014 Globant Labs. All rights reserved.
 //
 
-#import "SWPLoopBackService.h"
+#import "SWPRestService.h"
 #import <LoopBack/LoopBack.h>
 #import "LBPlace.h"
 #import "LBPlaceRepository.h"
 #import "SWPReview.h"
 #import "JSNetworkActivityIndicatorManager.h"
 
-@interface SWPLoopBackService ()
+@interface SWPRestService ()
 @property (nonatomic, strong, readwrite) NSURL *serviceURL;
 @property (nonatomic, strong) LBRESTAdapter *loopBackAdapter;
 @end
 
-@implementation SWPLoopBackService
+@implementation SWPRestService
 
 #pragma mark - Singleton implementation
 
 + (id)sharedInstance {
-    static SWPLoopBackService *sharedInstance = nil;
+    static SWPRestService *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];

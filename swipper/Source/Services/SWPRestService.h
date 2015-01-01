@@ -10,7 +10,7 @@
 #import "CoreLocation/CoreLocation.h"
 #import "SWPPlaceDetail.h"
 
-@interface SWPLoopBackService : NSObject
+@interface SWPRestService : NSObject
 
 @property (nonatomic, strong, readonly) NSURL *serviceURL;
 

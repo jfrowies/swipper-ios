@@ -8,7 +8,7 @@
 
 #import "SWPSplashViewController.h"
 #import "SWPCategory.h"
-#import "SWPLoopBackService.h"
+#import "SWPRestService.h"
 #import "SWPCategoryStore.h"
 
 @interface SWPSplashViewController ()

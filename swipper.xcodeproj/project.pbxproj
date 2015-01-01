@@ -46,8 +46,8 @@
 		0585E65B19CCD7F700DDC2CD /* SWPCategoryStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585E65A19CCD7F700DDC2CD /* SWPCategoryStore.m */; };
 		0585E65C19CCD7F700DDC2CD /* SWPCategoryStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585E65A19CCD7F700DDC2CD /* SWPCategoryStore.m */; };
 		058E1D3B19B4F633001CB42D /* LoopBack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 058E1D3A19B4F633001CB42D /* LoopBack.framework */; };
-		058E1D3E19B4FA56001CB42D /* SWPLoopBackService.m in Sources */ = {isa = PBXBuildFile; fileRef = 058E1D3D19B4FA56001CB42D /* SWPLoopBackService.m */; };
-		058E1D3F19B4FA56001CB42D /* SWPLoopBackService.m in Sources */ = {isa = PBXBuildFile; fileRef = 058E1D3D19B4FA56001CB42D /* SWPLoopBackService.m */; };
+		058E1D3E19B4FA56001CB42D /* SWPRestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 058E1D3D19B4FA56001CB42D /* SWPRestService.m */; };
+		058E1D3F19B4FA56001CB42D /* SWPRestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 058E1D3D19B4FA56001CB42D /* SWPRestService.m */; };
 		058E1D4119B52334001CB42D /* SWPLoopBackServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 058E1D4019B52334001CB42D /* SWPLoopBackServiceTests.m */; };
 		058E1D4219B5241E001CB42D /* LoopBack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 058E1D3A19B4F633001CB42D /* LoopBack.framework */; };
 		05AD1E8519C0A4E900D823DC /* SWPMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AD1E8419C0A4E900D823DC /* SWPMenuViewController.m */; };
@@ -140,8 +140,8 @@
 		0585E65919CCD7F700DDC2CD /* SWPCategoryStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPCategoryStore.h; sourceTree = "<group>"; };
 		0585E65A19CCD7F700DDC2CD /* SWPCategoryStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPCategoryStore.m; sourceTree = "<group>"; };
 		058E1D3A19B4F633001CB42D /* LoopBack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LoopBack.framework; sourceTree = "<group>"; };
-		058E1D3C19B4FA56001CB42D /* SWPLoopBackService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPLoopBackService.h; sourceTree = "<group>"; };
-		058E1D3D19B4FA56001CB42D /* SWPLoopBackService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPLoopBackService.m; sourceTree = "<group>"; };
+		058E1D3C19B4FA56001CB42D /* SWPRestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPRestService.h; sourceTree = "<group>"; };
+		058E1D3D19B4FA56001CB42D /* SWPRestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPRestService.m; sourceTree = "<group>"; };
 		058E1D4019B52334001CB42D /* SWPLoopBackServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPLoopBackServiceTests.m; sourceTree = "<group>"; };
 		05AD1E8319C0A4E900D823DC /* SWPMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPMenuViewController.h; sourceTree = "<group>"; };
 		05AD1E8419C0A4E900D823DC /* SWPMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPMenuViewController.m; sourceTree = "<group>"; };
@@ -415,8 +415,8 @@
 		050F46FF19B0F52E00E715A1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				058E1D3C19B4FA56001CB42D /* SWPLoopBackService.h */,
-				058E1D3D19B4FA56001CB42D /* SWPLoopBackService.m */,
+				058E1D3C19B4FA56001CB42D /* SWPRestService.h */,
+				058E1D3D19B4FA56001CB42D /* SWPRestService.m */,
 				0585E65919CCD7F700DDC2CD /* SWPCategoryStore.h */,
 				0585E65A19CCD7F700DDC2CD /* SWPCategoryStore.m */,
 			);
@@ -600,7 +600,7 @@
 				B5D936371A08864F00FF62F8 /* M13Checkbox+Menu.m in Sources */,
 				050F470919B0F52E00E715A1 /* SWPMapViewController.m in Sources */,
 				0585E64419CB7A7900DDC2CD /* SWPCategoryTableViewCell.m in Sources */,
-				058E1D3E19B4FA56001CB42D /* SWPLoopBackService.m in Sources */,
+				058E1D3E19B4FA56001CB42D /* SWPRestService.m in Sources */,
 				EFD1759D1A44B93400077ED8 /* SWPDetailsViewController.m in Sources */,
 				B52211DC1A4694E200F04083 /* SWPPhotoCollectionViewCell.m in Sources */,
 				B52211D91A467E9000F04083 /* SWPGalleryViewController.m in Sources */,
@@ -638,7 +638,7 @@
 				058E1D4119B52334001CB42D /* SWPLoopBackServiceTests.m in Sources */,
 				0585E65C19CCD7F700DDC2CD /* SWPCategoryStore.m in Sources */,
 				055398EE19C0D7AF00247FDD /* LBPlaceRepository.m in Sources */,
-				058E1D3F19B4FA56001CB42D /* SWPLoopBackService.m in Sources */,
+				058E1D3F19B4FA56001CB42D /* SWPRestService.m in Sources */,
 				0585E64519CB7A7900DDC2CD /* SWPCategoryTableViewCell.m in Sources */,
 				050F46DD19B0F4CA00E715A1 /* swipperTests.m in Sources */,
 				05AD1E8619C0A4E900D823DC /* SWPMenuViewController.m in Sources */,

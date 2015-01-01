@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "SWPLoopBackService.h"
+#import "SWPRestService.h"
 
 @interface SWPLoopBackServiceTests : XCTestCase
 

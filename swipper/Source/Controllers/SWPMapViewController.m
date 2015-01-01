@@ -7,7 +7,7 @@
 //
 
 #import "SWPMapViewController.h"
-#import "SWPLoopBackService.h"
+#import "SWPRestService.h"
 #import "LBPlace.h"
 #import "SWPAnnotation.h"
 #import "SWPCategory.h"
@@ -233,7 +233,7 @@
     //calling the service
     __weak SWPMapViewController *weakSelf = self;
     
-    [[SWPLoopBackService sharedInstance] fetchPlacesBetweenNorthWest:nwCoord
+    [[SWPRestService sharedInstance] fetchPlacesBetweenNorthWest:nwCoord
                                                            southEast:seCoord
                                                              success:^(NSArray *places) {
                                                                 weakSelf.places = places;
