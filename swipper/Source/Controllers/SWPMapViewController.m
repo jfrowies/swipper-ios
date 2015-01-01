@@ -95,7 +95,6 @@
     return self;
 }
 
-
 #define AppAlreadyLaunchedBeforeKey @"AppAlreadyLaunchedBeforeKey"
 
 - (void)viewDidLoad
@@ -119,6 +118,12 @@
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.barTintColor = [SWPThemeHelper colorForNavigationBar];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    
+    //Navigation Item title view
+    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    [titleView addSubview:[[UIImageView alloc ] initWithImage:[UIImage imageNamed:@"SwipperLogo"]]];
+    titleView.frame = CGRectMake(30, 30, titleView.frame.size.width, titleView.frame.size.height);
+    self.navigationItem.titleView = titleView;
     
     //User tracking button UI adjustments
     self.userTrackingButton.layer.cornerRadius = 5;

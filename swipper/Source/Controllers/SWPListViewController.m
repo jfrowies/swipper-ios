@@ -116,6 +116,11 @@
     self.navigationController.navigationBar.barTintColor = [SWPThemeHelper colorForNavigationBar];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     
+    //Navigation Item title view
+    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    [titleView addSubview:[[UIImageView alloc ] initWithImage:[UIImage imageNamed:@"SwipperLogo"]]];
+    self.navigationItem.titleView = titleView;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAppStateTransition) name:UIApplicationDidEnterBackgroundNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAppStateTransition) name:UIApplicationDidBecomeActiveNotification object:nil];
