@@ -18,7 +18,10 @@
 
 @implementation SWPGalleryViewController
 
-static NSString * const reuseIdentifier = @"PlacePhotoCell";
+static NSString * const reuseIdentifierPhoto = @"PlacePhotoCell";
+static NSString * const reuseIdentifierLoadingPhoto = @"PlacePhotoLoadingCell";
+
+
 
 #pragma mark - Getters/Setters
 
@@ -60,15 +63,15 @@ static NSString * const reuseIdentifier = @"PlacePhotoCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    SWPPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     if(indexPath.row < self.images.count) {
+        SWPPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierPhoto forIndexPath:indexPath];
         cell.placePhoto.image = [self.images objectAtIndex:indexPath.row];
+        return cell;
     }else {
-        cell.placePhoto.image = nil;
+        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierLoadingPhoto forIndexPath:indexPath];
+        return cell;
     }
-    
-    return cell;
 }
 
 #pragma mark <UICollectionViewDelegate>
