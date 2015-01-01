@@ -67,7 +67,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.backButton.title = [NSString stringWithFormat:@"< %@",self.place.placeName];
     self.navigationItem.title = self.place.placeName;
     
     self.navigationController.navigationBar.tintColor= [UIColor whiteColor];
@@ -87,6 +86,8 @@
     }else{
         self.phoneBarButton.enabled = YES;
     }
+    
+    self.shareBarButton.enabled = NO;
     
     self.infoView.hidden = NO;
     self.loadingView.hidden = NO;
