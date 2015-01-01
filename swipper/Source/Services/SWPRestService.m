@@ -148,21 +148,6 @@
     }];
 }
 
-- (NSArray *)fetchPlacePhotosURLsWithGoogleRequests:(NSArray *)googleRequests {
-    
-    NSMutableArray *urls = [NSMutableArray arrayWithCapacity:googleRequests.count];
-    
-    for (NSURL *googleRequest in googleRequests) {
-        NSHTTPURLResponse *response;
-        NSError *error;
-        [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:googleRequest] returningResponse:&response error:&error];
-        if(!error) {
-            [urls addObject:response.URL];
-        }
-    }
-    return urls;
-}
-
 #define PhotosAPIKey @"AIzaSyDT_7HU59iNKx1zEQDj2wbCGP65BkoEXqs"
 #define PhotoMaxWidth 300
 
