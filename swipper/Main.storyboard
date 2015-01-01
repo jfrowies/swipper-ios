@@ -215,7 +215,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="centerX" secondItem="Ucp-lk-mg2" secondAttribute="centerX" id="2Ak-wu-fWP"/>
                                             <constraint firstAttribute="centerY" secondItem="Ucp-lk-mg2" secondAttribute="centerY" constant="25" id="VmC-cL-N7J"/>
@@ -231,7 +231,7 @@
                                                 <color key="color" red="0.72549019609999998" green="0.72549019609999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </activityIndicatorView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="centerY" secondItem="an6-0S-afc" secondAttribute="centerY" id="Mri-Ty-jcl"/>
                                             <constraint firstAttribute="centerX" secondItem="an6-0S-afc" secondAttribute="centerX" id="ja2-lb-dQg"/>
@@ -450,16 +450,42 @@
                                     <outlet property="delegate" destination="DcP-XD-PMD" id="MTi-ga-3of"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBp-rP-18e" userLabel="info view">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="283"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InfoImage" translatesAutoresizingMaskIntoConstraints="NO" id="NF5-JQ-9tk">
+                                        <rect key="frame" x="132" y="89" width="56" height="56"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No reviews avaliables." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RX4-Yn-rmv" userLabel="info label">
+                                        <rect key="frame" x="80" y="155" width="161" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.72549019609999998" green="0.72549019609999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="NF5-JQ-9tk" secondAttribute="centerY" constant="25" id="9vV-GI-Xga"/>
+                                    <constraint firstItem="RX4-Yn-rmv" firstAttribute="top" secondItem="NF5-JQ-9tk" secondAttribute="bottom" constant="10" id="Nh2-J7-Par"/>
+                                    <constraint firstAttribute="centerX" secondItem="RX4-Yn-rmv" secondAttribute="centerX" id="iKR-D7-BNe"/>
+                                    <constraint firstAttribute="centerX" secondItem="NF5-JQ-9tk" secondAttribute="centerX" id="v6q-ej-ha8"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="BBp-rP-18e" firstAttribute="top" secondItem="YfM-bP-VKy" secondAttribute="top" id="32J-u4-SnK"/>
                             <constraint firstItem="xh7-cp-ida" firstAttribute="top" secondItem="gWD-Og-6gQ" secondAttribute="bottom" id="6jA-Fw-yCl"/>
                             <constraint firstItem="xh7-cp-ida" firstAttribute="leading" secondItem="YfM-bP-VKy" secondAttribute="leading" id="8y6-QZ-cUT"/>
+                            <constraint firstAttribute="trailing" secondItem="BBp-rP-18e" secondAttribute="trailing" id="JBw-bU-DyA"/>
                             <constraint firstAttribute="trailing" secondItem="xh7-cp-ida" secondAttribute="trailing" id="Mg8-Hs-AMe"/>
                             <constraint firstItem="oy5-bO-f8F" firstAttribute="top" secondItem="xh7-cp-ida" secondAttribute="bottom" id="RWm-FJ-iCy"/>
+                            <constraint firstItem="BBp-rP-18e" firstAttribute="leading" secondItem="YfM-bP-VKy" secondAttribute="leading" id="aB1-Qv-Kun"/>
+                            <constraint firstAttribute="bottom" secondItem="BBp-rP-18e" secondAttribute="bottom" id="ePV-LB-44D"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="infoView" destination="BBp-rP-18e" id="wT3-R8-WVD"/>
                         <outlet property="tableView" destination="xh7-cp-ida" id="Qdq-wy-uge"/>
                     </connections>
                 </viewController>
@@ -568,7 +594,7 @@
                                         <rect key="frame" x="132" y="176" width="56" height="56"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="cfK-pU-wtW" firstAttribute="top" secondItem="tCL-Ra-BV9" secondAttribute="bottom" id="JSW-Vr-JVj"/>
                                     <constraint firstAttribute="centerX" secondItem="tCL-Ra-BV9" secondAttribute="centerX" id="WyI-YB-KKe"/>
@@ -599,16 +625,16 @@
                                                     <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBk-SY-oqd" userLabel="PlaceNameLabel">
-                                                    <rect key="frame" x="55" y="10" width="50" height="21"/>
+                                                    <rect key="frame" x="55" y="10" width="45" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="kL0-eh-ayw"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.1529411765" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owG-jr-g2P" userLabel="PlaceDistLabel">
-                                                    <rect key="frame" x="110" y="12" width="55" height="18"/>
+                                                    <rect key="frame" x="105" y="12" width="55" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="55" id="YJM-DB-D9w"/>
                                                     </constraints>

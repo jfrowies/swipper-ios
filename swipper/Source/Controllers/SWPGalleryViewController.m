@@ -13,7 +13,6 @@
 @interface SWPGalleryViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSMutableArray *images;
-//@property (strong, nonatomic) NSArray *photosURLs;
 @end
 
 @implementation SWPGalleryViewController
@@ -27,12 +26,6 @@ static NSString * const reuseIdentifier = @"PlacePhotoCell";
     [self.collectionView reloadData];
     [self downloadPhotos:_photosRequestsURLs];
 }
-
-//- (void)setPhotosURLs:(NSArray *)photosURLs {
-//    _photosURLs = photosURLs;
-//    [self.collectionView reloadData];
-//    [self downloadPhotos:self.photosURLs];
-//}
 
 #pragma mark - View lifecycle
 

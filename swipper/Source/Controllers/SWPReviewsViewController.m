@@ -13,6 +13,7 @@
 
 @interface SWPReviewsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *infoView;
 @end
 
 @implementation SWPReviewsViewController
@@ -21,6 +22,11 @@
 
 - (void)setReviews:(NSArray *)reviews {
     _reviews = reviews;
+    if(reviews.count>0) {
+        self.infoView.hidden = YES;
+    }else {
+        self.infoView.hidden = NO;
+    }
     [self.tableView reloadData];
 }
 
@@ -29,22 +35,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-//    NSMutableArray *fakeReviews = [NSMutableArray arrayWithCapacity:6];
-//    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"El casino del amerian esta bueno." andStars:3]];
-//    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Este casino es la peor porqueria que vi en mi vida." andStars:1]];
-//    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Zafa." andStars:2]];
-//    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Es muuuy caro." andStars:0]];
-//    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Baratito baratito." andStars:5]];
-//    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Un hotel muy lindo, me sorprendio." andStars:5]];
-//    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"El casino del amerian esta bueno." andStars:3]];
-//    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Este casino es la peor porqueria que vi en mi vida." andStars:1]];
-//    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Zafa." andStars:2]];
-//    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Es muuuy caro." andStars:0]];
-//    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Baratito baratito." andStars:5]];
-//    [fakeReviews addObject:[SWPSimpleReview reviewWithText:@"Un hotel muy lindo, me sorprendio." andStars:5]];
-//    
-//    self.reviews = [fakeReviews copy];
 }
 
 - (void)didReceiveMemoryWarning {
