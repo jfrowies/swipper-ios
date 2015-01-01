@@ -546,17 +546,47 @@
                                     <outlet property="delegate" destination="rVC-aW-H1d" id="qvZ-Ry-jNp"/>
                                 </connections>
                             </collectionView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRO-KR-uHJ" userLabel="info view">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InfoImage" translatesAutoresizingMaskIntoConstraints="NO" id="EmI-4b-RNy">
+                                        <rect key="frame" x="140" y="15" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Nwi-AS-sp1"/>
+                                            <constraint firstAttribute="width" constant="40" id="ccp-bG-A7O"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No photos avaliables." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdZ-Z1-hMu" userLabel="info label">
+                                        <rect key="frame" x="81" y="65" width="158" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.72549019609999998" green="0.72549019609999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="EmI-4b-RNy" secondAttribute="centerY" constant="15" id="GdN-1d-Gow"/>
+                                    <constraint firstAttribute="centerX" secondItem="ZdZ-Z1-hMu" secondAttribute="centerX" id="KPb-SJ-GLP"/>
+                                    <constraint firstItem="ZdZ-Z1-hMu" firstAttribute="top" secondItem="EmI-4b-RNy" secondAttribute="bottom" constant="10" id="QUS-hH-ocn"/>
+                                    <constraint firstAttribute="centerX" secondItem="EmI-4b-RNy" secondAttribute="centerX" id="UWv-nh-iMz"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gRO-KR-uHJ" secondAttribute="trailing" id="FaN-gE-g1h"/>
+                            <constraint firstAttribute="bottom" secondItem="gRO-KR-uHJ" secondAttribute="bottom" id="LGK-ab-qaL"/>
                             <constraint firstItem="iR6-gM-pHD" firstAttribute="leading" secondItem="3PE-Rr-GRz" secondAttribute="leading" id="MhK-gx-BIt"/>
                             <constraint firstAttribute="trailing" secondItem="iR6-gM-pHD" secondAttribute="trailing" id="TZe-rB-3D7"/>
+                            <constraint firstItem="gRO-KR-uHJ" firstAttribute="top" secondItem="3PE-Rr-GRz" secondAttribute="top" id="V2u-zF-uDA"/>
+                            <constraint firstItem="gRO-KR-uHJ" firstAttribute="leading" secondItem="3PE-Rr-GRz" secondAttribute="leading" id="WSV-iz-6aF"/>
                             <constraint firstItem="iR6-gM-pHD" firstAttribute="top" secondItem="40u-G6-UaL" secondAttribute="bottom" id="kmA-6k-ayq"/>
                             <constraint firstItem="kEu-9M-0Cf" firstAttribute="top" secondItem="iR6-gM-pHD" secondAttribute="bottom" id="rEC-Hf-OCh"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="iR6-gM-pHD" id="kGa-lk-DVC"/>
+                        <outlet property="infoView" destination="gRO-KR-uHJ" id="CVy-34-6c4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YU2-aH-3Cs" userLabel="First Responder" sceneMemberID="firstResponder"/>

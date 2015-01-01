@@ -13,6 +13,7 @@
 @interface SWPGalleryViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSMutableArray *images;
+@property (weak, nonatomic) IBOutlet UIView *infoView;
 @end
 
 @implementation SWPGalleryViewController
@@ -23,8 +24,14 @@ static NSString * const reuseIdentifier = @"PlacePhotoCell";
 
 - (void)setPhotosRequestsURLs:(NSArray *)photosRequestsURLs {
     _photosRequestsURLs = photosRequestsURLs;
-    [self.collectionView reloadData];
-    [self downloadPhotos:_photosRequestsURLs];
+    
+    if(photosRequestsURLs.count > 0) {
+        self.infoView.hidden = YES;
+        [self.collectionView reloadData];
+        [self downloadPhotos:_photosRequestsURLs];
+    }else {
+        self.infoView.hidden = NO;
+    }
 }
 
 #pragma mark - View lifecycle
