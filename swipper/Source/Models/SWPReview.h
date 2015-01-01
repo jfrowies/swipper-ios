@@ -1,5 +1,5 @@
 //
-//  SWPReview.h
+//  SWPSimpleReview.h
 //  swipper
 //
 //  Created by Fer Rowies on 12/22/14.
@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MapKit/MKMapView.h>
 
-@protocol SWPReview <NSObject>
-@property (nonatomic, readonly, copy) NSString *placeReview;
-@property (nonatomic, readonly) int placeStars;
+@interface SWPReview : NSObject
+@property (nonatomic, copy) NSString *placeReview;
+@property (nonatomic) int placeStars;
++ (SWPReview *)reviewWithText:(NSString *)reviewText andStars:(int)reviewStars;
 @end

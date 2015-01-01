@@ -69,7 +69,7 @@
     
     SWPReviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reviewCell" forIndexPath:indexPath];
     
-    id<SWPReview> review = [self.reviews objectAtIndex:indexPath.row];
+    SWPReview *review = [self.reviews objectAtIndex:indexPath.row];
     
     cell.review = review.placeReview;
     cell.stars = review.placeStars;
@@ -85,7 +85,7 @@
     double imageHeight = 15;
     double insetsHeight = 10;
     
-    id<SWPReview> review = [self.reviews objectAtIndex:indexPath.row];
+    SWPReview *review = [self.reviews objectAtIndex:indexPath.row];
      
     CGSize constrainedSize = CGSizeMake(self.view.frame.size.width, 9999);
     
@@ -111,11 +111,11 @@
 //}
 
 - (void)loadPlaceReviews {
-    [[SWPLoopBackService sharedInstance] fetchPlaceReviewsWithPlaceId:self.place.placeId success:^(NSArray *reviews) {
-        self.reviews = reviews;
-    } failure:^(NSError *error) {
-        //TODO: show error
-    }];
+//    [[SWPLoopBackService sharedInstance] fetchPlaceReviewsWithPlaceId:self.place.placeId success:^(NSArray *reviews) {
+//        self.reviews = reviews;
+//    } failure:^(NSError *error) {
+//        //TODO: show error
+//    }];
 }
 
 @end

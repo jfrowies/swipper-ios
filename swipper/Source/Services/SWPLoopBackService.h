@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CoreLocation/CoreLocation.h"
+#import "SWPPlaceDetail.h"
 
 @interface SWPLoopBackService : NSObject
 
@@ -20,12 +21,12 @@
                             success:(void (^) (NSArray *places))successBlock
                             failure:(void (^) (NSError *error))failureBlock;
 
-- (void)fetchPlaceReviewsWithPlaceId:(NSString *)placeId
-                        success:(void (^) (NSArray *reviews))successBlock
+- (void)fetchPlaceDetailWithPlaceId:(NSString *)placeId
+                        success:(void (^) (SWPPlaceDetail *placeDetail))successBlock
                         failure:(void (^) (NSError *error))failureBlock;
 
-- (void)fetchPlacePhotosURLsWithPlaceId:(NSString *)placeId
-                                success:(void (^) (NSArray *photosURLs))successBlock
-                                failure:(void (^) (NSError *error))failureBlock;
+//- (void)fetchPlacePhotosURLsWithPlaceId:(NSString *)placeId
+//                                success:(void (^) (NSArray *photosURLs))successBlock
+//                                failure:(void (^) (NSError *error))failureBlock;
 
 @end

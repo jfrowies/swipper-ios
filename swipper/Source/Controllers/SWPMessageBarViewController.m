@@ -110,7 +110,7 @@
     NetworkStatus networkStatus = [reachability currentReachabilityStatus];
     
     if(networkStatus == NotReachable) {
-        [self showMessage:@"no internet conection" withBarType:MessageBarNoInternet animated:YES];
+        [self showMessage:@"no internet connection" withBarType:MessageBarNoInternet animated:YES];
     } else {
         [self showMessage:@"internet connection is ok" withBarType:MessageBarInternetRestored animated:NO];
         [self hideMessageAfterDelay:2.0f Animated:YES];

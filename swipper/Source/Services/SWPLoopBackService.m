@@ -11,7 +11,7 @@
 #import "LBPlace.h"
 #import "LBPlaceRepository.h"
 #import "SWPAppDelegate.h"
-#import "SWPSimpleReview.h"
+#import "SWPReview.h"
 #import "JSNetworkActivityIndicatorManager.h"
 
 @interface SWPLoopBackService ()
@@ -98,8 +98,8 @@
 
 #define PlaceDetailsURL @"http://swipper-luciopoveda.rhcloud.com:80/api/places/details"
 
-- (void)fetchPlaceReviewsWithPlaceId:(NSString *)placeId
-                        success:(void (^) (NSArray *reviews))successBlock
+- (void)fetchPlaceDetailWithPlaceId:(NSString *)placeId
+                        success:(void (^) (SWPPlaceDetail *placeDetail))successBlock
                         failure:(void (^) (NSError *error))failureBlock {
 
     NSString *post = [NSString stringWithFormat:@"idPlace=%@",placeId];
@@ -120,76 +120,87 @@
             
             NSError *deserializationError = nil;
             NSArray *result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&deserializationError];
+            
             NSArray *reviews = [result valueForKey:@"reviews"];
-            
             NSMutableArray *reviewObjectsArray = [NSMutableArray array];
-            
             for (NSDictionary *review in reviews) {
                 NSString *reviewText = [review valueForKey:@"text"];
                 int reviewStars = (int)[[review valueForKey:@"rating"] integerValue];
-                [reviewObjectsArray addObject:[SWPSimpleReview reviewWithText:reviewText andStars:reviewStars]];
+                [reviewObjectsArray addObject:[SWPReview reviewWithText:reviewText andStars:reviewStars]];
             }
             
-            [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
-            
-            successBlock(reviewObjectsArray);
-        }else{
-            
-            [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
-
-            failureBlock(connectionError);
-        }
-    }];
-}
-
-- (void)fetchPlacePhotosURLsWithPlaceId:(NSString *)placeId
-                             success:(void (^) (NSArray *photosURLs))successBlock
-                             failure:(void (^) (NSError *error))failureBlock {
-    
-    NSString *post = [NSString stringWithFormat:@"idPlace=%@",placeId];
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%lu",[postData length]];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:PlaceDetailsURL]];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:postData];
-    
-    [[JSNetworkActivityIndicatorManager sharedManager] startActivity];
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if(!connectionError) {
-            
-            NSError *deserializationError = nil;
-            NSArray *result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&deserializationError];
             NSArray *photos = [result valueForKey:@"photos"];
-            
             NSMutableArray *photosRequestsURLsArray = [NSMutableArray array];
-            
             for (NSDictionary *photo in photos) {
                 NSString *photoRef = [photo valueForKey:@"photo_reference"];
-                
                 [photosRequestsURLsArray addObject:[self urlForPhotoReference:photoRef]];
             }
-            
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                NSArray *photosURLs = [self fetchPlacePhotosURLsWithGoogleRequests:photosRequestsURLsArray];
-                
-                [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
-                
-                successBlock(photosURLs);
-            });
-    
-        }else{
+
+            SWPPlaceDetail *placeDetail = nil;
+            if(reviewObjectsArray.count >0 || photosRequestsURLsArray.count > 0) {
+                placeDetail = [SWPPlaceDetail placeDetailForPlace:placeId withReviews:[reviewObjectsArray copy] andPhotos:[photosRequestsURLsArray copy]];
+            }
             
             [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
             
+            successBlock(placeDetail);
+        }else{
+            
+            [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+
             failureBlock(connectionError);
         }
     }];
 }
+
+//- (void)fetchPlacePhotosURLsWithPlaceId:(NSString *)placeId
+//                             success:(void (^) (NSArray *photosURLs))successBlock
+//                             failure:(void (^) (NSError *error))failureBlock {
+//    
+//    NSString *post = [NSString stringWithFormat:@"idPlace=%@",placeId];
+//    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+//    NSString *postLength = [NSString stringWithFormat:@"%lu",[postData length]];
+//    
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+//    [request setURL:[NSURL URLWithString:PlaceDetailsURL]];
+//    [request setHTTPMethod:@"POST"];
+//    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+//    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//    [request setHTTPBody:postData];
+//    
+//    [[JSNetworkActivityIndicatorManager sharedManager] startActivity];
+//    
+//    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+//        if(!connectionError) {
+//            
+//            NSError *deserializationError = nil;
+//            NSArray *result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&deserializationError];
+//            NSArray *photos = [result valueForKey:@"photos"];
+//            
+//            NSMutableArray *photosRequestsURLsArray = [NSMutableArray array];
+//            
+//            for (NSDictionary *photo in photos) {
+//                NSString *photoRef = [photo valueForKey:@"photo_reference"];
+//                
+//                [photosRequestsURLsArray addObject:[self urlForPhotoReference:photoRef]];
+//            }
+//            
+//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//                NSArray *photosURLs = [self fetchPlacePhotosURLsWithGoogleRequests:photosRequestsURLsArray];
+//                
+//                [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+//                
+//                successBlock(photosURLs);
+//            });
+//    
+//        }else{
+//            
+//            [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+//            
+//            failureBlock(connectionError);
+//        }
+//    }];
+//}
 
 - (NSArray *)fetchPlacePhotosURLsWithGoogleRequests:(NSArray *)googleRequests {
     

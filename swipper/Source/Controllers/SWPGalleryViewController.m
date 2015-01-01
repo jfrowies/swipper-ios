@@ -121,11 +121,11 @@ static NSString * const reuseIdentifier = @"PlacePhotoCell";
 #pragma mark -
 
 - (void)loadPlacePhotosURLs {
-    [[SWPLoopBackService sharedInstance] fetchPlacePhotosURLsWithPlaceId:self.place.placeId success:^(NSArray *photosURLs) {
-        self.photosURLs = photosURLs;
-    } failure:^(NSError *error) {
-        //TODO: show error
-    }];
+//    [[SWPLoopBackService sharedInstance] fetchPlacePhotosURLsWithPlaceId:self.place.placeId success:^(NSArray *photosURLs) {
+//        self.photosURLs = photosURLs;
+//    } failure:^(NSError *error) {
+//        //TODO: show error
+//    }];
 }
 
 - (void)downloadPhotos:(NSArray *)photosURLs {

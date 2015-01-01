@@ -14,6 +14,8 @@
 #import "SWPLoadingViewController.h"
 #import <MessageUI/MessageUI.h>
 #import "JSNetworkActivityIndicatorManager.h"
+#import "SWPPlaceDetail.h"
+#import "SWPLoopBackService.h"
 
 @interface SWPDetailsViewController () <MFMailComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *placeAddressLabel;
@@ -27,11 +29,27 @@
 @property (strong, nonatomic) SWPLoadingViewController *loadingViewController;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *categoryIcon;
+@property (weak, nonatomic) IBOutlet UIView *infoView;
+@property (weak, nonatomic) IBOutlet UIView *loadingView;
+@property (strong, nonatomic) SWPPlaceDetail *placeDetails;
 @end
 
 @implementation SWPDetailsViewController
 
 #pragma mark - Getters/Setters
+
+- (void)setPlace:(id<SWPPlace>)place {
+    _place = place;
+    [self loadPlaceDetail];
+}
+
+- (void)setPlaceDetails:(SWPPlaceDetail *)placeDetails {
+    _placeDetails = placeDetails;
+    if(_placeDetails) {
+        self.infoView.hidden = YES;
+        //pass place details to containers
+    }
+}
 
 - (SWPLoadingViewController *)loadingViewController {
     if(!_loadingViewController) {
@@ -65,6 +83,9 @@
     }else{
         self.phoneBarButton.enabled = YES;
     }
+    
+    self.infoView.hidden = NO;
+    self.loadingView.hidden = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAppStateTransition) name:UIApplicationDidEnterBackgroundNotification object:nil];
     
@@ -210,6 +231,22 @@
     }
     
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark - Service Calls
+
+- (void)loadPlaceDetail{
+    self.loadingView.hidden = NO;
+    [[SWPLoopBackService sharedInstance] fetchPlaceDetailWithPlaceId:self.place.placeId success:^(SWPPlaceDetail *placeDetail) {
+        self.loadingView.hidden = YES;
+        if (placeDetail) {
+            self.placeDetails = placeDetail;
+        }
+    } failure:^(NSError *error) {
+        //TODO: handle error properly
+        self.loadingView.hidden = YES;
+
+    }];
 }
 
 @end
