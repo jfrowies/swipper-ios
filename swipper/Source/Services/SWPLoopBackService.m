@@ -10,15 +10,12 @@
 #import <LoopBack/LoopBack.h>
 #import "LBPlace.h"
 #import "LBPlaceRepository.h"
-#import "SWPAppDelegate.h"
 #import "SWPReview.h"
 #import "JSNetworkActivityIndicatorManager.h"
 
 @interface SWPLoopBackService ()
-
 @property (nonatomic, strong, readwrite) NSURL *serviceURL;
 @property (nonatomic, strong) LBRESTAdapter *loopBackAdapter;
-
 @end
 
 @implementation SWPLoopBackService
@@ -34,6 +31,8 @@
     return sharedInstance;
 }
 
+#define LoopBackServiceBaseURL @"http://swipper-luciopoveda.rhcloud.com:80/api/"
+
 - (id)init {
     if (self = [super init]) {
         self.serviceURL = [NSURL URLWithString:LoopBackServiceBaseURL];
@@ -43,7 +42,6 @@
 }
 
 #pragma mark - Fetch operations
-
 
 - (void)fetchPlacesBetweenNorthWest:(CLLocationCoordinate2D)northWestCoordinate
                           southEast:(CLLocationCoordinate2D)southEastCoordinate
@@ -81,17 +79,13 @@
                                      [value enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                                          [models addObject:[repository modelWithDictionary:obj]];
                                      }];
-                                     
+                
                                      [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
-                                     
                                      successBlock(models);
                                  }
                                  failure:^(NSError *error) { 
                                      NSLog(@"Failed to load locations with error: %@", error.description);
-                                     
                                      [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
-
-                                     
                                      failureBlock(error);
                                  }];
 }
@@ -144,18 +138,15 @@
             }
             
             [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
-            
             successBlock(placeDetail);
+            
         }else{
             
             [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
-
             failureBlock(connectionError);
         }
     }];
 }
-
-
 
 - (NSArray *)fetchPlacePhotosURLsWithGoogleRequests:(NSArray *)googleRequests {
     
@@ -168,7 +159,6 @@
         if(!error) {
             [urls addObject:response.URL];
         }
-        
     }
     return urls;
 }

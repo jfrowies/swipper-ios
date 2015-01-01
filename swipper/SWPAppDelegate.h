@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "Reachability.h"
 
-#define LoopBackServiceBaseURL @"http://swipper-luciopoveda.rhcloud.com:80/api/"
-
 @interface SWPAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
