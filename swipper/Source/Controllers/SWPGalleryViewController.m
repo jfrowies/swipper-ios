@@ -21,8 +21,6 @@
 static NSString * const reuseIdentifierPhoto = @"PlacePhotoCell";
 static NSString * const reuseIdentifierLoadingPhoto = @"PlacePhotoLoadingCell";
 
-
-
 #pragma mark - Getters/Setters
 
 - (void)setPhotosRequestsURLs:(NSArray *)photosRequestsURLs {
@@ -111,24 +109,12 @@ static NSString * const reuseIdentifierLoadingPhoto = @"PlacePhotoLoadingCell";
     self.images = [NSMutableArray arrayWithCapacity:photosRequestsURLs.count];
     __weak SWPGalleryViewController *weakSelf = self;
     
-    //sending google photo request
     for (NSURL *url in photosRequestsURLs) {
-        [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url] queue:[NSOperationQueue mainQueue]  completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-            if(!connectionError) {
-                
-                //obtaining the actual image URL from the response and downloading it
-                [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:response.URL] queue:[NSOperationQueue mainQueue]  completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                    if(!connectionError) {
-                        [weakSelf.images addObject:[UIImage imageWithData:data]];
-                        [weakSelf.collectionView reloadData];
-                    }else {
-                        //TODO: retry? show error?
-                    }
-                }];
-                
-            }else {
-                //TODO: retry? show error?
-            }
+        [[SWPRestService sharedInstance] downloadPhotoWithRequestURL:url success:^(UIImage *photo) {
+            [weakSelf.images addObject:photo];
+            [weakSelf.collectionView reloadData];
+        } failure:^(NSError *error) {
+            //TODO: show error?
         }];
     }
 }

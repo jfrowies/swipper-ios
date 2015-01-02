@@ -25,4 +25,8 @@
                         success:(void (^) (SWPPlaceDetail *placeDetail))successBlock
                         failure:(void (^) (NSError *error))failureBlock;
 
+- (void)downloadPhotoWithRequestURL:(NSURL *)requestURL
+                            success:(void (^) (UIImage *photo))successBlock
+                            failure:(void (^) (NSError *error))failureBlock;
+
 @end

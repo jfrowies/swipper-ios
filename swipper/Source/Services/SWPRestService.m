@@ -158,4 +158,30 @@
     return [NSURL URLWithString:urlString];
 }
 
+- (void)downloadPhotoWithRequestURL:(NSURL *)url
+                            success:(void (^) (UIImage *photo))successBlock
+                            failure:(void (^) (NSError *error))failureBlock {
+    
+    [[JSNetworkActivityIndicatorManager sharedManager] startActivity];
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url] queue:[NSOperationQueue mainQueue]  completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if(!connectionError) {
+            //obtaining the actual image URL from the response and downloading it
+            [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:response.URL] queue:[NSOperationQueue mainQueue]  completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                if(!connectionError) {
+                    [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+                    successBlock([UIImage imageWithData:data]);
+                }else {
+                    //TODO: retry? show error?
+                    [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+                    failureBlock(connectionError);
+                }
+            }];
+        }else {
+            //TODO: retry? show error?
+            [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+            failureBlock(connectionError);
+        }
+    }];
+}
+
 @end
