@@ -10,9 +10,10 @@
 
 @implementation SWPPlaceDetail
 
-+ (SWPPlaceDetail *)placeDetailForPlace:(NSString *)placeId withReviews:(NSArray *)reviews andPhotos:(NSArray *)photosRerquestsURLs {
++ (SWPPlaceDetail *)placeDetailForPlace:(NSString *)placeId url:(NSURL *)placeURL withReviews:(NSArray *)reviews andPhotos:(NSArray *)photosRerquestsURLs {
     SWPPlaceDetail *placeDetail = [[SWPPlaceDetail alloc] init];
     placeDetail.placeId = placeId;
+    placeDetail.placeURL = placeURL;
     placeDetail.reviews = reviews;
     placeDetail.photosRequestsURLs = photosRerquestsURLs;
     return placeDetail;

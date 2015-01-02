@@ -50,6 +50,9 @@
     _placeDetails = placeDetails;
     if(_placeDetails) {
         self.infoView.hidden = YES;
+        if(_placeDetails.placeURL) {
+            self.shareBarButton.enabled = YES;
+        }
         self.reviewsViewController.reviews = _placeDetails.reviews;
         self.galleryViewController.photosRequestsURLs = _placeDetails.photosRequestsURLs;
     }
@@ -189,6 +192,18 @@
 }
 
 - (IBAction)didTouchedShareBarButton:(UIBarButtonItem *)sender {
+    
+    UIActivityViewController *activityViewController =
+    [[UIActivityViewController alloc] initWithActivityItems:@[self.place.placeName,self.placeDetails.placeURL]
+                                      applicationActivities:nil];
+    
+    activityViewController.excludedActivityTypes = @[UIActivityTypeAddToReadingList] ;
+    
+    [self.navigationController presentViewController:activityViewController
+                                       animated:YES
+                                     completion:^{
+                                        
+                                     }];
     
 }
 

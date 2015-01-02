@@ -131,10 +131,15 @@
                 NSString *photoRef = [photo valueForKey:@"photo_reference"];
                 [photosRequestsURLsArray addObject:[self urlForPhotoReference:photoRef]];
             }
+            
+            NSURL *placeURL;
+            NSString *urlString = [result valueForKey:@"url"];
+            if(urlString)
+                placeURL = [NSURL URLWithString:urlString];
 
             SWPPlaceDetail *placeDetail = nil;
             if(reviewObjectsArray.count >0 || photosRequestsURLsArray.count > 0) {
-                placeDetail = [SWPPlaceDetail placeDetailForPlace:placeId withReviews:[reviewObjectsArray copy] andPhotos:[photosRequestsURLsArray copy]];
+                placeDetail = [SWPPlaceDetail placeDetailForPlace:placeId url:placeURL withReviews:[reviewObjectsArray copy] andPhotos:[photosRequestsURLsArray copy]];
             }
             
             [[JSNetworkActivityIndicatorManager sharedManager] endActivity];

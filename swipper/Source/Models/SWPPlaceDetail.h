@@ -11,9 +11,10 @@
 @interface SWPPlaceDetail : NSObject
 
 @property (copy, nonatomic) NSString *placeId;
+@property (strong, nonatomic) NSURL *placeURL;
 @property (strong, nonatomic) NSArray *reviews;
 @property (strong, nonatomic) NSArray *photosRequestsURLs;
 
-+ (SWPPlaceDetail *)placeDetailForPlace:(NSString *)placeId withReviews:(NSArray *)reviews andPhotos:(NSArray *)photosRerquestsURLs;
++ (SWPPlaceDetail *)placeDetailForPlace:(NSString *)placeId url:(NSURL *)placeURL withReviews:(NSArray *)reviews andPhotos:(NSArray *)photosRerquestsURLs;
 
 @end
