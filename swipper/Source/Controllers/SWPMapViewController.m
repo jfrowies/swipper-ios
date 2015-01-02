@@ -129,8 +129,6 @@
     self.userTrackingButton.layer.cornerRadius = 5;
     self.userTrackingButton.clipsToBounds = YES;
     
-    self.appAlreadyLaunchedBefore = [[NSUserDefaults standardUserDefaults] boolForKey:AppAlreadyLaunchedBeforeKey];
-    
     //loading NIB for callout views
 //    [[NSBundle mainBundle] loadNibNamed:@"SWPPlaceAnnotationCalloutView" owner:self options:nil];
 }
@@ -143,6 +141,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+     self.appAlreadyLaunchedBefore = [[NSUserDefaults standardUserDefaults] boolForKey:AppAlreadyLaunchedBeforeKey];
 
     if(!self.appAlreadyLaunchedBefore) {
         [self.slidingMenu presentSlidingMenuInViewController:self andView:self.view animated:NO];
