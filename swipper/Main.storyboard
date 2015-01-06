@@ -323,18 +323,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Acx-Hj-WFd">
-                        <barButtonItem key="leftBarButtonItem" title="&lt; back" id="g1R-7M-BI2">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="didTouchedBackButton:" destination="hAX-wI-YaA" id="Bsh-Fj-jsX"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="LodgingCellImage" style="plain" id="MSD-KD-QPk">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="backButton" destination="g1R-7M-BI2" id="AED-m3-YhX"/>
                         <outlet property="categoryIcon" destination="MSD-KD-QPk" id="MaY-8a-pz1"/>
                         <outlet property="howToArriveBarButton" destination="eSS-Td-pm1" id="wWq-Ni-Qp8"/>
                         <outlet property="infoView" destination="FuB-7V-Bxx" id="Btp-DQ-hzk"/>
@@ -675,16 +668,16 @@
                                                     <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBk-SY-oqd" userLabel="PlaceNameLabel">
-                                                    <rect key="frame" x="55" y="10" width="42" height="21"/>
+                                                    <rect key="frame" x="55" y="10" width="40" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="kL0-eh-ayw"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" red="0.1529411765" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owG-jr-g2P" userLabel="PlaceDistLabel">
-                                                    <rect key="frame" x="102" y="12" width="55" height="18"/>
+                                                    <rect key="frame" x="100" y="12" width="55" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="55" id="YJM-DB-D9w"/>
                                                     </constraints>
@@ -1125,12 +1118,12 @@
         <image name="BottomBarShare" width="28" height="28"/>
         <image name="HowToArrive" width="25" height="25"/>
         <image name="InfoImage" width="56" height="56"/>
-        <image name="ListIcon" width="27" height="20"/>
+        <image name="ListIcon" width="20" height="15"/>
         <image name="LocateMe" width="20" height="20"/>
         <image name="LocationPin" width="21" height="29"/>
         <image name="LodgingCellImage" width="25" height="25"/>
-        <image name="MapIcon" width="25" height="24"/>
-        <image name="MenuIcon" width="27" height="20"/>
+        <image name="MapIcon" width="19" height="18"/>
+        <image name="MenuIcon" width="20" height="15"/>
         <image name="Phone" width="24" height="24"/>
         <image name="StarEmpty" width="18" height="18"/>
     </resources>
