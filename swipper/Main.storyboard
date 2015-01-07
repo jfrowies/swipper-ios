@@ -64,6 +64,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="P8X-js-nPK">
+                        <barButtonItem key="backBarButtonItem" title="Map" id="Pwy-Ln-g48"/>
                         <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="6dh-Ob-ClI">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -323,12 +324,28 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Acx-Hj-WFd">
-                        <barButtonItem key="rightBarButtonItem" image="LodgingCellImage" style="plain" id="MSD-KD-QPk">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="wOn-aG-SLk">
+                            <view key="customView" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.0" contentMode="center" id="kkw-YJ-sPf">
+                                <rect key="frame" x="233" y="5" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="F811E2C4-091B-4ACC-918B-EEBC796C91F9" translatesAutoresizingMaskIntoConstraints="NO" id="R6b-Gm-5W1">
+                                        <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="R6b-Gm-5W1" firstAttribute="leading" secondItem="kkw-YJ-sPf" secondAttribute="leading" id="8rt-HB-f3P"/>
+                                    <constraint firstAttribute="bottom" secondItem="R6b-Gm-5W1" secondAttribute="bottom" id="PsO-Et-glI"/>
+                                    <constraint firstItem="R6b-Gm-5W1" firstAttribute="top" secondItem="kkw-YJ-sPf" secondAttribute="top" id="VAQ-4h-b45"/>
+                                    <constraint firstAttribute="trailing" secondItem="R6b-Gm-5W1" secondAttribute="trailing" id="dIy-zZ-yJE"/>
+                                </constraints>
+                            </view>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="categoryIcon" destination="MSD-KD-QPk" id="MaY-8a-pz1"/>
+                        <outlet property="categoryBarButtonImageView" destination="R6b-Gm-5W1" id="Pg2-wL-ppC"/>
                         <outlet property="howToArriveBarButton" destination="eSS-Td-pm1" id="wWq-Ni-Qp8"/>
                         <outlet property="infoView" destination="FuB-7V-Bxx" id="Btp-DQ-hzk"/>
                         <outlet property="loadingView" destination="y8i-9u-YUK" id="Ifs-yr-b5t"/>
@@ -765,6 +782,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jxl-2m-yUg">
+                        <barButtonItem key="backBarButtonItem" title="List" id="n8M-hW-8yO"/>
                         <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="J6t-0O-mso" userLabel="menu bar button item">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -1116,12 +1134,131 @@
         <image name="BottomBarHowToArrive" width="28" height="28"/>
         <image name="BottomBarReport" width="28" height="28"/>
         <image name="BottomBarShare" width="28" height="28"/>
+        <image name="F811E2C4-091B-4ACC-918B-EEBC796C91F9" width="40" height="35">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
+GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
+DBIAwAAAgAKACtISCRMVWk5TLm9iamVjdHOhFIADgAnSEgkXGqIYGYAEgAWACBAA0h0JHh9fEBROU1RJ
+RkZSZXByZXNlbnRhdGlvboAGgAdPERjWTU0AKgAAFej///8A////AP///wD///8A////AP///wD///8A
+////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A
+////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A
+////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wAxa/8AMWv/ADFr/wAwa/8A
+MGr9ADBq+wAyb/8AMm3/JC9n+HErYequKl3i3Slb3eopXeDjK2HpvC5m9oIxbP82Mm7/ADFs/wAwav0A
+MGv+ADFs/wAxbP8AMWz/ADFs/wAxbP8AMWz/ADFs/wAxbP8AMWz/ADFs/wAxbP8AMWz/AP///wD///8A
+////AP///wD///8A////AP///wD///8AMWv/ADFr/wAxa/8AMGv/ADJt/wAybv8hLWTuoyVVzvsiTLz/
+H0iz/x9IsP8fR7D/H0ex/x9Isv8hS7n/JFLJ/ytf5rcybv8+Mm7/ADBr/gAxbP8AMWz/ADFs/wAxbP8A
+MWz/ADFs/wAxbP8AMWz/ADFs/wAxbP8AMWz/ADFs/wD///8A////AP///wD///8A////AP///wD///8A
+////ADFr/wAxa/8AMWv/ADJv/wAybP1dJlbP8R5Hsf8eRq3/IEm1/yFLuf8hTLr/IUy7/yFMu/8hS7n/
+IEq2/x5Hr/8eRa3/JFHG/y5n9YIzcf8AMWz/ADFs/wAxbP8AMWz/ADFs/wAxbP8AMWz/ADFs/wAxbP8A
+MWz/ADFs/wAxbP8A////AP///wD///8A////AP///wD///8A////AP///wAxa/8AMWv/ADNw/wAwafhx
+IU2+/x1Fqv8gSrj/IU29/yFMvP8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTb3/IUu6/x5FrP8gSbT/
+LWTunjNx/wAxbP8AMWz/ADFs/wAxbP8AMWz/ADFs/wAxbP8AMWz/ADFs/wAxbP8AMWz/AP///wD///8A
+////AP///wD///8A////AP///wD///8AMWv/ADNu/wAwa/pRIUy8/x1FrP8hTLz/IUy8/yFMu/8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTb3/H0ex/x5HsP8tY++GMnD/ADBt/wAwbP8A
+MGz/ADBs/wAwbP8AMGz/ADBs/wAwbP8AMGz/ADBs/wD///8A////AP///wD///8A////AP///wD///8A
+////ADFq/wAxbP8PJFLK9R1Fq/8hTb3/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFNvf8eR6//IUu7/zBr/Dkxb/8AMGz/ADBs/wAwbP8AMGz/ADBs/wAwbP8A
+MGz/ADBs/wAwbP8A////AP///wD///8A////AP///wD///8A////AP///wAyb/8AKl7mkx5FrP8hS7r/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IU29/x1Fq/8nV9XQMW7/AC9p/QAvaf0AL2n9AC9p/QAvaf0AL2n9AC9p/QAvaf0AL2n9AP///wD///8A
+////AP///wD///8A////AP///wD///8AL2v8DyNQw/kfR7D/IUy8/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8gSrb/IEu4/y1k8z0vaf0A
+Lmf4AC5n+AAuZ/gALmf4AC5n+AAuZ/gALmf4AC5n+AD///8A////AP///wD///8A////AP///wD///8A
+////ACpe5lggSbP/IUu5/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy8/x9HsP8oWtqVMGn7AC5k8gAuZPIALmTyAC5k8gAtZPEA
+Lmb1AC9n+AAvZ/gA////AP///wD///8A////AP///wD///8A////AP///wAnWNagH0ew/yFMu/8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IUy7/yFMu/8fSbP/JFPIyild4QAoWtoAKFraACha2gAoWtoAKFvdACld4QApXuIAKV7iAP///wD///8A
+////AP///wD///8A////AP///wD///8AJFLI2iBKtf8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IEm1/yJPweQrYOcE
+K2DnACpf5QAqXuMALGPsADV2/wAZOYoABg8kAAYPJAD///8A////AP///wD///8A////AP///wD///8A
+////ACNPwPAgS7j/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yBKtv8iTr/yK2DnFCtg5wArYeoAMnD/ADFu/wAWMnEA
+AwUNAAAAAAAAAAAA////AP///wD///8A////AP///wD///8A////AP///wAjT8DiIEu4/yFMu/8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IUy7/yFMu/8gSrb/Ik6/6Shd4QorY/AAK2TxACBKrgARJ2AAAAAAAAAAAAAAAAAAAAAAAP///wD///8A
+////AP///wD///8A////AP///wD///8AJFLIsCBKtf8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IEu4/yFNvdEmWdkA
+K2TzABIoYgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A
+////ACRSyG8gSrf/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/x9Isf8nWtunLGb3ABEmXQAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA////AP///wD///8A////AP///wD///8A////AP///wAlU80vIUy7/yFMuv8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IUy7/yFKt/8lVM//I1DBXgwaPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A
+////AP///wD///8A////AP///wD///8AJVTPACJOvtYgS7j/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8iTsH/JlfW/gYNIEIAAAAo
+AAAAMwAAAC0AAAAiAAAAEQAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A
+////ACRVzQAjUMR6IEq4/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hSrj/J1rb/xs/mscAAAA1AAAAVgAAAFoAAABaAAAAWQAAAFUAAABG
+AAAAIQAAAAAAAAAA////AP///wD///8A////AP///wD///8A////AP///wAkVcwAJFPJGSFLuvwhTLr/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IUu4/yhd5P8OH0x1AAAAKwAAAE8AAABMAAAATAAAAEwAAABQAAAAWQAAAGEAAAAyAAAABP///wD///8A
+////AP///wD///8A////AP///wD///8AJVXNACZX0QAjUMKhIEq3/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUu4/yVW0/8gSrbeAAEDMgAAAEgAAABN
+AAAATQAAAE0AAABNAAAATQAAAEsAAABPAAAAYQAAADH///8A////AP///wD///8A////AP///wD///8A
+////ACRTywAkVMwAI1LIIyBLuf8hTLr/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFLuP8pXub/DyJTfwAAACgAAABRAAAATQAAAE0AAABNAAAATQAAAE0AAABN
+AAAASgAAAGEAAABA////AP///wD///8A////AP///wD///8A////AP///wAjUccAI1HGACRTygAiTsCb
+IEu4/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFKt/8mV9f/
+H0my3gAAADAAAABIAAAATQAAAE0AAABNAAAATQAAAE0AAABNAAAASwAAAFcAAABTAAAAGP///wD///8A
+////AP///wD///8A////AP///wD///8AJFPKACRTygAkU8wAJFPKESFMuvUhS7n/IUy7/yFMu/8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLr/KV7m/wsaQGoAAAAsAAAAUQAAAE0AAABN
+AAAATQAAAE0AAABNAAAASgAAAFMAAABhAAAAHgAAAAD///8A////AP///wD///8A////AP///wD///8A
+////ACRTywAkU8sAJFLLACRTzQAiT8FuIEu4/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IUy7/yFMu/8gSrX/KFzj/xs+mL4AAAAiAAAATgAAAE0AAABNAAAATQAAAE0AAABMAAAASgAAAFkAAABc
+AAAAIQAAAAAAAAAA////AP///wD///8A////AP///wD///8A////AP///wAjUMYAI1DGACNQxgAjUMYA
+I1DHACFMu9EhS7n/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUy7/yFMu/8hS7n/JFLI/yZX1vkECxpH
+AAAAOAAAAFAAAABNAAAATQAAAE0AAABLAAAAUAAAAF8AAABOAAAAEgAAAAAAAAAAAAAAAP///wD///8A
+////AP///wD///8A////AP///wD///8AI1HFACNRxQAjUcUAI1HFACNRxwAjUMIrIUu5/yFMuv8hTLv/
+IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/IUu4/ypg7P8RJVyGAAAAIwAAAFIAAABNAAAATQAAAEwAAABN
+AAAAXAAAAFoAAAA0AAAAAwAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A
+////ACNRxQAjUcUAI1HFACNRxQAjUcUAI1LHACJOv34hS7n/IUy7/yFMu/8hTLv/IUy7/yFMu/8hTLv/
+IEq1/yhc4f8dQ6XIAAAAJAAAAEoAAABOAAAASwAAAEwAAABZAAAAXgAAAEMAAAAUAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA////AP///wD///8A////AP///wD///8A////AP///wAjUMYAI1DGACNQxgAjUMYA
+I1DGACNQxwAjUMcAIUy8ySFLuf8hTLv/IUy7/yFMu/8hTLv/IUq3/yRTzf8lVtP1BAkVQAAAADcAAABQ
+AAAATAAAAFgAAABeAAAARgAAAB0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A
+////AP///wD///8A////AP///wD///8AI1DEACNQxAAjUMQAI1DEACNQxAAjUMQAI1DGACNPwhghTLr3
+IUy6/yFMu/8hTLv/IUu6/yJMvf8qYOz/DR1JcQAAACQAAABTAAAAWQAAAF4AAABKAAAAIwAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A
+////ACNQwwAjUMMAI1DDACNQwwAjUMMAI1DDACNQwwAkUsYAI07BUiFMuf8hTLv/IUy7/yBKtv8pX+v/
+FjN8ogAAAB8AAABdAAAAXAAAAEYAAAAiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA////AP///wD///8A////AP///wD///8A////AP///wAjUMIAI1DCACNQwgAjUMIA
+I1DCACNQwgAjUMIAI1HDACNOwAAhTLmIIUy8/yBJtP8oXOP/Hket0wAAADcAAABRAAAARQAAAB0AAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A
+////AP///wD///8A////AP///wD///8AIky5ACJMuQAiTLkAIky5ACJMuQAiTLkAIky5ACJMuQAiTLkA
+Iku4ACBJtbkkU83/JFHI9AMIFEAAAAAjAAAAHQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A
+////ACJMugAiTLoAIky6ACJMugAiTLoAIky6ACJMugAiTLoAIky6ACJLuQAiTL0MJlbU1QgTL1gAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA////AP///wD///8A////AP///wD///8A////AP///wAjUMMAI1DDACNQwwAjUMMA
+I1DDACNQwwAjUMMAI1DDACNQwwAiT8IAJVTNACRRxz8CBQ0DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAQAAAwAA
+AAEAKAAAAQEAAwAAAAEAIwAAAQIAAwAAAAQAABaWAQMAAwAAAAEAAQAAAQYAAwAAAAEAAgAAAREABAAA
+AAEAAAAIARIAAwAAAAEAAQAAARUAAwAAAAEABAAAARYAAwAAAAEAIwAAARcABAAAAAEAABXgARwAAwAA
+AAEAAQAAAVIAAwAAAAEAAgAAAVMAAwAAAAQAABaeh3MABwAAAjAAABamAAAAAAAIAAgACAAIAAEAAQAB
+AAEAAAIwQURCRQIQAABtbnRyUkdCIFhZWiAHzwAGAAMAAAAAAABhY3NwQVBQTAAAAABub25lAAAAAAAA
+AAAAAAAAAAAAAQAA9tYAAQAAAADTLUFEQkUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAApjcHJ0AAAA/AAAADJkZXNjAAABMAAAAGt3dHB0AAABnAAAABRia3B0AAABsAAA
+ABRyVFJDAAABxAAAAA5nVFJDAAAB1AAAAA5iVFJDAAAB5AAAAA5yWFlaAAAB9AAAABRnWFlaAAACCAAA
+ABRiWFlaAAACHAAAABR0ZXh0AAAAAENvcHlyaWdodCAxOTk5IEFkb2JlIFN5c3RlbXMgSW5jb3Jwb3Jh
+dGVkAAAAZGVzYwAAAAAAAAARQWRvYmUgUkdCICgxOTk4KQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWFlaIAAA
+AAAAAPNRAAEAAAABFsxYWVogAAAAAAAAAAAAAAAAAAAAAGN1cnYAAAAAAAAAAQIzAABjdXJ2AAAAAAAA
+AAECMwAAY3VydgAAAAAAAAABAjMAAFhZWiAAAAAAAACcGAAAT6UAAAT8WFlaIAAAAAAAADSNAACgLAAA
+D5VYWVogAAAAAAAAJjEAABAvAAC+nNIiIyQlWiRjbGFzc25hbWVYJGNsYXNzZXNfEBBOU0JpdG1hcElt
+YWdlUmVwoyYnKF8QEE5TQml0bWFwSW1hZ2VSZXBaTlNJbWFnZVJlcFhOU09iamVjdNIiIyorV05TQXJy
+YXmiKijSIiMtLl5OU011dGFibGVBcnJheaMtKijTMDEJMjM0V05TV2hpdGVcTlNDb2xvclNwYWNlRDAg
+MAAQA4AL0iIjNjdXTlNDb2xvcqI2KNIiIzk6V05TSW1hZ2WiOShfEA9OU0tleWVkQXJjaGl2ZXLRPT5U
+cm9vdIABAAgAEQAaACMALQAyADcARQBLAFQAWwBoAG8AdwB5AH4AgACCAIcAkgCUAJYAmACdAKAAogCk
+AKYAqACtAMQAxgDIGaIZpxmyGbsZzhnSGeUZ8Bn5Gf4aBhoJGg4aHRohGigaMBo9GkIaRBpGGksaUxpW
+GlsaYxpmGngaexqAAAAAAAAAAgEAAAAAAAAAPwAAAAAAAAAAAAAAAAAAGoI
+</mutableData>
+        </image>
         <image name="HowToArrive" width="25" height="25"/>
         <image name="InfoImage" width="56" height="56"/>
         <image name="ListIcon" width="20" height="15"/>
         <image name="LocateMe" width="20" height="20"/>
         <image name="LocationPin" width="21" height="29"/>
-        <image name="LodgingCellImage" width="25" height="25"/>
         <image name="MapIcon" width="19" height="18"/>
         <image name="MenuIcon" width="20" height="15"/>
         <image name="Phone" width="24" height="24"/>

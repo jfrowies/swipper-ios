@@ -28,12 +28,12 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *reportBarButton;
 @property (strong, nonatomic) SWPLoadingViewController *loadingViewController;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *categoryIcon;
 @property (weak, nonatomic) IBOutlet UIView *infoView;
 @property (weak, nonatomic) IBOutlet UIView *loadingView;
 @property (strong, nonatomic) SWPPlaceDetail *placeDetails;
 @property (weak, nonatomic) SWPReviewsViewController *reviewsViewController;
 @property (weak, nonatomic) SWPGalleryViewController *galleryViewController;
+@property (weak, nonatomic) IBOutlet UIImageView *categoryBarButtonImageView;
 
 @end
 
@@ -77,7 +77,7 @@
     self.placeAddressLabel.text = self.place.placeAddress;
     self.placeCityLabel.text = [NSString stringWithFormat:@"%@, %@, %@",self.place.placeCity,self.place.placeState,self.place.placeCountry];
     self.placePhoneNumberLabel.text = self.place.placePhone;
-    self.categoryIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@CellImage",self.place.placeCategory]];
+    self.categoryBarButtonImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@PinImage",self.place.placeCategory]];
     
     CLLocation *startLocation = self.userLocation.location;
     CLLocation *endLocation = [[CLLocation alloc] initWithLatitude:[self.place placeCoordinate].latitude longitude:[self.place placeCoordinate].longitude];
