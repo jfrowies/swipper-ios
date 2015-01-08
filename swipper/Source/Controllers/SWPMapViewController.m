@@ -219,6 +219,7 @@
     double currentDistance = MKMetersBetweenMapPoints(nwMapCorner, seMapCorner);
     if(currentDistance > kMaxAllowedDistanceBetweenMapCorners) {
         [self showMessage:@"zoom in to load places" withBarType:MessageBarInfo animated:YES];
+        [self hideMessageAfterDelay:kHideMessageDelay Animated:YES];
         return;
     }
 
