@@ -9,6 +9,7 @@
 #import "SWPGalleryViewController.h"
 #import "SWPPhotoCollectionViewCell.h"
 #import "SWPRestService.h"
+#import "MWPhotoBrowser.h"
 
 @interface SWPGalleryViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
