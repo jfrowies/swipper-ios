@@ -21,6 +21,7 @@
 #import "SWPDetailsViewController.h"
 
 #define kMaxAllowedDistanceBetweenMapCorners 50000
+#define kHideMessageDelay 2.5f
 
 @interface SWPMapViewController ()
 
@@ -216,8 +217,11 @@
     
     //avoid calling service for extremely large regions
     double currentDistance = MKMetersBetweenMapPoints(nwMapCorner, seMapCorner);
-    if(currentDistance > kMaxAllowedDistanceBetweenMapCorners)
+    if(currentDistance > kMaxAllowedDistanceBetweenMapCorners) {
+        [self showMessage:@"zoom in to load places" withBarType:MessageBarInfo animated:YES];
         return;
+    }
+
     
     //avoid calling service for non significative scrolls
     if(MKMapRectContainsRect(self.mapRectWithData, mRect))
@@ -244,12 +248,17 @@
                                                                 weakSelf.places = places;
                                                                 weakSelf.mapRectWithData = mapRectToFill;
                                                                 
-                                                                 [weakSelf showMessage:@"done" withBarType:MessageBarInfo animated:NO];
-                                                                 [weakSelf hideMessageAfterDelay:2.0f Animated:YES];
+                                                                 if (places.count>1){
+                                                                     [weakSelf showMessage:@"done" withBarType:MessageBarInfo animated:NO];
+                                                                 }else {
+                                                                     [weakSelf showMessage:@"no places found, try changing location" withBarType:MessageBarInfo animated:NO];
+
+                                                                 }
+                                                                 [weakSelf hideMessageAfterDelay:kHideMessageDelay Animated:YES];
                                                                  
                                                              } failure:^(NSError *error) {
                                                                  [weakSelf showMessage:@"error loading places" withBarType:MessageBarError animated:NO];
-                                                                  [weakSelf hideMessageAfterDelay:2.0f Animated:YES];
+                                                                  [weakSelf hideMessageAfterDelay:kHideMessageDelay Animated:YES];
                                                              }];
 }
 
@@ -314,6 +323,11 @@
             
             [newAnnotations addObject: annot];
         }
+    }
+    
+    if(newAnnotations.count == 0) {
+        [self showMessage:@"no places found, try changing filters" withBarType:MessageBarInfo animated:YES];
+        [self hideMessageAfterDelay:kHideMessageDelay Animated:YES];
     }
     
     [self.mapView addAnnotations:[newAnnotations copy]];
