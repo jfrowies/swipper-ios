@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MWPhotoBrowser.h"
 
-@interface SWPGalleryViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
-@property (strong, nonatomic) NSArray *photosRequestsURLs;
+@interface SWPGalleryViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, MWPhotoBrowserDelegate>
+@property (strong, nonatomic) NSArray *photosReferences;
 @end
