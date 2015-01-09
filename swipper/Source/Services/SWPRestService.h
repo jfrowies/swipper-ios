@@ -25,6 +25,16 @@
                         success:(void (^) (SWPPlaceDetail *placeDetail))successBlock
                         failure:(void (^) (NSError *error))failureBlock;
 
+- (void)resolvePhotoURLWithRequestURL:(NSURL *)requestURL
+                              success:(void (^) (NSURL *photoURL))successBlock
+                              failure:(void (^) (NSError *error))failureBlock;
+
+- (NSURL *)urlForPhotoReference:(NSString *)photoReference maxWidth:(int)maxWidth;
+
+- (void)downloadPhotoWithPhotoURL:(NSURL *)url
+                            success:(void (^) (UIImage *photo))successBlock
+                            failure:(void (^) (NSError *error))failureBlock;
+
 - (void)downloadPhotoWithRequestURL:(NSURL *)requestURL
                             success:(void (^) (UIImage *photo))successBlock
                             failure:(void (^) (NSError *error))failureBlock;

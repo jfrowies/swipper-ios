@@ -54,7 +54,7 @@
             self.shareBarButton.enabled = YES;
         }
         self.reviewsViewController.reviews = _placeDetails.reviews;
-        self.galleryViewController.photosRequestsURLs = _placeDetails.photosRequestsURLs;
+        self.galleryViewController.photosReferences = _placeDetails.photosReferences;
     }
 }
 

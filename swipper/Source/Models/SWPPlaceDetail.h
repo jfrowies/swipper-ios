@@ -13,8 +13,8 @@
 @property (copy, nonatomic) NSString *placeId;
 @property (strong, nonatomic) NSURL *placeURL;
 @property (strong, nonatomic) NSArray *reviews;
-@property (strong, nonatomic) NSArray *photosRequestsURLs;
+@property (strong, nonatomic) NSArray *photosReferences;
 
-+ (SWPPlaceDetail *)placeDetailForPlace:(NSString *)placeId url:(NSURL *)placeURL withReviews:(NSArray *)reviews andPhotos:(NSArray *)photosRerquestsURLs;
++ (SWPPlaceDetail *)placeDetailForPlace:(NSString *)placeId url:(NSURL *)placeURL withReviews:(NSArray *)reviews andPhotos:(NSArray *)photosReferences;
 
 @end

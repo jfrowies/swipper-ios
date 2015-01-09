@@ -384,6 +384,32 @@
             self.mapView.userTrackingMode = MKUserTrackingModeFollow;
             self.locationServicesAlreadyAuthorized = YES;
         }
+    }else if (status == kCLAuthorizationStatusDenied){
+        
+        UIAlertController *alertController = [UIAlertController
+                                              alertControllerWithTitle:@"Location services disabled"
+                                              message:@"Please, go to Settings > Privacy > Location and enable location services for Swipper."
+                                              preferredStyle:UIAlertControllerStyleAlert];
+
+        
+        UIAlertAction *settingsAction = [UIAlertAction
+                                   actionWithTitle:@"Settings"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       [[UIApplication sharedApplication] openURL:[NSURL  URLWithString:UIApplicationOpenSettingsURLString]];
+                                   }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction
+                                         actionWithTitle:@"Cancel"
+                                         style:UIAlertActionStyleDefault
+                                         handler:nil];
+        
+        [alertController addAction:settingsAction];
+        [alertController addAction:cancelAction];
+
+        [self presentViewController:alertController animated:YES completion:nil];
+
     }
 }
 

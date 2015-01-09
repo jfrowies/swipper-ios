@@ -126,10 +126,10 @@
             }
             
             NSArray *photos = [result valueForKey:@"photos"];
-            NSMutableArray *photosRequestsURLsArray = [NSMutableArray array];
+            NSMutableArray *photosReferencesArray = [NSMutableArray array];
             for (NSDictionary *photo in photos) {
                 NSString *photoRef = [photo valueForKey:@"photo_reference"];
-                [photosRequestsURLsArray addObject:[self urlForPhotoReference:photoRef]];
+                [photosReferencesArray addObject:photoRef];
             }
             
             NSURL *placeURL;
@@ -138,8 +138,8 @@
                 placeURL = [NSURL URLWithString:urlString];
 
             SWPPlaceDetail *placeDetail = nil;
-            if(reviewObjectsArray.count >0 || photosRequestsURLsArray.count > 0) {
-                placeDetail = [SWPPlaceDetail placeDetailForPlace:placeId url:placeURL withReviews:[reviewObjectsArray copy] andPhotos:[photosRequestsURLsArray copy]];
+            if(reviewObjectsArray.count >0 || photosReferencesArray.count > 0) {
+                placeDetail = [SWPPlaceDetail placeDetailForPlace:placeId url:placeURL withReviews:[reviewObjectsArray copy] andPhotos:[photosReferencesArray copy]];
             }
             
             [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
@@ -154,38 +154,65 @@
 }
 
 #define PhotosAPIKey @"AIzaSyDT_7HU59iNKx1zEQDj2wbCGP65BkoEXqs"
-#define PhotoMaxWidth 300
 
-- (NSURL *)urlForPhotoReference:(NSString *)photoReference {
+- (NSURL *)urlForPhotoReference:(NSString *)photoReference maxWidth:(int)maxWidth {
     
-    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=%d&photoreference=%@&key=%@", PhotoMaxWidth, photoReference, PhotosAPIKey];
+    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=%d&photoreference=%@&key=%@", maxWidth, photoReference, PhotosAPIKey];
     
     return [NSURL URLWithString:urlString];
 }
 
-- (void)downloadPhotoWithRequestURL:(NSURL *)url
-                            success:(void (^) (UIImage *photo))successBlock
+- (void)resolvePhotoURLWithRequestURL:(NSURL *)requestURL
+                            success:(void (^) (NSURL *photoURL))successBlock
                             failure:(void (^) (NSError *error))failureBlock {
     
     [[JSNetworkActivityIndicatorManager sharedManager] startActivity];
-    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url] queue:[NSOperationQueue mainQueue]  completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:requestURL] queue:[NSOperationQueue mainQueue]  completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if(!connectionError) {
-            //obtaining the actual image URL from the response and downloading it
-            [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:response.URL] queue:[NSOperationQueue mainQueue]  completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                if(!connectionError) {
-                    [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
-                    successBlock([UIImage imageWithData:data]);
-                }else {
-                    //TODO: retry? show error?
-                    [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
-                    failureBlock(connectionError);
-                }
-            }];
+            [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+            successBlock(response.URL);
         }else {
             //TODO: retry? show error?
             [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
             failureBlock(connectionError);
         }
+    }];
+}
+
+- (void)downloadPhotoWithPhotoURL:(NSURL *)url
+                            success:(void (^) (UIImage *photo))successBlock
+                            failure:(void (^) (NSError *error))failureBlock {
+    
+    [[JSNetworkActivityIndicatorManager sharedManager] startActivity];
+    
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url] queue:[NSOperationQueue mainQueue]  completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            if(!connectionError) {
+                [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+                successBlock([UIImage imageWithData:data]);
+            }else {
+                //TODO: retry? show error?
+                [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
+                failureBlock(connectionError);
+            }
+        }];
+}
+
+
+- (void)downloadPhotoWithRequestURL:(NSURL *)url
+                            success:(void (^) (UIImage *photo))successBlock
+                            failure:(void (^) (NSError *error))failureBlock {
+    
+    [self resolvePhotoURLWithRequestURL:url success:^(NSURL *photoURL) {
+        
+        [self downloadPhotoWithPhotoURL:photoURL success:^(UIImage *photo) {
+            successBlock(photo);
+        } failure:^(NSError *error) {
+            failureBlock(error);
+        }];
+        
+    } failure:^(NSError *error) {
+        failureBlock(error);
     }];
 }
 
