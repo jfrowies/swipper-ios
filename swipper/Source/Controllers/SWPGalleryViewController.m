@@ -9,6 +9,8 @@
 #import "SWPGalleryViewController.h"
 #import "SWPPhotoCollectionViewCell.h"
 #import "SWPRestService.h"
+#import ""
+
 
 @interface SWPGalleryViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
