@@ -64,11 +64,6 @@
 		B5662EF919D8E9AC0003FB99 /* SWPThemeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5662EF819D8E9AC0003FB99 /* SWPThemeHelper.m */; };
 		B5801BAE1A30FC4500A6EEAF /* NSMutableArray+UniqueElements.m in Sources */ = {isa = PBXBuildFile; fileRef = B5801BAD1A30FC4500A6EEAF /* NSMutableArray+UniqueElements.m */; };
 		B597BD231A55123700C071A5 /* SWPPlaceDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = B597BD221A55123700C071A5 /* SWPPlaceDetail.m */; };
-		B5A6AAC21A5F330700AD5B4D /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B5A6AAC11A5F330700AD5B4D /* MWPhotoBrowser.bundle */; };
-		B5A6AAC31A5F332A00AD5B4D /* libMWPhotoBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6AAC01A5F32EF00AD5B4D /* libMWPhotoBrowser.a */; };
-		B5A6AAC51A5F337000AD5B4D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6AAC41A5F337000AD5B4D /* QuartzCore.framework */; };
-		B5A6AAC71A5F337900AD5B4D /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6AAC61A5F337900AD5B4D /* AssetsLibrary.framework */; };
-		B5A6AAC91A5F338500AD5B4D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6AAC81A5F338500AD5B4D /* ImageIO.framework */; };
 		B5AA37C519F4265100C33B5B /* SWPListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AA37C419F4265100C33B5B /* SWPListViewController.m */; };
 		B5CCACB219F470CC00F93564 /* SWPPlaceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CCACB119F470CC00F93564 /* SWPPlaceTableViewCell.m */; };
 		B5D25C141A37DDEB00AD2257 /* SWPMessageBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D25C131A37DDEB00AD2257 /* SWPMessageBarViewController.m */; };
@@ -91,20 +86,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 050F46AD19B0F4CA00E715A1;
 			remoteInfo = swipper;
-		};
-		B5A6AABF1A5F32EF00AD5B4D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B5A6AABB1A5F32EF00AD5B4D /* MWPhotoBrowser.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4C6F96C414AF704100F8389A;
-			remoteInfo = MWPhotoBrowser;
-		};
-		B5A6AACB1A5F383600AD5B4D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B5A6AABB1A5F32EF00AD5B4D /* MWPhotoBrowser.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 4C6F96C314AF704100F8389A;
-			remoteInfo = MWPhotoBrowser;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -188,11 +169,6 @@
 		B5801BAD1A30FC4500A6EEAF /* NSMutableArray+UniqueElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+UniqueElements.m"; path = "Categories/NSMutableArray+UniqueElements.m"; sourceTree = "<group>"; };
 		B597BD211A55123700C071A5 /* SWPPlaceDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPPlaceDetail.h; sourceTree = "<group>"; };
 		B597BD221A55123700C071A5 /* SWPPlaceDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPPlaceDetail.m; sourceTree = "<group>"; };
-		B5A6AABB1A5F32EF00AD5B4D /* MWPhotoBrowser.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MWPhotoBrowser.xcodeproj; path = MWPhotoBrowser/MWPhotoBrowser.xcodeproj; sourceTree = "<group>"; };
-		B5A6AAC11A5F330700AD5B4D /* MWPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MWPhotoBrowser.bundle; path = MWPhotoBrowser/MWPhotoBrowser.bundle; sourceTree = "<group>"; };
-		B5A6AAC41A5F337000AD5B4D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		B5A6AAC61A5F337900AD5B4D /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		B5A6AAC81A5F338500AD5B4D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		B5AA37C319F4265100C33B5B /* SWPListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPListViewController.h; sourceTree = "<group>"; };
 		B5AA37C419F4265100C33B5B /* SWPListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPListViewController.m; sourceTree = "<group>"; };
 		B5CCACB019F470CC00F93564 /* SWPPlaceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPPlaceTableViewCell.h; sourceTree = "<group>"; };
@@ -224,10 +200,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5A6AAC91A5F338500AD5B4D /* ImageIO.framework in Frameworks */,
-				B5A6AAC71A5F337900AD5B4D /* AssetsLibrary.framework in Frameworks */,
-				B5A6AAC51A5F337000AD5B4D /* QuartzCore.framework in Frameworks */,
-				B5A6AAC31A5F332A00AD5B4D /* libMWPhotoBrowser.a in Frameworks */,
 				B53FF7971A508486001602F1 /* MessageUI.framework in Frameworks */,
 				050F46E719B0F4E000E715A1 /* MapKit.framework in Frameworks */,
 				050F46B419B0F4CA00E715A1 /* CoreGraphics.framework in Frameworks */,
@@ -277,9 +249,6 @@
 		050F46B019B0F4CA00E715A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B5A6AAC81A5F338500AD5B4D /* ImageIO.framework */,
-				B5A6AAC61A5F337900AD5B4D /* AssetsLibrary.framework */,
-				B5A6AAC41A5F337000AD5B4D /* QuartzCore.framework */,
 				B53FF7961A508486001602F1 /* MessageUI.framework */,
 				058E1D3A19B4F633001CB42D /* LoopBack.framework */,
 				050F46E619B0F4E000E715A1 /* MapKit.framework */,
@@ -341,7 +310,6 @@
 		050F46EA19B0F52E00E715A1 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				B5A6AAA41A5F2D9800AD5B4D /* MWPhotoBrowser */,
 				EFD2B3641A42169000F5E6B2 /* Reachability */,
 				B50F7A721A06CF4200704E45 /* M13Checkbox */,
 				050F46EB19B0F52E00E715A1 /* OCMock */,
@@ -511,23 +479,6 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
-		B5A6AAA41A5F2D9800AD5B4D /* MWPhotoBrowser */ = {
-			isa = PBXGroup;
-			children = (
-				B5A6AAC11A5F330700AD5B4D /* MWPhotoBrowser.bundle */,
-				B5A6AABB1A5F32EF00AD5B4D /* MWPhotoBrowser.xcodeproj */,
-			);
-			path = MWPhotoBrowser;
-			sourceTree = "<group>";
-		};
-		B5A6AABC1A5F32EF00AD5B4D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B5A6AAC01A5F32EF00AD5B4D /* libMWPhotoBrowser.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		EFD2B3641A42169000F5E6B2 /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,7 +502,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B5A6AACC1A5F383600AD5B4D /* PBXTargetDependency */,
 			);
 			name = swipper;
 			productName = swipper;
@@ -587,7 +537,7 @@
 				ORGANIZATIONNAME = "Globant Labs";
 				TargetAttributes = {
 					050F46AD19B0F4CA00E715A1 = {
-						DevelopmentTeam = TKH856G5A9;
+						DevelopmentTeam = 332N44E879;
 					};
 					050F46CD19B0F4CA00E715A1 = {
 						TestTargetID = 050F46AD19B0F4CA00E715A1;
@@ -604,12 +554,6 @@
 			mainGroup = 050F46A519B0F4CA00E715A1;
 			productRefGroup = 050F46AF19B0F4CA00E715A1 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = B5A6AABC1A5F32EF00AD5B4D /* Products */;
-					ProjectRef = B5A6AABB1A5F32EF00AD5B4D /* MWPhotoBrowser.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				050F46AD19B0F4CA00E715A1 /* swipper */,
@@ -617,16 +561,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		B5A6AAC01A5F32EF00AD5B4D /* libMWPhotoBrowser.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libMWPhotoBrowser.a;
-			remoteRef = B5A6AABF1A5F32EF00AD5B4D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		050F46AC19B0F4CA00E715A1 /* Resources */ = {
@@ -636,7 +570,6 @@
 				050F46BE19B0F4CA00E715A1 /* InfoPlist.strings in Resources */,
 				EFCD3DBD1A43612A00D8CB34 /* SWPPlaceAnnotationCalloutView.xib in Resources */,
 				EF37935A1A38D4A400AA3A92 /* SWPMessageBarView.xib in Resources */,
-				B5A6AAC21A5F330700AD5B4D /* MWPhotoBrowser.bundle in Resources */,
 				050F46C919B0F4CA00E715A1 /* Images.xcassets in Resources */,
 				050F471619B0F75100E715A1 /* Main.storyboard in Resources */,
 			);
@@ -725,11 +658,6 @@
 			target = 050F46AD19B0F4CA00E715A1 /* swipper */;
 			targetProxy = 050F46D419B0F4CA00E715A1 /* PBXContainerItemProxy */;
 		};
-		B5A6AACC1A5F383600AD5B4D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MWPhotoBrowser;
-			targetProxy = B5A6AACB1A5F383600AD5B4D /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -755,7 +683,7 @@
 		050F46DE19B0F4CA00E715A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -768,7 +696,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Globant, LLC";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -787,16 +715,15 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d75b1774-5796-4cfc-8d77-97a65dcb24a0";
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "./Documents/Development/swipper-ios/**";
 			};
 			name = Debug;
 		};
 		050F46DF19B0F4CA00E715A1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -809,7 +736,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Globant, LLC";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -821,9 +748,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d75b1774-5796-4cfc-8d77-97a65dcb24a0";
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "./Documents/Development/swipper-ios/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -831,10 +757,9 @@
 		050F46E119B0F4CA00E715A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Globant, LLC";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -849,8 +774,7 @@
 					"$(PROJECT_DIR)/swipper/Libraries/OCMock/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				USER_HEADER_SEARCH_PATHS = "./Documents/**";
+				PROVISIONING_PROFILE = "d75b1774-5796-4cfc-8d77-97a65dcb24a0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -858,10 +782,9 @@
 		050F46E219B0F4CA00E715A1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Globant, LLC";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -876,8 +799,7 @@
 					"$(PROJECT_DIR)/swipper/Libraries/OCMock/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				USER_HEADER_SEARCH_PATHS = "./Documents/**";
+				PROVISIONING_PROFILE = "d75b1774-5796-4cfc-8d77-97a65dcb24a0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
