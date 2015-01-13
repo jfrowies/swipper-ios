@@ -35,7 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.tableView.contentInset = UIEdgeInsetsMake(75, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(75, 0, 100, 0);
 }
 
 - (void)didReceiveMemoryWarning {
