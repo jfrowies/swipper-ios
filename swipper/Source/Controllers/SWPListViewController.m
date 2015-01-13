@@ -270,16 +270,16 @@
 
 - (void)didShowSlidingMenuViewController:(SWPSlidingMenuViewController *)sender {
     self.mapBarButtonItem.enabled = NO;
-    [UIView animateWithDuration:0.2f animations:^{
-        self.tableView.alpha = 0.5f;
-    }];
+//    [UIView animateWithDuration:0.2f animations:^{
+//        self.tableView.alpha = 0.5f;
+//    }];
 }
 
 - (void)didHideSlidingMenuViewController:(SWPSlidingMenuViewController *)sender {
     self.mapBarButtonItem.enabled = YES;
-    [UIView animateWithDuration:0.2f animations:^{
-        self.tableView.alpha = 1;
-    }];
+//    [UIView animateWithDuration:0.2f animations:^{
+//        self.tableView.alpha = 1;
+//    }];
 }
 
 #pragma mark - Places filtering

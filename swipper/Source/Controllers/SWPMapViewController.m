@@ -361,18 +361,20 @@
 
 - (void)didShowSlidingMenuViewController:(SWPSlidingMenuViewController *)sender {
     self.listBarButtonItem.enabled = NO;
-    [UIView animateWithDuration:0.2f animations:^{
-        self.mapView.alpha = 0.5f;
-        self.userTrackingButton.alpha = 0.5f;
-    }];
+    self.userTrackingButton.enabled = NO;
+//    [UIView animateWithDuration:0.2f animations:^{
+//        self.mapView.alpha = 0.5f;
+//        self.userTrackingButton.alpha = 0.5f;
+//    }];
 }
 
 - (void)didHideSlidingMenuViewController:(SWPSlidingMenuViewController *)sender {
     self.listBarButtonItem.enabled = YES;
-    [UIView animateWithDuration:0.2f animations:^{
-        self.mapView.alpha = 1;
-        self.userTrackingButton.alpha = 1;
-    }];
+    self.userTrackingButton.enabled = YES;
+//    [UIView animateWithDuration:0.2f animations:^{
+//        self.mapView.alpha = 1;
+//        self.userTrackingButton.alpha = 1;
+//    }];
 }
 
 #pragma mark - CLLocationManager delegate implementation
