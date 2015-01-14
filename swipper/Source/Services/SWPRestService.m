@@ -98,7 +98,7 @@
 
     NSString *post = [NSString stringWithFormat:@"idPlace=%@",placeId];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%lu",[postData length]];
+    NSString *postLength = [NSString stringWithFormat:@"%luu",(unsigned long)[postData length]];
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:PlaceDetailsURL]];

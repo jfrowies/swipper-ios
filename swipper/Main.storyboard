@@ -336,7 +336,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Acx-Hj-WFd">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="wOn-aG-SLk">
+                        <barButtonItem key="rightBarButtonItem" id="wOn-aG-SLk">
                             <view key="customView" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.0" contentMode="center" id="kkw-YJ-sPf">
                                 <rect key="frame" x="233" y="5" width="33" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -730,7 +730,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owG-jr-g2P" userLabel="PlaceDistLabel">
-                                                    <rect key="frame" x="100" y="12" width="55" height="18"/>
+                                                    <rect key="frame" x="100" y="11" width="55" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="55" id="YJM-DB-D9w"/>
                                                     </constraints>
@@ -769,7 +769,7 @@
                                                 <constraint firstItem="leR-bA-bfG" firstAttribute="top" secondItem="qTK-wM-9UH" secondAttribute="topMargin" id="1p1-pf-8Yn"/>
                                                 <constraint firstItem="GRU-T1-c74" firstAttribute="top" secondItem="Ztd-WZ-qgR" secondAttribute="bottom" constant="-5" id="26Z-yB-UCP"/>
                                                 <constraint firstItem="cAn-sk-cov" firstAttribute="top" secondItem="qTK-wM-9UH" secondAttribute="top" constant="2" id="BQl-AJ-DCs"/>
-                                                <constraint firstItem="owG-jr-g2P" firstAttribute="top" secondItem="qTK-wM-9UH" secondAttribute="topMargin" constant="4" id="Crz-2Q-B0w"/>
+                                                <constraint firstItem="owG-jr-g2P" firstAttribute="top" secondItem="qTK-wM-9UH" secondAttribute="topMargin" constant="3" id="Crz-2Q-B0w"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="leR-bA-bfG" secondAttribute="trailing" constant="-6" id="Jaj-8T-pCu"/>
                                                 <constraint firstItem="leR-bA-bfG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="owG-jr-g2P" secondAttribute="trailing" id="Jz4-yK-1hv"/>
                                                 <constraint firstAttribute="trailing" secondItem="cAn-sk-cov" secondAttribute="trailing" id="RfW-A9-tAS"/>
@@ -1029,16 +1029,16 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jfJ-fE-OEq">
-                                                    <rect key="frame" x="213" y="12" width="17" height="17"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfJ-fE-OEq">
+                                                    <rect key="frame" x="193" y="12" width="17" height="17"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="17" id="4zD-Bd-mBs"/>
                                                         <constraint firstAttribute="height" constant="17" id="S0k-5b-vIU"/>
                                                     </constraints>
                                                 </view>
-                                                <view alpha="0.79999999999999982" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dtR-gg-KBu" userLabel="Separator">
-                                                    <rect key="frame" x="0.0" y="43" width="240" height="1"/>
+                                                <view alpha="0.79999999999999982" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtR-gg-KBu" userLabel="Separator">
+                                                    <rect key="frame" x="0.0" y="43" width="220" height="1"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="9P4-qX-5TS"/>
@@ -1082,16 +1082,16 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BDW-GU-n4q">
-                                                    <rect key="frame" x="213" y="12" width="17" height="17"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BDW-GU-n4q">
+                                                    <rect key="frame" x="193" y="12" width="17" height="17"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="Vxh-2V-LK9"/>
                                                         <constraint firstAttribute="width" constant="17" id="kLQ-j7-Y4R"/>
                                                     </constraints>
                                                 </view>
-                                                <view alpha="0.79999999999999982" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a8x-uL-00Y" userLabel="Separator">
-                                                    <rect key="frame" x="0.0" y="43" width="240" height="1"/>
+                                                <view alpha="0.79999999999999982" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8x-uL-00Y" userLabel="Separator">
+                                                    <rect key="frame" x="0.0" y="43" width="220" height="1"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="8Y3-25-vS7"/>
@@ -1182,8 +1182,7 @@
             <objects>
                 <navigationController storyboardIdentifier="mapNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="dTi-Ph-aHe" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="RJe-0c-LAy"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AEa-aM-hQv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="AEa-aM-hQv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1237,6 +1236,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="QMx-lT-TZ0"/>
+        <segue reference="G4M-LE-Kbc"/>
     </inferredMetricsTieBreakers>
 </document>
