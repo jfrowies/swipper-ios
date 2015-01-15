@@ -45,7 +45,6 @@
 
 #pragma mark - <UITableViewControllerDataSource>
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.reviews.count;
 }

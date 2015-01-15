@@ -34,6 +34,7 @@
 @property (weak, nonatomic) SWPReviewsViewController *reviewsViewController;
 @property (weak, nonatomic) SWPGalleryViewController *galleryViewController;
 @property (weak, nonatomic) IBOutlet UIImageView *categoryBarButtonImageView;
+//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *galleryHeightConstraint;
 
 @end
 
@@ -110,6 +111,10 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+
 }
 
 #pragma mark - Navigation
