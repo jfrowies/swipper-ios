@@ -223,7 +223,6 @@
         return;
     }
 
-    
     //avoid calling service for non significative scrolls
     if(MKMapRectContainsRect(self.mapRectWithData, mRect))
         return;
@@ -235,6 +234,9 @@
     //the region in which we will have annotations
     MKMapRect mapRectToFill = MKMapRectMake(nwMapPoint.x, nwMapPoint.y, seMapPoint.x - nwMapPoint.x, seMapPoint.y - nwMapPoint.x);
 
+    //saving the map rectangle for which data is going to be showed
+    self.mapRectWithData = mapRectToFill;
+    
     CLLocationCoordinate2D nwCoord = MKCoordinateForMapPoint(nwMapPoint);
     CLLocationCoordinate2D seCoord = MKCoordinateForMapPoint(seMapPoint);
 
@@ -247,9 +249,10 @@
                                                            southEast:seCoord
                                                              success:^(NSArray *places) {
                                                                 weakSelf.places = places;
-                                                                weakSelf.mapRectWithData = mapRectToFill;
+                                                                 //commented out to avoid calling the service two consecutives times in some occasions.
+                                                                 //weakSelf.mapRectWithData = mapRectToFill;
                                                                 
-                                                                 if (places.count>1){
+                                                                 if (places.count>0){
                                                                      [weakSelf showMessage:@"done" withBarType:MessageBarInfo animated:NO];
                                                                  }else {
                                                                      [weakSelf showMessage:@"no places found, try changing location" withBarType:MessageBarInfo animated:NO];
