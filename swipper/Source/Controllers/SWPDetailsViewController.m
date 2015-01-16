@@ -112,13 +112,6 @@
     [super didReceiveMemoryWarning];
 }
 
-//- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-//    if (newCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact) {
-//        //change reviews table insets
-//    }
-//    
-//}
-
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

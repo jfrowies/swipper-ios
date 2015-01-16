@@ -236,6 +236,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     SWPPlaceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"placeCell" forIndexPath:indexPath];
+    
     id<SWPPlace> place = [self.placesToShow objectAtIndex:indexPath.row];
     
     cell.place = place;
@@ -260,6 +261,31 @@
     [self performSegueWithIdentifier:@"showDetailsFromList" sender:self];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    double placeNameAndInsetsHeight = 43;
+    
+    id<SWPPlace> place = [self.placesToShow objectAtIndex:indexPath.row];
+    
+    //(magic number?) 99.5 seems to be the width of category icon on the left plus how to arrive icon on the right
+    
+    CGSize constrainedSize = CGSizeMake(self.view.frame.size.width - 99.5, 999);
+    
+    NSDictionary *placeAddressAtributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                         [UIFont fontWithName:@"HelveticaNeue" size:14.0], NSFontAttributeName,
+                                         nil];
+    
+    NSMutableAttributedString *placeAddressString = [[NSMutableAttributedString alloc] initWithString:place.placeAddress attributes:placeAddressAtributes];
+    
+    NSMutableAttributedString *placeCityString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@, %@, %@",place.placeCity,place.placeState,place.placeCountry] attributes:placeAddressAtributes];
+    
+    CGRect placeAddressRect = [placeAddressString boundingRectWithSize:constrainedSize options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    
+    CGRect placeCityRect = [placeCityString boundingRectWithSize:constrainedSize options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    
+    return placeNameAndInsetsHeight + placeAddressRect.size.height + placeCityRect.size.height;
+}
+
 #pragma mark - SWPSlidingMenuViewControllerDelegate implementation
 
 - (void)slidingMenuViewController:(SWPSlidingMenuViewController *)sender userDidSelectCategories:(NSArray *)selectedCategories
@@ -270,16 +296,10 @@
 
 - (void)didShowSlidingMenuViewController:(SWPSlidingMenuViewController *)sender {
     self.mapBarButtonItem.enabled = NO;
-//    [UIView animateWithDuration:0.2f animations:^{
-//        self.tableView.alpha = 0.5f;
-//    }];
 }
 
 - (void)didHideSlidingMenuViewController:(SWPSlidingMenuViewController *)sender {
     self.mapBarButtonItem.enabled = YES;
-//    [UIView animateWithDuration:0.2f animations:^{
-//        self.tableView.alpha = 1;
-//    }];
 }
 
 #pragma mark - Places filtering

@@ -103,12 +103,4 @@
     return labelHeight+imageHeight+insetsHeight;
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(8, 8, 100, 15)];
-//    [label setFont:[UIFont fontWithName:@"HelveticaNeue" size:15.0]];
-//    [label setText:@"REVIEWS"];
-//    return label;
-//}
-
 @end
