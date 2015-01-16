@@ -261,6 +261,7 @@
                                                                  [weakSelf hideMessageAfterDelay:kHideMessageDelay Animated:YES];
                                                                  
                                                              } failure:^(NSError *error) {
+                                                                 weakSelf.mapRectWithData = MKMapRectNull;
                                                                  [weakSelf showMessage:@"error loading places" withBarType:MessageBarError animated:NO];
                                                                   [weakSelf hideMessageAfterDelay:kHideMessageDelay Animated:YES];
                                                              }];
