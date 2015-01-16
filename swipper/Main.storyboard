@@ -120,7 +120,8 @@
                                         <rect key="frame" x="0.0" y="392" width="600" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="xni-iJ-CKR">
-                                                <variation key="heightClass=compact" constant="0.0"/>
+                                                <variation key="heightClass=compact" constant="100"/>
+                                                <variation key="heightClass=compact-widthClass=regular" constant="100"/>
                                             </constraint>
                                         </constraints>
                                         <connections>
@@ -163,7 +164,9 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="centerY" secondItem="an6-0S-afc" secondAttribute="centerY" id="Mri-Ty-jcl"/>
+                                            <constraint firstAttribute="centerY" secondItem="an6-0S-afc" secondAttribute="centerY" id="Mri-Ty-jcl">
+                                                <variation key="heightClass=compact" constant="-32.5"/>
+                                            </constraint>
                                             <constraint firstAttribute="centerX" secondItem="an6-0S-afc" secondAttribute="centerX" id="ja2-lb-dQg"/>
                                         </constraints>
                                     </view>
@@ -172,7 +175,10 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="FuB-7V-Bxx" secondAttribute="bottom" id="6tw-8O-hTF"/>
                                     <constraint firstAttribute="bottom" secondItem="y8i-9u-YUK" secondAttribute="bottom" id="84W-73-LBb"/>
-                                    <constraint firstAttribute="bottom" secondItem="3Ic-Eg-ZWB" secondAttribute="bottom" id="AIe-Ud-vAf"/>
+                                    <constraint firstAttribute="bottom" secondItem="3Ic-Eg-ZWB" secondAttribute="bottom" id="AIe-Ud-vAf">
+                                        <variation key="heightClass=compact" constant="-150"/>
+                                        <variation key="heightClass=compact-widthClass=regular" constant="-150"/>
+                                    </constraint>
                                     <constraint firstItem="y8i-9u-YUK" firstAttribute="top" secondItem="FCQ-XO-Ml5" secondAttribute="top" id="FQG-7U-oNM"/>
                                     <constraint firstAttribute="trailing" secondItem="iex-cd-gC5" secondAttribute="trailing" id="GGF-ET-Rj3"/>
                                     <constraint firstAttribute="bottom" secondItem="iex-cd-gC5" secondAttribute="bottom" id="NDN-iV-bid"/>
@@ -552,6 +558,9 @@
                                             <vibrancyEffect>
                                                 <blurEffect style="light"/>
                                             </vibrancyEffect>
+                                            <variation key="heightClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                            </variation>
                                         </visualEffectView>
                                     </subviews>
                                 </view>
@@ -575,11 +584,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Dk-nQ-UBa" userLabel="PlacePhoto">
-                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <variation key="heightClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                    </variation>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -603,10 +609,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cbV-Vp-xYX">
-                                                    <rect key="frame" x="35" y="35" width="20" height="20"/>
-                                                    <variation key="heightClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="15" y="15" width="20" height="20"/>
-                                                    </variation>
+                                                    <rect key="frame" x="15" y="15" width="20" height="20"/>
                                                 </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

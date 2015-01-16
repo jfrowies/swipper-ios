@@ -34,13 +34,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.tableView.contentInset = UIEdgeInsetsMake(75, 0, 100, 0);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact) {
+        self.tableView.contentInset = UIEdgeInsetsMake(75, 0, 0, 0);
+    }else if (self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular){
+        self.tableView.contentInset = UIEdgeInsetsMake(75, 0, 100, 0);
+    }
+}
+
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    //TODO: 0 and 100 vertical insets should not be hardcoded
+    if (newCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact) {
+        self.tableView.contentInset = UIEdgeInsetsMake(self.tableView.contentInset.top, self.tableView.contentInset.left, 0,self.tableView.contentInset.right);
+    }else if (newCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular){
+        self.tableView.contentInset = UIEdgeInsetsMake(self.tableView.contentInset.top, self.tableView.contentInset.left, 100,self.tableView.contentInset.right);
+    }
 }
 
 #pragma mark - <UITableViewControllerDataSource>

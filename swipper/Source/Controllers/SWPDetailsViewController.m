@@ -34,7 +34,6 @@
 @property (weak, nonatomic) SWPReviewsViewController *reviewsViewController;
 @property (weak, nonatomic) SWPGalleryViewController *galleryViewController;
 @property (weak, nonatomic) IBOutlet UIImageView *categoryBarButtonImageView;
-//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *galleryHeightConstraint;
 
 @end
 
@@ -113,9 +112,12 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-
-}
+//- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+//    if (newCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact) {
+//        //change reviews table insets
+//    }
+//    
+//}
 
 #pragma mark - Navigation
 
