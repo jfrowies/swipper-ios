@@ -116,10 +116,13 @@
     
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     
-    [self setDetailsHeaderHeight:[self calculateHeaderHightForWidth:size.width] animated:NO];
+    [self setDetailsHeaderHeight:[self calculateHeaderHightForWidth:size.width] animated:YES];
     
-    self.placeAddressLabel.preferredMaxLayoutWidth = size.width;
-    self.placeCityLabel.preferredMaxLayoutWidth = size.width;
+
+    CGFloat distanceLabelWidth = [self calculateDistanceLabelWidth];
+    
+    self.placeAddressLabel.preferredMaxLayoutWidth = size.width - distanceLabelWidth;
+    self.placeCityLabel.preferredMaxLayoutWidth = size.width - distanceLabelWidth;
 }
 
 - (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
@@ -294,18 +297,16 @@
                                            [UIFont fontWithName:@"HelveticaNeue" size:15.0], NSFontAttributeName,
                                            nil];
     
-    NSMutableAttributedString *placeDistanceString = [[NSMutableAttributedString alloc] initWithString:self.placeDistanceLabel.text attributes:placeAddressAtributes];
-    
-    CGRect placeDistanceRect = [placeDistanceString boundingRectWithSize:CGSizeMake(headerWidth, 999) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
-    
-    CGSize constrainedSizeForAddress = CGSizeMake(headerWidth - 39, 999);
-    CGSize constrainedSizeForCity = CGSizeMake(headerWidth - placeDistanceRect.size.width - 55, 999);
+    CGFloat distanceLabelWidth = [self calculateDistanceLabelWidth];
+
+//    CGSize constrainedSizeForAddress = CGSizeMake(headerWidth - 39, 999);
+    CGSize constrainedSize = CGSizeMake(headerWidth - distanceLabelWidth, 999);
     
     NSMutableAttributedString *placeAddressString = [[NSMutableAttributedString alloc] initWithString:place.placeAddress attributes:placeAddressAtributes];
     NSMutableAttributedString *placeCityString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@, %@, %@",place.placeCity,place.placeState,place.placeCountry] attributes:placeAddressAtributes];
     
-    CGRect placeAddressRect = [placeAddressString boundingRectWithSize:constrainedSizeForAddress options:NSStringDrawingUsesLineFragmentOrigin context:nil];
-    CGRect placeCityRect = [placeCityString boundingRectWithSize:constrainedSizeForCity options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    CGRect placeAddressRect = [placeAddressString boundingRectWithSize:constrainedSize options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    CGRect placeCityRect = [placeCityString boundingRectWithSize:constrainedSize options:NSStringDrawingUsesLineFragmentOrigin context:nil];
     
     return   placeAddressRect.size.height + placeCityRect.size.height + 32;
 }
@@ -323,6 +324,18 @@
         self.detailsHeaderHeightConstraint.constant = height;
         [self.view layoutIfNeeded];
     }
+}
+
+- (CGFloat)calculateDistanceLabelWidth {
+    NSDictionary *placeAddressAtributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                           [UIFont fontWithName:@"HelveticaNeue" size:15.0], NSFontAttributeName,
+                                           nil];
+
+    NSMutableAttributedString *placeDistanceString = [[NSMutableAttributedString alloc] initWithString:self.placeDistanceLabel.text attributes:placeAddressAtributes];
+    
+    CGRect placeDistanceRect = [placeDistanceString boundingRectWithSize:CGSizeMake(200, 200) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    
+    return placeDistanceRect.size.width + 55;
 }
 
 #pragma mark - <SWPReviewsViewControllerDelegate>
