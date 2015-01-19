@@ -221,46 +221,46 @@
                                         </view>
                                         <blurEffect style="dark"/>
                                     </visualEffectView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEy-kx-35u" userLabel="place address label">
-                                        <rect key="frame" x="34" y="8" width="37" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEy-kx-35u" userLabel="place address label">
+                                        <rect key="frame" x="34" y="5" width="37" height="18"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyw-Wg-rUU" userLabel="places city label">
-                                        <rect key="frame" x="34" y="26" width="38" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyw-Wg-rUU" userLabel="places city label">
+                                        <rect key="frame" x="34" y="23" width="37" height="18"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNu-1I-iXn" userLabel="phone number label">
-                                        <rect key="frame" x="34" y="48" width="34" height="18"/>
+                                        <rect key="frame" x="34" y="45" width="34" height="18"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LocationPin" translatesAutoresizingMaskIntoConstraints="NO" id="l00-KF-xBe" userLabel="place icon">
-                                        <rect key="frame" x="10" y="15" width="13" height="18"/>
+                                        <rect key="frame" x="10" y="7" width="13" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="13" id="0My-ne-Hrl"/>
                                             <constraint firstAttribute="height" constant="18" id="a90-5s-5wO"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phone" translatesAutoresizingMaskIntoConstraints="NO" id="adx-gB-pIU" userLabel="phone icon">
-                                        <rect key="frame" x="10" y="50" width="13" height="13"/>
+                                        <rect key="frame" x="10" y="48" width="13" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="13" id="RXO-vV-agV"/>
                                             <constraint firstAttribute="height" constant="13" id="rLT-6g-4aT"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBg-4V-hbO" userLabel="distance label">
-                                        <rect key="frame" x="553" y="26" width="37" height="18"/>
+                                        <rect key="frame" x="553" y="23" width="37" height="18"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view alpha="0.79999999999999982" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6m7-g9-o95" userLabel="separator">
-                                        <rect key="frame" x="547" y="26" width="1" height="18"/>
+                                        <rect key="frame" x="547" y="23" width="1" height="18"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="T9I-nh-7xu"/>
@@ -271,11 +271,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="nEy-kx-35u" firstAttribute="leading" secondItem="X8R-cK-zY2" secondAttribute="leading" constant="34" id="3vt-HG-AOZ"/>
-                                    <constraint firstItem="nEy-kx-35u" firstAttribute="top" secondItem="X8R-cK-zY2" secondAttribute="top" constant="8" id="4HA-m8-0kc"/>
+                                    <constraint firstItem="nEy-kx-35u" firstAttribute="top" secondItem="X8R-cK-zY2" secondAttribute="top" constant="5" id="4HA-m8-0kc"/>
+                                    <constraint firstItem="adx-gB-pIU" firstAttribute="centerY" secondItem="hNu-1I-iXn" secondAttribute="centerY" id="54L-hi-l9j"/>
                                     <constraint firstItem="6m7-g9-o95" firstAttribute="centerY" secondItem="XBg-4V-hbO" secondAttribute="centerY" id="5hI-TY-JkO"/>
                                     <constraint firstItem="adx-gB-pIU" firstAttribute="leading" secondItem="X8R-cK-zY2" secondAttribute="leading" constant="10" id="8LQ-c0-Pd9"/>
-                                    <constraint firstItem="l00-KF-xBe" firstAttribute="top" secondItem="X8R-cK-zY2" secondAttribute="top" constant="15" id="Bhc-wX-s6S"/>
+                                    <constraint firstItem="l00-KF-xBe" firstAttribute="top" secondItem="X8R-cK-zY2" secondAttribute="top" constant="7" id="Bhc-wX-s6S"/>
                                     <constraint firstItem="6m7-g9-o95" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tyw-Wg-rUU" secondAttribute="trailing" constant="5" id="Ept-gP-Auc"/>
+                                    <constraint firstItem="hNu-1I-iXn" firstAttribute="top" secondItem="tyw-Wg-rUU" secondAttribute="bottom" constant="4" id="GXu-6C-M2S"/>
                                     <constraint firstItem="nxS-hY-Gxm" firstAttribute="leading" secondItem="X8R-cK-zY2" secondAttribute="leading" id="JoY-Y0-R5x"/>
                                     <constraint firstItem="adx-gB-pIU" firstAttribute="centerY" secondItem="hNu-1I-iXn" secondAttribute="centerY" id="Nf4-PI-RJH"/>
                                     <constraint firstItem="tyw-Wg-rUU" firstAttribute="leading" secondItem="X8R-cK-zY2" secondAttribute="leading" constant="34" id="Qan-sC-8lU"/>
@@ -291,7 +293,17 @@
                                     <constraint firstItem="XBg-4V-hbO" firstAttribute="leading" secondItem="6m7-g9-o95" secondAttribute="trailing" constant="5" id="s4p-Uy-BRH"/>
                                     <constraint firstAttribute="trailing" secondItem="XBg-4V-hbO" secondAttribute="trailing" constant="10" id="vNj-Jx-Gzo"/>
                                     <constraint firstItem="adx-gB-pIU" firstAttribute="top" secondItem="X8R-cK-zY2" secondAttribute="top" constant="50" id="wuc-jb-RV1"/>
+                                    <constraint firstItem="hNu-1I-iXn" firstAttribute="top" secondItem="tyw-Wg-rUU" secondAttribute="bottom" constant="4" id="x32-Kl-lcs"/>
+                                    <constraint firstItem="adx-gB-pIU" firstAttribute="centerY" secondItem="hNu-1I-iXn" secondAttribute="centerY" id="zRq-1u-Hw1"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="54L-hi-l9j"/>
+                                        <exclude reference="Nf4-PI-RJH"/>
+                                        <exclude reference="wuc-jb-RV1"/>
+                                        <exclude reference="x32-Kl-lcs"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2LQ-ak-54S">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
@@ -371,6 +383,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="categoryBarButtonImageView" destination="R6b-Gm-5W1" id="Pg2-wL-ppC"/>
+                        <outlet property="detailsHeaderHeightConstraint" destination="RZu-rH-Xhq" id="YZU-xh-5Rb"/>
                         <outlet property="howToArriveBarButton" destination="eSS-Td-pm1" id="wWq-Ni-Qp8"/>
                         <outlet property="infoView" destination="FuB-7V-Bxx" id="Btp-DQ-hzk"/>
                         <outlet property="loadingView" destination="y8i-9u-YUK" id="Ifs-yr-b5t"/>
@@ -385,7 +398,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQV-sq-oLZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2613.75" y="723.5915492957746"/>
+            <point key="canvasLocation" x="2613" y="723"/>
         </scene>
         <!--Reviews View Controller-->
         <scene sceneID="C8g-KR-6Wt">

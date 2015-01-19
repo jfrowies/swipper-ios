@@ -12,8 +12,8 @@
 #import "SWPRestService.h"
 
 @interface SWPReviewsViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *infoView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation SWPReviewsViewController
@@ -44,20 +44,44 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if (self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact) {
-        self.tableView.contentInset = UIEdgeInsetsMake(75, 0, 0, 0);
-    }else if (self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular){
-        self.tableView.contentInset = UIEdgeInsetsMake(75, 0, 100, 0);
-    }
+    [self setTableViewInsetsForTraitCollection:self.traitCollection];
+    [self seTTableViewInsetsForViewSize:self.view.frame.size];
+
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+
+    [self seTTableViewInsetsForViewSize:size];
 }
 
 - (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    
+    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
+    
+    [self setTableViewInsetsForTraitCollection:newCollection];
+}
+
+- (void)setTableViewInsetsForTraitCollection:(UITraitCollection *)traits {
     //TODO: 0 and 100 vertical insets should not be hardcoded
-    if (newCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact) {
+    if (traits.verticalSizeClass == UIUserInterfaceSizeClassCompact) {
         self.tableView.contentInset = UIEdgeInsetsMake(self.tableView.contentInset.top, self.tableView.contentInset.left, 0,self.tableView.contentInset.right);
-    }else if (newCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular){
+    }else if (traits.verticalSizeClass == UIUserInterfaceSizeClassRegular){
         self.tableView.contentInset = UIEdgeInsetsMake(self.tableView.contentInset.top, self.tableView.contentInset.left, 100,self.tableView.contentInset.right);
     }
+}
+
+- (void)seTTableViewInsetsForViewSize:(CGSize)size {
+    
+    CGFloat topInset = self.tableView.contentInset.top;
+    
+    if([self.delegate respondsToSelector:@selector(reviewsViewController:topInsetForViewWidth:)]) {
+        topInset = [self.delegate reviewsViewController:self topInsetForViewWidth:size.width];
+    }
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(topInset, self.tableView.contentInset.left, self.tableView.contentInset.bottom,self.tableView.contentInset.right);
+
 }
 
 #pragma mark - <UITableViewControllerDataSource>

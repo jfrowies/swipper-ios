@@ -17,7 +17,7 @@
 #import "SWPPlaceDetail.h"
 #import "SWPRestService.h"
 
-@interface SWPDetailsViewController () <MFMailComposeViewControllerDelegate>
+@interface SWPDetailsViewController () <MFMailComposeViewControllerDelegate, SWPReviewsViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *placeAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *placeCityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *placePhoneNumberLabel;
@@ -34,6 +34,7 @@
 @property (weak, nonatomic) SWPReviewsViewController *reviewsViewController;
 @property (weak, nonatomic) SWPGalleryViewController *galleryViewController;
 @property (weak, nonatomic) IBOutlet UIImageView *categoryBarButtonImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *detailsHeaderHeightConstraint;
 
 @end
 
@@ -95,6 +96,9 @@
     self.infoView.hidden = NO;
     self.loadingView.hidden = NO;
     
+    CGFloat headerHeight = [self calculateHeaderHightForWidth:self.view.frame.size.width];
+    [self setDetailsHeaderHeight:headerHeight animated:NO];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAppStateTransition) name:UIApplicationDidEnterBackgroundNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAppStateTransition) name:UIApplicationDidBecomeActiveNotification object:nil];
@@ -106,6 +110,20 @@
     if(self.loadingViewController.isBeingPresented) {
         [self.loadingViewController hideLoadingViewControllerAnimated:YES];
     }
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    [self setDetailsHeaderHeight:[self calculateHeaderHightForWidth:size.width] animated:NO];
+    
+    self.placeAddressLabel.preferredMaxLayoutWidth = size.width;
+    self.placeCityLabel.preferredMaxLayoutWidth = size.width;
+}
+
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -120,6 +138,7 @@
         if([segue.destinationViewController isKindOfClass:[SWPReviewsViewController class]]) {
             SWPReviewsViewController *dvc = (SWPReviewsViewController *)segue.destinationViewController;
             self.reviewsViewController = dvc;
+            self.reviewsViewController.delegate = self;
         }
     }
     
@@ -148,42 +167,42 @@
 
 - (IBAction)didTouchedHowToArriveBarButton:(UIBarButtonItem *)sender {
     
-        id<SWPPlace> place = self.place;
-        CLLocation *location = [[CLLocation alloc] initWithLatitude:[place placeCoordinate].latitude longitude:[place placeCoordinate].longitude];
+    id<SWPPlace> place = self.place;
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:[place placeCoordinate].latitude longitude:[place placeCoordinate].longitude];
+    
+    self.loadingViewController.message = @"Launching maps app";
+    self.loadingViewController.showSpinner = YES;
+    [self.loadingViewController presentLoadingViewControllerInViewController:self andView:self.view animated:YES];
+    
+    self.backButton.enabled = NO;
+    
+    [[JSNetworkActivityIndicatorManager sharedManager] startActivity];
+    
+    __weak SWPDetailsViewController *weakSelf = self;
+    
+    [[[CLGeocoder alloc] init] reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         
-        self.loadingViewController.message = @"Launching maps app";
-        self.loadingViewController.showSpinner = YES;
-        [self.loadingViewController presentLoadingViewControllerInViewController:self andView:self.view animated:YES];
+        [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
         
-        self.backButton.enabled = NO;
-    
-        [[JSNetworkActivityIndicatorManager sharedManager] startActivity];
-    
-        __weak SWPDetailsViewController *weakSelf = self;
-    
-        [[[CLGeocoder alloc] init] reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-            
-            [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
-            
-            if (weakSelf.isViewLoaded && weakSelf.view.window) {
-                if(!error) {
-                    //launching maps app
-                    MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:placemarks.firstObject];
-                    NSArray *mapItems = [NSArray arrayWithObject:destinationMapItem];
-                    NSDictionary *launchOptions = [NSDictionary dictionaryWithObject:MKLaunchOptionsDirectionsModeWalking forKey:MKLaunchOptionsDirectionsModeKey];
-                    [MKMapItem openMapsWithItems:mapItems launchOptions:launchOptions];
-                } else {
-                    //show error and hide loading vc
-                    self.loadingViewController.message = @"Error loading address";
-                    self.loadingViewController.showSpinner = NO;
-                    
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        weakSelf.backButton.enabled = YES;
-                        [self.loadingViewController hideLoadingViewControllerAnimated:YES];
-                    });
-                }
+        if (weakSelf.isViewLoaded && weakSelf.view.window) {
+            if(!error) {
+                //launching maps app
+                MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark:placemarks.firstObject];
+                NSArray *mapItems = [NSArray arrayWithObject:destinationMapItem];
+                NSDictionary *launchOptions = [NSDictionary dictionaryWithObject:MKLaunchOptionsDirectionsModeWalking forKey:MKLaunchOptionsDirectionsModeKey];
+                [MKMapItem openMapsWithItems:mapItems launchOptions:launchOptions];
+            } else {
+                //show error and hide loading vc
+                self.loadingViewController.message = @"Error loading address";
+                self.loadingViewController.showSpinner = NO;
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    weakSelf.backButton.enabled = YES;
+                    [self.loadingViewController hideLoadingViewControllerAnimated:YES];
+                });
             }
-        }];
+        }
+    }];
 }
 
 - (IBAction)didTouchedPhoneCallBarButton:(UIBarButtonItem *)sender {
@@ -200,11 +219,8 @@
     activityViewController.excludedActivityTypes = @[UIActivityTypeAddToReadingList] ;
     
     [self.navigationController presentViewController:activityViewController
-                                       animated:YES
-                                     completion:^{
-                                        
-                                     }];
-    
+                                            animated:YES
+                                          completion:nil];
 }
 
 - (IBAction)didTouchedSendReportBarButton:(UIBarButtonItem *)sender {
@@ -265,8 +281,54 @@
     } failure:^(NSError *error) {
         //TODO: handle error properly
         self.loadingView.hidden = YES;
-
     }];
+}
+
+#pragma mark - Header configuration
+
+- (CGFloat)calculateHeaderHightForWidth:(CGFloat)headerWidth{
+    
+    id<SWPPlace> place = self.place;
+    
+    NSDictionary *placeAddressAtributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                           [UIFont fontWithName:@"HelveticaNeue" size:15.0], NSFontAttributeName,
+                                           nil];
+    
+    NSMutableAttributedString *placeDistanceString = [[NSMutableAttributedString alloc] initWithString:self.placeDistanceLabel.text attributes:placeAddressAtributes];
+    
+    CGRect placeDistanceRect = [placeDistanceString boundingRectWithSize:CGSizeMake(headerWidth, 999) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    
+    CGSize constrainedSizeForAddress = CGSizeMake(headerWidth - 39, 999);
+    CGSize constrainedSizeForCity = CGSizeMake(headerWidth - placeDistanceRect.size.width - 55, 999);
+    
+    NSMutableAttributedString *placeAddressString = [[NSMutableAttributedString alloc] initWithString:place.placeAddress attributes:placeAddressAtributes];
+    NSMutableAttributedString *placeCityString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@, %@, %@",place.placeCity,place.placeState,place.placeCountry] attributes:placeAddressAtributes];
+    
+    CGRect placeAddressRect = [placeAddressString boundingRectWithSize:constrainedSizeForAddress options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    CGRect placeCityRect = [placeCityString boundingRectWithSize:constrainedSizeForCity options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    
+    return   placeAddressRect.size.height + placeCityRect.size.height + 32;
+}
+
+#define headerHeightAnimationDuration 0.2
+
+- (void)setDetailsHeaderHeight:(CGFloat)height animated:(BOOL)animated {
+    
+    if(animated) {
+        [UIView animateWithDuration:headerHeightAnimationDuration animations:^{
+            self.detailsHeaderHeightConstraint.constant = height;
+            [self.view layoutIfNeeded];
+        }];
+    } else {
+        self.detailsHeaderHeightConstraint.constant = height;
+        [self.view layoutIfNeeded];
+    }
+}
+
+#pragma mark - <SWPReviewsViewControllerDelegate>
+
+- (CGFloat)reviewsViewController:(SWPReviewsViewController *)reviewsViewController topInsetForViewWidth:(CGFloat)width {
+    return [self calculateHeaderHightForWidth:width];
 }
 
 @end

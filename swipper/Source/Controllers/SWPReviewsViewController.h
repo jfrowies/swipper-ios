@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class SWPReviewsViewController;
+
+@protocol SWPReviewsViewControllerDelegate <NSObject>
+@optional
+- (CGFloat)reviewsViewController:(SWPReviewsViewController *)reviewsViewController topInsetForViewWidth:(CGFloat)width;
+- (CGFloat)reviewsViewController:(SWPReviewsViewController *)reviewsViewController bottomInsetForViewWidth:(CGFloat)width;
+@end
+
 @interface SWPReviewsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSArray *reviews;
+@property (weak, nonatomic) id<SWPReviewsViewControllerDelegate> delegate;
 @end
