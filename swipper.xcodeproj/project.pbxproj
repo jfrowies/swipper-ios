@@ -121,6 +121,10 @@
 		B5D6481E19E8CDE600018852 /* SWPSimpleCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D6481D19E8CDE600018852 /* SWPSimpleCategory.m */; };
 		B5D936371A08864F00FF62F8 /* M13Checkbox+Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D936361A08864F00FF62F8 /* M13Checkbox+Menu.m */; };
 		B5E5E3381A2A3D0500E10664 /* SWPLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E5E3361A2A3D0500E10664 /* SWPLoadingViewController.m */; };
+		EF163D1E1A7A7CAE00BE4461 /* libFlurry_6.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF163D1D1A7A7CAE00BE4461 /* libFlurry_6.0.0.a */; };
+		EF163D1F1A7A7CAE00BE4461 /* libFlurry_6.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF163D1D1A7A7CAE00BE4461 /* libFlurry_6.0.0.a */; };
+		EF163D211A7A7D0200BE4461 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF163D201A7A7D0200BE4461 /* SystemConfiguration.framework */; };
+		EF163D231A7A7D0800BE4461 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF163D221A7A7D0800BE4461 /* Security.framework */; };
 		EF37935A1A38D4A400AA3A92 /* SWPMessageBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF3793591A38D4A400AA3A92 /* SWPMessageBarView.xib */; };
 		EF60703D1A445ED400A02C0F /* SWPAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EF60703C1A445ED400A02C0F /* SWPAnnotationView.m */; };
 		EFCD3DBD1A43612A00D8CB34 /* SWPPlaceAnnotationCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFCD3DBC1A43612A00D8CB34 /* SWPPlaceAnnotationCalloutView.xib */; };
@@ -216,7 +220,7 @@
 		B5580B571A47BA800071C39D /* SWPReviewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPReviewTableViewCell.m; sourceTree = "<group>"; };
 		B5580B5A1A47CDF40071C39D /* SWPReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPReview.h; sourceTree = "<group>"; };
 		B5580B5B1A47CDF40071C39D /* SWPReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPReview.m; sourceTree = "<group>"; };
-		B55EF02A1A6EE96D00CEA93C /* swipperBeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swipperBeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B55EF02A1A6EE96D00CEA93C /* swipperbeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swipperbeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55EF02B1A6EE96D00CEA93C /* swipper copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "swipper copy-Info.plist"; path = "/Users/Ferrowies/Documents/Development/swipper-ios/swipper copy-Info.plist"; sourceTree = "<absolute>"; };
 		B5662EF719D8E9AC0003FB99 /* SWPThemeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWPThemeHelper.h; path = ../Models/SWPThemeHelper.h; sourceTree = "<group>"; };
 		B5662EF819D8E9AC0003FB99 /* SWPThemeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWPThemeHelper.m; path = ../Models/SWPThemeHelper.m; sourceTree = "<group>"; };
@@ -237,6 +241,10 @@
 		B5E5E3351A2A3D0500E10664 /* SWPLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWPLoadingViewController.h; path = ../Views/SWPLoadingViewController.h; sourceTree = "<group>"; };
 		B5E5E3361A2A3D0500E10664 /* SWPLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWPLoadingViewController.m; path = ../Views/SWPLoadingViewController.m; sourceTree = "<group>"; };
 		BE5D7DD96A591A5A0B895D56 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF163D1C1A7A7CAE00BE4461 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		EF163D1D1A7A7CAE00BE4461 /* libFlurry_6.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_6.0.0.a; sourceTree = "<group>"; };
+		EF163D201A7A7D0200BE4461 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EF163D221A7A7D0800BE4461 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		EF3793591A38D4A400AA3A92 /* SWPMessageBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWPMessageBarView.xib; sourceTree = "<group>"; };
 		EF60703B1A445ED400A02C0F /* SWPAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPAnnotationView.h; sourceTree = "<group>"; };
 		EF60703C1A445ED400A02C0F /* SWPAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPAnnotationView.m; sourceTree = "<group>"; };
@@ -256,8 +264,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF163D231A7A7D0800BE4461 /* Security.framework in Frameworks */,
+				EF163D211A7A7D0200BE4461 /* SystemConfiguration.framework in Frameworks */,
 				B53FF7971A508486001602F1 /* MessageUI.framework in Frameworks */,
 				050F46E719B0F4E000E715A1 /* MapKit.framework in Frameworks */,
+				EF163D1E1A7A7CAE00BE4461 /* libFlurry_6.0.0.a in Frameworks */,
 				050F46B419B0F4CA00E715A1 /* CoreGraphics.framework in Frameworks */,
 				058E1D3B19B4F633001CB42D /* LoopBack.framework in Frameworks */,
 				050F46B819B0F4CA00E715A1 /* CoreData.framework in Frameworks */,
@@ -287,6 +298,7 @@
 			files = (
 				B55EF0171A6EE96D00CEA93C /* MessageUI.framework in Frameworks */,
 				B55EF0181A6EE96D00CEA93C /* MapKit.framework in Frameworks */,
+				EF163D1F1A7A7CAE00BE4461 /* libFlurry_6.0.0.a in Frameworks */,
 				B55EF0191A6EE96D00CEA93C /* CoreGraphics.framework in Frameworks */,
 				B55EF01A1A6EE96D00CEA93C /* LoopBack.framework in Frameworks */,
 				B55EF01B1A6EE96D00CEA93C /* CoreData.framework in Frameworks */,
@@ -317,7 +329,7 @@
 			children = (
 				050F46AE19B0F4CA00E715A1 /* swipper.app */,
 				050F46CE19B0F4CA00E715A1 /* swipperTests.xctest */,
-				B55EF02A1A6EE96D00CEA93C /* swipperBeta.app */,
+				B55EF02A1A6EE96D00CEA93C /* swipperbeta.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -325,6 +337,8 @@
 		050F46B019B0F4CA00E715A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF163D221A7A7D0800BE4461 /* Security.framework */,
+				EF163D201A7A7D0200BE4461 /* SystemConfiguration.framework */,
 				B53FF7961A508486001602F1 /* MessageUI.framework */,
 				058E1D3A19B4F633001CB42D /* LoopBack.framework */,
 				050F46E619B0F4E000E715A1 /* MapKit.framework */,
@@ -387,6 +401,7 @@
 		050F46EA19B0F52E00E715A1 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				EF163D1B1A7A7CAE00BE4461 /* Flurry */,
 				EFD2B3641A42169000F5E6B2 /* Reachability */,
 				B50F7A721A06CF4200704E45 /* M13Checkbox */,
 				050F46EB19B0F52E00E715A1 /* OCMock */,
@@ -565,6 +580,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		EF163D1B1A7A7CAE00BE4461 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				EF163D1C1A7A7CAE00BE4461 /* Flurry.h */,
+				EF163D1D1A7A7CAE00BE4461 /* libFlurry_6.0.0.a */,
+			);
+			path = Flurry;
+			sourceTree = "<group>";
+		};
 		EFD2B3641A42169000F5E6B2 /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -630,7 +654,7 @@
 			);
 			name = swipperbeta;
 			productName = swipper;
-			productReference = B55EF02A1A6EE96D00CEA93C /* swipperBeta.app */;
+			productReference = B55EF02A1A6EE96D00CEA93C /* swipperbeta.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1002,6 +1026,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/swipper/Libraries/OCMock/lib",
+					"$(PROJECT_DIR)/swipper/Libraries/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2867dbf6-b7e6-4eef-80e2-451e5104f9f6";
@@ -1028,6 +1053,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/swipper/Libraries/OCMock/lib",
+					"$(PROJECT_DIR)/swipper/Libraries/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2867dbf6-b7e6-4eef-80e2-451e5104f9f6";
@@ -1104,6 +1130,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/swipper/Libraries/OCMock/lib",
+					"$(PROJECT_DIR)/swipper/Libraries/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1130,6 +1157,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/swipper/Libraries/OCMock/lib",
+					"$(PROJECT_DIR)/swipper/Libraries/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -43,16 +43,16 @@
         return NO;
     }
     
-    return [self isEqualToPlace:(SWPSimpleCategory *)object];
+    return [self isEqualToCategory:(SWPSimpleCategory *)object];
 }
 
 - (NSUInteger)hash {
     return [self.name hash];
 }
 
-- (BOOL)isEqualToPlace:(SWPSimpleCategory *)place {
-    if(!place) return false;
-    return [self.name isEqualToString:place.name];
+- (BOOL)isEqualToCategory:(SWPSimpleCategory *)category {
+    if(!category) return false;
+    return [self.name isEqualToString:category.name];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "SWPAppDelegate.h"
+#import "Flurry.h"
 
 @implementation SWPAppDelegate
 
@@ -14,9 +15,13 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+#define FlurryAPIKey @"QQKCGYMTFNTMYT5697WS"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //init Flurry
+    [Flurry startSession:FlurryAPIKey];
+    
     return YES;
 }
 

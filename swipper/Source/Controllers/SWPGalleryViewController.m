@@ -9,6 +9,7 @@
 #import "SWPGalleryViewController.h"
 #import "SWPPhotoCollectionViewCell.h"
 #import "SWPRestService.h"
+#import "Flurry.h"
 
 @interface SWPGalleryViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -160,7 +161,7 @@ static NSString * const reuseIdentifierLoadingPhoto = @"PlacePhotoLoadingCell";
         [[SWPRestService sharedInstance] resolvePhotoURLWithRequestURL:photoRequestURL success:^(NSURL *photoURL) {
             [weakSelf.photosURLs setObject:photoURL forKey:photoReference];
         } failure:^(NSError *error) {
-            //TODO: log error
+             [Flurry logError:@"RESOLVE_PHOTO_URL_ERROR" message:error.description exception:nil];
         }];
         
         NSURL *thumbnailRequestURL = [[SWPRestService sharedInstance] urlForPhotoReference:photoReference maxWidth:400];
@@ -173,11 +174,11 @@ static NSString * const reuseIdentifierLoadingPhoto = @"PlacePhotoLoadingCell";
                 [weakSelf.thumbnailsImages setObject:photo forKey:photoReference];
                 [weakSelf.collectionView reloadData];
             } failure:^(NSError *error) {
-                //TODO: log error
+                [Flurry logError:@"DOWNLOAD_PHOTO_ERROR" message:error.description exception:nil];
             }];
             
         } failure:^(NSError *error) {
-            //TODO: log error
+             [Flurry logError:@"RESOLVE_PHOTO_URL_ERROR" message:error.description exception:nil];
         }];
     
     }

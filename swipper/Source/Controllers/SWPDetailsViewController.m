@@ -16,6 +16,7 @@
 #import "JSNetworkActivityIndicatorManager.h"
 #import "SWPPlaceDetail.h"
 #import "SWPRestService.h"
+#import "Flurry.h"
 
 @interface SWPDetailsViewController () <MFMailComposeViewControllerDelegate, SWPReviewsViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *placeAddressLabel;
@@ -206,11 +207,23 @@
             }
         }
     }];
+    
+    [Flurry logEvent:@"PLACE_HOW_TO_ARRIVE_TOUCHED" withParameters:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                           self.place.placeId, @"PLACE_ID",
+                                                           self.place.placeName, @"PLACE_NAME",
+                                                           self.place.placeCategory, @"PLACE_CATEGORY",
+                                                           nil]];
 }
 
 - (IBAction)didTouchedPhoneCallBarButton:(UIBarButtonItem *)sender {
     NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"tel://%@", self.place.placePhone]];
     [[UIApplication sharedApplication] openURL:url];
+    
+    [Flurry logEvent:@"PLACE_PHONECALL_TOUCHED" withParameters:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                           self.place.placeId, @"PLACE_ID",
+                                                           self.place.placeName, @"PLACE_NAME",
+                                                           self.place.placeCategory, @"PLACE_CATEGORY",
+                                                           nil]];
 }
 
 - (IBAction)didTouchedShareBarButton:(UIBarButtonItem *)sender {
@@ -224,6 +237,12 @@
     [self.navigationController presentViewController:activityViewController
                                             animated:YES
                                           completion:nil];
+    
+    [Flurry logEvent:@"PLACE_SHARE_TOUCHED" withParameters:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                           self.place.placeId, @"PLACE_ID",
+                                                           self.place.placeName, @"PLACE_NAME",
+                                                           self.place.placeCategory, @"PLACE_CATEGORY",
+                                                           nil]];
 }
 
 - (IBAction)didTouchedSendReportBarButton:(UIBarButtonItem *)sender {
@@ -239,35 +258,43 @@
         [mail setMessageBody:mailBody isHTML:YES];
         [mail setToRecipients:@[@"swipper-contact@globant.com"]];
         [self presentViewController:mail animated:YES completion:NULL];
+        
+        [Flurry logEvent:@"PLACE_EMAIL_REPORT_TOUCHED" withParameters:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                               self.place.placeId, @"PLACE_ID",
+                                                               self.place.placeName, @"PLACE_NAME",
+                                                               self.place.placeCategory, @"PLACE_CATEGORY",
+                                                               nil]];
+        
     }
-//    else
-//    {
-//        NSLog(@"This device cannot send email");
-//    }
-//    
+    else
+    {
+        [Flurry logError:@"PLACE_EMAIL_REPORT_ERROR" message:@"This device cannot send email" exception:nil];
+    }
+    
 }
 
 #pragma mark - <MFMailComposeViewControllerDelegate>
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
-//    switch (result) {
-//        case MFMailComposeResultSent:
-//            NSLog(@"You sent the email.");
-//            break;
-//        case MFMailComposeResultSaved:
-//            NSLog(@"You saved a draft of this email");
-//            break;
-//        case MFMailComposeResultCancelled:
-//            NSLog(@"You cancelled sending this email.");
-//            break;
-//        case MFMailComposeResultFailed:
-//            NSLog(@"Mail failed:  An error occurred when trying to compose this email");
-//            break;
-//        default:
-//            NSLog(@"An error occurred when trying to compose this email");
-//            break;
-//    }
+    switch (result) {
+        case MFMailComposeResultSent:
+            [Flurry logEvent:@"PLACE_EMAIL_REPORT_SENT" withParameters:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                   self.place.placeId, @"PLACE_ID",
+                                                                   self.place.placeName, @"PLACE_NAME",
+                                                                   self.place.placeCategory, @"PLACE_CATEGORY",
+                                                                   nil]];
+            break;
+        case MFMailComposeResultSaved:
+            break;
+        case MFMailComposeResultCancelled:
+            break;
+        case MFMailComposeResultFailed:
+        default:
+            if (error)
+                [Flurry logError:@"PLACE_EMAIL_REPORT_ERROR" message:error.description exception:nil];
+            break;
+    }
     
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -281,8 +308,14 @@
         if (placeDetail) {
             self.placeDetails = placeDetail;
         }
+        NSDictionary *placeViewParams = [NSDictionary dictionaryWithObjectsAndKeys:
+                                         self.place.placeId, @"PLACE_ID",
+                                         self.place.placeName, @"PLACE_NAME",
+                                         self.place.placeCategory, @"PLACE_CATEGORY",
+                                         nil];
+        [Flurry logEvent:@"PLACE_VIEW" withParameters:placeViewParams];
     } failure:^(NSError *error) {
-        //TODO: handle error properly
+        [Flurry logError:@"LOAD_PLACE_DETAIL_ERROR" message:error.description exception:nil];
         self.loadingView.hidden = YES;
     }];
 }

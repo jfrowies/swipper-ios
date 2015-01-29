@@ -173,7 +173,6 @@
             [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
             successBlock(response.URL);
         }else {
-            //TODO: retry? show error?
             [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
             failureBlock(connectionError);
         }
@@ -191,7 +190,6 @@
                 [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
                 successBlock([UIImage imageWithData:data]);
             }else {
-                //TODO: retry? show error?
                 [[JSNetworkActivityIndicatorManager sharedManager] endActivity];
                 failureBlock(connectionError);
             }
