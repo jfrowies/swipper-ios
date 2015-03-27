@@ -212,7 +212,7 @@
         {
             SWPCategoryTableViewCell *categoryCell = (SWPCategoryTableViewCell *)cell;
             if(categoryCell.checkBox.checkState == YES) {
-                [self.selectedCategories addObjectIfNoExist:categoryCell.category];
+                [self.selectedCategories addObjectIfNotExist:categoryCell.category];
                 allOff = NO;
             }
             else {

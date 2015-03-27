@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dTi-Ph-aHe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dTi-Ph-aHe">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -431,7 +431,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR2-zm-kgT">
                                                     <rect key="frame" x="8" y="8" width="584" height="18"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-ThinItalic" family="Helvetica Neue" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StarEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="xDO-hx-2eC">
@@ -1007,7 +1007,7 @@
                                 </connections>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfW-g5-H3o">
-                                <rect key="frame" x="8" y="-8" width="220" height="608"/>
+                                <rect key="frame" x="0.0" y="0.0" width="220" height="600"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="Ach-xO-WhF"/>
                                 </constraints>
@@ -1019,20 +1019,20 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="JfW-g5-H3o" firstAttribute="leading" secondItem="zHo-c8-8r9" secondAttribute="leading" id="3PV-Qh-6Oi"/>
                             <constraint firstItem="fIf-qU-gch" firstAttribute="top" secondItem="vYQ-vk-cEy" secondAttribute="bottom" id="3QB-2G-oTf"/>
-                            <constraint firstItem="JfW-g5-H3o" firstAttribute="bottom" secondItem="zHo-c8-8r9" secondAttribute="bottomMargin" id="4gw-Hr-yMd"/>
                             <constraint firstItem="vYQ-vk-cEy" firstAttribute="leading" secondItem="zHo-c8-8r9" secondAttribute="leading" id="5p2-Y7-bx6"/>
-                            <constraint firstItem="JfW-g5-H3o" firstAttribute="leading" secondItem="zHo-c8-8r9" secondAttribute="leadingMargin" constant="-8" id="Q2n-6N-xob"/>
+                            <constraint firstItem="fIf-qU-gch" firstAttribute="top" secondItem="JfW-g5-H3o" secondAttribute="bottom" id="8Qa-IZ-yXt"/>
+                            <constraint firstItem="JfW-g5-H3o" firstAttribute="top" secondItem="zHo-c8-8r9" secondAttribute="top" id="8X1-G2-oOX"/>
                             <constraint firstItem="vYQ-vk-cEy" firstAttribute="top" secondItem="ZzJ-wB-M4u" secondAttribute="bottom" id="ZVr-xM-XK7"/>
                             <constraint firstAttribute="trailing" secondItem="vYQ-vk-cEy" secondAttribute="trailing" id="c0I-6h-yBl"/>
-                            <constraint firstItem="JfW-g5-H3o" firstAttribute="top" secondItem="zHo-c8-8r9" secondAttribute="topMargin" constant="-8" id="pdQ-Ls-Ez9"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="zu6-ya-ua7" appends="YES" id="mFX-Xm-22U"/>
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="menuLeftConstraint" destination="Q2n-6N-xob" id="k5V-w4-YgZ"/>
+                        <outlet property="menuLeftConstraint" destination="3PV-Qh-6Oi" id="k3g-un-uQr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQ4-Dg-W4q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1058,13 +1058,13 @@
                         <viewControllerLayoutGuide type="bottom" id="Epp-MT-WTE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3Bo-PA-VIa">
-                        <rect key="frame" x="0.0" y="0.0" width="220" height="608"/>
+                        <rect key="frame" x="0.0" y="0.0" width="220" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckO-mi-NDa">
-                                <rect key="frame" x="0.0" y="0.0" width="220" height="608"/>
+                                <rect key="frame" x="0.0" y="0.0" width="220" height="600"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Fhe-gO-e2t">
-                                    <rect key="frame" x="0.0" y="0.0" width="220" height="608"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="220" height="600"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XoH-nP-w1L">
@@ -1082,7 +1082,7 @@
                                 <blurEffect style="dark"/>
                             </visualEffectView>
                             <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3Qd-2S-Zbe">
-                                <rect key="frame" x="0.0" y="0.0" width="220" height="608"/>
+                                <rect key="frame" x="0.0" y="0.0" width="220" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

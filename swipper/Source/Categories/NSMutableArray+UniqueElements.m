@@ -10,7 +10,7 @@
 
 @implementation NSMutableArray (UniqueElements)
 
-- (void)addObjectIfNoExist:(id)object {
+- (void)addObjectIfNotExist:(id)object {
     BOOL objectAlreadyExist = NO;
     for (id obj in self) {
         if([obj isEqual:object]) objectAlreadyExist = YES;
