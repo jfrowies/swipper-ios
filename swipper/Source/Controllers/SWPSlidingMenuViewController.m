@@ -10,7 +10,7 @@
 
 #define slideAnimationDuration 0.3f
 #define hideMenuConstraintConstant -220.0f
-#define showMenuConstraintConstant -8.0f
+#define showMenuConstraintConstant 0.0f
 
 @interface SWPSlidingMenuViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuLeftConstraint;
